@@ -4,10 +4,22 @@
 @php
     $u = fn ($pub, $legacy) => Route::has($pub) ? route($pub) : (Route::has($legacy) ? route($legacy) : '#');
 
+    // Local homepage screenshots (no client logos, per feedback) — fast static assets.
+    $shot = function ($url) {
+        $map = [
+            'https://www.dsebd.org' => 'dse.png',
+            'https://bd.finance'    => 'bdfinance.png',
+            'https://bida.gov.bd'   => 'bida.png',
+            'https://adcommad.com'  => 'adcomm.png',
+        ];
+        return asset('assets/img/clients/shots/' . ($map[$url] ?? 'dse.png'));
+    };
+
     $cases = [
         [
             'cat'  => 'Government Organization',
             'name' => 'Dhaka Stock Exchange (DSE)',
+            'url'  => 'https://www.dsebd.org',
             'desc' => "Cyberlog delivered SOC support for Dhaka Stock Exchange, Bangladesh's most critical capital market infrastructure and one of the country's highest-value financial technology environments.",
             'stats' => [['24/7', 'SOC Monitoring'], ['99.99%', 'uptime for Capital Market Cyber Defense']],
             'service' => 'soc',
@@ -16,6 +28,7 @@
         [
             'cat'  => 'Financial Institute',
             'name' => 'Bangladesh Finance',
+            'url'  => 'https://bd.finance',
             'desc' => 'Cyberlog conducted VAPT for Bangladesh Finance to identify, validate, and prioritize exploitable security risks across its digital environment.',
             'stats' => [['360°', 'Security Risk Review'], ['10+', 'High-Priority Risks Validated']],
             'service' => 'vapt',
@@ -24,6 +37,7 @@
         [
             'cat'  => 'Government Organization',
             'name' => 'Bangladesh Investment Development Authority (BIDA)',
+            'url'  => 'https://bida.gov.bd',
             'desc' => 'Cyberlog conducted cybersecurity capacity building for the IT team of Bangladesh Investment Development Authority and supported the organization with a cybersecurity assessment to improve technical readiness, risk visibility, and institutional cyber resilience.',
             'stats' => [['250%+', "Increase in Employees' Cybersecurity Skills"], ['12', 'Security Areas Reviewed']],
             'service' => 'capacity-building',
@@ -32,6 +46,7 @@
         [
             'cat'  => 'Advertisement Industry',
             'name' => 'Adcomm Limited',
+            'url'  => 'https://adcommad.com',
             'desc' => 'Cyberlog supported Adcomm Limited with ISO 27001 implementation and employee cybersecurity capacity building to strengthen compliance readiness and workforce security awareness.',
             'stats' => [['93', 'ISO Controls Mapped'], ['200+', 'Employees Trained']],
             'service' => 'it-audit',
@@ -52,6 +67,9 @@
             <div class="cl-cases" id="clCases">
                 @foreach ($cases as $case)
                     <article class="cl-case" data-reveal style="--cat: {{ $case['accent'] }}">
+                        <a class="cl-case-shot" href="{{ $case['url'] }}" target="_blank" rel="noopener" aria-label="{{ $case['name'] }} website">
+                            <img src="{{ $shot($case['url']) }}" alt="{{ $case['name'] }} homepage" loading="lazy" referrerpolicy="no-referrer">
+                        </a>
                         <span class="cl-case-cat">{{ $case['cat'] }}</span>
                         <h3 class="cl-case-name">{{ $case['name'] }}</h3>
                         <p class="cl-case-desc">{{ $case['desc'] }}</p>
@@ -105,6 +123,34 @@
     }
     .cl-case:hover { transform: translateY(-6px); border-color: var(--cat, var(--blue-bright)); }
 
+    .cl-case-shot {
+        display: block;
+        margin-bottom: 1.1rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        aspect-ratio: 16 / 10;
+        background:
+            radial-gradient(circle at 50% 45%, rgba(109, 156, 255, 0.12), transparent 60%),
+            linear-gradient(160deg, #0e1838, #0a1126);
+        position: relative;
+    }
+    .cl-case-shot::after {
+        content: "Loading preview…";
+        position: absolute; inset: 0;
+        display: grid; place-items: center;
+        font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .08em;
+        color: var(--muted); z-index: 0;
+    }
+    .cl-case-shot img {
+        position: relative; z-index: 1;
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: top center;
+        display: block;
+        transition: transform .4s var(--ease);
+    }
+    .cl-case-shot:hover img { transform: scale(1.05); }
+
     .cl-case-cat {
         font-family: 'IBM Plex Mono', monospace;
         font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
@@ -156,54 +202,28 @@
     var next = wrap.querySelector('.cl-cases-nav.next');
     var cards = [].slice.call(row.querySelectorAll('.cl-case'));
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var activeIndex = 0;
     var autoTimer = null;
 
-    function scrollToIndex(index) {
-        if (!cards.length) return;
-        activeIndex = (index + cards.length) % cards.length;
-        var maxScroll = row.scrollWidth - row.clientWidth;
-        var target = Math.min(cards[activeIndex].offsetLeft - row.offsetLeft, maxScroll);
-        row.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+    // One card's horizontal stride (width + gap); difference cancels offsetParent.
+    function stride() {
+        return cards.length > 1 ? Math.round(cards[1].offsetLeft - cards[0].offsetLeft) : row.clientWidth;
     }
     function step(dir) {
-        var maxScroll = row.scrollWidth - row.clientWidth;
-        if (dir > 0 && row.scrollLeft >= maxScroll - 4) {
-            scrollToIndex(0);
-            return;
+        var max = row.scrollWidth - row.clientWidth;
+        if (dir > 0) {
+            if (row.scrollLeft >= max - 4) row.scrollTo({ left: 0, behavior: 'smooth' });
+            else row.scrollBy({ left: stride(), behavior: 'smooth' });
+        } else {
+            if (row.scrollLeft <= 4) row.scrollTo({ left: max, behavior: 'smooth' });
+            else row.scrollBy({ left: -stride(), behavior: 'smooth' });
         }
-        if (dir < 0 && row.scrollLeft <= 4) {
-            scrollToIndex(cards.length - 1);
-            return;
-        }
-        scrollToIndex(activeIndex + dir);
-    }
-    function syncIndex() {
-        var nearest = 0;
-        var distance = Infinity;
-        cards.forEach(function (card, i) {
-            var d = Math.abs(card.offsetLeft - row.offsetLeft - row.scrollLeft);
-            if (d < distance) {
-                nearest = i;
-                distance = d;
-            }
-        });
-        activeIndex = nearest;
     }
     function startAuto() {
         if (reduce || autoTimer || cards.length < 2 || row.scrollWidth <= row.clientWidth + 8) return;
-        autoTimer = window.setInterval(function () { step(1); }, 2200);
+        autoTimer = window.setInterval(function () { step(1); }, 2600);
     }
-    function stopAuto() {
-        if (!autoTimer) return;
-        window.clearInterval(autoTimer);
-        autoTimer = null;
-    }
-    function restartAuto() {
-        stopAuto();
-        syncIndex();
-        startAuto();
-    }
+    function stopAuto() { if (autoTimer) { window.clearInterval(autoTimer); autoTimer = null; } }
+    function restartAuto() { stopAuto(); startAuto(); }
 
     if (prev) prev.addEventListener('click', function () { step(-1); restartAuto(); });
     if (next) next.addEventListener('click', function () { step(1); restartAuto(); });
@@ -212,15 +232,9 @@
     wrap.addEventListener('focusin', stopAuto);
     wrap.addEventListener('focusout', startAuto);
     row.addEventListener('pointerdown', stopAuto);
-    row.addEventListener('pointerup', restartAuto);
-    row.addEventListener('scroll', function () {
-        window.clearTimeout(row._clCaseScrollTimer);
-        row._clCaseScrollTimer = window.setTimeout(syncIndex, 120);
-    }, { passive: true });
     window.addEventListener('resize', restartAuto);
     document.addEventListener('visibilitychange', function () {
-        if (document.hidden) stopAuto();
-        else startAuto();
+        if (document.hidden) stopAuto(); else startAuto();
     });
 
     startAuto();

@@ -97,7 +97,7 @@
                                     <div class="cl-browser-bar"><span></span><span></span><span></span></div>
                                     <div class="cl-browser-body">
                                         <a class="cl-deck-logo-link" href="{{ $case['url'] }}" target="_blank" rel="noopener" aria-label="{{ $case['name'] }} website">
-                                            <img src="{{ asset('assets/img/clients/working-with/' . $case['logo']) }}" alt="{{ $case['name'] }} logo">
+                                            <img src="{{ asset('assets/img/clients/shots/' . $case['logo']) }}" alt="{{ $case['name'] }} homepage" loading="lazy">
                                         </a>
                                     </div>
                                 </div>
@@ -169,29 +169,28 @@
     .cl-browser-bar { display: flex; align-items: center; gap: 6px; padding: .55rem .7rem; background: rgba(255, 255, 255, 0.04); border-bottom: 1px solid var(--line); }
     .cl-browser-bar span { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); opacity: .5; }
     .cl-browser-body {
-        aspect-ratio: 16 / 10; display: grid; place-items: center; padding: 1.5rem;
-        background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.16), transparent 60%), linear-gradient(160deg, var(--surface), var(--bg-alt));
+        aspect-ratio: 16 / 10; position: relative; overflow: hidden;
+        background: linear-gradient(160deg, var(--surface), var(--bg-alt));
+    }
+    .cl-browser-body::after {
+        content: "Loading preview…";
+        position: absolute; inset: 0; display: grid; place-items: center;
+        font-family: 'IBM Plex Mono', monospace; font-size: .7rem; letter-spacing: .08em;
+        color: var(--muted); z-index: 0;
     }
     .cl-deck-logo-link {
-        display: grid;
-        place-items: center;
-        width: 100%;
-        height: 100%;
-        min-height: 190px;
+        display: block; position: relative; z-index: 1;
+        width: 100%; height: 100%;
     }
     .cl-browser-body img {
-        max-width: 76%;
-        max-height: 120px;
-        height: auto;
-        object-fit: contain;
-        filter: none;
-        opacity: 1;
-        transition: filter .25s var(--ease), opacity .25s var(--ease), transform .25s var(--ease);
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: top center;
+        display: block;
+        transition: transform .35s var(--ease);
     }
     .cl-deck-card.is-front .cl-browser-body img,
     .cl-deck-card:hover .cl-browser-body img {
-        opacity: 1;
-        transform: scale(1.12);
+        transform: scale(1.05);
     }
 
     .cl-deck-nav { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-top: 2.25rem; }

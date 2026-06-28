@@ -60,4 +60,38 @@
     </div>
 </section>
 
+{{-- Google Map — same office location as cyberlog.bd/contact --}}
+<section class="page-section pt-0" id="map">
+    <div class="container">
+        <p class="section-eyebrow text-center mb-2">Find Us</p>
+        <h2 class="page-section-heading text-center text-secondary mb-4">Our <span class="cl-title-accent">Location</span></h2>
+        <div class="cl-map">
+            <iframe
+                src="https://www.google.com/maps?q={{ urlencode('1/6, Block C (New), Mirpur 1, Dhaka 1216, Bangladesh') }}&output=embed"
+                title="Cyberlog office location — Mirpur, Dhaka"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
 @endsection
+
+@push('styles')
+<style>
+    .cl-map {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        background: var(--surface);
+    }
+    .cl-map iframe {
+        display: block;
+        width: 100%;
+        height: 440px;
+        border: 0;
+        filter: grayscale(.2) contrast(1.05);
+    }
+    @media (max-width: 575.98px) { .cl-map iframe { height: 320px; } }
+</style>
+@endpush

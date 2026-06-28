@@ -48,9 +48,8 @@
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="{{ $u('public.home', 'home') }}">
-            <i class="fas fa-shield-halved text-primary me-1"></i>
-            Cyber<span class="text-primary">log</span>
+        <a class="navbar-brand p-0" href="{{ $u('public.home', 'home') }}">
+            <img src="{{ asset('assets/img/cyberlog-logo.png') }}" alt="Cyberlog" style="height:44px;width:auto;display:block;">
         </a>
 
         <button class="navbar-toggler bg-primary text-white rounded"
@@ -99,13 +98,6 @@
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded {{ $is('public.clients', 'clients') }}"
-                       href="{{ $u('public.clients', 'clients') }}">
-                        Clients
-                    </a>
-                </li>
-
-                <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded {{ $is('public.vciso', 'vciso') }}"
                        href="{{ $u('public.vciso', 'vciso') }}">
                         vCISO
@@ -113,7 +105,7 @@
                 </li>
 
                 <li class="nav-item dropdown mx-0 mx-lg-1">
-                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded {{ $is('public.about','about','public.our-team','our-team','public.career','career','public.contact','contact') }}"
+                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded {{ $is('public.about','about','public.our-team','our-team','public.career','career','public.contact','contact','public.clients','clients') }}"
                        href="#" id="companyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Company
                     </a>
@@ -123,6 +115,7 @@
                         <li><a class="dropdown-item" href="{{ $u('public.our-team', 'our-team') }}">Our Team</a></li>
                         <li><a class="dropdown-item" href="{{ $u('public.career', 'career') }}">Career</a></li>
                         <li><a class="dropdown-item" href="{{ $u('public.contact', 'contact') }}">Contact</a></li>
+                        <li><a class="dropdown-item" href="{{ $u('public.clients', 'clients') }}">Clients</a></li>
                     </ul>
                 </li>
 

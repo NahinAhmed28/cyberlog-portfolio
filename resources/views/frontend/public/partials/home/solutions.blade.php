@@ -1,73 +1,80 @@
-{{-- Home > Security Solutions (ref: buguard.io)
-     Compact solution cards inspired by Buguard's "Explore our security solutions"
-     product section, adapted to Cyberlog services and routes. --}}
+{{-- Home > Security Solutions — "Explore Our Security Solutions" (12 service cards).
+     Content per client correction doc. Common CTA: Learn More. --}}
 @php
     $u = fn ($pub, $legacy) => Route::has($pub) ? route($pub) : (Route::has($legacy) ? route($legacy) : '#');
 
     $solutions = [
         [
-            'route' => ['public.soc', 'soc'],
-            'icon' => 'fa-desktop',
-            'title' => 'SOC as a Service',
-            'kicker' => 'Continuous Monitoring',
-            'desc' => '24/7 detection, alert triage, and response support from a mature security operations team.',
-            'features' => ['Threat detection', 'Incident response', 'SIEM monitoring'],
+            'route' => ['public.soc', 'soc'], 'icon' => 'fa-desktop',
+            'title' => 'Security Operations Center Implementation', 'kicker' => 'Threat Detection',
+            'desc' => 'Implement centralized log collection, SIEM monitoring, alert rules, threat detection, incident triage, and response support.',
+            'features' => ['SOC', 'SIEM', 'Incident Monitoring'],
         ],
         [
-            'route' => ['public.vapt', 'vapt'],
-            'icon' => 'fa-bug',
-            'title' => 'VAPT / Pen Testing',
-            'kicker' => 'Real-World Validation',
-            'desc' => 'Find, validate, and prioritize exploitable risks across applications, networks, cloud, and APIs.',
-            'features' => ['Web & API testing', 'Network testing', 'Remediation guidance'],
+            'route' => ['public.defense-services', 'defense-services'], 'icon' => 'fa-satellite-dish',
+            'title' => 'Threat Intelligence', 'kicker' => 'Early Warning',
+            'desc' => 'Monitor emerging threats, leaked credentials, phishing campaigns, exposed assets, and attacker activity with actionable intelligence.',
+            'features' => ['Threat Monitoring', 'Leaked Credentials', 'Risk Insights'],
         ],
         [
-            'route' => ['public.it-audit', 'it-audit'],
-            'icon' => 'fa-clipboard-check',
-            'title' => 'IT Audit &amp; ISO 27001',
-            'kicker' => 'Compliance Readiness',
-            'desc' => 'Map controls, close governance gaps, and prepare your organization for security audits.',
-            'features' => ['GRC review', 'ISO 27001 support', 'Control mapping'],
+            'route' => ['public.vapt', 'vapt'], 'icon' => 'fa-bug',
+            'title' => 'Vulnerability Assessment &amp; Penetration Testing', 'kicker' => 'Real World Security Testing',
+            'desc' => 'Identify, validate, and prioritize vulnerabilities across applications, networks, APIs, mobile platforms, cloud, and infrastructure.',
+            'features' => ['VAPT', 'Web Testing', 'Network Testing'],
         ],
         [
-            'route' => ['public.capacity-building', 'capacity-building'],
-            'icon' => 'fa-graduation-cap',
-            'title' => 'Capacity Building',
-            'kicker' => 'Human Defense',
-            'desc' => 'Build practical security habits across teams with awareness, technical, and role-based training.',
-            'features' => ['Awareness training', 'Technical workshops', 'Phishing readiness'],
+            'route' => ['public.vapt', 'vapt'], 'icon' => 'fa-user-secret',
+            'title' => 'Red Team Assessment', 'kicker' => 'Attack Simulation',
+            'desc' => 'Simulate real-world attack scenarios to test people, processes, technology, detection capability, and response readiness.',
+            'features' => ['Attack Simulation', 'Defense Testing', 'Security Readiness'],
         ],
         [
-            'route' => ['public.defense-services', 'defense-services'],
-            'icon' => 'fa-tower-broadcast',
-            'title' => 'Defense Services',
-            'kicker' => 'Threat Resilience',
-            'desc' => 'Strengthen detection, response, firewall management, backup, and recovery operations.',
-            'features' => ['Threat intelligence', 'Firewall management', 'Backup & recovery'],
+            'route' => ['public.vapt', 'vapt'], 'icon' => 'fa-mobile-screen-button',
+            'title' => 'Web, API &amp; Mobile Application Security Testing', 'kicker' => 'Application Security',
+            'desc' => 'Test web, API, Android, and iOS applications for authentication, authorization, session, input validation, and data exposure risks.',
+            'features' => ['OWASP Top 10', 'API Security', 'Mobile Security'],
         ],
         [
-            'route' => ['public.malware-analysis', 'public.malware-analysis'],
-            'icon' => 'fa-microscope',
-            'title' => 'Malware Analysis &amp; Forensics',
-            'kicker' => 'Investigation Support',
-            'desc' => 'Analyze malicious software, uncover evidence, and translate incidents into practical containment and prevention steps.',
-            'features' => ['Malware behavior', 'Evidence analysis', 'Incident findings'],
+            'route' => ['public.next-gen-firewall', 'public.next-gen-firewall'], 'icon' => 'fa-network-wired',
+            'title' => 'Network Security Assessment', 'kicker' => 'Infrastructure Security',
+            'desc' => 'Assess internal and external networks, exposed services, firewalls, servers, wireless networks, segmentation, and access controls.',
+            'features' => ['Firewall Review', 'Network Exposure', 'Segmentation'],
         ],
         [
-            'route' => ['public.backup-recovery', 'public.backup-recovery'],
-            'icon' => 'fa-shield-virus',
-            'title' => 'Firewall, Backup &amp; Recovery',
-            'kicker' => 'Operational Resilience',
-            'desc' => 'Harden network defenses and prepare recovery paths so critical data and services can survive disruption.',
-            'features' => ['NGF protection', 'Secure backups', 'Recovery planning'],
+            'route' => ['public.vapt', 'vapt'], 'icon' => 'fa-code',
+            'title' => 'Source Code Security Audit', 'kicker' => 'Secure Code Review',
+            'desc' => 'Review source code, dependencies, and application security weaknesses using secure coding practices, SAST, and DAST approaches.',
+            'features' => ['SAST', 'DAST', 'Secure Coding'],
         ],
         [
-            'route' => ['public.vciso', 'vciso'],
-            'icon' => 'fa-user-shield',
-            'title' => 'vCISO',
-            'kicker' => 'Security Leadership',
-            'desc' => 'Get executive security strategy, governance, and roadmap ownership without a full-time hire.',
-            'features' => ['Security roadmap', 'Board reporting', 'Risk governance'],
+            'route' => ['public.digital-forensics', 'public.digital-forensics'], 'icon' => 'fa-fingerprint',
+            'title' => 'Digital Forensics &amp; Incident Response', 'kicker' => 'Investigation Support',
+            'desc' => 'Investigate cyber incidents, analyze evidence, support containment, and provide practical recommendations for recovery and prevention.',
+            'features' => ['Forensics', 'Incident Response', 'Evidence Analysis'],
+        ],
+        [
+            'route' => ['public.backup-recovery', 'public.backup-recovery'], 'icon' => 'fa-database',
+            'title' => 'Secure Backup &amp; Recovery Solutions', 'kicker' => 'Operational Resilience',
+            'desc' => 'Strengthen backup strategy, recovery readiness, and data protection to help critical systems survive disruption and cyber incidents.',
+            'features' => ['Secure Backup', 'Recovery Planning', 'Data Protection'],
+        ],
+        [
+            'route' => ['public.it-audit', 'it-audit'], 'icon' => 'fa-clipboard-check',
+            'title' => 'IT Security Audit &amp; ISO 27001', 'kicker' => 'Compliance Readiness',
+            'desc' => 'Review IT controls, identify security gaps, assess governance, and support ISO/IEC 27001 implementation and audit readiness.',
+            'features' => ['IT Audit', 'ISO 27001', 'Control Review'],
+        ],
+        [
+            'route' => ['public.vciso', 'vciso'], 'icon' => 'fa-comments',
+            'title' => 'Cybersecurity Consultancy', 'kicker' => 'Security Advisory',
+            'desc' => 'Provide expert guidance on security strategy, policy improvement, risk-based decisions, and long-term cybersecurity roadmap development.',
+            'features' => ['Security Roadmap', 'Risk Advisory', 'Policy Support'],
+        ],
+        [
+            'route' => ['public.capacity-building', 'capacity-building'], 'icon' => 'fa-graduation-cap',
+            'title' => 'Awareness &amp; Security Training', 'kicker' => 'Human Defense',
+            'desc' => 'Deliver role-based training on cyber hygiene, phishing, social engineering, secure practices, and organizational security awareness.',
+            'features' => ['Awareness Training', 'Phishing Readiness', 'Staff Training'],
         ],
     ];
 @endphp
@@ -80,7 +87,7 @@
                 <h2 class="page-section-heading text-secondary mb-0" data-reveal>Explore Our <span class="cl-title-accent">Security Solutions</span></h2>
             </div>
             <p class="cl-solutions-copy text-muted mb-0" data-reveal>
-                From continuous monitoring to hands-on validation, Cyberlog helps security teams reduce real exposure before attackers can turn it into impact.
+                Cyberlog helps organizations monitor threats, validate security risks, strengthen defenses, improve compliance, and build long-term cyber resilience.
             </p>
         </div>
 
@@ -98,7 +105,7 @@
                             <span>{{ $feature }}</span>
                         @endforeach
                     </div>
-                    <span class="cl-solution-link">Learn more <i class="fas fa-arrow-right"></i></span>
+                    <span class="cl-solution-link">Learn More <i class="fas fa-arrow-right"></i></span>
                 </a>
             @endforeach
         </div>
@@ -123,7 +130,7 @@
         gap: 1rem;
     }
     .cl-solution-tile {
-        min-height: 320px;
+        min-height: 300px;
         display: flex;
         flex-direction: column;
         padding: 1.35rem;
@@ -177,11 +184,11 @@
     .cl-solution-title {
         font-family: 'Chakra Petch', sans-serif;
         color: var(--white);
-        font-size: 1.24rem;
+        font-size: 1.18rem;
         line-height: 1.2;
         margin-bottom: .7rem;
     }
-    .cl-solution-desc { color: var(--muted); font-size: .92rem; line-height: 1.55; margin-bottom: 1.1rem; }
+    .cl-solution-desc { color: var(--muted); font-size: .9rem; line-height: 1.55; margin-bottom: 1.1rem; }
     .cl-solution-features { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: auto; margin-bottom: 1.1rem; }
     .cl-solution-features span {
         font-size: .72rem;
