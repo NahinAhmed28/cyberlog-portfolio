@@ -4,37 +4,28 @@
 
 @section('content')
 
-{{-- 1. Hero / Landing — dynamic design (ref: riskledger.com) --}}
+{{-- Home page arranged per client serial order (Home Page correction doc). --}}
+
+{{-- 1. Hero / Landing --}}
 @include('frontend.public.partials.home.hero')
 
-{{-- Client logo strip moved to the dedicated Clients page (/clients). --}}
+{{-- 2. Our Clients (logo strip) — appears right after the hero --}}
+@include('partials.clients')
 
-{{-- 2. Client case cards (ref: viserx.com) --}}
+{{-- 3. Client Card (client success stories) --}}
 @include('frontend.public.partials.home.case-cards')
 
-{{-- 3. Standardised assessment / compliance panel (ref: riskledger.com) --}}
-@include('frontend.public.partials.home.assessment')
-
-{{-- 4. Network / attack-surface posture panel (ref: riskledger.com) --}}
-@include('frontend.public.partials.home.network')
-
-{{-- 5. Emerging threats / continuous risk signals (ref: riskledger.com) --}}
-@include('frontend.public.partials.home.threats')
-
-{{-- 6. Defend-as-One / shared intelligence network (ref: riskledger.com) --}}
-@include('frontend.public.partials.home.defend')
-
-{{-- 7. Security Solutions (ref: buguard.io) --}}
-@include('frontend.public.partials.home.solutions')
-
-{{-- 8. Our Story (ref: underdefense.com/about-us) --}}
-@include('frontend.public.partials.home.our-story')
-
-{{-- 9. Technical diagram - security engagement process (ref: viserx.com) --}}
+{{-- 4. Technical Diagram (engagement process) --}}
 @include('frontend.public.partials.home.tech-diagram')
 
-{{-- 10. Closing CTA banner - Active Cyber Defense (ref: riskledger.com) --}}
-@include('frontend.public.partials.home.cta-banner')
+{{-- 5. Security Solutions (Explore Our Security Solutions) --}}
+@include('frontend.public.partials.home.solutions')
+
+{{-- 6. Our Story (timeline) --}}
+@include('frontend.public.partials.home.our-story')
+
+{{-- Removed per client feedback ("some slides should not be included"):
+     assessment, network (attack-surface), threats, defend-as-one, cta-banner --}}
 
 
 @endsection

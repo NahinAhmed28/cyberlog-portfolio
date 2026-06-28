@@ -44,14 +44,14 @@
             {{-- Contact --}}
             <div class="col-6 col-lg-3">
                 <div class="cl-foot-head">Contact</div>
-                <p class="text-muted mb-2"><i class="fas fa-location-dot text-primary me-2"></i>1/6, Block C (New), Mirpur-01, Dhaka 1216</p>
-                <p class="text-muted mb-2"><i class="fas fa-envelope text-primary me-2"></i>hello@cyberlog.io</p>
-                <p class="text-muted mb-3"><i class="fas fa-phone text-primary me-2"></i>+880 1XXX-XXXXXX</p>
-                <p class="text-muted small mb-3">Trade License: TRAD/DNCC/092990/202</p>
+                <p class="text-muted mb-2"><i class="fas fa-location-dot text-primary me-2"></i>374 Tejgaon Industrial Area, 3rd Floor, Dhaka 1208, Bangladesh</p>
+                <p class="text-muted mb-2"><i class="fas fa-envelope text-primary me-2"></i><a class="link-light text-decoration-none" href="mailto:info@cyberlog.bd">info@cyberlog.bd</a></p>
+                <p class="text-muted mb-3"><i class="fas fa-phone text-primary me-2"></i>+880 1357-699084</p>
+                <p class="text-muted small mb-3">Trade License: TRAD/DNCC/030973/2025</p>
                 <div class="d-flex gap-2">
                     <a class="btn btn-outline-light btn-social" href="#" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
                     <a class="btn btn-outline-light btn-social" href="#" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="#" aria-label="GitHub"><i class="fab fa-fw fa-github"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="#" aria-label="X"><i class="fab fa-fw fa-x-twitter"></i></a>
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
 
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-muted small">
             <div>&copy; {{ date('Y') }} Cyberlog. All rights reserved.</div>
-            <div class="mono">Build Cyber Resilience Before Attackers Build Access</div>
+            <div class="mono">CYBER SAFE UNIVERSE</div>
         </div>
 
         {{-- Big glowing wordmark --}}
