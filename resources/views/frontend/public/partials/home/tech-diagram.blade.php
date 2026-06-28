@@ -13,7 +13,7 @@
         </p>
 
 <div class="process-diagram-wrap">
-    <img src="{{ asset('images/process-diagram.png') }}"
+    <img src="{{ asset('images/techd.png') }}"
          alt="Cyberlog Engagement Process"
          class="process-diagram-img">
 
