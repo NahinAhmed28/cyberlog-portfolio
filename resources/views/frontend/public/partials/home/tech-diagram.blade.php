@@ -19,12 +19,6 @@
 
     <div class="center-core"></div>
 
-    <svg class="process-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path class="energy-line line-top-left" d="M50 50 C43 47, 36 39, 24 27" />
-        <path class="energy-line line-top-right" d="M50 50 C57 47, 64 39, 76 27" />
-        <path class="energy-line line-bottom-left" d="M50 50 C43 54, 36 62, 24 73" />
-        <path class="energy-line line-bottom-right" d="M50 50 C57 54, 64 62, 76 73" />
-    </svg>
 
     <div class="box-glow glow-top-left"></div>
     <div class="box-glow glow-top-right"></div>

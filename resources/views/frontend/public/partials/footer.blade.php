@@ -49,9 +49,23 @@
                 <p class="text-muted mb-3"><i class="fas fa-phone text-primary me-2"></i>+880 1357-699084</p>
                 <p class="text-muted small mb-3">Trade License: TRAD/DNCC/030973/2025</p>
                 <div class="d-flex gap-2">
-                    <a class="btn btn-outline-light btn-social" href="#" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="#" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="#" aria-label="X"><i class="fab fa-fw fa-x-twitter"></i></a>
+<div class="d-flex gap-2">
+    <a class="btn btn-outline-light btn-social"
+       href="https://www.facebook.com/login"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Facebook">
+        <i class="fab fa-fw fa-facebook-f"></i>
+    </a>
+
+    <a class="btn btn-outline-light btn-social"
+       href="https://www.linkedin.com/login"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="LinkedIn">
+        <i class="fab fa-fw fa-linkedin-in"></i>
+    </a>
+</div>
                 </div>
             </div>
 
