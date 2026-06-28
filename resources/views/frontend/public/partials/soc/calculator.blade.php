@@ -17,13 +17,13 @@
             <div class="col-lg-7" data-reveal>
                 <div class="cl-calc">
                     <div class="cl-calc-row">
-                        <div class="cl-calc-head"><span>Endpoints / devices</span><span class="cl-calc-val" id="calcEpVal">500</span></div>
-                        <input type="range" id="calcEp" min="50" max="5000" step="50" value="500" class="cl-range">
+                        <div class="cl-calc-head"><span>Endpoints / devices</span><span class="cl-calc-val" id="calcEpVal">250</span></div>
+                        <input type="range" id="calcEp" min="5" max="1000" step="5" value="250" class="cl-range">
                     </div>
 
                     <div class="cl-calc-row">
                         <div class="cl-calc-head"><span>Log volume <small class="text-muted">(GB / day)</small></span><span class="cl-calc-val" id="calcLogVal">50</span></div>
-                        <input type="range" id="calcLog" min="1" max="500" step="1" value="50" class="cl-range">
+                        <input type="range" id="calcLog" min="1" max="1000" step="1" value="50" class="cl-range">
                     </div>
 
                     <div class="cl-calc-row">
@@ -73,9 +73,10 @@
 
     .cl-calc-out { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 1.5rem; margin-top: .5rem; }
     .cl-calc-cost { font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 2.6rem; line-height: 1; }
-    .cl-calc-cost span { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+    /* Amount blurred per feedback — exact figure shared in the tailored quote. */
+    .cl-calc-cost span { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; filter: blur(9px); user-select: none; }
     .cl-calc-cost small { font-family: 'IBM Plex Mono', monospace; font-size: .9rem; color: var(--muted); -webkit-text-fill-color: var(--muted); margin-left: .35rem; }
-    .cl-calc-break { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--muted); margin-top: .5rem; }
+    .cl-calc-break { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--muted); margin-top: .5rem; filter: blur(4px); user-select: none; }
 </style>
 @endpush
 

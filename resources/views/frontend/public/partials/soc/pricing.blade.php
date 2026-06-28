@@ -1,9 +1,9 @@
 {{-- SOC › Custom pricing tiers --}}
 @php
     $plans = [
-        ['Essential', 'For growing teams getting started with managed detection.', ['24/7 monitoring &amp; triage', 'SIEM management', 'Monthly reporting'], false],
-        ['Advanced', 'For organizations that need MDR and threat intelligence.', ['Everything in Essential', 'Managed Detection &amp; Response', 'Threat intelligence feeds'], true],
-        ['Enterprise', 'For regulated, high-value environments needing full coverage.', ['Everything in Advanced', 'Proactive threat hunting', 'Dedicated SOC analyst &amp; IR retainer'], false],
+        ['Essential', 'For organizations starting with structured SOC monitoring and basic security visibility.', ['SIEM setup and configuration', 'Log collection from key systems', 'Alert monitoring and triage', 'Monthly security summary', 'Basic incident guidance'], false],
+        ['Advanced', 'For organizations that need stronger detection, response support, and threat intelligence.', ['Everything in Essential', 'Custom detection rules', 'Threat intelligence support', 'Incident investigation support', 'Regular tuning and reporting', 'Remediation guidance'], true],
+        ['Enterprise', 'For high-risk, regulated, or large environments that need full SOC coverage and response readiness.', ['Everything in Advanced', 'Dedicated SOC analyst support', 'Proactive threat hunting', 'Digital and network forensics support', 'Incident response retainer', 'Executive reporting'], false],
     ];
     $contact = Route::has('public.contact') ? route('public.contact') : (Route::has('contact') ? route('contact') : '#');
 @endphp

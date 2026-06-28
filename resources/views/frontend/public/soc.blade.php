@@ -4,14 +4,33 @@
 
 @section('content')
 
+{{-- Section 1 — Hero --}}
 @include('frontend.public.partials.soc.hero')
+
+{{-- Section 2 — Client (As like Home Page) --}}
+@include('partials.clients')
+
+{{-- Section 3 — Comparison --}}
 @include('frontend.public.partials.soc.comparison')
+
+{{-- Section 4 — Service Calculator --}}
 @include('frontend.public.partials.soc.calculator')
+
+{{-- Section 5 — Matrix --}}
 @include('frontend.public.partials.soc.matrix')
+
+{{-- Section 6 — Benefits --}}
 @include('frontend.public.partials.soc.benefits')
-@include('frontend.public.partials.soc.sensor')
+
+{{-- Section 7 (New System Sensor) removed per feedback --}}
+
+{{-- Section 8 — Talk to the Expert (form) --}}
 @include('frontend.public.partials.soc.expert')
+
+{{-- Section 9 — Pricing --}}
 @include('frontend.public.partials.soc.pricing')
+
+{{-- Section 10 — Reviews --}}
 @include('frontend.public.partials.soc.reviews')
 
 {{-- Closing CTA --}}

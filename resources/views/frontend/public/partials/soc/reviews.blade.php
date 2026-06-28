@@ -1,17 +1,17 @@
 {{-- SOC › Reviews / testimonials (ref: underdefense.com) --}}
 @php
     $reviews = [
-        ['Cyberlog stood up our SOC in a week and cut our alert noise dramatically. We finally have real visibility.', 'CISO, Financial Institution', 'High Performer'],
-        ['Threats are contained before they spread. Their analysts feel like an extension of our own team.', 'Head of IT, Government Agency', 'Managed Detection &amp; Response'],
-        ['The reporting alone made our board conversations easier. Measurable, credible, and fast.', 'Compliance Lead, Enterprise', 'Top Cybersecurity Company 2025'],
+        ['Cyberlog helped us bring our logs, alerts, and monitoring into one clear SOC workflow. Our team now has better visibility across critical systems.', 'Head of IT, Enterprise Organization', 'Security Visibility'],
+        ['The SOC team improved our alert triage process and helped us focus on real threats instead of wasting time on unnecessary alerts.', 'IT Operations Lead, Financial Sector', 'Alert Triage'],
+        ["Cyberlog's incident response support gave us practical guidance during suspicious activity. Their reporting was clear, actionable, and useful for management.", 'Security Manager, Regulated Organization', 'Incident Response'],
     ];
 @endphp
 
 <section class="page-section bg-light" id="reviews">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2" data-reveal>Reviews</p>
-        <h2 class="page-section-heading text-center text-secondary mb-2" data-reveal>Our Customers Say It Best</h2>
-        <p class="text-center text-muted mb-5" data-reveal>Recognized as a High Performer and a Top Cybersecurity Company by industry leaders.</p>
+        <p class="section-eyebrow text-center mb-2" data-reveal>Client Feedback</p>
+        <h2 class="page-section-heading text-center text-secondary mb-2" data-reveal>What Clients Value About <span class="cl-title-accent">Cyberlog SOC</span></h2>
+        <p class="text-center text-muted mb-5" data-reveal>Cyberlog SOC helps organizations improve visibility, reduce alert noise, and respond to security incidents with confidence.</p>
 
         <div class="row g-4">
             @foreach ($reviews as $r)
