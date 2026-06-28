@@ -1,16 +1,16 @@
 @php
     $reviews = [
-        ['quote' => "Cyberlog's VAPT work showed strong professionalism and helped improve our cyber defense posture.", 'name' => 'Dr. Dewan Muhammad Humayun Kabir, ex Project Director, a2i', 'badge' => 'VAPT Services'],
-        ['quote' => 'The team separated real risks from noise and gave our engineers clear remediation steps.', 'name' => 'Head of IT, Financial Institution', 'badge' => 'Validated Findings'],
-        ['quote' => 'The retest gave us confidence that critical issues were actually closed before audit review.', 'name' => 'Compliance Lead, Enterprise', 'badge' => 'Remediation Verified'],
+        ['rating' => '4.8', 'quote' => 'Cyberlog helped us identify real security risks, not just scanner results. Their report was clear, practical, and easy for our technical team to act on.', 'name' => 'Head of IT, Enterprise Organization', 'badge' => 'VAPT Assessment'],
+        ['rating' => '4.9', 'quote' => 'The team validated each finding properly and explained the business impact. Their remediation guidance helped us fix issues faster.', 'name' => 'Technology Lead, Financial Sector', 'badge' => 'Remediation Support'],
+        ['rating' => '5.0', 'quote' => "Cyberlog's retesting process gave us confidence that the reported vulnerabilities were actually closed after remediation.", 'name' => 'Security Manager, Regulated Organization', 'badge' => 'Retesting & Validation'],
     ];
 @endphp
 
 <section class="page-section cl-vapt-reviews" id="reviews">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2" data-reveal>Review</p>
+        <p class="section-eyebrow text-center mb-2" data-reveal>Client Feedback</p>
         <h2 class="page-section-heading text-center text-secondary mb-2" data-reveal>
-            VAPT Customers <span class="cl-title-accent">Say It Best</span>
+            Our Clients <span class="cl-title-accent">Say It Best</span>
         </h2>
         <p class="text-center text-muted mb-5" data-reveal>
             Practical offensive testing, business-readable risk reporting, and remediation support.
@@ -22,6 +22,7 @@
                     <div class="cl-review h-100 d-flex flex-column" data-reveal>
                         <div class="cl-stars mb-2">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span class="ms-1 fw-bold text-white">{{ $review['rating'] }}</span>
                         </div>
                         <p class="fst-italic">&ldquo;{{ $review['quote'] }}&rdquo;</p>
                         <div class="mt-auto">

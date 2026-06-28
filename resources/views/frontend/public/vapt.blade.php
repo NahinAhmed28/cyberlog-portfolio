@@ -26,8 +26,7 @@
 {{-- Section 7: Benefits, matching the SOC benefit-grid pattern. --}}
 @include('frontend.public.partials.vapt.benefits')
 
-{{-- Section 8: System success story. --}}
-@include('frontend.public.partials.vapt.success')
+{{-- Section 8 (System Success Story) removed per feedback --}}
 
 {{-- Section 9: Review section. --}}
 @include('frontend.public.partials.vapt.reviews')

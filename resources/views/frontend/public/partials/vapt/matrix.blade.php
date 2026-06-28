@@ -1,48 +1,38 @@
+{{-- VAPT › Matrix — Basic VAPT vs Cyberlog VAPT (content per feedback) --}}
 @php
-    $tiers = ['Standard VAPT', 'Advanced VAPT', 'Red Team'];
     $rows = [
-        ['Automated vulnerability discovery', 1, 1, 1],
-        ['Manual exploit validation', 1, 1, 1],
-        ['Authentication and authorization testing', 1, 1, 1],
-        ['Business logic abuse cases', 0, 1, 1],
-        ['Privilege escalation and lateral movement', 0, 1, 1],
-        ['Cloud and identity attack paths', 0, 1, 1],
-        ['Social engineering simulation', 0, 0, 1],
-        ['Executive risk briefing', 0, 1, 1],
-        ['Remediation workshop', 1, 1, 1],
-        ['Post-remediation retest', 0, 1, 1],
+        ['Testing Coverage', 'Limited asset testing', 'Web, API, mobile, network, cloud, and infrastructure testing'],
+        ['Testing Method', 'Mostly automated scanning', 'Manual testing with automated validation'],
+        ['Risk Validation', 'Lists vulnerabilities', 'Validates real exploitability and business impact'],
+        ['Standards Alignment', 'Generic severity rating', 'CVSS, OWASP Top 10, and MITRE ATT&CK aligned'],
+        ['Reporting', 'Technical findings only', 'Executive summary, technical details, proof of concept, and remediation'],
+        ['Remediation Support', 'Limited guidance', 'Clear fix recommendations with priority'],
+        ['Retesting', 'Not always included', 'Retesting support to confirm closure'],
+        ['Outcome', 'Vulnerability list', 'Actionable risk reduction plan'],
     ];
 @endphp
 
 <section class="page-section cl-vapt-matrix-section" id="matrix">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2" data-reveal>VAPT Matrix</p>
-        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>Choose the Right Testing Depth</h2>
+        <p class="section-eyebrow text-center mb-2" data-reveal>Why Cyberlog VAPT</p>
+        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>Basic VAPT vs Cyberlog VAPT</h2>
 
         <div class="cl-vapt-matrix-wrap" data-reveal>
             <div class="table-responsive">
-                <table class="table align-middle text-center cl-vapt-matrix mb-0">
+                <table class="table align-middle cl-vapt-matrix mb-0">
                     <thead>
                         <tr>
-                            <th class="text-start">Coverage</th>
-                            @foreach ($tiers as $tier)
-                                <th>{{ $tier }}</th>
-                            @endforeach
+                            <th class="text-start">Area</th>
+                            <th>Basic VAPT</th>
+                            <th>Cyberlog VAPT</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($rows as $row)
                             <tr>
                                 <td class="text-start fw-semibold">{{ $row[0] }}</td>
-                                @for ($i = 1; $i <= 3; $i++)
-                                    <td>
-                                        @if ($row[$i])
-                                            <i class="fas fa-circle-check"></i>
-                                        @else
-                                            <i class="fas fa-minus"></i>
-                                        @endif
-                                    </td>
-                                @endfor
+                                <td class="cl-vapt-basic">{{ $row[1] }}</td>
+                                <td class="cl-vapt-us"><i class="fas fa-circle-check me-2"></i>{{ $row[2] }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -61,40 +51,22 @@
     }
     .cl-vapt-matrix-wrap {
         overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(16, 31, 58, .72);
-        box-shadow: 0 28px 76px rgba(0, 0, 0, .42);
+        border-radius: 10px;
+        background: linear-gradient(160deg, #0b1430, #0a1126) padding-box,
+                    linear-gradient(120deg, var(--red-soft), var(--blue-bright)) border-box;
+        border: 1.5px solid transparent;
+        box-shadow: 0 28px 76px rgba(5, 20, 60, 0.5);
     }
-    .cl-vapt-matrix {
-        min-width: 760px;
-        color: var(--text);
-        --bs-table-bg: transparent;
-        --bs-table-color: var(--text);
-        --bs-table-border-color: var(--line);
-    }
+    .cl-vapt-matrix { min-width: 720px; --bs-table-bg: transparent; color: var(--text); }
     .cl-vapt-matrix thead th {
-        padding: 1rem;
-        color: var(--white);
-        background: linear-gradient(120deg, rgba(228, 31, 61, .88), rgba(18, 58, 120, .82));
-        border-color: rgba(255, 255, 255, .1);
-        font-family: 'Chakra Petch', sans-serif;
-        font-size: .94rem;
+        padding: 1rem 1.25rem; color: var(--white);
+        background: rgba(16, 31, 58, .7); border-color: var(--line);
+        font-family: 'Chakra Petch', sans-serif; font-size: .95rem;
     }
-    .cl-vapt-matrix tbody td {
-        padding: .92rem 1rem;
-        color: var(--text);
-        border-color: var(--line);
-    }
-    .cl-vapt-matrix tbody tr:hover td {
-        background: rgba(255, 72, 101, .08);
-    }
-    .cl-vapt-matrix .fa-circle-check {
-        color: var(--warm-soft);
-        filter: drop-shadow(0 0 10px rgba(255, 138, 0, .24));
-    }
-    .cl-vapt-matrix .fa-minus {
-        color: rgba(201, 216, 245, .42);
-    }
+    .cl-vapt-matrix thead th:last-child { color: var(--warm-soft); }
+    .cl-vapt-matrix td { padding: 1rem 1.25rem; border-color: var(--line); vertical-align: top; }
+    .cl-vapt-basic { color: var(--muted); }
+    .cl-vapt-us { color: var(--white); background: rgba(228, 31, 61, .08); }
+    .cl-vapt-us .fa-circle-check { color: var(--warm-soft); }
 </style>
 @endpush

@@ -1,11 +1,16 @@
+{{-- VAPT › Security Posture Diagram (ref: buguard.io) — center hub + 8 items --}}
 @php
-    $steps = [
-        ['icon' => 'fa-binoculars', 'title' => 'Recon', 'text' => 'Map exposed assets, identities, services, and entry points.'],
-        ['icon' => 'fa-magnifying-glass-chart', 'title' => 'Scan', 'text' => 'Discover vulnerabilities across apps, APIs, hosts, and cloud surfaces.'],
-        ['icon' => 'fa-bug', 'title' => 'Validate', 'text' => 'Safely prove exploitability and remove false positives.'],
-        ['icon' => 'fa-route', 'title' => 'Attack Path', 'text' => 'Connect findings into realistic compromise scenarios.'],
-        ['icon' => 'fa-file-shield', 'title' => 'Report', 'text' => 'Prioritize findings with business impact and remediation guidance.'],
-        ['icon' => 'fa-rotate', 'title' => 'Retest', 'text' => 'Verify fixes and document closed risk.'],
+    $left = [
+        ['fa-window-maximize', 'Web Application Testing'],
+        ['fa-plug', 'API Security Testing'],
+        ['fa-mobile-screen-button', 'Mobile Application Testing'],
+        ['fa-network-wired', 'Network Penetration Testing'],
+    ];
+    $right = [
+        ['fa-cloud', 'Cloud Security Testing'],
+        ['fa-sliders', 'Configuration Review'],
+        ['fa-bug', 'Vulnerability Validation'],
+        ['fa-rotate', 'Remediation Retesting'],
     ];
 @endphp
 
@@ -20,20 +25,21 @@
             </p>
         </div>
 
-        <div class="cl-vapt-posture-grid" data-reveal>
-            <div class="cl-vapt-posture-map">
-                <div class="cl-vapt-posture-core">
-                    <small>Posture</small>
-                    <strong>360</strong>
-                    <span>Risk View</span>
-                </div>
+        <div class="cl-vp" data-reveal>
+            <div class="cl-vp-col">
+                @foreach ($left as $item)
+                    <div class="cl-vp-node"><i class="fas {{ $item[0] }}"></i><span>{{ $item[1] }}</span></div>
+                @endforeach
+            </div>
 
-                @foreach ($steps as $i => $step)
-                    <article class="cl-vapt-posture-node cl-vapt-posture-node-{{ $i + 1 }}">
-                        <i class="fas {{ $step['icon'] }}"></i>
-                        <h3>{{ $step['title'] }}</h3>
-                        <p>{{ $step['text'] }}</p>
-                    </article>
+            <div class="cl-vp-hub">
+                <div class="cl-vp-core"><i class="fas fa-shield-halved"></i></div>
+                <strong>Cyberlog VAPT</strong>
+            </div>
+
+            <div class="cl-vp-col">
+                @foreach ($right as $item)
+                    <div class="cl-vp-node"><i class="fas {{ $item[0] }}"></i><span>{{ $item[1] }}</span></div>
                 @endforeach
             </div>
         </div>
@@ -44,127 +50,50 @@
 <style>
     .cl-vapt-posture {
         background:
-            radial-gradient(760px 420px at 18% 14%, rgba(109, 156, 255, .08), transparent 62%),
+            radial-gradient(760px 420px at 50% 40%, rgba(255, 72, 101, .1), transparent 60%),
             linear-gradient(180deg, rgba(7, 17, 31, .96), rgba(11, 24, 48, .9));
     }
-    .cl-vapt-posture-map {
-        position: relative;
-        min-height: 610px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        overflow: hidden;
-        background:
-            radial-gradient(circle at 50% 50%, rgba(255, 72, 101, .13), transparent 22%),
-            radial-gradient(circle at 50% 50%, rgba(109, 156, 255, .08), transparent 38%),
-            linear-gradient(145deg, rgba(16, 31, 58, .78), rgba(5, 12, 23, .96));
-        box-shadow: 0 32px 86px rgba(0, 0, 0, .42);
-    }
-    .cl-vapt-posture-map::before,
-    .cl-vapt-posture-map::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        pointer-events: none;
-    }
-    .cl-vapt-posture-map::before {
-        width: 62%;
-        aspect-ratio: 1;
-        border: 1px dashed rgba(130, 165, 220, .2);
-    }
-    .cl-vapt-posture-map::after {
-        width: 36%;
-        aspect-ratio: 1;
-        border: 1px solid rgba(255, 72, 101, .22);
-        box-shadow: 0 0 42px rgba(255, 72, 101, .12);
-    }
-    .cl-vapt-posture-core {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 150px;
-        height: 150px;
-        transform: translate(-50%, -50%);
-        z-index: 2;
+    .cl-vp {
         display: grid;
-        place-items: center;
-        align-content: center;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 191, 27, .35);
-        background: radial-gradient(circle at 50% 26%, rgba(255, 191, 27, .17), rgba(7, 17, 31, .94));
-        box-shadow: 0 0 45px rgba(228, 31, 61, .22);
+        grid-template-columns: 1fr auto 1fr;
+        gap: clamp(1rem, 4vw, 3.5rem);
+        align-items: center;
+        max-width: 1040px;
+        margin: 0 auto;
     }
-    .cl-vapt-posture-core small,
-    .cl-vapt-posture-core span {
-        color: var(--muted);
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: .7rem;
-        letter-spacing: .1em;
-        text-transform: uppercase;
+    .cl-vp-col { display: flex; flex-direction: column; gap: 1rem; }
+    .cl-vp-node {
+        display: flex; align-items: center; gap: .8rem;
+        padding: 1rem 1.15rem;
+        border: 1px solid var(--line); border-radius: 10px;
+        background: linear-gradient(160deg, var(--surface), var(--bg-alt));
+        color: var(--white); font-weight: 500;
+        transition: transform .25s var(--ease), border-color .25s var(--ease);
     }
-    .cl-vapt-posture-core strong {
-        color: var(--warm-soft);
-        font-family: 'Chakra Petch', sans-serif;
-        font-size: 3rem;
-        line-height: 1;
+    .cl-vp-node:hover { transform: translateY(-3px); border-color: var(--red-soft); }
+    .cl-vp-node i {
+        flex: 0 0 auto; width: 38px; height: 38px; display: grid; place-items: center;
+        border-radius: 9px; background: var(--blue-dim); color: var(--warm-soft); font-size: 1rem;
     }
-    .cl-vapt-posture-node {
-        position: absolute;
-        z-index: 3;
-        width: min(245px, 27vw);
-        padding: 1rem;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(7, 17, 31, .82);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-    }
-    .cl-vapt-posture-node i {
-        color: var(--warm-soft);
-        font-size: 1.25rem;
-        margin-bottom: .75rem;
-    }
-    .cl-vapt-posture-node h3 {
-        margin-bottom: .35rem;
-        font-size: 1rem;
-    }
-    .cl-vapt-posture-node p {
-        color: var(--muted);
-        font-size: .82rem;
-        line-height: 1.45;
-        margin: 0;
-    }
-    .cl-vapt-posture-node-1 { left: 8%; top: 12%; }
-    .cl-vapt-posture-node-2 { right: 8%; top: 12%; }
-    .cl-vapt-posture-node-3 { left: 4%; top: 45%; }
-    .cl-vapt-posture-node-4 { right: 4%; top: 45%; }
-    .cl-vapt-posture-node-5 { left: 16%; bottom: 10%; }
-    .cl-vapt-posture-node-6 { right: 16%; bottom: 10%; }
+    .cl-vp-node span { font-size: .92rem; }
 
-    @media (max-width: 991.98px) {
-        .cl-vapt-posture-map {
-            min-height: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: .85rem;
-            padding: 1rem;
-        }
-        .cl-vapt-posture-map::before,
-        .cl-vapt-posture-map::after,
-        .cl-vapt-posture-core {
-            display: none;
-        }
-        .cl-vapt-posture-node {
-            position: static;
-            width: auto;
-        }
+    .cl-vp-hub { text-align: center; }
+    .cl-vp-core {
+        width: clamp(120px, 16vw, 180px); aspect-ratio: 1; margin: 0 auto 1rem;
+        display: grid; place-items: center; border-radius: 50%;
+        border: 2px solid var(--red-soft);
+        background: radial-gradient(circle at 50% 35%, rgba(228, 31, 61, .28), rgba(7, 17, 31, .96) 72%);
+        box-shadow: 0 0 60px rgba(228, 31, 61, .35), inset 0 0 40px rgba(228, 31, 61, .25);
     }
-    @media (max-width: 575.98px) {
-        .cl-vapt-posture-map {
-            grid-template-columns: 1fr;
-        }
+    .cl-vp-core i { font-size: clamp(2.4rem, 5vw, 3.6rem); color: #fff; filter: drop-shadow(0 0 14px rgba(255, 138, 0, .5)); }
+    .cl-vp-hub strong {
+        font-family: 'Chakra Petch', sans-serif; color: var(--white);
+        font-size: 1.4rem; letter-spacing: .02em;
+    }
+
+    @media (max-width: 767.98px) {
+        .cl-vp { grid-template-columns: 1fr; gap: 1rem; }
+        .cl-vp-hub { order: -1; margin-bottom: .5rem; }
     }
 </style>
 @endpush

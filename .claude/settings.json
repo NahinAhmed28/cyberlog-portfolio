@@ -6,6 +6,9 @@
       "Bash(curl -s -D - -o /tmp/a.html \"http://127.0.0.1:8741/about\")",
       "Read(//tmp/**)",
       "Bash(taskkill //F //IM php.exe)"
+    ],
+    "additionalDirectories": [
+      "C:\\projects\\personal\\vciso-service-integrator\\resources\\views\\frontend\\pages"
     ]
   }
 }

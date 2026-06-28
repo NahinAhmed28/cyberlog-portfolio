@@ -3,20 +3,20 @@
         [
             'class' => 'black',
             'title' => 'Black Box',
-            'conditions' => 'We test with minimal information, similar to an external attacker discovering your organization from the outside.',
-            'value' => 'Best for validating real-world exposure, internet-facing attack paths, and unknown technical or human-risk weaknesses.',
+            'conditions' => 'Testing with minimal or no internal information.',
+            'value' => 'Best for validating external exposure and real attacker behavior.',
         ],
         [
             'class' => 'grey',
             'title' => 'Grey Box',
-            'conditions' => 'We test with limited business context, selected credentials, and general infrastructure or application information.',
-            'value' => 'A balanced approach that improves testing depth and speed while keeping the engagement cost-effective.',
+            'conditions' => 'Testing with limited access, selected credentials, or partial system context.',
+            'value' => 'Best for balanced security validation with better speed and accuracy.',
         ],
         [
             'class' => 'white',
             'title' => 'White Box',
-            'conditions' => 'We test with full knowledge such as architecture, accounts, source details, and system context.',
-            'value' => 'Best for uncovering deeper security flaws, hidden logic issues, and code or architecture risks missed by other approaches.',
+            'conditions' => 'Testing with full access to architecture, credentials, source details, or internal documentation.',
+            'value' => 'Best for deep security review, logic flaws, and code-level risk validation.',
         ],
     ];
 @endphp
@@ -25,7 +25,7 @@
     <div class="container">
         <div class="text-center mb-5">
             <p class="section-eyebrow mb-2" data-reveal>Testing Approaches</p>
-            <h2 class="page-section-heading text-secondary mb-3" data-reveal>Black, Grey & White Box Testing</h2>
+            <h2 class="page-section-heading text-secondary mb-3" data-reveal>Black Box, Grey Box &amp; White Box Testing</h2>
             <p class="text-muted lead-narrow mb-0" data-reveal>
                 Select the approach based on how much information your team wants to provide and how
                 deeply the assessment should validate internal security assumptions.
