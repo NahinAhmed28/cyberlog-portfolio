@@ -78,7 +78,7 @@
                 </li>
 
                 <li class="nav-item dropdown mx-0 mx-lg-1">
-                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded {{ $is('public.about','about','public.our-team','our-team','public.career','career','public.contact','contact','public.clients','clients') }}"
+                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded {{ $is('public.about','about','public.our-team','our-team','public.career','career','public.contact','contact') }}"
                        href="#" id="companyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Company
                     </a>
@@ -88,7 +88,6 @@
                         <li><a class="dropdown-item" href="{{ $u('public.our-team', 'our-team') }}">Our Team</a></li>
                         <li><a class="dropdown-item" href="{{ $u('public.career', 'career') }}">Career</a></li>
                         <li><a class="dropdown-item" href="{{ $u('public.contact', 'contact') }}">Contact</a></li>
-                        <li><a class="dropdown-item" href="{{ $u('public.clients', 'clients') }}">Clients</a></li>
                     </ul>
                 </li>
 

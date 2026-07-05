@@ -47,13 +47,51 @@
             </div>
 
             <div class="col-lg-7">
-                <figure class="cl-vciso-dashboard">
-                    <img
-                        src="{{ asset('assets/img/vciso/client-dashboard.svg') }}"
-                        alt="Cyberlog vCISO client dashboard showing a live cyber threat map, attack feed, and integrated security services"
-                        loading="eager"
-                        decoding="async">
-                </figure>
+                <div class="cl-vciso-visual-stack">
+                    <figure class="cl-vciso-dashboard">
+                        <img
+                            src="{{ asset('assets/img/vciso/client-dashboard.svg') }}"
+                            alt="Cyberlog vCISO client dashboard showing a live cyber threat map, attack feed, and integrated security services"
+                            loading="eager"
+                            decoding="async">
+                    </figure>
+
+                    <div class="cl-vciso-diagram" aria-label="vCISO service coverage diagram">
+                        <svg class="cl-vciso-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                            <path d="M50 50 C36 48 30 20 16 18" />
+                            <path d="M50 50 C34 50 25 41 9 41" />
+                            <path d="M50 50 C34 54 29 66 14 66" />
+                            <path d="M50 50 C41 64 38 82 27 84" />
+                            <path d="M50 50 C64 48 70 20 84 18" />
+                            <path d="M50 50 C66 50 75 41 91 41" />
+                            <path d="M50 50 C66 54 71 66 86 66" />
+                            <path d="M50 50 C59 64 62 82 73 84" />
+                        </svg>
+
+                        <div class="cl-vciso-core" aria-label="vCISO core">
+                            <span class="cl-vciso-ring"></span>
+                            <span class="cl-vciso-ring cl-vciso-ring-two"></span>
+                            <div class="cl-vciso-core-badge">
+                                <img src="{{ asset('assets/img/cyberlog-logo.png') }}" alt="Cyberlog">
+                                <strong>vCISO</strong>
+                            </div>
+                        </div>
+
+                        @foreach ($leftNodes as $node)
+                            <div class="cl-vciso-node cl-vciso-node-left" style="--x: {{ $node['x'] }}%; --y: {{ $node['y'] }}%;">
+                                <i class="fas {{ $node['icon'] }}"></i>
+                                <span>{{ $node['label'] }}</span>
+                            </div>
+                        @endforeach
+
+                        @foreach ($rightNodes as $node)
+                            <div class="cl-vciso-node cl-vciso-node-right" style="--x: {{ $node['x'] }}%; --y: {{ $node['y'] }}%;">
+                                <span>{{ $node['label'] }}</span>
+                                <i class="fas {{ $node['icon'] }}"></i>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -151,11 +189,18 @@
     .cl-vciso-proof strong {
         color: var(--warm-soft);
     }
-    .cl-vciso-dashboard {
-        position: relative;
+    .cl-vciso-visual-stack {
+        display: grid;
+        gap: 1.15rem;
         width: min(58vw, 860px);
         max-width: 100%;
-        margin: 0 0 0 auto;
+        margin-left: auto;
+    }
+    .cl-vciso-dashboard {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
         overflow: hidden;
         border: 1px solid rgba(61, 190, 255, 0.22);
         border-radius: 14px;
@@ -340,15 +385,37 @@
         justify-content: flex-end;
         text-align: right;
     }
+    .cl-vciso-visual-stack .cl-vciso-diagram {
+        min-height: 360px;
+    }
+    .cl-vciso-visual-stack .cl-vciso-core {
+        width: 132px;
+        height: 132px;
+    }
+    .cl-vciso-visual-stack .cl-vciso-core-badge {
+        width: 92px;
+        height: 92px;
+    }
+    .cl-vciso-visual-stack .cl-vciso-node {
+        width: min(204px, 28vw);
+        min-height: 52px;
+        padding: .68rem .78rem;
+    }
+    .cl-vciso-visual-stack .cl-vciso-node span {
+        font-size: .7rem;
+    }
 
     @media (max-width: 991.98px) {
         .cl-vciso-hero {
             min-height: 0;
             padding: 8rem 0 4rem;
         }
-        .cl-vciso-dashboard {
+        .cl-vciso-visual-stack {
             width: 100%;
             margin-top: 1rem;
+        }
+        .cl-vciso-dashboard {
+            width: 100%;
         }
         .cl-vciso-diagram {
             min-height: 0;
@@ -390,6 +457,9 @@
         }
         .cl-vciso-diagram {
             grid-template-columns: 1fr;
+        }
+        .cl-vciso-visual-stack {
+            gap: .85rem;
         }
         .cl-vciso-dashboard {
             border-radius: 10px;
