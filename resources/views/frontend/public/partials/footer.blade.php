@@ -40,9 +40,8 @@
                 <p class="text-muted mb-2"><i class="fas fa-envelope text-primary me-2"></i><a class="link-light text-decoration-none" href="mailto:info@cyberlog.bd">info@cyberlog.bd</a></p>
                 <p class="text-muted mb-3"><i class="fas fa-phone text-primary me-2"></i>+880 1357-699084</p>
                 <div class="d-flex gap-2">
-                    <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-fw fa-x-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/company/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
                 </div>
             </div>
 

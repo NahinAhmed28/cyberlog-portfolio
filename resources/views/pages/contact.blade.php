@@ -25,9 +25,8 @@
                     <li class="mb-3"><i class="fas fa-phone text-teal me-2"></i>+880 1357-699084</li>
                 </ul>
                 <div class="d-flex gap-2">
-                    <a class="btn btn-outline-secondary btn-social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-secondary btn-social" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-secondary btn-social" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-fw fa-x-twitter"></i></a>
+                    <a class="btn btn-outline-secondary btn-social" href="https://www.facebook.com/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-secondary btn-social" href="https://www.linkedin.com/company/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-7">

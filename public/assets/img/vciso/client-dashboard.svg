@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="867" viewBox="0 0 1900 867" role="img" aria-labelledby="title desc">
+  <title id="title">Cyberlog vCISO client dashboard screenshot</title>
+  <desc id="desc">Dark Cyberlog client dashboard with blue team navigation, live cyber threat map, attack feed, and integrated services cards.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#061020"/>
+      <stop offset=".58" stop-color="#081323"/>
+      <stop offset="1" stop-color="#0b241f"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1f38"/>
+      <stop offset="1" stop-color="#071120"/>
+    </linearGradient>
+    <linearGradient id="greenGlass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#114936" stop-opacity=".96"/>
+      <stop offset="1" stop-color="#07251f" stop-opacity=".86"/>
+    </linearGradient>
+    <radialGradient id="globe" cx="50%" cy="46%" r="52%">
+      <stop offset="0" stop-color="#113650" stop-opacity=".68"/>
+      <stop offset=".62" stop-color="#06182b" stop-opacity=".94"/>
+      <stop offset="1" stop-color="#020913"/>
+    </radialGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="57" height="57" patternUnits="userSpaceOnUse">
+      <path d="M57 0H0V57" fill="none" stroke="#173452" stroke-width="1" opacity=".32"/>
+    </pattern>
+    <style>
+      .mono{font-family:"IBM Plex Mono","Consolas",monospace;font-weight:700;letter-spacing:.04em}
+      .sans{font-family:"IBM Plex Sans",Arial,sans-serif;font-weight:800}
+      .tiny{font-size:10px}.small{font-size:13px}.med{font-size:16px}.red{fill:#ff343f}.cyan{fill:#18d8f2}.blue{fill:#64a1ff}.gold{fill:#ffb31a}.purple{fill:#9959ff}
+      .dim{fill:#93a8bd}.white{fill:#f5f8ff}
+      .line{stroke:#1b5473;stroke-width:1.2;fill:none;opacity:.74}
+      .country{stroke:#1d6b8c;stroke-width:1.8;fill:none;opacity:.8}
+      .locked{fill:#b6a514;stroke:#d3c62a;stroke-width:1}
+    </style>
+  </defs>
+
+  <rect width="1900" height="867" fill="url(#bg)"/>
+  <rect width="1900" height="867" fill="url(#grid)" opacity=".54"/>
+
+  <rect x="0" y="0" width="1900" height="59" fill="#071123"/>
+  <path d="M0 59H1900" stroke="#1a5780" stroke-width="1"/>
+  <text x="67" y="31" class="white sans med">Cyber<tspan font-size="11">log</tspan></text>
+  <path d="M7 24h13M7 29h13M7 34h13" stroke="#8ca1b3" stroke-width="1"/>
+  <rect x="1754" y="7" width="1" height="36" fill="#7c8797"/>
+  <path d="M1765 16h8v3M1783 16h-8v3M1765 34h8v-3M1783 34h-8v-3" stroke="#a7b4c3" stroke-width="2" fill="none"/>
+  <text x="1799" y="29" class="white mono tiny">Fullscreen</text>
+  <rect x="1864" y="7" width="35" height="35" fill="#121b2a" stroke="#5a6675"/>
+  <circle cx="1882" cy="22" r="4" fill="#a6b2c1"/>
+  <path d="M1875 33c2-6 12-6 14 0" fill="#a6b2c1"/>
+
+  <rect x="0" y="59" width="263" height="808" fill="#071326" stroke="#184163"/>
+  <rect x="16" y="80" width="225" height="49" rx="9" fill="#0b2844" stroke="#145a82"/>
+  <circle cx="41" cy="105" r="10" fill="none" stroke="#29d5f5" stroke-width="1.3"/>
+  <path d="M37 101h8v8h-8zM39 97h4" stroke="#29d5f5" fill="none" stroke-width="1.2"/>
+  <text x="61" y="109" class="white mono med">BLUE TEAM</text>
+  <path d="M214 102l4 4 4-4" fill="#42d4f7"/>
+
+  <text x="24" y="167" class="cyan mono small">NAVIGATION</text>
+  <path d="M117 162h112" stroke="#48667c" stroke-width="1"/>
+  <path d="M200 164h9M213 164h9M225 164h8" stroke="#8d98a6" stroke-width="3"/>
+  <rect x="16" y="185" width="224" height="40" rx="6" fill="#0d3357" stroke="#1677a4"/>
+  <circle cx="37" cy="199" r="4" fill="none" stroke="#2edaf3" stroke-width="1.8"/>
+  <circle cx="47" cy="199" r="4" fill="none" stroke="#2edaf3" stroke-width="1.8"/>
+  <circle cx="37" cy="210" r="4" fill="none" stroke="#2edaf3" stroke-width="1.8"/>
+  <circle cx="47" cy="210" r="4" fill="none" stroke="#2edaf3" stroke-width="1.8"/>
+  <text x="60" y="209" class="white mono small">DASHBOARD</text>
+  <g class="dim mono med">
+    <text x="59" y="255">VAPT</text><text x="59" y="300">SOC</text><text x="59" y="345">INCIDENT RESPONSE</text>
+    <text x="59" y="390">DATA ENCRYPTION</text><text x="59" y="434">CAPACITY BUILDING</text><text x="59" y="456">(TRAINING)</text>
+    <text x="59" y="500">SUPPORT</text>
+  </g>
+  <g fill="none" stroke="#8eb1c9" stroke-width="1.5" opacity=".9">
+    <path d="M35 239l13 4v7c0 6-6 10-6 10s-6-4-6-10v-7z"/>
+    <path d="M35 287h14v9H35zM39 299h6"/>
+    <path d="M42 329l4 3v7l-4 3-4-3v-7zM34 336h16"/>
+    <path d="M34 381c6-6 12 6 18 0M36 386h8"/>
+    <path d="M34 421l8-4 9 4-9 4zM35 425l7 4 8-4"/>
+    <circle cx="42" cy="493" r="8"/><path d="M42 485v16M34 493h16M36 487l12 12M48 487L36 499"/>
+  </g>
+
+  <rect x="263" y="59" width="1405" height="619" fill="#030b17"/>
+  <rect x="263" y="59" width="1405" height="50" fill="#23304e" opacity=".86"/>
+  <rect x="1049" y="61" width="602" height="44" fill="#143d38" opacity=".74"/>
+  <path d="M1049 61l602 0" stroke="#29564d" stroke-width="1"/>
+  <path d="M1051 104l40-43M1062 104l40-43M1073 104l40-43M1084 104l40-43M1095 104l40-43" stroke="#496964" opacity=".45"/>
+  <text x="292" y="90" class="white mono small">LIVE CYBER THREAT MAP</text>
+  <circle cx="281" cy="85" r="5" fill="#45cdf2"/>
+
+  <line x1="263" y1="383" x2="1668" y2="383" stroke="#0fa27b" stroke-width="1" opacity=".46"/>
+  <g fill="#536dff" opacity=".68">
+    <circle cx="298" cy="147" r="1.5"/><circle cx="363" cy="187" r="1.5"/><circle cx="417" cy="186" r="1.5"/><circle cx="678" cy="161" r="1.5"/>
+    <circle cx="744" cy="168" r="1.5"/><circle cx="1233" cy="139" r="1.5"/><circle cx="1510" cy="133" r="1.5"/><circle cx="1611" cy="168" r="1.5"/>
+    <circle cx="348" cy="539" r="1.5"/><circle cx="739" cy="646" r="1.5"/><circle cx="1357" cy="650" r="1.5"/><circle cx="1478" cy="591" r="1.5"/>
+    <circle cx="683" cy="332" r="1.5"/><circle cx="1330" cy="388" r="1.5"/><circle cx="1564" cy="493" r="1.5"/>
+  </g>
+
+  <g transform="translate(965 395)">
+    <circle r="222" fill="url(#globe)" stroke="#166b75" stroke-width="2"/>
+    <circle r="221" fill="none" stroke="#2edaf3" stroke-width="1" opacity=".38"/>
+    <ellipse rx="222" ry="47" fill="none" stroke="#183a52" stroke-width="1"/>
+    <ellipse rx="190" ry="222" fill="none" stroke="#183a52" stroke-width="1"/>
+    <ellipse rx="118" ry="222" fill="none" stroke="#183a52" stroke-width="1"/>
+    <ellipse rx="52" ry="222" fill="none" stroke="#183a52" stroke-width="1"/>
+    <path d="M-215 0H215M-190-85H190M-172 85H172M-125-154H125M-125 154H125" class="line" opacity=".42"/>
+    <path d="M-130-166c54-26 128-36 190-14 42 15 70 39 93 69M-89-117c49-17 106-16 153 3 31 12 60 34 83 61M-45-58c47-18 101-10 141 18 18 13 32 28 43 45M-105 28c42-29 103-31 148-13 24 10 43 26 58 45M-150 101c39 7 81 13 121 8 45-6 81-27 119-48" class="country"/>
+    <path d="M-60-183c-22 30-18 59-9 83 10 26-3 45-28 63-19 14-32 34-30 61 2 36-28 53-49 78M29-193c19 41 26 71 19 98-8 31 17 48 47 65 32 18 44 44 42 80-2 35 20 54 53 70M93-132c-15 25-9 53 17 73 18 14 44 23 66 42" class="country"/>
+    <path d="M-152-17c-36 29-65 45-89 49M-30-40c-28 25-44 50-42 76 1 21-13 43-36 66M55-96c14 19 36 28 62 30M38 108c24 7 40 22 50 43M99 84c21 23 47 34 81 28" class="country" opacity=".55"/>
+    <g fill="#c8f6ff" filter="url(#softGlow)">
+      <circle cx="-6" cy="-136" r="1.9"/><circle cx="8" cy="-126" r="1.7"/><circle cx="24" cy="-118" r="1.8"/><circle cx="39" cy="-102" r="2"/>
+      <circle cx="47" cy="-78" r="1.8"/><circle cx="63" cy="-69" r="1.7"/><circle cx="78" cy="-51" r="1.8"/><circle cx="96" cy="-31" r="1.6"/>
+      <circle cx="112" cy="-10" r="1.8"/><circle cx="126" cy="14" r="1.9"/><circle cx="135" cy="38" r="1.8"/><circle cx="155" cy="58" r="1.7"/>
+      <circle cx="-151" cy="123" r="1.9"/><circle cx="-150" cy="53" r="2"/>
+    </g>
+    <path d="M-151 123C-167 94-163 75-151 53" stroke="#ffb31a" stroke-width="3" fill="none" filter="url(#softGlow)"/>
+    <circle cx="-151" cy="53" r="4" class="gold" filter="url(#softGlow)"/>
+    <path d="M102-64C123-47 141-42 157-28" stroke="#9959ff" stroke-width="3" fill="none" filter="url(#softGlow)"/>
+    <circle cx="102" cy="-64" r="4" class="purple" filter="url(#softGlow)"/>
+  </g>
+
+  <rect x="1668" y="59" width="232" height="619" fill="url(#greenGlass)" stroke="#296e63"/>
+  <rect x="1668" y="59" width="232" height="50" fill="#19473d" opacity=".7"/>
+  <circle cx="1662" cy="85" r="6" fill="#00c58c"/>
+  <text x="1673" y="88" class="white mono tiny" fill="#6df0ad">MONITORING</text>
+  <text x="1757" y="89" class="dim mono small">+  Z  ^  []</text>
+  <text x="1675" y="126" class="white mono tiny">LIVE ATTACK FEED</text>
+  <rect x="1866" y="118" width="28" height="12" fill="#b34a54"/>
+  <text x="1870" y="128" class="white mono tiny">LIVE</text>
+  <g class="mono small">
+    <circle cx="1680" cy="150" r="3" class="gold"/><text x="1690" y="153" class="gold">Brute Force</text><text x="1777" y="153" class="dim">Sao Paulo -> Seoul</text>
+    <circle cx="1680" cy="175" r="3" class="purple"/><text x="1690" y="178" class="purple">SQL Injection</text><text x="1790" y="178" class="dim">Riyadh -> Cairo</text>
+    <circle cx="1680" cy="200" r="3" class="red"/><text x="1690" y="203" class="red">DDoS</text><text x="1737" y="203" class="dim">Seoul -> Beijing</text>
+    <circle cx="1680" cy="225" r="3" class="cyan"/><text x="1690" y="228" class="cyan">Phishing</text><text x="1765" y="228" class="dim">Kiev -> Tehran</text>
+  </g>
+  <line x1="1668" y1="602" x2="1900" y2="602" stroke="#4a7f75"/>
+  <text x="1674" y="620" class="red mono tiny">ATTACKS/MIN</text><text x="1886" y="623" text-anchor="end" class="red mono med">0</text>
+  <text x="1674" y="643" class="red mono tiny">TOP ORIGIN</text><text x="1894" y="646" text-anchor="end" class="red mono med">Kiev</text>
+  <text x="1674" y="666" class="red mono tiny">TOP TARGET</text><text x="1894" y="669" text-anchor="end" class="red mono med">Tehran</text>
+
+  <rect x="263" y="678" width="1637" height="189" fill="#0a171f" opacity=".94"/>
+  <text x="283" y="713" class="white mono med">INTEGRATED SERVICES</text>
+  <g class="mono tiny">
+    <rect x="283" y="724" width="314" height="64" rx="9" fill="#0f1e33" stroke="#1d4a75"/>
+    <rect x="607" y="724" width="314" height="64" rx="9" fill="#0f1e33" stroke="#1d4a75"/>
+    <rect x="932" y="724" width="314" height="64" rx="9" fill="#0f1e33" stroke="#1d4a75"/>
+    <rect x="1257" y="724" width="314" height="64" rx="9" fill="#0f1e33" stroke="#1d4a75"/>
+    <rect x="1582" y="724" width="314" height="64" rx="9" fill="#0f1e33" stroke="#1d4a75"/>
+    <rect x="283" y="800" width="314" height="62" rx="9" fill="#0f1e33" stroke="#1d4a75"/>
+    <rect x="607" y="800" width="314" height="62" rx="9" fill="#0f1e33" stroke="#1d4a75"/>
+    <rect x="932" y="800" width="314" height="62" rx="9" fill="#0f1e33" stroke="#1d4a75"/>
+    <rect x="1257" y="800" width="314" height="62" rx="9" fill="#0f1e33" stroke="#1d4a75"/>
+    <text x="337" y="760" class="white">VAPT</text><text x="660" y="760" class="white">SOC</text><text x="986" y="760" class="white">INCIDENT RESPONSE</text>
+    <text x="1366" y="760" class="dim">FIREWALL MANAGEMENT</text><text x="1711" y="760" class="dim">RISK ASSESSMENT</text>
+    <text x="438" y="835" class="dim">BACKUP</text><text x="660" y="835" class="white">DATA ENCRYPTION</text><text x="986" y="835" class="white">CAPACITY BUILDING (TRAINING)</text><text x="1374" y="835" class="dim">THREAT INTELLIGENCE</text>
+  </g>
+  <g opacity=".95">
+    <rect x="298" y="740" width="30" height="30" rx="6" fill="#17284d"/><path d="M313 747l8 3v8c0 6-8 10-8 10s-8-4-8-10v-8z" fill="#a278ff"/>
+    <rect x="623" y="740" width="30" height="30" rx="6" fill="#0c3144"/><path d="M630 748h16v16h-16zM633 751h10M633 755h10M633 759h10" stroke="#00d8e9" fill="none"/>
+    <rect x="948" y="740" width="30" height="30" rx="6" fill="#351d29"/><path d="M963 748l7 5v9l-7 5-7-5v-9z" stroke="#ff535d" fill="none"/>
+    <rect x="1273" y="740" width="30" height="30" rx="6" fill="#0d2e44"/><path d="M1288 748l8 3v8c0 6-8 10-8 10s-8-4-8-10v-8z" stroke="#00d8e9" fill="none"/>
+    <rect x="1598" y="740" width="30" height="30" rx="6" fill="#2b2631"/><path d="M1605 763l16-13M1606 752v12h14" stroke="#ff9b1c" fill="none"/>
+    <rect x="298" y="817" width="30" height="30" rx="6" fill="#0e2d35"/><path d="M305 828h16M307 834h12M311 828v10" stroke="#00c58c" fill="none"/>
+    <rect x="623" y="817" width="30" height="30" rx="6" fill="#1e2631"/><path d="M631 833a4 4 0 108 0h8" stroke="#ffcc00" fill="none"/>
+    <rect x="948" y="817" width="30" height="30" rx="6" fill="#142b4b"/><path d="M963 824l10 5-10 5-10-5zM953 835l10 5 10-5" stroke="#64a1ff" fill="none"/>
+    <rect x="1273" y="817" width="30" height="30" rx="6" fill="#321f2b"/><path d="M1288 824v18M1279 833h18M1282 826l12 14M1294 826l-12 14" stroke="#ff535d" fill="none"/>
+  </g>
+</svg>

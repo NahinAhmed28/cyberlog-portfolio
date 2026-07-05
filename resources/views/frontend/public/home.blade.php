@@ -9,8 +9,8 @@
 {{-- 1. Hero / Landing --}}
 @include('frontend.public.partials.home.hero')
 
-{{-- 2. Our Clients (logo strip) — appears right after the hero --}}
-@include('partials.clients')
+{{-- 2. Our Clients (card shuffle) — appears right after the hero --}}
+@include('partials.clients', ['clientAnimation' => 'shuffle'])
 
 {{-- 3. Client Card (client success stories) --}}
 @include('frontend.public.partials.home.case-cards')

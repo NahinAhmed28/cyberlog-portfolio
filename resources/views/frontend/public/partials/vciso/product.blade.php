@@ -137,7 +137,7 @@
                 @foreach ($modules as $i => $m)
                     <div class="cl-vm-item">
                         <button class="cl-vm-toggle {{ $i === 0 ? '' : 'collapsed' }}" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#vm{{ $i }}"
+                                data-vm-target="#vm{{ $i }}"
                                 aria-expanded="{{ $i === 0 ? 'true' : 'false' }}" aria-controls="vm{{ $i }}">
                             <i class="fas fa-plus cl-vm-plus" aria-hidden="true"></i>
                             <span>{{ $m['name'] }}</span>
@@ -376,4 +376,49 @@
         .collapse .cl-vmc-row { opacity: 1 !important; transform: none !important; animation: none !important; }
     }
 </style>
+@endpush
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var accordion = document.getElementById('vmAccordion');
+        if (!accordion || !window.bootstrap) return;
+
+        function setToggleState(panel, expanded) {
+            var toggle = accordion.querySelector('.cl-vm-toggle[aria-controls="' + panel.id + '"]');
+            if (!toggle) return;
+            toggle.classList.toggle('collapsed', !expanded);
+            toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        }
+
+        accordion.querySelectorAll('.collapse').forEach(function (panel) {
+            panel.addEventListener('shown.bs.collapse', function () { setToggleState(panel, true); });
+            panel.addEventListener('hidden.bs.collapse', function () { setToggleState(panel, false); });
+        });
+
+        accordion.addEventListener('click', function (event) {
+            var toggle = event.target.closest('.cl-vm-toggle');
+            if (!toggle || !accordion.contains(toggle)) return;
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            var targetSelector = toggle.getAttribute('data-vm-target');
+            var panel = targetSelector ? accordion.querySelector(targetSelector) : null;
+            if (!panel) return;
+
+            var targetCollapse = window.bootstrap.Collapse.getOrCreateInstance(panel, { toggle: false });
+            if (panel.classList.contains('show')) {
+                targetCollapse.hide();
+                return;
+            }
+
+            accordion.querySelectorAll('.collapse.show').forEach(function (openPanel) {
+                if (openPanel === panel) return;
+                window.bootstrap.Collapse.getOrCreateInstance(openPanel, { toggle: false }).hide();
+            });
+            targetCollapse.show();
+        });
+    });
+</script>
 @endpush

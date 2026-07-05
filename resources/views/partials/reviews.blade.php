@@ -16,18 +16,59 @@
                 ['quote' => 'From ISO 27001 to staff training, Cyberlog has been a genuine partner in our compliance journey.', 'name' => 'Compliance Lead, Enterprise', 'badge' => 'Top Cybersecurity Company 2025'],
             ] as $r)
                 <div class="col-md-4">
-                    <div class="cl-review h-100 d-flex flex-column">
-                        <div class="cl-stars mb-2">
+                    <article class="cl-about-review h-100 d-flex flex-column" data-reveal>
+                        <div class="cl-about-review-stars mb-3">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <p class="fst-italic">&ldquo;{{ $r['quote'] }}&rdquo;</p>
+                        <p class="cl-about-review-quote">&ldquo;{{ $r['quote'] }}&rdquo;</p>
                         <div class="mt-auto">
-                            <div class="fw-bold text-secondary">{{ $r['name'] }}</div>
-                            <span class="badge bg-light text-secondary border mt-2">{!! $r['badge'] !!}</span>
+                            <div class="cl-about-review-name">{{ $r['name'] }}</div>
+                            <span class="cl-about-review-tag">{!! $r['badge'] !!}</span>
                         </div>
-                    </div>
+                    </article>
                 </div>
             @endforeach
         </div>
     </div>
 </section>
+
+@push('styles')
+<style>
+    .cl-about-review {
+        min-height: 300px;
+        padding: clamp(1.35rem, 2.6vw, 2rem);
+        border: 1px solid rgba(255, 255, 255, .12);
+        border-radius: 8px;
+        background: rgba(10, 17, 27, .78);
+        color: var(--text);
+    }
+    .cl-about-review-stars {
+        display: flex;
+        gap: .18rem;
+        color: var(--warm-soft);
+        font-size: .92rem;
+    }
+    .cl-about-review-quote {
+        color: var(--white);
+        font-style: italic;
+        line-height: 1.7;
+        margin-bottom: 1.4rem;
+    }
+    .cl-about-review-name {
+        color: var(--white);
+        font-weight: 700;
+        line-height: 1.45;
+    }
+    .cl-about-review-tag {
+        display: inline-flex;
+        margin-top: .8rem;
+        padding: .34rem .58rem;
+        border: 1px solid rgba(109, 156, 255, .26);
+        border-radius: 6px;
+        background: rgba(47, 107, 255, .14);
+        color: var(--blue-bright);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: .72rem;
+    }
+</style>
+@endpush

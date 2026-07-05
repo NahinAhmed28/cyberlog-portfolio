@@ -21,7 +21,9 @@
             <div class="col-lg-5">
                 <p class="section-eyebrow mb-3" data-reveal data-hero>Virtual CISO</p>
                 <h1 class="cl-vciso-title mb-4" data-reveal data-hero>
-                    Executive <span>Security Leadership</span> Without the Full-Time Cost
+                    Executive <span>Security <br class="cl-vciso-mobile-break">Leadership</span>
+                    <br class="cl-vciso-mobile-break">Without the
+                    <br class="cl-vciso-mobile-break">Full-Time Cost
                 </h1>
                 <p class="lead text-muted mb-4" data-reveal data-hero>
                     Cyberlog's vCISO service gives your organization a senior security leader to own
@@ -45,41 +47,13 @@
             </div>
 
             <div class="col-lg-7">
-                <div class="cl-vciso-diagram" data-reveal data-hero>
-                    <svg class="cl-vciso-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M50 50 C36 48 30 20 16 18" />
-                        <path d="M50 50 C34 50 25 41 9 41" />
-                        <path d="M50 50 C34 54 29 66 14 66" />
-                        <path d="M50 50 C41 64 38 82 27 84" />
-                        <path d="M50 50 C64 48 70 20 84 18" />
-                        <path d="M50 50 C66 50 75 41 91 41" />
-                        <path d="M50 50 C66 54 71 66 86 66" />
-                        <path d="M50 50 C59 64 62 82 73 84" />
-                    </svg>
-
-                    <div class="cl-vciso-core" aria-label="vCISO core">
-                        <span class="cl-vciso-ring"></span>
-                        <span class="cl-vciso-ring cl-vciso-ring-two"></span>
-                        <div class="cl-vciso-core-badge">
-                            <img src="{{ asset('assets/img/cyberlog-logo.png') }}" alt="Cyberlog">
-                            <strong>vCISO</strong>
-                        </div>
-                    </div>
-
-                    @foreach ($leftNodes as $node)
-                        <div class="cl-vciso-node cl-vciso-node-left" style="--x: {{ $node['x'] }}%; --y: {{ $node['y'] }}%;">
-                            <i class="fas {{ $node['icon'] }}"></i>
-                            <span>{{ $node['label'] }}</span>
-                        </div>
-                    @endforeach
-
-                    @foreach ($rightNodes as $node)
-                        <div class="cl-vciso-node cl-vciso-node-right" style="--x: {{ $node['x'] }}%; --y: {{ $node['y'] }}%;">
-                            <span>{{ $node['label'] }}</span>
-                            <i class="fas {{ $node['icon'] }}"></i>
-                        </div>
-                    @endforeach
-                </div>
+                <figure class="cl-vciso-dashboard">
+                    <img
+                        src="{{ asset('assets/img/vciso/client-dashboard.svg') }}"
+                        alt="Cyberlog vCISO client dashboard showing a live cyber threat map, attack feed, and integrated security services"
+                        loading="eager"
+                        decoding="async">
+                </figure>
             </div>
         </div>
     </div>
@@ -123,6 +97,9 @@
         display: inline-block;
         color: var(--warm-soft);
         text-shadow: 0 0 26px rgba(255, 138, 0, 0.32);
+    }
+    .cl-vciso-mobile-break {
+        display: none;
     }
     .cl-vciso-actions {
         display: flex;
@@ -174,7 +151,50 @@
     .cl-vciso-proof strong {
         color: var(--warm-soft);
     }
-    /* No panel box — the diagram blends naturally with the hero background. */
+    .cl-vciso-dashboard {
+        position: relative;
+        width: min(58vw, 860px);
+        max-width: 100%;
+        margin: 0 0 0 auto;
+        overflow: hidden;
+        border: 1px solid rgba(61, 190, 255, 0.22);
+        border-radius: 14px;
+        background: rgba(4, 13, 26, 0.82);
+        box-shadow:
+            0 28px 70px rgba(0, 0, 0, 0.42),
+            0 0 42px rgba(0, 202, 255, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    }
+    .cl-vciso-dashboard::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background:
+            linear-gradient(90deg, rgba(109, 156, 255, 0.18), transparent 18%, transparent 78%, rgba(12, 199, 145, 0.12)),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 24%);
+        mix-blend-mode: screen;
+        opacity: .55;
+    }
+    .cl-vciso-dashboard::after {
+        content: "";
+        position: absolute;
+        inset: auto 6% 0;
+        z-index: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(45, 216, 243, 0.75), transparent);
+        box-shadow: 0 0 24px rgba(45, 216, 243, 0.42);
+    }
+    .cl-vciso-dashboard img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1900 / 867;
+        object-fit: cover;
+    }
+
+    /* Legacy diagram styles remain available for older cached markup. */
     .cl-vciso-diagram {
         position: relative;
         min-height: 580px;
@@ -326,6 +346,10 @@
             min-height: 0;
             padding: 8rem 0 4rem;
         }
+        .cl-vciso-dashboard {
+            width: 100%;
+            margin-top: 1rem;
+        }
         .cl-vciso-diagram {
             min-height: 0;
             display: grid;
@@ -349,12 +373,31 @@
         }
     }
     @media (max-width: 575.98px) {
+        .cl-vciso-title {
+            font-size: clamp(2.05rem, 11vw, 2.65rem);
+            line-height: 1.04;
+            overflow-wrap: normal;
+        }
+        .cl-vciso-title span {
+            display: block;
+        }
+        .cl-vciso-mobile-break {
+            display: block;
+        }
         .cl-vciso-actions,
         .cl-vciso-actions .btn {
             width: 100%;
         }
         .cl-vciso-diagram {
             grid-template-columns: 1fr;
+        }
+        .cl-vciso-dashboard {
+            border-radius: 10px;
+        }
+        .cl-vciso-dashboard img {
+            width: 150%;
+            max-width: none;
+            transform: translateX(-18%);
         }
         .cl-vciso-node-right {
             justify-content: flex-start;

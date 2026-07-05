@@ -17,21 +17,27 @@
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Meet the <span class="cl-title-accent">Leadership</span></h2>
 
         @php
-            // TODO: replace demo names, photos, bios, and social links with real details.
             $team = [
                 [
-                    'name'  => 'Chairman',
-                    'role'  => 'Chairman',
-                    'photo' => null,
-                    'bio'   => 'Chairman details — add a short professional bio here.',
-                    'social'=> ['facebook' => '#', 'linkedin' => '#', 'x' => '#'],
+                    'name'  => 'Hridoy Mustofa',
+                    'role'  => 'CTO / CEO',
+                    'photo' => 'assets/img/team/hridoy-mustofa.png',
+                    'bio'   => 'Leads Cyberlog technology direction, cyber defense delivery, and security innovation.',
+                    'social'=> ['facebook' => 'https://www.facebook.com/cyberlogbd/', 'linkedin' => 'https://www.linkedin.com/company/cyberlogbd/'],
                 ],
                 [
-                    'name'  => 'Managing Director',
-                    'role'  => 'MD',
-                    'photo' => null,
-                    'bio'   => 'MD details — add a short professional bio here.',
-                    'social'=> ['facebook' => '#', 'linkedin' => '#', 'x' => '#'],
+                    'name'  => 'Jesmin Ara',
+                    'role'  => 'Chairman',
+                    'photo' => 'assets/img/team/jesmin-ara.png',
+                    'bio'   => 'Guides Cyberlog leadership vision, governance, and long-term organizational growth.',
+                    'social'=> ['facebook' => 'https://www.facebook.com/cyberlogbd/', 'linkedin' => 'https://www.linkedin.com/company/cyberlogbd/'],
+                ],
+                [
+                    'name'  => 'Sadia Afrin Akhi',
+                    'role'  => 'Managing Director',
+                    'photo' => 'assets/img/team/sadia-afrin-akhi.png',
+                    'bio'   => 'Oversees business operations, client relationships, and strategic execution.',
+                    'social'=> ['facebook' => 'https://www.facebook.com/cyberlogbd/', 'linkedin' => 'https://www.linkedin.com/company/cyberlogbd/'],
                 ],
             ];
         @endphp
@@ -52,9 +58,8 @@
                             <h3 class="cl-team-name">{{ $member['name'] }}</h3>
                             <p class="cl-team-bio">{{ $member['bio'] }}</p>
                             <div class="cl-team-social">
-                                <a href="{{ $member['social']['facebook'] }}" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="{{ $member['social']['linkedin'] }}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="{{ $member['social']['x'] }}" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                                <a href="{{ $member['social']['facebook'] }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{ $member['social']['linkedin'] }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </article>
