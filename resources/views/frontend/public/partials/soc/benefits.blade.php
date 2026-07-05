@@ -32,28 +32,20 @@
     .cl-socben-panel {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 0;
-        border-radius: 16px;
-        overflow: hidden;
-        background: linear-gradient(160deg, #0b1430, #0a1126);
-        box-shadow: 0 30px 80px rgba(5, 20, 60, 0.4);
+        gap: 1rem;
     }
     .cl-socben {
-        /* no card border — only subtle internal hairlines between cells */
         padding: 1.85rem;
-        border-right: 1px solid var(--line-soft);
-        border-bottom: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: rgba(16, 31, 58, .72);
+        box-shadow: 0 18px 42px rgba(5, 20, 60, .28);
     }
-    .cl-socben:nth-child(3n) { border-right: 0; }
-    .cl-socben:nth-last-child(-n+3) { border-bottom: 0; }
     .cl-socben i { color: var(--blue-bright); font-size: 1.4rem; margin-bottom: .9rem; display: block; }
     .cl-socben h5 { font-family: 'Chakra Petch', sans-serif; color: var(--white); font-size: 1.05rem; margin-bottom: .5rem; }
     .cl-socben p { color: var(--muted); font-size: .9rem; line-height: 1.55; margin: 0; }
 
     @media (max-width: 767.98px) {
         .cl-socben-panel { grid-template-columns: 1fr; }
-        .cl-socben { border-right: 0; }
-        .cl-socben:last-child { border-bottom: 0; }
     }
 </style>
 @endpush

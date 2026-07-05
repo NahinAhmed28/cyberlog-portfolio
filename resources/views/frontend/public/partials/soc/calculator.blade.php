@@ -17,8 +17,8 @@
             <div class="col-lg-7" data-reveal>
                 <div class="cl-calc">
                     <div class="cl-calc-row">
-                        <div class="cl-calc-head"><span>Endpoints / devices</span><span class="cl-calc-val" id="calcEpVal">250</span></div>
-                        <input type="range" id="calcEp" min="5" max="1000" step="5" value="250" class="cl-range">
+                        <div class="cl-calc-head"><span>Endpoints / devices</span><span class="cl-calc-val" id="calcEpVal">500</span></div>
+                        <input type="range" id="calcEp" min="5" max="1000" step="5" value="500" class="cl-range">
                     </div>
 
                     <div class="cl-calc-row">

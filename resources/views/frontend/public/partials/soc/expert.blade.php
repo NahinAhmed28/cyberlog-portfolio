@@ -13,7 +13,7 @@
                 <ul class="list-unstyled" data-reveal>
                     <li class="mb-2 text-muted"><i class="fas fa-location-dot text-primary me-2"></i>Dhaka, Bangladesh</li>
                     <li class="mb-2 text-muted"><i class="fas fa-envelope text-primary me-2"></i><a class="link-light text-decoration-none" href="mailto:info@cyberlog.bd">info@cyberlog.bd</a></li>
-                    <li class="mb-2 text-muted"><i class="fas fa-phone text-primary me-2"></i>+880 1357-699084</li>
+                    <li class="mb-2 text-muted"><i class="fas fa-phone text-primary me-2"></i>+88013576990884</li>
                 </ul>
             </div>
 
@@ -22,13 +22,13 @@
                     {{-- TODO: wire submit to a contact handler --}}
                     <form>
                         <div class="row g-3">
-                            <div class="col-md-6"><input class="form-control" type="text" placeholder="Your Name *"></div>
+                            <div class="col-md-6"><input class="form-control" type="text" placeholder="Your Name"></div>
                             <div class="col-md-6"><input class="form-control" type="text" placeholder="Company Name"></div>
-                            <div class="col-md-6"><input class="form-control" type="email" placeholder="Work Email *"></div>
+                            <div class="col-md-6"><input class="form-control" type="email" placeholder="Work Email"></div>
                             <div class="col-md-6"><input class="form-control" type="tel" placeholder="Phone Number"></div>
                             <div class="col-12">
                                 <select class="form-select">
-                                    <option selected disabled>Coverage Needed…</option>
+                                    <option selected disabled>Coverage Needed</option>
                                     <option>SOC Implementation</option>
                                     <option>Fully Managed SOC</option>
                                     <option>Co-managed SOC</option>
