@@ -22,7 +22,7 @@
 {{-- Our Clients section moved from /services --}}
 @include('partials.clients')
 
-{{-- Detailed client case cards (viserx-style deck) --}}
+{{-- Website screenshot shuffle deck --}}
 @include('frontend.public.partials.clients.deck')
 
 @endsection

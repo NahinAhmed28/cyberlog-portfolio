@@ -69,6 +69,13 @@ body {
     overflow-x: hidden;
 }
 
+@media (min-width: 1200px) {
+    .container { max-width: 1240px; }
+}
+@media (min-width: 1400px) {
+    .container { max-width: 1480px; }
+}
+
 /* Atmosphere: drifting grid + vignette + grain, fixed behind everything */
 body::before {
     content: "";
@@ -77,12 +84,10 @@ body::before {
     z-index: 0;
     pointer-events: none;
     background-image:
-        radial-gradient(1100px 600px at 82% -8%, rgba(109, 156, 255, 0.08), transparent 60%),
-        radial-gradient(900px 600px at -5% 108%, rgba(228, 31, 61, 0.10), transparent 55%),
-        linear-gradient(140deg, rgba(7, 17, 31, 0.94), rgba(11, 24, 48, 0.92) 48%, rgba(18, 58, 120, 0.22)),
+        linear-gradient(180deg, rgba(5, 12, 23, 0.96), rgba(4, 9, 17, 0.98)),
         linear-gradient(var(--line-soft) 1px, transparent 1px),
         linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 100% 100%, 46px 46px, 46px 46px;
+    background-size: 100% 100%, 46px 46px, 46px 46px;
     animation: clGridDrift 28s linear infinite;
 }
 /* Moving scanline */
@@ -91,16 +96,22 @@ body::after {
     position: fixed;
     left: 0; right: 0; top: 0;
     height: 140px;
-    z-index: 1;
+    z-index: 3;
     pointer-events: none;
     background: linear-gradient(180deg, transparent, rgba(109, 156, 255, 0.035) 45%, rgba(228, 31, 61, 0.035) 55%, transparent);
     animation: clScan 8.5s linear infinite;
+    mix-blend-mode: screen;
 }
-@keyframes clGridDrift { to { background-position: 0 0, 0 0, 0 0, 46px 46px, 46px 46px; } }
+@keyframes clGridDrift { to { background-position: 0 0, 46px 46px, 46px 46px; } }
 @keyframes clScan { 0% { transform: translateY(-160px); } 100% { transform: translateY(100vh); } }
 
 /* keep content above atmosphere */
 #mainNav, header, section, footer { position: relative; z-index: 2; }
+main {
+    position: relative;
+    z-index: 2;
+    background: #050c17;
+}
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: 'Chakra Petch', sans-serif !important;
@@ -127,7 +138,7 @@ a:hover { color: var(--red-soft); }
 .text-teal, .accent { color: var(--blue-bright) !important; }
 .text-red { color: var(--red-soft) !important; }
 
-section[id], header[id] { scroll-margin-top: 86px; }
+section[id], header[id] { scroll-margin-top: 68px; }
 
 .section-eyebrow {
     font-family: 'IBM Plex Mono', monospace;
@@ -239,14 +250,17 @@ section[id], header[id] { scroll-margin-top: 86px; }
    NAVBAR
    =================================================================== */
 #mainNav {
-    background: rgba(7, 17, 31, 0.86) !important;
-    backdrop-filter: blur(14px);
+    padding-top: .35rem;
+    padding-bottom: .35rem;
+    background: rgba(5, 12, 23, 0.94) !important;
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
     transition: background .3s var(--ease), padding .3s var(--ease);
     z-index: 1040; /* above page sections (z-index:2) so the Services dropdown is clickable */
 }
-#mainNav.navbar-shrink { background: rgba(7, 17, 31, 0.96) !important; }
+#mainNav.navbar-shrink { background: rgba(5, 12, 23, 0.98) !important; }
 #mainNav .dropdown-menu { z-index: 1050; margin-top: .35rem; box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.55); }
+#mainNav .navbar-brand img { height: 34px !important; }
 #mainNav .navbar-brand {
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
@@ -262,10 +276,12 @@ section[id], header[id] { scroll-margin-top: 86px; }
 #mainNav .navbar-brand .text-primary { color: var(--blue-bright) !important; }
 #mainNav .nav-link {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: .82rem;
+    font-size: .76rem;
     letter-spacing: .08em;
     color: var(--text) !important;
     position: relative;
+    padding-top: .58rem !important;
+    padding-bottom: .58rem !important;
 }
 #mainNav .nav-link::after {
     content: "";
@@ -287,6 +303,45 @@ section[id], header[id] { scroll-margin-top: 86px; }
 #mainNav .dropdown-item { color: var(--text); font-size: .9rem; }
 #mainNav .dropdown-item:hover { background: var(--blue-dim); color: var(--white); }
 #mainNav .dropdown-divider { border-color: var(--line); }
+#mainNav .cl-services-menu { min-width: 330px; }
+@media (min-width: 992px) {
+    #mainNav .nav-item.dropdown:hover > .dropdown-menu,
+    #mainNav .nav-item.dropdown:focus-within > .dropdown-menu {
+        display: block;
+    }
+}
+#mainNav .dropdown-submenu { position: relative; }
+#mainNav .dropdown-submenu > .dropdown-menu {
+    top: -.4rem;
+    left: 100%;
+    margin-left: .2rem;
+    min-width: 320px;
+}
+#mainNav .dropdown-submenu:hover > .dropdown-menu,
+#mainNav .dropdown-submenu:focus-within > .dropdown-menu {
+    display: block;
+}
+#mainNav .dropdown-submenu > .dropdown-toggle::after {
+    float: right;
+    margin-top: .5rem;
+    transform: rotate(-90deg);
+}
+@media (max-width: 991.98px) {
+    #mainNav .cl-services-menu { min-width: 0; }
+    #mainNav .dropdown-submenu > .dropdown-menu {
+        display: block;
+        position: static;
+        float: none;
+        min-width: 0;
+        margin: .2rem 0 .45rem 1rem;
+        border-color: var(--line-soft);
+        box-shadow: none;
+        background: rgba(7, 17, 31, .56);
+    }
+    #mainNav .dropdown-submenu > .dropdown-toggle::after {
+        transform: none;
+    }
+}
 #mainNav .btn-talk {
     background: var(--red) !important;
     border-color: var(--red) !important;
@@ -318,6 +373,14 @@ section[id], header[id] { scroll-margin-top: 86px; }
    PAGE SECTIONS / GENERIC SURFACES
    =================================================================== */
 .page-section { padding: 6rem 0; }
+.page-section,
+.page-section[class],
+.page-section.bg-light,
+.page-section.bg-navy,
+.page-section.bg-navy-soft,
+.process-section {
+    background: #050c17 !important;
+}
 .card {
     background: var(--surface) !important;
     border: 1px solid var(--line) !important;
@@ -947,12 +1010,62 @@ html.js [data-reveal].is-in {
     transition: color .2s var(--ease), padding-left .2s var(--ease);
 }
 .footer .cl-foot-link:hover { color: var(--blue-bright); padding-left: 6px; }
-.footer .cl-foot-link::before { content: "› "; color: var(--red-soft); opacity: 0; transition: opacity .2s var(--ease); }
+.footer .cl-foot-link::before { content: "> "; color: var(--red-soft); opacity: 0; transition: opacity .2s var(--ease); }
 .footer .cl-foot-link:hover::before { opacity: 1; }
 
+.footer .cl-footer-meta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 1.35rem;
+}
+
+/* Services as a proper two-column list — one service per line, never wrapping.
+   Font is slightly smaller so the longest titles stay on a single line;
+   ellipsis is the last-resort guard on very narrow columns. */
+.footer .cl-foot-services {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+}
+.footer .cl-foot-services .cl-foot-link {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-size: .86rem;
+    padding: .3rem 0;
+}
+@media (max-width: 575.98px) {
+    .footer .cl-foot-services {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .footer .cl-foot-services .cl-foot-link {
+        font-size: .78rem;
+    }
+    .footer .cl-footer-meta {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
 /* Big glowing wordmark at the very bottom (viserx) */
+.footer .cl-wordmark-wrap {
+    position: relative;
+    width: max-content;
+    max-width: 100%;
+    margin: 2.7rem auto 0;
+}
+.footer .cl-footer-tagline {
+    position: absolute;
+    left: calc(100% - .82em);
+    bottom: calc(100% + .35rem);
+    white-space: nowrap;
+    text-align: left;
+}
 .cl-wordmark {
-    margin-top: 2.5rem;
+    margin-top: 0;
     text-align: center;
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700; letter-spacing: .06em;
@@ -962,4 +1075,16 @@ html.js [data-reveal].is-in {
     -webkit-text-fill-color: transparent; color: transparent;
     filter: drop-shadow(0 0 26px rgba(47, 107, 255, 0.25));
     user-select: none; pointer-events: none;
+}
+@media (max-width: 767.98px) {
+    .footer .cl-wordmark-wrap {
+        width: 100%;
+        margin-top: 2.2rem;
+    }
+    .footer .cl-footer-tagline {
+        position: static;
+        margin-bottom: .45rem;
+        white-space: normal;
+        text-align: center;
+    }
 }

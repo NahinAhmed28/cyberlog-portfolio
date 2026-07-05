@@ -9,11 +9,11 @@
 {{-- 1. Hero / Landing --}}
 @include('frontend.public.partials.home.hero')
 
-{{-- 2. Our Clients (card shuffle) — appears right after the hero --}}
-@include('partials.clients', ['clientAnimation' => 'shuffle'])
+{{-- 2. Our Clients — old sliding logo animation, restored under the hero --}}
+@include('partials.clients')
 
-{{-- 3. Client Card (client success stories) --}}
-@include('frontend.public.partials.home.case-cards')
+{{-- 3. Website screenshot shuffle — no logos and no loading placeholder --}}
+@include('frontend.public.partials.clients.deck')
 
 {{-- 4. Technical Diagram (engagement process) --}}
 @include('frontend.public.partials.home.tech-diagram')

@@ -1,9 +1,9 @@
 {{-- Reusable customer reviews / "say it best" section (ref: underdefense.com) --}}
 <section class="page-section" id="reviews">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">Reviews</p>
+        <p class="section-eyebrow text-center mb-2">Client Feedback</p>
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-2">
-            Our Customers <span class="cl-title-accent">Say It Best</span>
+            Our Clients <span class="cl-title-accent">Say It Best</span>
         </h2>
         <p class="text-center text-muted mb-5">
             Recognized as a High Performer and a Top Cybersecurity Company by industry leaders.
@@ -11,14 +11,15 @@
 
         <div class="row g-4">
             @foreach ([
-                ['quote' => "Cyberlog's VAPT work showed strong professionalism and helped improve our cyber defense posture.", 'name' => 'Dr. Dewan Muhammad Humayun Kabir, ex Project Director, a2i', 'badge' => 'VAPT Services'],
-                ['quote' => 'Their pen testers found issues our previous vendor missed. The remediation guidance was clear and prioritized.', 'name' => 'Head of IT, Government Agency', 'badge' => 'Managed Detection &amp; Response'],
-                ['quote' => 'From ISO 27001 to staff training, Cyberlog has been a genuine partner in our compliance journey.', 'name' => 'Compliance Lead, Enterprise', 'badge' => 'Top Cybersecurity Company 2025'],
+                ['rating' => '4.8', 'quote' => "Cyberlog's VAPT work showed strong professionalism and helped improve our cyber defense posture.", 'name' => 'Dr. Dewan Muhammad Humayun Kabir, ex Project Director, a2i', 'badge' => 'VAPT Services'],
+                ['rating' => '4.9', 'quote' => 'Their pen testers found issues our previous vendor missed. The remediation guidance was clear and prioritized.', 'name' => 'Head of IT, Government Agency', 'badge' => 'Managed Detection &amp; Response'],
+                ['rating' => '5.0', 'quote' => 'From ISO 27001 to staff training, Cyberlog has been a genuine partner in our compliance journey.', 'name' => 'Compliance Lead, Enterprise', 'badge' => 'Top Cybersecurity Company 2025'],
             ] as $r)
                 <div class="col-md-4">
                     <article class="cl-about-review h-100 d-flex flex-column" data-reveal>
                         <div class="cl-about-review-stars mb-3">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span class="cl-about-review-score">{{ $r['rating'] }}</span>
                         </div>
                         <p class="cl-about-review-quote">&ldquo;{{ $r['quote'] }}&rdquo;</p>
                         <div class="mt-auto">
@@ -44,9 +45,16 @@
     }
     .cl-about-review-stars {
         display: flex;
+        align-items: center;
         gap: .18rem;
         color: var(--warm-soft);
         font-size: .92rem;
+    }
+    .cl-about-review-score {
+        margin-left: .45rem;
+        color: var(--white);
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 700;
     }
     .cl-about-review-quote {
         color: var(--white);

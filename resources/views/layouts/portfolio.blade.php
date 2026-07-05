@@ -6,7 +6,7 @@
     <title>@yield('title', 'My Portfolio')</title>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}">
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v6.5.2/js/all.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

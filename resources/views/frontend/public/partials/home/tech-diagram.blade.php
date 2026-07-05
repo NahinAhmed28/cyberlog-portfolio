@@ -38,8 +38,12 @@
         overflow: hidden;
     }
 
+    /* Wider than the page container per feedback — spans most of the viewport. */
     .process-diagram-wrap {
         background: #0d1627;
+        max-width: none;
+        width: min(1560px, 94vw);
+        left: calc((100% - min(1560px, 94vw)) / 2);
     }
 
     .process-diagram-img {

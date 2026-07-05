@@ -112,17 +112,11 @@
     .cl-story-title span { color: var(--warm-soft); }
     .cl-story-intro { line-height: 1.7; }
 
+    /* No boxed panel — the growth chart blends straight into the section background. */
     .cl-story-chart {
         position: relative;
-        min-height: 560px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background:
-            radial-gradient(780px 380px at 82% 6%, rgba(255, 72, 101, 0.15), transparent 62%),
-            radial-gradient(740px 430px at 4% 98%, rgba(109, 156, 255, 0.12), transparent 64%),
-            linear-gradient(180deg, rgba(16, 31, 58, 0.96), rgba(7, 17, 31, 0.98));
+        min-height: 640px;
         overflow: hidden;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
     }
     .cl-story-chart::before {
         content: "";
@@ -131,10 +125,11 @@
         pointer-events: none;
         background:
             linear-gradient(rgba(130, 165, 220, 0.055) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(130, 165, 220, 0.045) 1px, transparent 1px),
-            linear-gradient(115deg, transparent 0 46%, rgba(255, 255, 255, 0.045) 49%, transparent 52% 100%);
-        background-size: 54px 54px, 54px 54px, 100% 100%;
+            linear-gradient(90deg, rgba(130, 165, 220, 0.045) 1px, transparent 1px);
+        background-size: 54px 54px, 54px 54px;
         opacity: .72;
+        -webkit-mask-image: radial-gradient(ellipse at 50% 60%, rgba(0, 0, 0, .95), transparent 82%);
+        mask-image: radial-gradient(ellipse at 50% 60%, rgba(0, 0, 0, .95), transparent 82%);
     }
     .cl-story-watermark {
         position: absolute;
@@ -177,10 +172,10 @@
 
     .cl-story-milestone {
         position: absolute;
-        left: clamp(7.5rem, var(--x), calc(100% - 7.5rem));
+        left: clamp(8.5rem, var(--x), calc(100% - 8.5rem));
         top: 0;
         height: var(--y);
-        width: min(230px, 22vw);
+        width: min(270px, 24vw);
         transform: translateX(-50%);
         color: var(--text);
     }
@@ -201,41 +196,44 @@
     .cl-story-stem {
         position: absolute;
         left: 50%;
-        top: 148px;
+        top: 175px;
         bottom: 0;
         width: 1px;
         margin-inline: auto;
         background: linear-gradient(180deg, rgba(255, 191, 27, 0.08), rgba(255, 72, 101, 0.58));
     }
+    /* Readable glass cards — larger type per feedback */
     .cl-story-card {
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
-        padding: .65rem .75rem;
-        border-left: 1px solid rgba(255, 191, 27, 0.2);
-        background: linear-gradient(90deg, rgba(7, 17, 31, 0.58), rgba(7, 17, 31, 0));
-        -webkit-backdrop-filter: blur(3px);
-        backdrop-filter: blur(3px);
+        padding: .9rem 1rem;
+        border: 1px solid var(--line-soft);
+        border-left: 2px solid rgba(255, 191, 27, 0.45);
+        border-radius: 8px;
+        background: rgba(9, 18, 33, 0.7);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
     }
     .cl-story-year {
         display: block;
-        margin-bottom: .48rem;
+        margin-bottom: .5rem;
         font-family: 'IBM Plex Mono', monospace;
         font-weight: 700;
-        color: var(--warm);
-        font-size: .78rem;
+        color: var(--warm-soft);
+        font-size: .95rem;
     }
     .cl-story-card h3 {
         color: var(--white);
-        font-size: .94rem;
-        line-height: 1.18;
-        margin-bottom: .45rem;
+        font-size: 1.08rem;
+        line-height: 1.22;
+        margin-bottom: .5rem;
     }
     .cl-story-card p {
-        color: var(--muted);
-        font-size: .78rem;
-        line-height: 1.42;
+        color: var(--text);
+        font-size: .88rem;
+        line-height: 1.5;
         margin: 0;
     }
 
@@ -257,19 +255,16 @@
     .cl-story-stats strong {
         font-family: 'Chakra Petch', sans-serif;
         color: var(--warm-soft);
-        font-size: 1.65rem;
+        font-size: 1.9rem;
         line-height: 1;
     }
-    .cl-story-stats span { color: var(--muted); font-size: .88rem; line-height: 1.35; }
+    .cl-story-stats span { color: var(--text); font-size: .95rem; line-height: 1.4; }
 
     @media (max-width: 991.98px) {
         .cl-story-head { align-items: flex-start; }
         .cl-story-chart {
             min-height: 0;
-            padding: 1rem;
-            background:
-                radial-gradient(620px 320px at 96% 0%, rgba(255, 72, 101, 0.14), transparent 62%),
-                linear-gradient(180deg, rgba(16, 31, 58, 0.96), rgba(7, 17, 31, 0.98));
+            padding: 0;
         }
         .cl-story-lines, .cl-story-watermark { display: none; }
         .cl-story-milestone {

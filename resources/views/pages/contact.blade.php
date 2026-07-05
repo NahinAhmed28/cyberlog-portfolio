@@ -27,6 +27,8 @@
                 <div class="d-flex gap-2">
                     <a class="btn btn-outline-secondary btn-social" href="https://www.facebook.com/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
                     <a class="btn btn-outline-secondary btn-social" href="https://www.linkedin.com/company/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                    {{-- TODO: confirm the real X/Twitter profile URL --}}
+                    <a class="btn btn-outline-secondary btn-social" href="https://x.com/cyberlogbd" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-fw fa-x-twitter"></i></a>
                 </div>
             </div>
             <div class="col-lg-7">

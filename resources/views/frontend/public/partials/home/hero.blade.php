@@ -13,28 +13,28 @@
             Before Attackers <br class="d-sm-none">Build Access
         </h1>
 
+        {{-- All hero text white per feedback --}}
         <p class="lead text-muted lead-narrow cl-hero-copy mb-4" data-reveal data-hero>
             <span class="cl-copy-white">Cyberlog delivers</span>
-            <span class="cl-copy-blue">offensive security</span>,
-            <span class="cl-copy-blue">managed SOC</span>,
-            <span class="cl-copy-ice">compliance</span>,
-            <span class="cl-copy-blue">threat intelligence</span>,
+            <span class="cl-copy-white">offensive security</span>,
+            <span class="cl-copy-white">managed SOC</span>,
+            <span class="cl-copy-white">compliance</span>,
+            <span class="cl-copy-white">threat intelligence</span>,
             and <span class="cl-copy-white">innovative solutions</span> for
-            <span class="cl-copy-ice" style="color: var(--warm-soft) !important;">enterprises</span>,
-            <span class="cl-copy-ice" style="color: var(--warm-soft) !important;">government organizations</span>,
-            <span class="cl-copy-ice" style="color: var(--warm-soft) !important;">financial institutions</span>,
-            and <span class="cl-copy-alert">critical infrastructure</span>.
+            <span class="cl-copy-white">enterprises</span>,
+            <span class="cl-copy-white">government organizations</span>,
+            <span class="cl-copy-white">financial institutions</span>,
+            and <span class="cl-copy-white">critical infrastructure</span>.
         </p>
 
         {{-- TODO: copy — hero CTA button(s) not specified in the brief --}}
 
         <p class="fs-5 cl-hero-proof mb-0" data-reveal data-hero>
-            Join our <span class="cl-copy-blue">Cyber Defense eco-system</span><br class="d-sm-none"> with
+            Join our <span class="cl-copy-white">Cyber Defense eco-system</span><br class="d-sm-none"> with
             <span class="cl-glow-word">hundreds</span> of other organizations!
         </p>
 
-        {{-- Floating service chips — pop in one after another (data-hero stagger),
-             then drift (desktop) + mouse parallax; static row on mobile. --}}
+        {{-- Floating service chips - clear of the copy, arranged above/below on desktop. --}}
         <div class="cl-drift">
             <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-bug"></i>Penetration Testing</span></span></div>
             <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-desktop"></i>Security Operations Center (SOC)</span></span></div>
@@ -54,10 +54,11 @@
         align-items: center;
         overflow: hidden;
         isolation: isolate;
-        padding: 8rem 0 4rem;
+        padding: 6.4rem 0 3.4rem;
         background:
-            radial-gradient(940px 520px at 50% 38%, rgba(255, 255, 255, 0.09), rgba(70, 131, 255, 0.13) 42%, transparent 70%),
-            linear-gradient(145deg, #081529 0%, #0d244a 48%, #07172f 100%);
+            radial-gradient(920px 560px at 50% 42%, rgba(44, 191, 177, 0.11), transparent 64%),
+            radial-gradient(720px 420px at 68% 22%, rgba(109, 156, 255, 0.08), transparent 68%),
+            linear-gradient(180deg, #050c17 0%, #03070d 100%);
         color: #ffffff;
     }
     .cl-home-hero::before,
@@ -70,19 +71,18 @@
     }
     .cl-home-hero::before {
         background:
-            radial-gradient(640px 380px at 50% 42%, rgba(255, 255, 255, 0.08), rgba(85, 148, 255, 0.08) 42%, rgba(7, 17, 31, 0.1) 72%, rgba(7, 17, 31, 0.38)),
-            radial-gradient(720px 440px at 84% 10%, rgba(109, 156, 255, 0.16), transparent 68%),
-            radial-gradient(640px 400px at 8% 72%, rgba(255, 255, 255, 0.06), transparent 70%);
+            radial-gradient(820px 520px at 50% 45%, rgba(15, 42, 45, 0.34), transparent 72%),
+            linear-gradient(180deg, rgba(5, 12, 23, 0.18), rgba(2, 7, 13, 0.76));
     }
     .cl-home-hero::after {
-        opacity: .38;
+        opacity: .28;
         background:
-            linear-gradient(115deg, transparent 0 44%, rgba(255, 255, 255, 0.08) 48%, transparent 52% 100%),
-            linear-gradient(rgba(215, 233, 255, 0.09) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(215, 233, 255, 0.065) 1px, transparent 1px);
+            linear-gradient(115deg, transparent 0 44%, rgba(255, 255, 255, 0.045) 48%, transparent 52% 100%),
+            linear-gradient(rgba(215, 233, 255, 0.055) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(215, 233, 255, 0.04) 1px, transparent 1px);
         background-size: 100% 100%, 72px 72px, 72px 72px;
-        -webkit-mask-image: radial-gradient(circle at 50% 44%, rgba(0, 0, 0, .98), transparent 82%);
-        mask-image: radial-gradient(circle at 50% 44%, rgba(0, 0, 0, .98), transparent 82%);
+        -webkit-mask-image: radial-gradient(circle at 50% 46%, rgba(0, 0, 0, .98), transparent 82%);
+        mask-image: radial-gradient(circle at 50% 46%, rgba(0, 0, 0, .98), transparent 82%);
         animation: clHeroMeshDrift 34s linear infinite;
     }
     .cl-hero-canvas {
@@ -92,13 +92,29 @@
         height: 100%;
         z-index: 0;
         display: block;
-        opacity: 1;
+        opacity: .78;
         pointer-events: none;
-        filter: brightness(1.16) contrast(1.1) saturate(1.02);
+        filter: brightness(.82) contrast(1.08) saturate(.76);
     }
-    .cl-home-hero .container { position: relative; z-index: 2; }
+    .cl-home-hero .container {
+        position: relative;
+        z-index: 2;
+        min-height: min(720px, calc(100vh - 8.5rem));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: clamp(1rem, 3vh, 2.5rem);
+        padding-bottom: clamp(1rem, 3vh, 2.5rem);
+    }
     .cl-home-hero .cl-hero-heading {
-        font-size: clamp(2.2rem, 5.5vw, 4rem);
+        position: relative;
+        z-index: 2;
+        max-width: 980px;
+        margin-inline: auto;
+        margin-bottom: 1.35rem !important;
+        font-size: clamp(2.25rem, 5.15vw, 4.45rem);
+        line-height: 1.12;
         color: #ffffff;
         text-shadow: 0 0 24px rgba(255, 255, 255, 0.28), 0 8px 28px rgba(3, 10, 24, 0.72);
     }
@@ -116,7 +132,17 @@
     }
     .cl-hero-copy,
     .cl-hero-proof {
+        position: relative;
+        z-index: 2;
         font-weight: 500;
+    }
+    .cl-hero-copy {
+        max-width: 720px;
+        margin-inline: auto;
+        margin-bottom: 1.45rem !important;
+    }
+    .cl-hero-proof {
+        margin-top: .1rem;
     }
     .cl-copy-white,
     .cl-copy-blue,
@@ -155,15 +181,21 @@
         text-shadow: 0 0 16px rgba(255, 255, 255, 0.72), 0 0 28px rgba(109, 156, 255, 0.58);
     }
 
-    /* Chips — static centered row on mobile */
+    /* Chips - one centered floating row below the hero text on smaller screens */
     .cl-drift {
         position: relative;
-        margin-top: 2.25rem;
+        margin-top: clamp(2.1rem, 4vw, 3.2rem);
         display: flex;
-        flex-wrap: wrap;
-        gap: .6rem;
+        flex-wrap: nowrap;
+        gap: clamp(.65rem, 1.4vw, 1rem);
         justify-content: center;
+        align-items: center;
+        max-width: min(100%, 1120px);
+        margin-left: auto;
+        margin-right: auto;
+        overflow: visible;
     }
+    .cl-drift-chip { flex: 0 0 auto; will-change: transform; }
     .cl-drift-reveal { display: inline-block; }
     .cl-chip {
         display: inline-flex;
@@ -176,36 +208,48 @@
         -webkit-backdrop-filter: blur(3px);
         backdrop-filter: blur(3px);
         border: 1px solid rgba(220, 238, 255, 0.32);
-        border-left: 3px solid var(--blue-bright);
+        border-left: 3px solid var(--chip, var(--blue-bright));
         border-radius: var(--r);
         padding: .6rem 1rem;
         white-space: nowrap;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 22px rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
     }
-    .cl-chip i { color: #ffffff; filter: drop-shadow(0 0 8px rgba(109, 156, 255, 0.65)); }
+    .cl-chip i { color: var(--chip, #ffffff); filter: drop-shadow(0 0 8px var(--chip, rgba(109, 156, 255, 0.65))); }
 
-    /* Large screens — chips float only in the top/bottom corners, kept clear of the
-       vertically-centered title + subtitle. Below 1200px they fall back to the static
-       centered row (above), so they can never cover the content. */
+    /* Colorful chips - one accent each (blue / red / warm / violet) */
+    .cl-drift-chip:nth-child(1) { --chip: var(--blue-bright); }
+    .cl-drift-chip:nth-child(2) { --chip: var(--red-soft); }
+    .cl-drift-chip:nth-child(3) { --chip: var(--warm-soft); }
+    .cl-drift-chip:nth-child(4) { --chip: #9d8bff; }
+    .cl-drift-chip:nth-child(1) .cl-chip { background: rgba(21, 44, 92, 0.8); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(47, 107, 255, 0.22); }
+    .cl-drift-chip:nth-child(2) .cl-chip { background: rgba(74, 18, 34, 0.74); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(228, 31, 61, 0.2); }
+    .cl-drift-chip:nth-child(3) .cl-chip { background: rgba(84, 52, 8, 0.68); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(255, 138, 0, 0.2); }
+    .cl-drift-chip:nth-child(4) .cl-chip { background: rgba(43, 32, 96, 0.74); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(111, 91, 255, 0.24); }
+    .cl-drift-chip .cl-chip { animation: clDrift 7s ease-in-out infinite; }
+    .cl-drift-chip:nth-child(2) .cl-chip { animation-delay: 1.2s; }
+    .cl-drift-chip:nth-child(3) .cl-chip { animation-delay: 2.4s; }
+    .cl-drift-chip:nth-child(4) .cl-chip { animation-delay: 3.6s; }
+    @keyframes clDrift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+    /* Desktop - reference-style floating chips:
+       staggered diagonally in the band ABOVE the heading and the band BELOW the
+       copy, pulled inboard from the edges. Never beside the text, never stacked. */
     @media (min-width: 1200px) {
         .cl-drift {
             position: absolute;
             inset: 0;
+            display: block;
             margin: 0;
+            max-width: none;
             pointer-events: none;
             z-index: 1;
         }
-        .cl-drift-chip { position: absolute; will-change: transform; max-width: 28%; }
-        .cl-drift-chip:nth-child(1) { top: 10%;    left: 3%; }
-        .cl-drift-chip:nth-child(2) { top: 14%;    right: -1%; }
-        .cl-drift-chip:nth-child(3) { bottom: 12%; left: 3%; }
-        .cl-drift-chip:nth-child(4) { bottom: 10%; right: 3%; }
-        .cl-drift-chip .cl-chip { animation: clDrift 7s ease-in-out infinite; }
-        .cl-drift-chip:nth-child(2) .cl-chip { animation-delay: 1.2s; border-left-color: var(--red); }
-        .cl-drift-chip:nth-child(3) .cl-chip { animation-delay: 2.4s; }
-        .cl-drift-chip:nth-child(4) .cl-chip { animation-delay: 3.6s; border-left-color: var(--red); }
+        .cl-drift-chip { position: absolute; will-change: transform; }
+        .cl-drift-chip:nth-child(1) { top: max(12%, 82px); left: clamp(2rem, 17vw, 15rem); }
+        .cl-drift-chip:nth-child(2) { top: max(8%, 66px); right: clamp(2rem, 17vw, 15rem); }
+        .cl-drift-chip:nth-child(3) { bottom: 12%; left: clamp(2rem, 18vw, 16rem); }
+        .cl-drift-chip:nth-child(4) { bottom: 19%; right: clamp(2rem, 18vw, 16rem); }
     }
-    @keyframes clDrift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
 
     @media (prefers-reduced-motion: reduce) {
         .cl-home-hero::after { animation: none !important; }
@@ -214,7 +258,7 @@
     @media (max-width: 575.98px) {
         .cl-home-hero {
             min-height: auto;
-            padding: 6.25rem 0 3.25rem;
+            padding: 5.7rem 0 3.25rem;
         }
         .cl-home-hero .container {
             width: 100%;
@@ -236,19 +280,19 @@
             margin-right: auto;
         }
         .cl-drift {
-            flex-direction: column;
-            align-items: center;
-            padding: 0 .5rem;
+            justify-content: flex-start;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0 .75rem .35rem;
+            margin-inline: -.75rem;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
-        .cl-drift-chip,
-        .cl-drift-reveal {
-            max-width: 100%;
-        }
+        .cl-drift::-webkit-scrollbar { display: none; }
         .cl-chip {
-            max-width: calc(100vw - 2rem);
-            justify-content: center;
-            text-align: center;
-            white-space: normal;
+            justify-content: flex-start;
+            text-align: left;
+            white-space: nowrap;
             line-height: 1.35;
         }
     }
@@ -553,14 +597,12 @@
 
         seed();
         render(0);
+        // On resize only reseed for the new size — never restart the render loop.
+        // Restarting stacked extra requestAnimationFrame loops, which made the
+        // animation run progressively faster over time.
         window.addEventListener('resize', function () {
             window.clearTimeout(resizeTimer);
-            resizeTimer = window.setTimeout(function () {
-                if (raf) cancelAnimationFrame(raf);
-                lastTime = 0;
-                seed();
-                render(0);
-            }, 120);
+            resizeTimer = window.setTimeout(seed, 120);
         });
 
         var hero = document.getElementById('page-top');

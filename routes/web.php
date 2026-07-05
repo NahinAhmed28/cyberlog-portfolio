@@ -18,10 +18,6 @@ Route::view('/', 'frontend.public.home')->name('home');
 
 Route::name('public.')->group(function () {
     Route::view('/clients', 'frontend.public.clients')->name('clients');
-    Route::view('/services/malware-analysis', 'frontend.public.service-detail')->defaults('service', 'malware-analysis')->name('malware-analysis');
-    Route::view('/services/next-gen-firewall', 'frontend.public.service-detail')->defaults('service', 'next-gen-firewall')->name('next-gen-firewall');
-    Route::view('/services/backup-recovery', 'frontend.public.service-detail')->defaults('service', 'backup-recovery')->name('backup-recovery');
-    Route::view('/services/digital-forensics', 'frontend.public.service-detail')->defaults('service', 'digital-forensics')->name('digital-forensics');
     // public.services, public.soc, public.vapt, … (added per brief section)
 });
 
@@ -39,7 +35,7 @@ Route::view('/services/it-audit', 'pages.it-audit')->name('it-audit');
 Route::view('/services/capacity-building', 'pages.capacity-building')->name('capacity-building');
 Route::view('/services/defense-services', 'pages.defense-services')->name('defense-services');
 
-// Dedicated detail pages for the 12-service catalogue (config/cyberlog_services.php).
+// Dedicated detail pages for the 9-service catalogue (config/cyberlog_services.php).
 // Services flagged with a 'detail' block render via the generic service-detail view.
 foreach ((array) config('cyberlog_services', []) as $svc) {
     if (! empty($svc['detail'])) {

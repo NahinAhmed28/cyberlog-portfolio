@@ -1,9 +1,9 @@
-{{-- SOC › Reviews / testimonials (ref: underdefense.com) --}}
+{{-- SOC › Reviews — client feedback cards matching the VAPT card design per feedback --}}
 @php
     $reviews = [
-        ['Cyberlog helped us bring our logs, alerts, and monitoring into one clear SOC workflow. Our team now has better visibility across critical systems.', 'Head of IT, Enterprise Organization', 'Security Visibility'],
-        ['The SOC team improved our alert triage process and helped us focus on real threats instead of wasting time on unnecessary alerts.', 'IT Operations Lead, Financial Sector', 'Alert Triage'],
-        ["Cyberlog's incident response support gave us practical guidance during suspicious activity. Their reporting was clear, actionable, and useful for management.", 'Security Manager, Regulated Organization', 'Incident Response'],
+        ['rating' => '4.8', 'quote' => 'Cyberlog helped us bring our logs, alerts, and monitoring into one clear SOC workflow. Our team now has better visibility across critical systems.', 'name' => 'Head of IT, Enterprise Organization', 'badge' => 'Security Visibility'],
+        ['rating' => '4.9', 'quote' => 'The SOC team improved our alert triage process and helped us focus on real threats instead of wasting time on unnecessary alerts.', 'name' => 'IT Operations Lead, Financial Sector', 'badge' => 'Alert Triage'],
+        ['rating' => '5.0', 'quote' => "Cyberlog's incident response support gave us practical guidance during suspicious activity. Their reporting was clear, actionable, and useful for management.", 'name' => 'Security Manager, Regulated Organization', 'badge' => 'Incident Response'],
     ];
 @endphp
 
@@ -14,16 +14,17 @@
         <p class="text-center text-muted mb-5" data-reveal>Cyberlog SOC helps organizations improve visibility, reduce alert noise, and respond to security incidents with confidence.</p>
 
         <div class="row g-4">
-            @foreach ($reviews as $r)
+            @foreach ($reviews as $review)
                 <div class="col-md-4">
-                    <article class="cl-soc-review h-100 d-flex flex-column" data-reveal>
-                        <div class="cl-soc-review-stars mb-3">
+                    <article class="cl-fb-card h-100 d-flex flex-column" data-reveal>
+                        <div class="cl-fb-rating mb-3">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>{{ $review['rating'] }}</span>
                         </div>
-                        <p class="cl-soc-review-quote">&ldquo;{{ $r[0] }}&rdquo;</p>
+                        <p class="cl-fb-quote">&ldquo;{{ $review['quote'] }}&rdquo;</p>
                         <div class="mt-auto">
-                            <div class="cl-soc-review-name">{{ $r[1] }}</div>
-                            <span class="cl-soc-review-tag">{!! $r[2] !!}</span>
+                            <div class="cl-fb-name">{{ $review['name'] }}</div>
+                            <span class="cl-fb-tag">{{ $review['badge'] }}</span>
                         </div>
                     </article>
                 </div>
@@ -34,32 +35,39 @@
 
 @push('styles')
 <style>
-    .cl-soc-review {
-        min-height: 300px;
+    .cl-fb-card {
+        min-height: 310px;
         padding: clamp(1.35rem, 2.6vw, 2rem);
         border: 1px solid rgba(255, 255, 255, .12);
         border-radius: 8px;
         background: rgba(10, 17, 27, .78);
         color: var(--text);
     }
-    .cl-soc-review-stars {
+    .cl-fb-rating {
         display: flex;
+        align-items: center;
         gap: .18rem;
         color: var(--warm-soft);
-        font-size: .92rem;
+        font-size: .9rem;
     }
-    .cl-soc-review-quote {
+    .cl-fb-rating span {
+        margin-left: .45rem;
+        color: var(--white);
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 700;
+    }
+    .cl-fb-quote {
         color: var(--white);
         font-style: italic;
         line-height: 1.7;
         margin-bottom: 1.4rem;
     }
-    .cl-soc-review-name {
+    .cl-fb-name {
         color: var(--white);
         font-weight: 700;
         line-height: 1.45;
     }
-    .cl-soc-review-tag {
+    .cl-fb-tag {
         display: inline-flex;
         margin-top: .8rem;
         padding: .34rem .58rem;

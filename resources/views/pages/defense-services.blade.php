@@ -1,10 +1,9 @@
 @extends('layouts.portfolio')
 
-@section('title', 'Defense Services — Cyberlog')
+@section('title', 'Offensive & Defensive Security Services - Cyberlog')
 
 @section('content')
 
-{{-- No hero per feedback — CrowdStrike-style alternating service blocks (ref: crowdstrike.com) --}}
 @php
     $svcUrl = fn ($r) => Route::has($r) ? route($r) : '#';
 
@@ -30,13 +29,6 @@
             'points'  => ['Internal and external network testing', 'Identifies misconfigurations and exposed services', 'Hands-on exploitation, not just scanning'],
             'related' => ['Server-Side Testing', 'Penetration Testing'],
         ],
-        [
-            'title'   => 'Source Code Security Audit',
-            'route'   => 'source-code-audit',
-            'icon'    => 'fa-file-code',
-            'points'  => ['White box and gray box code review', 'Flags vulnerabilities before deployment', 'Covers SAST and DAST methodologies'],
-            'related' => ['White Box Testing', 'Gray Box Testing'],
-        ],
     ];
 
     $defensive = [
@@ -48,33 +40,19 @@
             'related' => ['Threat Hunting', 'SIEM Solution'],
         ],
         [
-            'title'   => 'Secure Web Application Development',
-            'route'   => 'secure-development',
-            'icon'    => 'fa-code',
-            'points'  => ['Security-by-design architecture', 'Built-in DDoS protection', 'Secure coding and deployment support'],
-            'related' => ['Next-Gen Firewall Protection'],
-        ],
-        [
-            'title'   => 'Cybersecurity Consultancy',
-            'route'   => 'consultancy',
-            'icon'    => 'fa-user-shield',
-            'points'  => ['Strategic, business-aligned advisory', 'Risk-based policy and roadmap guidance', 'Expert support for management and IT teams'],
-            'related' => ['Damage Control'],
-        ],
-        [
-            'title'   => 'Secure Backup & Recovery Solutions',
-            'route'   => 'public.backup-recovery',
-            'icon'    => 'fa-database',
-            'points'  => ['Reliable backup and disaster recovery', 'Minimizes downtime during disruption', 'Fast restoration of critical operations'],
-            'related' => ['Incident Response (IR)', 'Digital Forensics'],
+            'title'   => 'Digital Forensics & Incident Response',
+            'route'   => 'digital-forensics',
+            'icon'    => 'fa-fingerprint',
+            'points'  => ['Investigates cyber incidents and evidence', 'Supports containment and root-cause analysis', 'Guides recovery and prevention actions'],
+            'related' => ['Incident Response', 'Evidence Analysis', 'Containment Support'],
         ],
     ];
 @endphp
 
-{{-- Section 1 — Offensive Security Services --}}
+{{-- No hero per feedback - CrowdStrike-style alternating service blocks. --}}
 <section class="page-section cl-ds-first" id="offensive">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">What We Deliver</p>
+        <p class="section-eyebrow text-center mb-2">What We Test</p>
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Offensive <span class="cl-title-accent">Security Services</span></h2>
 
         @foreach ($offensive as $block)
@@ -103,7 +81,6 @@
     </div>
 </section>
 
-{{-- Section 2 — Defensive Security Services --}}
 <section class="page-section bg-light" id="defensive">
     <div class="container">
         <p class="section-eyebrow text-center mb-2">What We Defend</p>
@@ -135,13 +112,12 @@
     </div>
 </section>
 
-@include('partials.talk-to-expert', ['title' => 'Under attack or want to be ready?', 'text' => 'Our defense team is on standby 24/7.'])
+@include('partials.talk-to-expert', ['title' => 'Under attack or want to be ready?', 'text' => 'Our security team can help you test exposure, strengthen monitoring, and respond faster.'])
 
 @endsection
 
 @push('styles')
 <style>
-    /* First section clears the fixed navbar since there is no hero. */
     .cl-ds-first { padding-top: 9rem; }
 
     .cl-ds-row { margin-bottom: 3.5rem; }
@@ -177,11 +153,10 @@
     .cl-ds-rel { color: var(--white); }
     .cl-ds-dot { margin: 0 .5rem; color: var(--muted); }
 
-    /* Visual panels (ref: crowdstrike's illustration tiles) */
     .cl-ds-visual {
         display: grid; place-items: center;
         min-height: 250px; height: 100%;
-        border-radius: 18px;
+        border-radius: 8px;
         border: 1px solid var(--line);
         overflow: hidden;
         transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);

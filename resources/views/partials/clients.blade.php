@@ -1,13 +1,12 @@
-{{-- Reusable "Trusted Clients" section using official logos from cyberlog.bd's
-     "We're Working With" carousel. --}}
+{{-- Reusable "Trusted Clients" section using the restored sliding logo marquee. --}}
 @php
+    // Real client logos only (working-with PNGs) - no text-placeholder SVGs per feedback.
     $clients = [
-        ['name' => 'National Academy for Planning and Development', 'sector' => 'Government Organization', 'url' => 'https://napd.gov.bd/', 'logo' => 'napd.png'],
-        ['name' => 'Bangladesh Police', 'sector' => 'Law Enforcement', 'url' => 'https://www.police.gov.bd/', 'logo' => 'police.png'],
-        ['name' => 'Bangladesh University of Business and Technology', 'sector' => 'Education', 'url' => 'https://www.bubt.edu.bd/', 'logo' => 'bubt.png'],
-        ['name' => 'Aspire to Innovate (a2i)', 'sector' => 'Digital Government', 'url' => 'https://a2i.gov.bd/', 'logo' => 'a2i.png'],
-        ['name' => 'United IT', 'sector' => 'Technology Partner', 'url' => 'http://www.uniteditbd.com/', 'logo' => 'unitedit.png'],
-        ['name' => 'United Nations Development Programme', 'sector' => 'Development Organization', 'url' => 'https://www.undp.org/', 'logo' => 'undp.png'],
+        ['name' => 'National Academy for Planning and Development', 'sector' => 'Government Organization', 'url' => 'https://napd.gov.bd/', 'logo' => 'assets/img/clients/working-with/napd.png'],
+        ['name' => 'Bangladesh Police', 'sector' => 'Law Enforcement', 'url' => 'https://www.police.gov.bd/', 'logo' => 'assets/img/clients/working-with/police.png'],
+        ['name' => 'Bangladesh University of Business and Technology', 'sector' => 'Education', 'url' => 'https://www.bubt.edu.bd/', 'logo' => 'assets/img/clients/working-with/bubt.png'],
+        ['name' => 'Aspire to Innovate (a2i)', 'sector' => 'Digital Government', 'url' => 'https://a2i.gov.bd/', 'logo' => 'assets/img/clients/working-with/a2i.png'],
+        ['name' => 'United Nations Development Programme', 'sector' => 'Development Organization', 'url' => 'https://www.undp.org/', 'logo' => 'assets/img/clients/working-with/undp.png'],
     ];
     $clientAnimation = $clientAnimation ?? 'marquee';
 @endphp
@@ -28,7 +27,7 @@
                             <a class="cl-client-shuffle-link" href="{{ $c['url'] }}" target="_blank" rel="noopener" aria-label="{{ $c['name'] }} website">
                                 <span class="cl-client-shuffle-sector">{{ $c['sector'] }}</span>
                                 <span class="cl-client-shuffle-logo">
-                                    <img src="{{ asset('assets/img/clients/working-with/' . $c['logo']) }}" alt="{{ $c['name'] }}">
+                                    <img src="{{ asset($c['logo']) }}" alt="{{ $c['name'] }}" loading="eager" decoding="async">
                                 </span>
                                 <span class="cl-client-shuffle-name">{{ $c['name'] }}</span>
                             </a>
@@ -51,12 +50,12 @@
                 <div class="cl-marquee-track">
                     @foreach ($clients as $c)
                         <a class="cl-client-logo" href="{{ $c['url'] }}" target="_blank" rel="noopener" aria-label="{{ $c['name'] }}">
-                            <img src="{{ asset('assets/img/clients/working-with/' . $c['logo']) }}" alt="{{ $c['name'] }}">
+                            <img src="{{ asset($c['logo']) }}" alt="{{ $c['name'] }}" loading="eager" decoding="async">
                         </a>
                     @endforeach
                     @foreach ($clients as $c)
                         <a class="cl-client-logo" href="{{ $c['url'] }}" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-                            <img src="{{ asset('assets/img/clients/working-with/' . $c['logo']) }}" alt="">
+                            <img src="{{ asset($c['logo']) }}" alt="" loading="eager" decoding="async">
                         </a>
                     @endforeach
                 </div>

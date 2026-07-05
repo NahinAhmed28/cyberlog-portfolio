@@ -1,82 +1,7 @@
-{{-- Home > Security Solutions — "Explore Our Security Solutions" (12 service cards).
-     Content per client correction doc. Common CTA: Learn More. --}}
+{{-- Home > Security Solutions — 9 service cards from config/cyberlog_services.php. --}}
 @php
-    $u = fn ($pub, $legacy) => Route::has($pub) ? route($pub) : (Route::has($legacy) ? route($legacy) : '#');
-
-    $solutions = [
-        [
-            'route' => ['public.soc', 'soc'], 'icon' => 'fa-desktop',
-            'title' => 'Security Operations Center Implementation', 'kicker' => 'Threat Detection',
-            'desc' => 'Implement centralized log collection, SIEM monitoring, alert rules, threat detection, incident triage, and response support.',
-            'features' => ['SOC', 'SIEM', 'Incident Monitoring'],
-        ],
-        [
-            'route' => ['public.defense-services', 'defense-services'], 'icon' => 'fa-satellite-dish',
-            'title' => 'Threat Intelligence', 'kicker' => 'Early Warning',
-            'desc' => 'Monitor emerging threats, leaked credentials, phishing campaigns, exposed assets, and attacker activity with actionable intelligence.',
-            'features' => ['Threat Monitoring', 'Leaked Credentials', 'Risk Insights'],
-        ],
-        [
-            'route' => ['public.vapt', 'vapt'], 'icon' => 'fa-bug',
-            'title' => 'Vulnerability Assessment &amp; Penetration Testing', 'kicker' => 'Real World Security Testing',
-            'desc' => 'Identify, validate, and prioritize vulnerabilities across applications, networks, APIs, mobile platforms, cloud, and infrastructure.',
-            'features' => ['VAPT', 'Web Testing', 'Network Testing'],
-        ],
-        [
-            'route' => ['public.vapt', 'vapt'], 'icon' => 'fa-user-secret',
-            'title' => 'Red Team Assessment', 'kicker' => 'Attack Simulation',
-            'desc' => 'Simulate real-world attack scenarios to test people, processes, technology, detection capability, and response readiness.',
-            'features' => ['Attack Simulation', 'Defense Testing', 'Security Readiness'],
-        ],
-        [
-            'route' => ['public.vapt', 'vapt'], 'icon' => 'fa-mobile-screen-button',
-            'title' => 'Web, API &amp; Mobile Application Security Testing', 'kicker' => 'Application Security',
-            'desc' => 'Test web, API, Android, and iOS applications for authentication, authorization, session, input validation, and data exposure risks.',
-            'features' => ['OWASP Top 10', 'API Security', 'Mobile Security'],
-        ],
-        [
-            'route' => ['public.next-gen-firewall', 'public.next-gen-firewall'], 'icon' => 'fa-network-wired',
-            'title' => 'Network Security Assessment', 'kicker' => 'Infrastructure Security',
-            'desc' => 'Assess internal and external networks, exposed services, firewalls, servers, wireless networks, segmentation, and access controls.',
-            'features' => ['Firewall Review', 'Network Exposure', 'Segmentation'],
-        ],
-        [
-            'route' => ['public.vapt', 'vapt'], 'icon' => 'fa-code',
-            'title' => 'Source Code Security Audit', 'kicker' => 'Secure Code Review',
-            'desc' => 'Review source code, dependencies, and application security weaknesses using secure coding practices, SAST, and DAST approaches.',
-            'features' => ['SAST', 'DAST', 'Secure Coding'],
-        ],
-        [
-            'route' => ['public.digital-forensics', 'public.digital-forensics'], 'icon' => 'fa-fingerprint',
-            'title' => 'Digital Forensics &amp; Incident Response', 'kicker' => 'Investigation Support',
-            'desc' => 'Investigate cyber incidents, analyze evidence, support containment, and provide practical recommendations for recovery and prevention.',
-            'features' => ['Forensics', 'Incident Response', 'Evidence Analysis'],
-        ],
-        [
-            'route' => ['public.backup-recovery', 'public.backup-recovery'], 'icon' => 'fa-database',
-            'title' => 'Secure Backup &amp; Recovery Solutions', 'kicker' => 'Operational Resilience',
-            'desc' => 'Strengthen backup strategy, recovery readiness, and data protection to help critical systems survive disruption and cyber incidents.',
-            'features' => ['Secure Backup', 'Recovery Planning', 'Data Protection'],
-        ],
-        [
-            'route' => ['public.it-audit', 'it-audit'], 'icon' => 'fa-clipboard-check',
-            'title' => 'IT Security Audit &amp; ISO 27001', 'kicker' => 'Compliance Readiness',
-            'desc' => 'Review IT controls, identify security gaps, assess governance, and support ISO/IEC 27001 implementation and audit readiness.',
-            'features' => ['IT Audit', 'ISO 27001', 'Control Review'],
-        ],
-        [
-            'route' => ['public.vciso', 'vciso'], 'icon' => 'fa-comments',
-            'title' => 'Cybersecurity Consultancy', 'kicker' => 'Security Advisory',
-            'desc' => 'Provide expert guidance on security strategy, policy improvement, risk-based decisions, and long-term cybersecurity roadmap development.',
-            'features' => ['Security Roadmap', 'Risk Advisory', 'Policy Support'],
-        ],
-        [
-            'route' => ['public.capacity-building', 'capacity-building'], 'icon' => 'fa-graduation-cap',
-            'title' => 'Awareness &amp; Security Training', 'kicker' => 'Human Defense',
-            'desc' => 'Deliver role-based training on cyber hygiene, phishing, social engineering, secure practices, and organizational security awareness.',
-            'features' => ['Awareness Training', 'Phishing Readiness', 'Staff Training'],
-        ],
-    ];
+    $solutions = config('cyberlog_services', []);
+    $svcUrl = fn ($route) => Route::has($route) ? route($route) : '#';
 @endphp
 
 <section class="page-section cl-solutions-section" id="solutions">
@@ -93,7 +18,7 @@
 
         <div class="cl-solutions-grid">
             @foreach ($solutions as $solution)
-                <a class="cl-solution-tile" href="{{ $u($solution['route'][0], $solution['route'][1]) }}" data-reveal>
+                <a class="cl-solution-tile" href="{{ $svcUrl($solution['route']) }}" data-reveal>
                     <div class="cl-solution-top">
                         <span class="cl-solution-mark"><i class="fas {{ $solution['icon'] }}"></i></span>
                         <span class="cl-solution-kicker">{{ $solution['kicker'] }}</span>
@@ -101,7 +26,7 @@
                     <h3 class="cl-solution-title">{!! $solution['title'] !!}</h3>
                     <p class="cl-solution-desc">{{ $solution['desc'] }}</p>
                     <div class="cl-solution-features">
-                        @foreach ($solution['features'] as $feature)
+                        @foreach ($solution['tags'] as $feature)
                             <span>{{ $feature }}</span>
                         @endforeach
                     </div>
@@ -114,10 +39,14 @@
 
 @push('styles')
 <style>
-    .cl-solutions-section { background: linear-gradient(180deg, rgba(11, 24, 48, 0.64), rgba(7, 17, 31, 0.2)); }
+    .cl-solutions-section {
+        background:
+            radial-gradient(900px 460px at 88% 14%, rgba(109, 156, 255, .07), transparent 62%),
+            rgba(5, 12, 23, .66);
+    }
     .cl-solutions-head {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 460px);
         gap: 2rem;
         align-items: end;
         margin-bottom: 2rem;
@@ -137,7 +66,7 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         background:
-            linear-gradient(160deg, rgba(16, 31, 58, 0.96), rgba(11, 24, 48, 0.94)) padding-box,
+            linear-gradient(160deg, rgba(16, 31, 58, 0.96), rgba(8, 18, 34, 0.95)) padding-box,
             linear-gradient(130deg, rgba(109, 156, 255, 0.45), rgba(228, 31, 61, 0.2)) border-box;
         color: var(--text);
         text-decoration: none;

@@ -1,36 +1,6 @@
 @php
     $slug = request()->route('service');
-    $items = [
-        'malware-analysis' => [
-            'title' => 'Malware Analysis',
-            'eyebrow' => 'Threat Research',
-            'icon' => 'fa-microscope',
-            'summary' => 'Cyberlog analyzes suspicious files, malware behavior, indicators of compromise, and attacker tradecraft so your team can contain threats and harden defenses.',
-            'points' => ['Static and dynamic malware analysis', 'Indicators of compromise and YARA-style detection guidance', 'Behavior summary for SOC, IR, and executive teams', 'Containment and prevention recommendations'],
-        ],
-        'next-gen-firewall' => [
-            'title' => 'Next-Gen Firewall Protection',
-            'eyebrow' => 'Network Defense',
-            'icon' => 'fa-shield-virus',
-            'summary' => 'Cyberlog helps design, tune, and review firewall controls that protect modern networks, cloud boundaries, and application traffic.',
-            'points' => ['Firewall architecture and policy review', 'Segmentation and rule-base hardening', 'Threat prevention and IPS tuning', 'Ongoing configuration and risk review'],
-        ],
-        'backup-recovery' => [
-            'title' => 'Backup and Recovery',
-            'eyebrow' => 'Cyber Resilience',
-            'icon' => 'fa-database',
-            'summary' => 'Cyberlog builds practical backup and recovery readiness so critical systems can survive ransomware, accidental loss, or infrastructure failure.',
-            'points' => ['Backup architecture assessment', 'Recovery point and recovery time planning', 'Ransomware-resilient backup controls', 'Restore testing and incident playbooks'],
-        ],
-        'digital-forensics' => [
-            'title' => 'Digital Forensics',
-            'eyebrow' => 'Incident Investigation',
-            'icon' => 'fa-fingerprint',
-            'summary' => 'Cyberlog investigates endpoints, servers, logs, and artifacts to reconstruct activity, preserve evidence, and identify root cause after suspicious events.',
-            'points' => ['Endpoint and server artifact review', 'Timeline reconstruction and evidence handling', 'Log and account activity analysis', 'Root-cause and remediation reporting'],
-        ],
-    ];
-    // 12-service catalogue detail pages (config/cyberlog_services.php).
+    // 9-service catalogue detail pages (config/cyberlog_services.php).
     $cfg = collect(config('cyberlog_services', []))->firstWhere('route', $slug);
     if ($cfg && ! empty($cfg['detail'])) {
         $service = [
@@ -41,7 +11,7 @@
             'points'  => $cfg['detail']['points'],
         ];
     } else {
-        $service = $items[$slug] ?? $items['malware-analysis'];
+        abort(404);
     }
 @endphp
 

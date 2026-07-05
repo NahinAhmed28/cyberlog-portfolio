@@ -5,13 +5,20 @@
 
     $is = fn (...$names) => request()->routeIs(...$names) ? 'active' : '';
 
-    // The 12-service catalogue (single source of truth) — config/cyberlog_services.php
     $services = config('cyberlog_services', []);
     $svcUrl = fn ($r) => Route::has($r) ? route($r) : '#';
+    $byRoute = collect($services)->keyBy('route');
 
-    // route names that should light up the Services dropdown as active
+    $primaryRoutes = ['soc', 'vapt', 'it-audit', 'capacity-building'];
+    $primaryServices = collect($primaryRoutes)
+        ->map(fn ($route) => $byRoute->get($route))
+        ->filter()
+        ->values();
+    $offensiveServices = collect($services)->where('group', 'offensive')->values();
+    $defensiveServices = collect($services)->where('group', 'defensive')->values();
+
     $serviceRouteNames = array_merge(
-        ['services', 'public.services'],
+        ['services', 'public.services', 'defense-services'],
         array_map(fn ($s) => $s['route'], $services)
     );
 @endphp
@@ -52,21 +59,57 @@
                         Services
                     </a>
 
-                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown" style="min-width: 300px;">
+                    <ul class="dropdown-menu cl-services-menu" aria-labelledby="servicesDropdown">
                         <li>
-                            <a class="dropdown-item" style="white-space: normal;"
-                               href="{{ $u('public.services', 'services') }}">All Services</a>
+                            <a class="dropdown-item" href="{{ $u('public.services', 'services') }}">All Services</a>
                         </li>
                         <li><hr class="dropdown-divider"></li>
 
-                        @foreach ($services as $svc)
+                        @foreach ($primaryServices as $svc)
                             <li>
-                                <a class="dropdown-item" style="white-space: normal;"
-                                   href="{{ $svcUrl($svc['route']) }}">
+                                <a class="dropdown-item" href="{{ $svcUrl($svc['route']) }}">
                                     {{ $svc['title'] }}
                                 </a>
                             </li>
                         @endforeach
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li class="dropdown-submenu dropend">
+                            <a class="dropdown-item dropdown-toggle cl-submenu-toggle"
+                               href="{{ $u('public.defense-services', 'defense-services') }}#offensive"
+                               role="button"
+                               aria-expanded="false">
+                                Offensive Security Services
+                            </a>
+                            <ul class="dropdown-menu cl-submenu-menu">
+                                @foreach ($offensiveServices as $svc)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ $svcUrl($svc['route']) }}">
+                                            {{ $svc['title'] }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-submenu dropend">
+                            <a class="dropdown-item dropdown-toggle cl-submenu-toggle"
+                               href="{{ $u('public.defense-services', 'defense-services') }}#defensive"
+                               role="button"
+                               aria-expanded="false">
+                                Defensive Security Services
+                            </a>
+                            <ul class="dropdown-menu cl-submenu-menu">
+                                @foreach ($defensiveServices as $svc)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ $svcUrl($svc['route']) }}">
+                                            {{ $svc['title'] }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
                 </li>
 
@@ -84,7 +127,6 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="companyDropdown">
                         <li><a class="dropdown-item" href="{{ $u('public.about', 'about') }}">About Us</a></li>
-                        {{-- TODO: Our Team page/route not built yet --}}
                         <li><a class="dropdown-item" href="{{ $u('public.our-team', 'our-team') }}">Our Team</a></li>
                         <li><a class="dropdown-item" href="{{ $u('public.career', 'career') }}">Career</a></li>
                         <li><a class="dropdown-item" href="{{ $u('public.contact', 'contact') }}">Contact</a></li>
