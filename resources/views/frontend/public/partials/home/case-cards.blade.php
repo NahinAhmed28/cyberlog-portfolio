@@ -66,9 +66,9 @@
 
             <div class="cl-cases" id="clCases">
                 @foreach ($cases as $case)
-                    <article class="cl-case" data-reveal style="--cat: {{ $case['accent'] }}">
+                    <article class="cl-case" style="--cat: {{ $case['accent'] }}">
                         <a class="cl-case-shot" href="{{ $case['url'] }}" target="_blank" rel="noopener" aria-label="{{ $case['name'] }} website">
-                            <img src="{{ $shot($case['url']) }}" alt="{{ $case['name'] }} homepage" loading="lazy" referrerpolicy="no-referrer">
+                            <img src="{{ $shot($case['url']) }}" alt="{{ $case['name'] }} homepage" loading="eager" decoding="sync" fetchpriority="high" referrerpolicy="no-referrer">
                         </a>
                         <span class="cl-case-cat">{{ $case['cat'] }}</span>
                         <h3 class="cl-case-name">{{ $case['name'] }}</h3>
@@ -134,13 +134,6 @@
             radial-gradient(circle at 50% 45%, rgba(109, 156, 255, 0.12), transparent 60%),
             linear-gradient(160deg, #0e1838, #0a1126);
         position: relative;
-    }
-    .cl-case-shot::after {
-        content: "Loading preview…";
-        position: absolute; inset: 0;
-        display: grid; place-items: center;
-        font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .08em;
-        color: var(--muted); z-index: 0;
     }
     .cl-case-shot img {
         position: relative; z-index: 1;

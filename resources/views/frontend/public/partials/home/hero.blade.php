@@ -9,20 +9,27 @@
     <div class="container text-center">
 
         <h1 class="cl-hero-heading mb-4" data-reveal data-hero>
-            Build <span class="accent">Cyber Resilience</span><br class="d-none d-md-block">
-            Before Attackers Build Access
+            Build <br class="d-sm-none"><span class="accent">Cyber Resilience</span><br class="d-none d-md-block"><br class="d-sm-none">
+            Before Attackers <br class="d-sm-none">Build Access
         </h1>
 
-        <p class="lead text-muted lead-narrow mb-4" data-reveal data-hero>
-            Cyberlog delivers offensive security, managed SOC, compliance, threat intelligence,
-            and innovative solutions for enterprises, government organizations, financial
-            institutions, and critical infrastructure.
+        <p class="lead text-muted lead-narrow cl-hero-copy mb-4" data-reveal data-hero>
+            <span class="cl-copy-white">Cyberlog delivers</span>
+            <span class="cl-copy-blue">offensive security</span>,
+            <span class="cl-copy-blue">managed SOC</span>,
+            <span class="cl-copy-ice">compliance</span>,
+            <span class="cl-copy-blue">threat intelligence</span>,
+            and <span class="cl-copy-white">innovative solutions</span> for
+            <span class="cl-copy-ice" style="color: var(--warm-soft) !important;">enterprises</span>,
+            <span class="cl-copy-ice" style="color: var(--warm-soft) !important;">government organizations</span>,
+            <span class="cl-copy-ice" style="color: var(--warm-soft) !important;">financial institutions</span>,
+            and <span class="cl-copy-alert">critical infrastructure</span>.
         </p>
 
         {{-- TODO: copy — hero CTA button(s) not specified in the brief --}}
 
-        <p class="fs-5 mb-0" data-reveal data-hero>
-            Join our Cyber Defense eco-system with
+        <p class="fs-5 cl-hero-proof mb-0" data-reveal data-hero>
+            Join our <span class="cl-copy-blue">Cyber Defense eco-system</span><br class="d-sm-none"> with
             <span class="cl-glow-word">hundreds</span> of other organizations!
         </p>
 
@@ -48,6 +55,10 @@
         overflow: hidden;
         isolation: isolate;
         padding: 8rem 0 4rem;
+        background:
+            radial-gradient(940px 520px at 50% 38%, rgba(255, 255, 255, 0.09), rgba(70, 131, 255, 0.13) 42%, transparent 70%),
+            linear-gradient(145deg, #081529 0%, #0d244a 48%, #07172f 100%);
+        color: #ffffff;
     }
     .cl-home-hero::before,
     .cl-home-hero::after {
@@ -59,20 +70,20 @@
     }
     .cl-home-hero::before {
         background:
-            radial-gradient(600px 360px at 50% 42%, rgba(7, 17, 31, 0.18), rgba(7, 17, 31, 0.72) 78%, rgba(7, 17, 31, 0.86)),
-            radial-gradient(720px 440px at 84% 10%, rgba(228, 31, 61, 0.11), transparent 68%),
-            radial-gradient(640px 400px at 8% 72%, rgba(109, 156, 255, 0.09), transparent 70%);
+            radial-gradient(640px 380px at 50% 42%, rgba(255, 255, 255, 0.08), rgba(85, 148, 255, 0.08) 42%, rgba(7, 17, 31, 0.1) 72%, rgba(7, 17, 31, 0.38)),
+            radial-gradient(720px 440px at 84% 10%, rgba(109, 156, 255, 0.16), transparent 68%),
+            radial-gradient(640px 400px at 8% 72%, rgba(255, 255, 255, 0.06), transparent 70%);
     }
     .cl-home-hero::after {
         opacity: .38;
         background:
-            linear-gradient(115deg, transparent 0 44%, rgba(255, 255, 255, 0.05) 48%, transparent 52% 100%),
-            linear-gradient(rgba(130, 165, 220, 0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(130, 165, 220, 0.06) 1px, transparent 1px);
+            linear-gradient(115deg, transparent 0 44%, rgba(255, 255, 255, 0.08) 48%, transparent 52% 100%),
+            linear-gradient(rgba(215, 233, 255, 0.09) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(215, 233, 255, 0.065) 1px, transparent 1px);
         background-size: 100% 100%, 72px 72px, 72px 72px;
-        -webkit-mask-image: radial-gradient(circle at 50% 44%, rgba(0, 0, 0, .95), transparent 76%);
-        mask-image: radial-gradient(circle at 50% 44%, rgba(0, 0, 0, .95), transparent 76%);
-        animation: clHeroMeshDrift 18s linear infinite;
+        -webkit-mask-image: radial-gradient(circle at 50% 44%, rgba(0, 0, 0, .98), transparent 82%);
+        mask-image: radial-gradient(circle at 50% 44%, rgba(0, 0, 0, .98), transparent 82%);
+        animation: clHeroMeshDrift 34s linear infinite;
     }
     .cl-hero-canvas {
         position: absolute;
@@ -81,21 +92,67 @@
         height: 100%;
         z-index: 0;
         display: block;
-        opacity: .96;
+        opacity: 1;
         pointer-events: none;
-        filter: saturate(1.12);
+        filter: brightness(1.16) contrast(1.1) saturate(1.02);
     }
     .cl-home-hero .container { position: relative; z-index: 2; }
-    .cl-home-hero .cl-hero-heading { font-size: clamp(2.2rem, 5.5vw, 4rem); }
+    .cl-home-hero .cl-hero-heading {
+        font-size: clamp(2.2rem, 5.5vw, 4rem);
+        color: #ffffff;
+        text-shadow: 0 0 24px rgba(255, 255, 255, 0.28), 0 8px 28px rgba(3, 10, 24, 0.72);
+    }
+    .cl-home-hero .cl-hero-heading .accent {
+        background: none;
+        -webkit-text-fill-color: #ffffff;
+        color: #ffffff;
+        filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.46)) drop-shadow(0 0 26px rgba(109, 156, 255, 0.36));
+        animation: none;
+    }
+    .cl-home-hero .lead,
+    .cl-home-hero .fs-5 {
+        color: #f7fbff !important;
+        text-shadow: 0 2px 18px rgba(3, 10, 24, 0.66), 0 0 16px rgba(255, 255, 255, 0.12);
+    }
+    .cl-hero-copy,
+    .cl-hero-proof {
+        font-weight: 500;
+    }
+    .cl-copy-white,
+    .cl-copy-blue,
+    .cl-copy-ice,
+    .cl-copy-alert {
+        font-weight: 700;
+    }
+    .cl-copy-white {
+        color: #ffffff;
+        text-shadow: 0 0 16px rgba(255, 255, 255, 0.34), 0 2px 16px rgba(3, 10, 24, 0.7);
+    }
+    .cl-copy-blue {
+        color: #9fc5ff;
+        text-shadow: 0 0 18px rgba(109, 156, 255, 0.56), 0 2px 16px rgba(3, 10, 24, 0.72);
+    }
+    .cl-copy-ice {
+        color: #dbeaff;
+        text-shadow: 0 0 14px rgba(190, 220, 255, 0.32), 0 2px 16px rgba(3, 10, 24, 0.7);
+    }
+    .cl-copy-alert {
+        color: #ff8fa1;
+        text-shadow: 0 0 16px rgba(255, 72, 101, 0.45), 0 2px 16px rgba(3, 10, 24, 0.72);
+    }
+    .cl-home-hero [data-reveal][data-hero] {
+        opacity: 1;
+        transform: none;
+    }
 
     @keyframes clHeroMeshDrift {
         to { background-position: 0 0, 72px 72px, 72px 72px; }
     }
 
     .cl-glow-word {
-        color: var(--red-soft);
+        color: #ffffff;
         font-weight: 700;
-        text-shadow: 0 0 18px rgba(255, 47, 85, 0.7), 0 0 4px rgba(255, 47, 85, 0.9);
+        text-shadow: 0 0 16px rgba(255, 255, 255, 0.72), 0 0 28px rgba(109, 156, 255, 0.58);
     }
 
     /* Chips — static centered row on mobile */
@@ -115,17 +172,17 @@
         font-family: 'IBM Plex Mono', monospace;
         font-size: .82rem;
         color: var(--white);
-        background: rgba(15, 27, 52, 0.72);
-        -webkit-backdrop-filter: blur(8px);
-        backdrop-filter: blur(8px);
-        border: 1px solid var(--line);
+        background: rgba(8, 22, 46, 0.78);
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+        border: 1px solid rgba(220, 238, 255, 0.32);
         border-left: 3px solid var(--blue-bright);
         border-radius: var(--r);
         padding: .6rem 1rem;
         white-space: nowrap;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.34);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 22px rgba(255, 255, 255, 0.08);
     }
-    .cl-chip i { color: var(--red-soft); }
+    .cl-chip i { color: #ffffff; filter: drop-shadow(0 0 8px rgba(109, 156, 255, 0.65)); }
 
     /* Large screens — chips float only in the top/bottom corners, kept clear of the
        vertically-centered title + subtitle. Below 1200px they fall back to the static
@@ -153,6 +210,47 @@
     @media (prefers-reduced-motion: reduce) {
         .cl-home-hero::after { animation: none !important; }
         .cl-drift-chip .cl-chip { animation: none !important; }
+    }
+    @media (max-width: 575.98px) {
+        .cl-home-hero {
+            min-height: auto;
+            padding: 6.25rem 0 3.25rem;
+        }
+        .cl-home-hero .container {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow: hidden;
+        }
+        .cl-home-hero .cl-hero-heading {
+            font-size: 1.8rem;
+            line-height: 1.08;
+            max-width: 100%;
+        }
+        .cl-home-hero .lead,
+        .cl-home-hero .fs-5 {
+            font-size: .96rem !important;
+            line-height: 1.55;
+            max-width: 20.25rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cl-drift {
+            flex-direction: column;
+            align-items: center;
+            padding: 0 .5rem;
+        }
+        .cl-drift-chip,
+        .cl-drift-reveal {
+            max-width: 100%;
+        }
+        .cl-chip {
+            max-width: calc(100vw - 2rem);
+            justify-content: center;
+            text-align: center;
+            white-space: normal;
+            line-height: 1.35;
+        }
     }
 </style>
 @endpush
@@ -184,15 +282,15 @@
         }
         function seed() {
             resize();
-            var count = Math.max(44, Math.min(104, Math.floor(w * h / 12500)));
+            var count = Math.max(30, Math.min(76, Math.floor(w * h / 19000)));
             nodes = [];
             for (var i = 0; i < count; i++) {
                 var hub = Math.random() > 0.84;
                 nodes.push({
                     x: Math.random() * w,
                     y: Math.random() * h,
-                    vx: rand(-0.16, 0.16),
-                    vy: rand(-0.14, 0.14),
+                    vx: rand(-0.08, 0.08),
+                    vy: rand(-0.07, 0.07),
                     r: hub ? rand(2.4, 4.2) : rand(1.1, 2.2),
                     hub: hub,
                     phase: Math.random() * TAU,
@@ -210,8 +308,8 @@
                 nodes.push({
                     x: anchors[a].x + rand(-22, 22),
                     y: anchors[a].y + rand(-18, 18),
-                    vx: rand(-0.08, 0.08),
-                    vy: rand(-0.08, 0.08),
+                    vx: rand(-0.04, 0.04),
+                    vy: rand(-0.04, 0.04),
                     r: rand(3.2, 5.2),
                     hub: true,
                     phase: Math.random() * TAU,
@@ -225,7 +323,7 @@
         function buildLinks() {
             links = [];
             var seen = {};
-            var range = Math.max(132, Math.min(210, w / 6.4));
+            var range = Math.max(112, Math.min(168, w / 8.1));
             var rangeSq = range * range;
 
             for (var i = 0; i < nodes.length; i++) {
@@ -239,7 +337,7 @@
                 }
 
                 near.sort(function (a, b) { return a.dist - b.dist; });
-                var limit = nodes[i].hub ? 5 : 3;
+                var limit = nodes[i].hub ? 4 : 2;
                 for (var k = 0; k < Math.min(limit, near.length); k++) {
                     var nIndex = near[k].index;
                     var first = Math.min(i, nIndex);
@@ -261,7 +359,7 @@
         }
         function seedSignals() {
             signals = [];
-            var amount = Math.min(26, Math.max(10, Math.floor(links.length / 5)));
+            var amount = Math.min(14, Math.max(6, Math.floor(links.length / 8)));
             for (var i = 0; i < amount; i++) {
                 signals.push(makeSignal(Math.random()));
             }
@@ -270,8 +368,8 @@
             return {
                 link: links.length ? Math.floor(Math.random() * links.length) : 0,
                 t: progress || 0,
-                speed: rand(0.0022, 0.0068),
-                size: rand(1.6, 3.8),
+                speed: rand(0.0009, 0.0026),
+                size: rand(1.2, 2.6),
                 warm: Math.random() > 0.48
             };
         }
@@ -309,16 +407,16 @@
         }
         function drawAmbientGlow(time) {
             var glow = ctx.createRadialGradient(w * .5, h * .46, 0, w * .5, h * .46, Math.max(w, h) * .55);
-            glow.addColorStop(0, 'rgba(255,72,101,0.045)');
-            glow.addColorStop(.34, 'rgba(109,156,255,0.052)');
+            glow.addColorStop(0, 'rgba(255,255,255,0.045)');
+            glow.addColorStop(.34, 'rgba(126,178,255,0.062)');
             glow.addColorStop(1, 'rgba(7,17,31,0)');
             ctx.fillStyle = glow;
             ctx.fillRect(0, 0, w, h);
 
             if (mouse.active) {
                 var mg = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 210);
-                mg.addColorStop(0, 'rgba(255,72,101,0.18)');
-                mg.addColorStop(.42, 'rgba(109,156,255,0.08)');
+                mg.addColorStop(0, 'rgba(255,255,255,0.13)');
+                mg.addColorStop(.42, 'rgba(126,178,255,0.08)');
                 mg.addColorStop(1, 'rgba(7,17,31,0)');
                 ctx.fillStyle = mg;
                 ctx.fillRect(0, 0, w, h);
@@ -332,24 +430,24 @@
                 var a = nodes[link.a];
                 var b = nodes[link.b];
                 var p = pointOnLink(link, .5);
-                var pulse = (Math.sin(time * 0.0016 + link.phase) + 1) / 2;
-                var alpha = (link.warm ? .085 : .105) + pulse * .055;
+                var pulse = (Math.sin(time * 0.001 + link.phase) + 1) / 2;
+                var alpha = (link.warm ? .085 : .105) + pulse * .04;
 
                 ctx.beginPath();
                 ctx.moveTo(a.x, a.y);
                 ctx.quadraticCurveTo(p.cx, p.cy, b.x, b.y);
                 ctx.strokeStyle = link.warm
-                    ? 'rgba(255,72,101,' + alpha + ')'
-                    : 'rgba(109,156,255,' + alpha + ')';
-                ctx.lineWidth = link.warm ? 1.05 : .92;
+                    ? 'rgba(255,255,255,' + alpha + ')'
+                    : 'rgba(172,205,255,' + alpha + ')';
+                ctx.lineWidth = link.warm ? .9 : .82;
                 ctx.stroke();
 
                 if (a.hub || b.hub) {
                     ctx.beginPath();
                     ctx.moveTo(a.x, a.y);
                     ctx.quadraticCurveTo(p.cx, p.cy, b.x, b.y);
-                    ctx.strokeStyle = 'rgba(255,255,255,' + (.018 + pulse * .025) + ')';
-                    ctx.lineWidth = 2.4;
+                    ctx.strokeStyle = 'rgba(255,255,255,' + (.025 + pulse * .02) + ')';
+                    ctx.lineWidth = 1.7;
                     ctx.stroke();
                 }
             }
@@ -364,14 +462,14 @@
                 var dx = n.x - mouse.x;
                 var dy = n.y - mouse.y;
                 var d = dx * dx + dy * dy;
-                if (d > 26000) continue;
+                if (d > 22000) continue;
 
-                var alpha = 0.34 * (1 - d / 26000);
+                var alpha = 0.26 * (1 - d / 22000);
                 ctx.beginPath();
                 ctx.moveTo(n.x, n.y);
                 ctx.quadraticCurveTo((n.x + mouse.x) / 2 + dy * .08, (n.y + mouse.y) / 2 - dx * .08, mouse.x, mouse.y);
-                ctx.strokeStyle = 'rgba(255,72,101,' + alpha + ')';
-                ctx.lineWidth = 1.1;
+                ctx.strokeStyle = 'rgba(255,255,255,' + alpha + ')';
+                ctx.lineWidth = .9;
                 ctx.stroke();
             }
             ctx.restore();
@@ -390,20 +488,20 @@
                 var link = links[s.link % links.length];
                 var p = pointOnLink(link, s.t);
                 var back = pointOnLink(link, Math.max(0, s.t - .055));
-                var color = s.warm ? '255,72,101' : '255,191,27';
+                var color = s.warm ? '255,255,255' : '128,179,255';
 
                 ctx.beginPath();
                 ctx.moveTo(back.x, back.y);
                 ctx.lineTo(p.x, p.y);
-                ctx.strokeStyle = 'rgba(' + color + ',0.56)';
+                ctx.strokeStyle = 'rgba(' + color + ',0.48)';
                 ctx.lineWidth = s.size;
-                ctx.shadowBlur = 16;
-                ctx.shadowColor = 'rgba(' + color + ',0.72)';
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = 'rgba(' + color + ',0.58)';
                 ctx.stroke();
 
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, s.size * 1.12, 0, TAU);
-                ctx.fillStyle = 'rgba(255,255,255,0.78)';
+                ctx.fillStyle = 'rgba(255,255,255,0.76)';
                 ctx.fill();
                 ctx.shadowBlur = 0;
             }
@@ -418,13 +516,13 @@
                 var grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowRadius);
 
                 if (n.hub) {
-                    grad.addColorStop(0, 'rgba(255,255,255,0.88)');
-                    grad.addColorStop(.28, 'rgba(255,72,101,0.38)');
-                    grad.addColorStop(1, 'rgba(255,72,101,0)');
+                    grad.addColorStop(0, 'rgba(255,255,255,0.82)');
+                    grad.addColorStop(.3, 'rgba(126,178,255,0.28)');
+                    grad.addColorStop(1, 'rgba(126,178,255,0)');
                 } else {
-                    grad.addColorStop(0, 'rgba(255,255,255,0.72)');
-                    grad.addColorStop(.34, 'rgba(109,156,255,0.24)');
-                    grad.addColorStop(1, 'rgba(109,156,255,0)');
+                    grad.addColorStop(0, 'rgba(255,255,255,0.68)');
+                    grad.addColorStop(.34, 'rgba(172,205,255,0.2)');
+                    grad.addColorStop(1, 'rgba(172,205,255,0)');
                 }
 
                 ctx.beginPath();
@@ -434,7 +532,7 @@
 
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, r, 0, TAU);
-                ctx.fillStyle = n.hub ? 'rgba(255,191,27,0.92)' : 'rgba(185,211,255,0.86)';
+                ctx.fillStyle = n.hub ? 'rgba(255,255,255,0.88)' : 'rgba(221,237,255,0.74)';
                 ctx.fill();
             }
         }

@@ -49,10 +49,6 @@
                     The Story of<br><span>Our Growth</span>
                 </h2>
             </div>
-            <p class="cl-story-intro text-muted mb-0" data-reveal>
-                Cyberlog has grown from hands-on security assessment work into a cyber defense partner
-                covering offensive testing, managed operations, compliance, training, and advisory.
-            </p>
         </div>
 
         <div class="cl-story-chart" data-reveal>
@@ -101,10 +97,8 @@
             linear-gradient(180deg, rgba(7, 17, 31, 0.34), rgba(11, 24, 48, 0.72));
     }
     .cl-story-head {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
-        gap: 2rem;
-        align-items: end;
+        display: flex;
+        align-items: flex-end;
         margin-bottom: 2.2rem;
     }
     .cl-story-title {
@@ -183,7 +177,7 @@
 
     .cl-story-milestone {
         position: absolute;
-        left: var(--x);
+        left: clamp(7.5rem, var(--x), calc(100% - 7.5rem));
         top: 0;
         height: var(--y);
         width: min(230px, 22vw);
@@ -269,7 +263,7 @@
     .cl-story-stats span { color: var(--muted); font-size: .88rem; line-height: 1.35; }
 
     @media (max-width: 991.98px) {
-        .cl-story-head { grid-template-columns: 1fr; align-items: start; }
+        .cl-story-head { align-items: flex-start; }
         .cl-story-chart {
             min-height: 0;
             padding: 1rem;

@@ -829,6 +829,73 @@ html.js [data-reveal].is-in {
 }
 
 /* ===================================================================
+   SITE-WIDE CARD VISIBILITY
+   =================================================================== */
+.card,
+[class*="-card"],
+[class*="-tile"],
+.cl-console,
+.cl-client-card,
+.cl-logo-panel,
+.cl-step,
+.cl-solution-card,
+.cl-solution-tile,
+.cl-benefit,
+.cl-case,
+.cl-case-card,
+.cl-price-card,
+.cl-box,
+.cl-journey-item,
+.cl-review,
+.cl-capability,
+.cl-deck-card,
+.cl-browser,
+.cl-feature-card,
+.cl-service-card,
+.cl-service-tile,
+.cl-contact-card,
+.cl-team-card,
+.cl-career-card {
+    box-shadow:
+        0 0 0 1px rgba(220, 238, 255, 0.09),
+        0 0 18px rgba(180, 205, 255, 0.1),
+        0 14px 34px rgba(125, 160, 220, 0.1),
+        0 18px 40px rgba(0, 0, 0, 0.32) !important;
+}
+
+.card:hover,
+[class*="-card"]:hover,
+[class*="-tile"]:hover,
+.cl-console:hover,
+.cl-client-card:hover,
+.cl-logo-panel:hover,
+.cl-step:hover,
+.cl-solution-card:hover,
+.cl-solution-tile:hover,
+.cl-benefit:hover,
+.cl-case:hover,
+.cl-case-card:hover,
+.cl-price-card:hover,
+.cl-box:hover,
+.cl-journey-item:hover,
+.cl-review:hover,
+.cl-capability:hover,
+.cl-deck-card:hover,
+.cl-browser:hover,
+.cl-feature-card:hover,
+.cl-service-card:hover,
+.cl-service-tile:hover,
+.cl-contact-card:hover,
+.cl-team-card:hover,
+.cl-career-card:hover {
+    box-shadow:
+        0 0 0 1px rgba(220, 238, 255, 0.14),
+        0 0 24px rgba(190, 215, 255, 0.16),
+        0 18px 44px rgba(125, 160, 220, 0.14),
+        0 22px 46px rgba(0, 0, 0, 0.36) !important;
+}
+
+/* ===================================================================
    REDUCED MOTION
    =================================================================== */
 @media (prefers-reduced-motion: reduce) {
@@ -896,5 +963,3 @@ html.js [data-reveal].is-in {
     filter: drop-shadow(0 0 26px rgba(47, 107, 255, 0.25));
     user-select: none; pointer-events: none;
 }
-
-

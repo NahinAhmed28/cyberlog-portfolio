@@ -5,44 +5,15 @@
 
     $is = fn (...$names) => request()->routeIs(...$names) ? 'active' : '';
 
-    $serviceLinks = [
-        ['label' => 'All Services', 'pub' => 'public.services', 'legacy' => 'services'],
-        ['label' => 'Managed Security Services', 'pub' => 'public.soc', 'legacy' => 'soc'],
-        ['label' => 'VAPT / Pen Testing', 'pub' => 'public.vapt', 'legacy' => 'vapt'],
-        ['label' => 'Security Audits & ISO 27001', 'pub' => 'public.it-audit', 'legacy' => 'it-audit'],
-        ['label' => 'Security Awareness Training', 'pub' => 'public.capacity-building', 'legacy' => 'capacity-building'],
-        ['label' => 'Defense Services', 'pub' => 'public.defense-services', 'legacy' => 'defense-services'],
-        ['label' => 'vCISO', 'pub' => 'public.vciso', 'legacy' => 'vciso'],
-        ['label' => 'Malware Analysis', 'pub' => 'public.malware-analysis', 'legacy' => 'public.malware-analysis'],
-        ['label' => 'Next-Gen Firewall Protection', 'pub' => 'public.next-gen-firewall', 'legacy' => 'public.next-gen-firewall'],
-        ['label' => 'Backup and Recovery', 'pub' => 'public.backup-recovery', 'legacy' => 'public.backup-recovery'],
-        ['label' => 'Digital Forensics', 'pub' => 'public.digital-forensics', 'legacy' => 'public.digital-forensics'],
-    ];
+    // The 12-service catalogue (single source of truth) — config/cyberlog_services.php
+    $services = config('cyberlog_services', []);
+    $svcUrl = fn ($r) => Route::has($r) ? route($r) : '#';
 
-    $serviceRouteNames = [
-        'public.services',
-        'services',
-
-        'public.soc',
-        'soc',
-
-        'public.vapt',
-        'vapt',
-
-        'public.it-audit',
-        'it-audit',
-
-        'public.capacity-building',
-        'capacity-building',
-
-        'public.defense-services',
-        'defense-services',
-
-        'public.malware-analysis',
-        'public.next-gen-firewall',
-        'public.backup-recovery',
-        'public.digital-forensics',
-    ];
+    // route names that should light up the Services dropdown as active
+    $serviceRouteNames = array_merge(
+        ['services', 'public.services'],
+        array_map(fn ($s) => $s['route'], $services)
+    );
 @endphp
 
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
@@ -81,16 +52,18 @@
                         Services
                     </a>
 
-                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                        @foreach ($serviceLinks as $link)
-                            @if ($loop->index === 1)
-                                <li><hr class="dropdown-divider"></li>
-                            @endif
+                    <ul class="dropdown-menu" aria-labelledby="servicesDropdown" style="min-width: 300px;">
+                        <li>
+                            <a class="dropdown-item" style="white-space: normal;"
+                               href="{{ $u('public.services', 'services') }}">All Services</a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
 
+                        @foreach ($services as $svc)
                             <li>
-                                <a class="dropdown-item"
-                                   href="{{ $u($link['pub'], $link['legacy']) }}">
-                                    {{ $link['label'] }}
+                                <a class="dropdown-item" style="white-space: normal;"
+                                   href="{{ $svcUrl($svc['route']) }}">
+                                    {{ $svc['title'] }}
                                 </a>
                             </li>
                         @endforeach

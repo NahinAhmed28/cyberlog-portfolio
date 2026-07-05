@@ -9,26 +9,18 @@
 
         <div class="row gy-4">
 
-            {{-- Services --}}
-            <div class="col-6 col-lg-3">
+            {{-- Services — the 12-service catalogue (config/cyberlog_services.php) --}}
+            <div class="col-12 col-lg-6">
                 <div class="cl-foot-head">Services</div>
-                <a class="cl-foot-link" href="{{ $u('public.soc', 'soc') }}">SOC as a Service</a>
-                <a class="cl-foot-link" href="{{ $u('public.vapt', 'vapt') }}">VAPT / Pen Testing</a>
-                <a class="cl-foot-link" href="{{ $u('public.it-audit', 'it-audit') }}">IT Audit &amp; ISO 27001</a>
-                <a class="cl-foot-link" href="{{ $u('public.capacity-building', 'capacity-building') }}">Capacity Building</a>
-                <a class="cl-foot-link" href="{{ $u('public.defense-services', 'defense-services') }}">Defense Services</a>
-                <a class="cl-foot-link" href="{{ $u('public.malware-analysis', 'public.malware-analysis') }}">Malware Analysis</a>
-                <a class="cl-foot-link" href="{{ $u('public.digital-forensics', 'public.digital-forensics') }}">Digital Forensics</a>
-            </div>
-
-            {{-- Solutions --}}
-            <div class="col-6 col-lg-3">
-                <div class="cl-foot-head">Solutions</div>
-                <a class="cl-foot-link" href="{{ $u('public.vciso', 'vciso') }}">vCISO</a>
-                <a class="cl-foot-link" href="{{ $u('public.defense-services', 'defense-services') }}#threat-intel">Threat Intelligence</a>
-                <a class="cl-foot-link" href="{{ $u('public.defense-services', 'defense-services') }}#incident-response">Incident Response</a>
-                <a class="cl-foot-link" href="{{ $u('public.next-gen-firewall', 'public.next-gen-firewall') }}">Firewall Management</a>
-                <a class="cl-foot-link" href="{{ $u('public.backup-recovery', 'public.backup-recovery') }}">Backup &amp; Recovery</a>
+                <div class="row">
+                    @foreach (array_chunk(config('cyberlog_services', []), 6) as $chunk)
+                        <div class="col-sm-6">
+                            @foreach ($chunk as $svc)
+                                <a class="cl-foot-link" href="{{ Route::has($svc['route']) ? route($svc['route']) : '#' }}">{{ $svc['title'] }}</a>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
             </div>
 
             {{-- Company --}}
@@ -47,25 +39,10 @@
                 <p class="text-muted mb-2"><i class="fas fa-location-dot text-primary me-2"></i>374 Tejgaon Industrial Area, 3rd Floor, Dhaka 1208, Bangladesh</p>
                 <p class="text-muted mb-2"><i class="fas fa-envelope text-primary me-2"></i><a class="link-light text-decoration-none" href="mailto:info@cyberlog.bd">info@cyberlog.bd</a></p>
                 <p class="text-muted mb-3"><i class="fas fa-phone text-primary me-2"></i>+880 1357-699084</p>
-                <p class="text-muted small mb-3">Trade License: TRAD/DNCC/030973/2025</p>
                 <div class="d-flex gap-2">
-<div class="d-flex gap-2">
-    <a class="btn btn-outline-light btn-social"
-       href="https://www.facebook.com/login"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Facebook">
-        <i class="fab fa-fw fa-facebook-f"></i>
-    </a>
-
-    <a class="btn btn-outline-light btn-social"
-       href="https://www.linkedin.com/login"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="LinkedIn">
-        <i class="fab fa-fw fa-linkedin-in"></i>
-    </a>
-</div>
+                    <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-fw fa-x-twitter"></i></a>
                 </div>
             </div>
 

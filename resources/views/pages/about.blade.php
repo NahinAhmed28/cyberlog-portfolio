@@ -8,33 +8,30 @@
     'eyebrow' => 'About Us',
     'heading' => 'Defending What <span class="text-teal">Matters Most</span>',
     'subheading' => 'Cyberlog is a cyber defense partner for enterprises, government, and financial institutions — combining offensive security, managed operations, and compliance expertise.',
-    'heroIcon' => 'fas fa-star',
-    'heroCaption' => 'Our story',
+    'centered' => true,
 ])
 
-{{-- Our Story --}}
+{{-- Who We Are + Statistics --}}
 <section class="page-section" id="story">
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <p class="section-eyebrow mb-2">Our Story</p>
-                <h2 class="fw-bold text-secondary mb-3">A decade of building cyber resilience</h2>
-                <p class="text-muted">
-                    Cyberlog helps organizations strengthen their cyber resilience through offensive
-                    security, managed security operations, compliance readiness, and expert advisory
-                    services. What started as a focused security team has grown into a full-spectrum
-                    cyber defense partner trusted by leading organizations across Bangladesh.
-                </p>
+                <p class="section-eyebrow mb-2">Who We Are</p>
+                <h2 class="fw-bold text-secondary mb-3">Building digital resilience, one engagement at a time</h2>
                 <p class="text-muted mb-0">
-                    Our growth has been driven by measurable outcomes and long-term client trust —
-                    from securing the country's capital market infrastructure to building the
-                    cybersecurity capacity of government institutions.
+                    Cyberlog Limited is a Bangladesh-based cybersecurity company delivering enterprise-grade
+                    protection for organizations navigating an evolving threat landscape. From offensive
+                    testing like VAPT and Red Teaming to defensive operations like SOC and incident response,
+                    we combine technical depth with practical, business-focused guidance. Our team has secured
+                    critical government institutions, financial exchanges, and private enterprises across
+                    Bangladesh, building digital resilience one engagement at a time.
                 </p>
             </div>
             <div class="col-lg-6">
+                {{-- TODO: confirm real figures with the Cyberlog team --}}
                 <div class="row g-3">
                     @foreach ([
-                        ['500+', 'Users protected'],
+                        ['5+', 'Years defending Bangladesh'],
                         ['14+', 'Enterprise &amp; government clients'],
                         ['24/7', 'Security operations coverage'],
                         ['93', 'ISO 27001 controls implemented'],
@@ -47,20 +44,16 @@
     </div>
 </section>
 
-{{-- Our Values (ref: buguard.io) --}}
+{{-- Our Values --}}
 <section class="page-section bg-navy-soft text-white" id="values">
     <div class="container">
         <p class="section-eyebrow text-center mb-2">Our Values</p>
-        <h2 class="page-section-heading text-center text-uppercase text-white mb-4">What Drives Us</h2>
-        <p class="text-center text-white-50 lead-narrow mb-5">
-            Through effective testing and defensive strategies, we help organizations across Bangladesh
-            stay one step ahead of evolving cyber threats.
-        </p>
+        <h2 class="page-section-heading text-center text-uppercase text-white mb-5">What Drives Us</h2>
         <div class="row g-4">
             @foreach ([
-                ['fa-hands-helping', 'Helpfulness', 'Support that is always there to help — a security partner you can rely on.'],
-                ['fa-handshake-angle', 'Integrity', 'We conduct ourselves honestly, transparently, and ethically at all times.'],
-                ['fa-lightbulb', 'Pragmatism', 'Practical, prioritized recommendations you can actually implement.'],
+                ['fa-eye', 'Vigilance', 'We stay alert to emerging threats around the clock, so our clients never have to face a security incident unprepared.'],
+                ['fa-scale-balanced', 'Integrity', 'We operate with honesty, transparency, and ethical conduct in every engagement, earning the trust placed in us by government and enterprise clients alike.'],
+                ['fa-bullseye', 'Precision', 'We deliver accurate, evidence-based findings and practical recommendations our clients can act on immediately, not guesswork dressed up as analysis.'],
             ] as $v)
                 <div class="col-md-4">
                     <div class="cl-step h-100 text-center">
@@ -73,6 +66,9 @@
         </div>
     </div>
 </section>
+
+{{-- All-clients logo theme --}}
+@include('partials.clients')
 
 @include('partials.reviews')
 

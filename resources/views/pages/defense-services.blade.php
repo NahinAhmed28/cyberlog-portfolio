@@ -4,104 +4,211 @@
 
 @section('content')
 
-{{-- Section 1 — Hero --}}
-@include('partials.page-hero', [
-    'eyebrow' => 'Defense Services',
-    'heading' => 'Detect, Respond &amp; <span class="text-teal">Recover</span> — End to End',
-    'subheading' => 'A complete defensive stack covering threat intelligence, incident response, firewall management, risk assessment, and backup — so you can stop, contain, and recover from attacks.',
-    'badges' => ['Threat Intel', 'Incident Response', 'Firewall Mgmt', 'Risk Assessment', 'Backup'],
-    'heroIcon' => 'fas fa-tower-broadcast',
-    'heroCaption' => 'Managed cyber defense',
-])
+{{-- No hero per feedback — CrowdStrike-style alternating service blocks (ref: crowdstrike.com) --}}
+@php
+    $svcUrl = fn ($r) => Route::has($r) ? route($r) : '#';
 
-{{-- Section 2 — Threat Intelligence product layout (ref: buguard.io) --}}
-<section class="page-section bg-navy-soft text-white" id="threat-intel">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <p class="section-eyebrow mb-2">Threat Intelligence</p>
-                <h2 class="fw-bold mb-3">Get <span class="text-teal">Real-time</span> and Reliable Intelligence for Your Business</h2>
-                <p class="text-white-50 mb-4">
-                    Cyberlog's threat intelligence service empowers businesses to swiftly identify and
-                    mitigate threats across their digital presence — regardless of their industry.
-                    Strengthen your security posture with proactive intelligence.
-                </p>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Credit Cards Monitoring</li>
-                    <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Manual Malware Analysis Service</li>
-                    <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Ransomware Gangs Feeds</li>
-                </ul>
-                <div class="d-flex gap-3 mt-4">
-                    <a class="btn btn-primary text-white fw-bold" href="{{ route('contact') }}">Book a Demo</a>
-                    <a class="btn btn-outline-light" href="#capabilities">Learn More</a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="cl-step text-center py-5">
-                    <i class="fas fa-satellite-dish text-teal" style="font-size:5rem;"></i>
-                    <p class="mt-3 mb-0 text-white-50">Real-time threat feeds &amp; dark-web monitoring</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    $offensive = [
+        [
+            'title'   => 'Red Team Assessment',
+            'route'   => 'red-team',
+            'icon'    => 'fa-user-secret',
+            'points'  => ['Authorized, controlled attack simulations', 'Tests people, processes, and technology', 'Validates real-world defense readiness'],
+            'related' => ['Ethical Hacking', 'Social Engineering', 'Vulnerability Exploitation'],
+        ],
+        [
+            'title'   => 'Web, API & Mobile Application Security Testing',
+            'route'   => 'app-security-testing',
+            'icon'    => 'fa-mobile-screen-button',
+            'points'  => ['Full-stack testing across web, API, and mobile', 'Mapped to the OWASP Top 10', 'Manual and automated assessment'],
+            'related' => ['Web App Scanning', 'API Testing', 'Mobile Application Testing'],
+        ],
+        [
+            'title'   => 'Network Security Assessment',
+            'route'   => 'network-security',
+            'icon'    => 'fa-network-wired',
+            'points'  => ['Internal and external network testing', 'Identifies misconfigurations and exposed services', 'Hands-on exploitation, not just scanning'],
+            'related' => ['Server-Side Testing', 'Penetration Testing'],
+        ],
+        [
+            'title'   => 'Source Code Security Audit',
+            'route'   => 'source-code-audit',
+            'icon'    => 'fa-file-code',
+            'points'  => ['White box and gray box code review', 'Flags vulnerabilities before deployment', 'Covers SAST and DAST methodologies'],
+            'related' => ['White Box Testing', 'Gray Box Testing'],
+        ],
+    ];
 
-{{-- Capabilities — 5 defense services (ref: crowdstrike.com) --}}
-<section class="page-section" id="capabilities">
+    $defensive = [
+        [
+            'title'   => 'Threat Intelligence',
+            'route'   => 'threat-intelligence',
+            'icon'    => 'fa-satellite-dish',
+            'points'  => ['Continuous monitoring of emerging threats', 'Detects leaked credentials and exposed assets', 'Early warning for proactive defense'],
+            'related' => ['Threat Hunting', 'SIEM Solution'],
+        ],
+        [
+            'title'   => 'Secure Web Application Development',
+            'route'   => 'secure-development',
+            'icon'    => 'fa-code',
+            'points'  => ['Security-by-design architecture', 'Built-in DDoS protection', 'Secure coding and deployment support'],
+            'related' => ['Next-Gen Firewall Protection'],
+        ],
+        [
+            'title'   => 'Cybersecurity Consultancy',
+            'route'   => 'consultancy',
+            'icon'    => 'fa-user-shield',
+            'points'  => ['Strategic, business-aligned advisory', 'Risk-based policy and roadmap guidance', 'Expert support for management and IT teams'],
+            'related' => ['Damage Control'],
+        ],
+        [
+            'title'   => 'Secure Backup & Recovery Solutions',
+            'route'   => 'public.backup-recovery',
+            'icon'    => 'fa-database',
+            'points'  => ['Reliable backup and disaster recovery', 'Minimizes downtime during disruption', 'Fast restoration of critical operations'],
+            'related' => ['Incident Response (IR)', 'Digital Forensics'],
+        ],
+    ];
+@endphp
+
+{{-- Section 1 — Offensive Security Services --}}
+<section class="page-section cl-ds-first" id="offensive">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">What We Defend</p>
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Our Defense Services</h2>
-        <div class="row g-4">
-            @foreach ([
-                ['fa-satellite-dish', 'Threat Intelligence', 'Real-time feeds, dark-web monitoring, and malware analysis to anticipate attacks.'],
-                ['fa-hand-fist', 'Incident Response', 'Respond, rebuild, restore, and uncover compromise — fast, with a clear playbook.'],
-                ['fa-fire', 'Firewall Management', 'Design, deploy, and continuously tune perimeter and internal firewall policies.'],
-                ['fa-triangle-exclamation', 'Risk Assessment', 'Identify, quantify, and prioritize risk across your people, process, and technology.'],
-                ['fa-database', 'Backup &amp; Recovery', 'Resilient, tested backups and recovery plans to survive ransomware and outages.'],
-            ] as $cap)
-                <div class="col-md-6 col-lg-4">
-                    <div class="cl-solution-card h-100">
-                        <div class="cl-solution-icon"><i class="fas {{ $cap[0] }}"></i></div>
-                        <h5 class="fw-bold">{!! $cap[1] !!}</h5>
-                        <p class="text-muted mb-0">{{ $cap[2] }}</p>
+        <p class="section-eyebrow text-center mb-2">What We Deliver</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Offensive <span class="cl-title-accent">Security Services</span></h2>
+
+        @foreach ($offensive as $block)
+            <div class="row g-4 g-lg-5 align-items-center cl-ds-row">
+                <div class="col-lg-6 {{ $loop->odd ? '' : 'order-lg-2' }}">
+                    <a class="cl-ds-title" href="{{ $svcUrl($block['route']) }}">{{ $block['title'] }} <i class="fas fa-arrow-right"></i></a>
+                    <ul class="cl-ds-points list-unstyled">
+                        @foreach ($block['points'] as $p)
+                            <li><i class="fas fa-circle-plus"></i>{{ $p }}</li>
+                        @endforeach
+                    </ul>
+                    <div class="cl-ds-related">
+                        <span class="cl-ds-rel-label">Related:</span>
+                        @foreach ($block['related'] as $rel)
+                            <span class="cl-ds-rel">{{ $rel }}</span>@if (! $loop->last)<span class="cl-ds-dot">&middot;</span>@endif
+                        @endforeach
                     </div>
                 </div>
-            @endforeach
-        </div>
+                <div class="col-lg-6 {{ $loop->odd ? '' : 'order-lg-1' }}">
+                    <a class="cl-ds-visual cl-ds-visual-red" href="{{ $svcUrl($block['route']) }}" aria-label="{{ $block['title'] }}">
+                        <i class="fas {{ $block['icon'] }}"></i>
+                    </a>
+                </div>
+            </div>
+        @endforeach
     </div>
 </section>
 
-{{-- Consulting / platform services strip (ref: crowdstrike.com) --}}
-<section class="page-section bg-light" id="consulting">
+{{-- Section 2 — Defensive Security Services --}}
+<section class="page-section bg-light" id="defensive">
     <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="cl-benefit h-100">
-                    <i class="fas fa-people-group mb-3" style="font-size:2rem;"></i>
-                    <h4 class="fw-bold">Consulting Services</h4>
-                    <ul class="list-unstyled mt-3 mb-0">
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Strategic advisory services</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Cloud and identity services</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Red team services</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Environment hardening</li>
+        <p class="section-eyebrow text-center mb-2">What We Defend</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Defensive <span class="cl-title-accent">Security Services</span></h2>
+
+        @foreach ($defensive as $block)
+            <div class="row g-4 g-lg-5 align-items-center cl-ds-row">
+                <div class="col-lg-6 {{ $loop->odd ? '' : 'order-lg-2' }}">
+                    <a class="cl-ds-title" href="{{ $svcUrl($block['route']) }}">{{ $block['title'] }} <i class="fas fa-arrow-right"></i></a>
+                    <ul class="cl-ds-points list-unstyled">
+                        @foreach ($block['points'] as $p)
+                            <li><i class="fas fa-circle-plus blue"></i>{{ $p }}</li>
+                        @endforeach
                     </ul>
+                    <div class="cl-ds-related">
+                        <span class="cl-ds-rel-label">Related:</span>
+                        @foreach ($block['related'] as $rel)
+                            <span class="cl-ds-rel">{{ $rel }}</span>@if (! $loop->last)<span class="cl-ds-dot">&middot;</span>@endif
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-6 {{ $loop->odd ? '' : 'order-lg-1' }}">
+                    <a class="cl-ds-visual cl-ds-visual-blue" href="{{ $svcUrl($block['route']) }}" aria-label="{{ $block['title'] }}">
+                        <i class="fas {{ $block['icon'] }}"></i>
+                    </a>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="cl-benefit h-100">
-                    <i class="fas fa-layer-group mb-3" style="font-size:2rem;"></i>
-                    <h4 class="fw-bold">Platform Services</h4>
-                    <ul class="list-unstyled mt-3 mb-0">
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Accelerate time to ROI</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Configure and fully operationalize the platform</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Level up your security skills</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
 
 @include('partials.talk-to-expert', ['title' => 'Under attack or want to be ready?', 'text' => 'Our defense team is on standby 24/7.'])
 
 @endsection
+
+@push('styles')
+<style>
+    /* First section clears the fixed navbar since there is no hero. */
+    .cl-ds-first { padding-top: 9rem; }
+
+    .cl-ds-row { margin-bottom: 3.5rem; }
+    .cl-ds-row:last-child { margin-bottom: 0; }
+
+    .cl-ds-title {
+        display: inline-block;
+        font-family: 'Chakra Petch', sans-serif;
+        font-weight: 700;
+        font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+        color: var(--white);
+        text-decoration: none;
+        margin-bottom: 1.1rem;
+        transition: color .2s var(--ease);
+    }
+    .cl-ds-title:hover { color: var(--warm-soft); }
+    .cl-ds-title i { font-size: .8em; margin-left: .4rem; transition: transform .2s var(--ease); }
+    .cl-ds-title:hover i { transform: translateX(5px); }
+
+    .cl-ds-points { margin-bottom: 1.1rem; }
+    .cl-ds-points li {
+        display: flex; align-items: flex-start; gap: .65rem;
+        color: var(--text); margin-bottom: .7rem;
+    }
+    .cl-ds-points i { color: var(--red-soft); margin-top: .28rem; flex: 0 0 auto; }
+    .cl-ds-points i.blue { color: var(--blue-bright); }
+
+    .cl-ds-related { color: var(--muted); font-size: .85rem; }
+    .cl-ds-rel-label {
+        font-family: 'IBM Plex Mono', monospace; font-size: .72rem;
+        letter-spacing: .1em; text-transform: uppercase; margin-right: .5rem;
+    }
+    .cl-ds-rel { color: var(--white); }
+    .cl-ds-dot { margin: 0 .5rem; color: var(--muted); }
+
+    /* Visual panels (ref: crowdstrike's illustration tiles) */
+    .cl-ds-visual {
+        display: grid; place-items: center;
+        min-height: 250px; height: 100%;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        overflow: hidden;
+        transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .cl-ds-visual:hover { transform: translateY(-5px); box-shadow: 0 24px 60px rgba(0, 0, 0, .4); }
+    .cl-ds-visual i { font-size: clamp(3.4rem, 6vw, 5rem); }
+
+    .cl-ds-visual-red {
+        background:
+            repeating-conic-gradient(from 0deg at 50% 50%, rgba(228, 31, 61, .16) 0deg 4deg, transparent 4deg 14deg),
+            radial-gradient(circle at 50% 50%, rgba(228, 31, 61, .3), rgba(7, 17, 31, .96) 68%);
+    }
+    .cl-ds-visual-red:hover { border-color: var(--red-soft); }
+    .cl-ds-visual-red i { color: var(--red-soft); filter: drop-shadow(0 0 22px rgba(228, 31, 61, .45)); }
+
+    .cl-ds-visual-blue {
+        background:
+            repeating-conic-gradient(from 0deg at 50% 50%, rgba(47, 107, 255, .14) 0deg 4deg, transparent 4deg 14deg),
+            radial-gradient(circle at 50% 50%, rgba(47, 107, 255, .28), rgba(7, 17, 31, .96) 68%);
+    }
+    .cl-ds-visual-blue:hover { border-color: var(--blue-bright); }
+    .cl-ds-visual-blue i { color: var(--blue-bright); filter: drop-shadow(0 0 22px rgba(47, 107, 255, .45)); }
+
+    @media (max-width: 991.98px) {
+        .cl-ds-first { padding-top: 7rem; }
+        .cl-ds-visual { min-height: 200px; }
+        .cl-ds-row { margin-bottom: 2.75rem; }
+    }
+</style>
+@endpush

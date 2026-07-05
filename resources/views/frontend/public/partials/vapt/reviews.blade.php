@@ -8,28 +8,25 @@
 
 <section class="page-section cl-vapt-reviews" id="reviews">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2" data-reveal>Client Feedback</p>
+        <p class="section-eyebrow text-center mb-2" data-reveal>CLIENT FEEDBACK</p>
         <h2 class="page-section-heading text-center text-secondary mb-2" data-reveal>
-            Our Clients <span class="cl-title-accent">Say It Best</span>
+            Our Clients Say It Best
         </h2>
-        <p class="text-center text-muted mb-5" data-reveal>
-            Practical offensive testing, business-readable risk reporting, and remediation support.
-        </p>
 
         <div class="row g-4">
             @foreach ($reviews as $review)
                 <div class="col-md-4">
-                    <div class="cl-review h-100 d-flex flex-column" data-reveal>
-                        <div class="cl-stars mb-2">
+                    <article class="cl-vapt-review h-100 d-flex flex-column" data-reveal>
+                        <div class="cl-vapt-review-rating mb-3">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            <span class="ms-1 fw-bold text-white">{{ $review['rating'] }}</span>
+                            <span>{{ $review['rating'] }}</span>
                         </div>
-                        <p class="fst-italic">&ldquo;{{ $review['quote'] }}&rdquo;</p>
+                        <p class="cl-vapt-review-quote">&ldquo;{{ $review['quote'] }}&rdquo;</p>
                         <div class="mt-auto">
-                            <div class="fw-bold text-secondary">{{ $review['name'] }}</div>
-                            <span class="badge bg-light text-secondary border mt-2">{{ $review['badge'] }}</span>
+                            <div class="cl-vapt-review-name">{{ $review['name'] }}</div>
+                            <span class="cl-vapt-review-tag">{{ $review['badge'] }}</span>
                         </div>
-                    </div>
+                    </article>
                 </div>
             @endforeach
         </div>
@@ -40,8 +37,52 @@
 <style>
     .cl-vapt-reviews {
         background:
+            radial-gradient(520px 360px at 92% 8%, rgba(255, 138, 0, .1), transparent 62%),
             radial-gradient(740px 420px at 12% 18%, rgba(109, 156, 255, .08), transparent 62%),
-            linear-gradient(180deg, rgba(7, 17, 31, .98), rgba(5, 12, 23, .98));
+            linear-gradient(180deg, rgba(5, 10, 18, .99), rgba(7, 17, 31, .98));
+    }
+    .cl-vapt-review {
+        min-height: 310px;
+        padding: clamp(1.35rem, 2.6vw, 2rem);
+        border: 1px solid rgba(255, 255, 255, .12);
+        border-radius: 8px;
+        background: rgba(10, 17, 27, .78);
+        color: var(--text);
+    }
+    .cl-vapt-review-rating {
+        display: flex;
+        align-items: center;
+        gap: .18rem;
+        color: var(--warm-soft);
+        font-size: .9rem;
+    }
+    .cl-vapt-review-rating span {
+        margin-left: .45rem;
+        color: var(--white);
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: 700;
+    }
+    .cl-vapt-review-quote {
+        color: var(--white);
+        font-style: italic;
+        line-height: 1.7;
+        margin-bottom: 1.4rem;
+    }
+    .cl-vapt-review-name {
+        color: var(--white);
+        font-weight: 700;
+        line-height: 1.45;
+    }
+    .cl-vapt-review-tag {
+        display: inline-flex;
+        margin-top: .8rem;
+        padding: .34rem .58rem;
+        border: 1px solid rgba(109, 156, 255, .26);
+        border-radius: 6px;
+        background: rgba(47, 107, 255, .14);
+        color: var(--blue-bright);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: .72rem;
     }
 </style>
 @endpush

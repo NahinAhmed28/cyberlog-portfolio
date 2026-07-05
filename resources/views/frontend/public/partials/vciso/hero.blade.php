@@ -1,16 +1,17 @@
 @php
+    // Left side — Defensive (Blue Team); Right side — Offensive & Assessment (Red Team)
     $leftNodes = [
-        ['icon' => 'fa-chess-board', 'label' => 'Security Strategy', 'x' => 16, 'y' => 18],
-        ['icon' => 'fa-scale-balanced', 'label' => 'GRC Leadership', 'x' => 9, 'y' => 41],
-        ['icon' => 'fa-clipboard-check', 'label' => 'ISO Readiness', 'x' => 14, 'y' => 66],
-        ['icon' => 'fa-people-arrows', 'label' => 'Third-Party Risk', 'x' => 27, 'y' => 84],
+        ['icon' => 'fa-desktop', 'label' => 'Security Operations Center (SOC)', 'x' => 16, 'y' => 18],
+        ['icon' => 'fa-bolt', 'label' => 'Incident Response', 'x' => 9, 'y' => 41],
+        ['icon' => 'fa-shield-virus', 'label' => 'Firewall Management', 'x' => 14, 'y' => 66],
+        ['icon' => 'fa-database', 'label' => 'Data Protection & Backup', 'x' => 27, 'y' => 84],
     ];
 
     $rightNodes = [
-        ['icon' => 'fa-desktop', 'label' => 'SOC Alignment', 'x' => 84, 'y' => 18],
-        ['icon' => 'fa-triangle-exclamation', 'label' => 'Incident Command', 'x' => 91, 'y' => 41],
-        ['icon' => 'fa-chart-line', 'label' => 'Board Reporting', 'x' => 86, 'y' => 66],
-        ['icon' => 'fa-bug', 'label' => 'Offensive Testing', 'x' => 73, 'y' => 84],
+        ['icon' => 'fa-bug', 'label' => 'VAPT (Vulnerability Assessment & Penetration Testing)', 'x' => 84, 'y' => 18],
+        ['icon' => 'fa-satellite-dish', 'label' => 'Threat Intelligence', 'x' => 91, 'y' => 41],
+        ['icon' => 'fa-triangle-exclamation', 'label' => 'Risk Assessment', 'x' => 86, 'y' => 66],
+        ['icon' => 'fa-graduation-cap', 'label' => 'Capacity Building (Training)', 'x' => 73, 'y' => 84],
     ];
 @endphp
 
@@ -60,7 +61,7 @@
                         <span class="cl-vciso-ring"></span>
                         <span class="cl-vciso-ring cl-vciso-ring-two"></span>
                         <div class="cl-vciso-core-badge">
-                            <i class="fas fa-user-shield"></i>
+                            <img src="{{ asset('assets/img/cyberlog-logo.png') }}" alt="Cyberlog">
                             <strong>vCISO</strong>
                         </div>
                     </div>
@@ -173,17 +174,13 @@
     .cl-vciso-proof strong {
         color: var(--warm-soft);
     }
+    /* No panel box — the diagram blends naturally with the hero background. */
     .cl-vciso-diagram {
         position: relative;
         min-height: 580px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        overflow: hidden;
         background:
-            radial-gradient(circle at 50% 50%, rgba(255, 72, 101, 0.16), transparent 22%),
-            radial-gradient(circle at 50% 50%, rgba(109, 156, 255, 0.1), transparent 36%),
-            linear-gradient(145deg, rgba(5, 12, 23, 0.94), rgba(12, 21, 39, 0.98));
-        box-shadow: 0 32px 90px rgba(0, 0, 0, 0.46);
+            radial-gradient(circle at 50% 50%, rgba(255, 72, 101, 0.14), transparent 24%),
+            radial-gradient(circle at 50% 50%, rgba(109, 156, 255, 0.09), transparent 38%);
     }
     .cl-vciso-diagram::before {
         content: "";
@@ -209,8 +206,12 @@
         stroke-dasharray: 2 4;
         animation: clVcisoSignal 4.8s linear infinite;
     }
-    .cl-vciso-lines path:nth-child(even) {
-        stroke: rgba(255, 72, 101, 0.26);
+    /* Left = Defensive (Blue Team), Right = Offensive & Assessment (Red Team) */
+    .cl-vciso-lines path:nth-child(-n+4) {
+        stroke: rgba(109, 156, 255, 0.32);
+    }
+    .cl-vciso-lines path:nth-child(n+5) {
+        stroke: rgba(255, 72, 101, 0.3);
         animation-delay: 1.2s;
     }
     @keyframes clVcisoSignal {
@@ -243,19 +244,22 @@
         50% { transform: scale(1.08); opacity: .42; }
     }
     .cl-vciso-core-badge {
-        width: 92px;
-        height: 92px;
+        width: 112px;
+        height: 112px;
         border-radius: 50%;
         display: grid;
         place-items: center;
-        gap: .1rem;
+        align-content: center;
+        gap: .3rem;
         border: 1px solid rgba(255, 191, 27, 0.38);
         background: radial-gradient(circle at 50% 26%, rgba(255, 191, 27, 0.16), rgba(7, 17, 31, 0.92));
         box-shadow: 0 0 36px rgba(255, 72, 101, 0.28);
     }
-    .cl-vciso-core-badge i {
-        color: var(--warm-soft);
-        font-size: 1.7rem;
+    .cl-vciso-core-badge img {
+        display: block;
+        max-width: 62%;
+        height: auto;
+        filter: drop-shadow(0 0 10px rgba(255, 191, 27, 0.25));
     }
     .cl-vciso-core-badge strong {
         color: var(--white);
@@ -294,10 +298,17 @@
         place-items: center;
         flex: 0 0 auto;
         border-radius: 6px;
-        color: var(--warm-soft);
+        color: var(--red-soft);
         background: rgba(255, 72, 101, 0.14);
         box-shadow: inset 0 0 16px rgba(255, 72, 101, 0.16);
     }
+    /* Defensive (Blue Team) side */
+    .cl-vciso-node-left i {
+        color: var(--blue-bright);
+        background: rgba(47, 107, 255, 0.16);
+        box-shadow: inset 0 0 16px rgba(47, 107, 255, 0.18);
+    }
+    .cl-vciso-node-left:hover { border-color: var(--blue-bright); }
     .cl-vciso-node span {
         color: var(--text);
         font-family: 'IBM Plex Mono', monospace;

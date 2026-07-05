@@ -27,8 +27,7 @@
             <p class="section-eyebrow mb-2" data-reveal>Testing Approaches</p>
             <h2 class="page-section-heading text-secondary mb-3" data-reveal>Black Box, Grey Box &amp; White Box Testing</h2>
             <p class="text-muted lead-narrow mb-0" data-reveal>
-                Select the approach based on how much information your team wants to provide and how
-                deeply the assessment should validate internal security assumptions.
+                Choose the testing approach based on available access, project goal, and required assessment depth.
             </p>
         </div>
 

@@ -1,106 +1,194 @@
+{{-- vCISO › Section 2 — Buguard-style product layout: 9 expandable modules ("+"),
+     each with headline (highlighted), body, and 3 capability bullets. --}}
 @php
-    $pillars = [
-        ['icon' => 'fa-route', 'title' => 'Security Roadmap', 'text' => 'Quarterly priorities, risk decisions, and measurable maturity targets.'],
-        ['icon' => 'fa-file-shield', 'title' => 'GRC & Compliance', 'text' => 'Policies, control mapping, ISO readiness, audit response, and evidence tracking.'],
-        ['icon' => 'fa-satellite-dish', 'title' => 'SOC & Threat Oversight', 'text' => 'Detection alignment, escalation paths, threat intelligence, and response leadership.'],
-        ['icon' => 'fa-user-tie', 'title' => 'Executive Reporting', 'text' => 'Board-ready cyber risk narratives with practical next-step decisions.'],
+    $modules = [
+        // 'team' mirrors the hero diagram: blue = Defensive (Blue Team), red = Offensive & Assessment (Red Team).
+        // 'console' rows visualize the module's own bullets as dashboard telemetry (chrome, not marketing copy).
+        [
+            'name' => 'VAPT',
+            'icon' => 'fa-bug',
+            'team' => 'red',
+            'headline' => 'Get <span class="cl-vm-hl">Continuous and Validated</span> Vulnerability Insight for Your Business',
+            'body' => "vCISO's VAPT module continuously scans your assets and validates exploitable weaknesses, combining automated discovery with manual testing for accurate, real-world findings.",
+            'points' => ['Continuous vulnerability scanning', 'Manual exploitation validation', 'OWASP & CVSS-based risk scoring'],
+            'console' => [
+                ['SCAN', 'continuous asset discovery', 'RUNNING', 'blue'],
+                ['VALIDATE', 'manual exploit check', 'CONFIRMED', 'warm'],
+                ['RISK', 'OWASP · CVSS scoring', '9.1 CRITICAL', 'red'],
+            ],
+        ],
+        [
+            'name' => 'SOC',
+            'icon' => 'fa-desktop',
+            'team' => 'blue',
+            'headline' => 'Stay Protected with <span class="cl-vm-hl">Real-Time</span> Threat Monitoring',
+            'body' => 'Our SOC module delivers centralized visibility into your environment, correlating logs and alerts so threats are caught the moment they emerge.',
+            'points' => ['Centralized log correlation', 'Real-time alerting', 'Proactive threat hunting'],
+            'console' => [
+                ['LOGS', 'centralized correlation', '24/7', 'blue'],
+                ['ALERTS', 'real-time triage', 'LIVE', 'red'],
+                ['HUNT', 'proactive threat sweep', 'ACTIVE', 'warm'],
+            ],
+        ],
+        [
+            'name' => 'Incident Response',
+            'icon' => 'fa-bolt',
+            'team' => 'blue',
+            'headline' => 'Respond <span class="cl-vm-hl">Faster</span> When It Matters Most',
+            'body' => 'When an incident hits, vCISO guides your team through rapid containment and investigation, minimizing impact and downtime.',
+            'points' => ['Rapid threat containment', 'Guided investigation workflows', 'Post-incident reporting'],
+            'console' => [
+                ['CONTAIN', 'isolate affected systems', 'RAPID', 'red'],
+                ['INVESTIGATE', 'guided workflow', 'STEP 3/6', 'warm'],
+                ['REPORT', 'post-incident summary', 'READY', 'blue'],
+            ],
+        ],
+        [
+            'name' => 'Firewall Management',
+            'icon' => 'fa-shield-virus',
+            'team' => 'blue',
+            'headline' => '<span class="cl-vm-hl">Centralized Control</span> Over Your Network Defenses',
+            'body' => 'Manage and monitor your firewall policies from a single dashboard, with real-time visibility into rule changes and unauthorized access attempts.',
+            'points' => ['Real-time rule monitoring', 'Policy configuration & updates', 'Unauthorized access alerts'],
+            'console' => [
+                ['RULES', 'real-time monitoring', 'SYNCED', 'blue'],
+                ['POLICY', 'configuration & updates', 'v2.4', 'warm'],
+                ['ACCESS', 'unauthorized attempt', 'BLOCKED', 'red'],
+            ],
+        ],
+        [
+            'name' => 'Risk Assessment',
+            'icon' => 'fa-triangle-exclamation',
+            'team' => 'red',
+            'headline' => 'Know Your Risk <span class="cl-vm-hl">Before It Becomes a Breach</span>',
+            'body' => "vCISO continuously evaluates your organization's risk exposure, scoring assets by impact so your team always knows where to focus first.",
+            'points' => ['Asset-based risk scoring', 'Business impact analysis', 'Prioritized remediation roadmap'],
+            'console' => [
+                ['ASSETS', 'impact-based scoring', 'SCORED', 'blue'],
+                ['IMPACT', 'business analysis', '3 HIGH', 'red'],
+                ['ROADMAP', 'prioritized remediation', 'QUEUED', 'warm'],
+            ],
+        ],
+        [
+            'name' => 'Backup',
+            'icon' => 'fa-database',
+            'team' => 'blue',
+            'headline' => 'Keep Your Business Running, <span class="cl-vm-hl">No Matter What</span>',
+            'body' => 'Automated backups and fast recovery options ensure your critical data and operations are protected against disruption.',
+            'points' => ['Automated backup scheduling', 'Secure off-site storage', 'Fast disaster recovery'],
+            'console' => [
+                ['SCHEDULE', 'automated backups', 'NIGHTLY', 'blue'],
+                ['STORAGE', 'secure off-site', 'ENCRYPTED', 'warm'],
+                ['RECOVERY', 'disaster restore', 'TESTED', 'blue'],
+            ],
+        ],
+        [
+            'name' => 'Data Encryption',
+            'icon' => 'fa-lock',
+            'team' => 'blue',
+            'headline' => 'Protect Sensitive Data at <span class="cl-vm-hl">Every Layer</span>',
+            'body' => 'Track encryption status across your critical assets in real time, ensuring sensitive data stays protected at rest and in transit.',
+            'points' => ['End-to-end encryption status', 'Key management visibility', 'Compliance-ready reporting'],
+            'console' => [
+                ['STATUS', 'end-to-end coverage', 'ENCRYPTED', 'blue'],
+                ['KEYS', 'management visibility', 'ROTATED', 'warm'],
+                ['COMPLIANCE', 'audit reporting', 'READY', 'blue'],
+            ],
+        ],
+        [
+            'name' => 'Capacity Building (Training)',
+            'icon' => 'fa-graduation-cap',
+            'team' => 'red',
+            'headline' => 'Build a <span class="cl-vm-hl">Security-Aware</span> Workforce',
+            'body' => "Track your team's training progress and phishing readiness directly from the dashboard, turning awareness into a measurable metric.",
+            'points' => ['Role-based training modules', 'Phishing simulation campaigns', 'Awareness progress tracking'],
+            'console' => [
+                ['TRAINING', 'role-based modules', '78%', 'blue'],
+                ['PHISHING SIM', 'campaign launched', 'SENT', 'red'],
+                ['AWARENESS', 'progress tracking', 'RISING', 'warm'],
+            ],
+        ],
+        [
+            'name' => 'Threat Intelligence',
+            'icon' => 'fa-satellite-dish',
+            'team' => 'red',
+            'headline' => 'Stay Ahead with <span class="cl-vm-hl">Real-Time</span> Threat Visibility',
+            'body' => 'vCISO continuously monitors emerging threats and exposed assets across your digital footprint, giving your team early warning before risks become incidents.',
+            'points' => ['Leaked credential monitoring', 'Phishing campaign detection', 'Industry-specific threat insights'],
+            'console' => [
+                ['CREDENTIALS', 'leak monitoring', '0 NEW', 'blue'],
+                ['PHISHING', 'campaign detection', 'FLAGGED', 'red'],
+                ['INSIGHTS', 'industry-specific feed', 'WEEKLY', 'warm'],
+            ],
+        ],
     ];
 @endphp
 
 <section class="page-section cl-vciso-product" id="vciso-platform">
     <div class="container">
-        <div class="cl-vciso-product-card">
-            <div class="cl-vciso-product-copy">
-                <span class="cl-vciso-badge"><i class="fas fa-shield-halved"></i> vCISO Operating Model</span>
-                <h2>
-                    A Security Leadership Layer for Every Critical Decision
-                </h2>
-                <p class="text-muted">
-                    We run vCISO as an operating system for cyber leadership: risk discovery,
-                    executive planning, compliance governance, technical validation, and response
-                    readiness all connected through a single security program rhythm.
-                </p>
+        <p class="section-eyebrow text-center mb-2" data-reveal>vCISO Modules</p>
+        {{-- TODO: copy — section heading not provided in the checklist --}}
+        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>
+            One Platform, <span class="cl-title-accent">Every Security Module</span>
+        </h2>
 
-                <div class="cl-vciso-checks">
-                    <span><i class="fas fa-check"></i> Risk register and remediation ownership</span>
-                    <span><i class="fas fa-check"></i> Monthly executive security reviews</span>
-                    <span><i class="fas fa-check"></i> ISO 27001, audit, and policy guidance</span>
-                    <span><i class="fas fa-check"></i> SOC, VAPT, and incident-readiness coordination</span>
-                </div>
+        <div class="cl-vm-card" data-reveal>
+            <div class="accordion" id="vmAccordion">
+                @foreach ($modules as $i => $m)
+                    <div class="cl-vm-item">
+                        <button class="cl-vm-toggle {{ $i === 0 ? '' : 'collapsed' }}" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#vm{{ $i }}"
+                                aria-expanded="{{ $i === 0 ? 'true' : 'false' }}" aria-controls="vm{{ $i }}">
+                            <i class="fas fa-plus cl-vm-plus" aria-hidden="true"></i>
+                            <span>{{ $m['name'] }}</span>
+                        </button>
 
-                <a class="btn cl-vciso-primary" href="{{ route('contact') }}">
-                    <i class="fas fa-calendar-check me-2"></i>Book vCISO Consultation
-                </a>
-            </div>
-
-            <div class="cl-vciso-product-visual" aria-label="vCISO dashboard preview">
-                <div class="cl-vciso-console">
-                    <div class="cl-vciso-console-top">
-                        <span></span><span></span><span></span>
-                        <strong>Cyberlog vCISO Command</strong>
-                    </div>
-                    <div class="cl-vciso-console-grid">
-                        <div class="cl-vciso-widget cl-vciso-score">
-                            <span>Risk Posture</span>
-                            <strong>72</strong>
-                            <small>Improving</small>
-                        </div>
-                        <div class="cl-vciso-widget">
-                            <span>Open Risks</span>
-                            <strong>18</strong>
-                            <small>6 critical paths assigned</small>
-                        </div>
-                        <div class="cl-vciso-widget">
-                            <span>Control Coverage</span>
-                            <div class="cl-vciso-bars">
-                                <i style="--h: 72%;"></i>
-                                <i style="--h: 46%;"></i>
-                                <i style="--h: 84%;"></i>
-                                <i style="--h: 62%;"></i>
-                                <i style="--h: 76%;"></i>
+                        <div id="vm{{ $i }}" class="collapse {{ $i === 0 ? 'show' : '' }}" data-bs-parent="#vmAccordion">
+                            <div class="cl-vm-panel">
+                                <div class="row g-4 g-lg-5 align-items-center">
+                                    <div class="col-lg-7">
+                                        <h3 class="cl-vm-headline">{!! $m['headline'] !!}</h3>
+                                        <p class="cl-vm-body">{{ $m['body'] }}</p>
+                                        <ul class="cl-vm-points list-unstyled mb-0">
+                                            @foreach ($m['points'] as $p)
+                                                <li><i class="fas fa-circle-check"></i>{{ $p }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="cl-vm-visual cl-vm-team-{{ $m['team'] }}" aria-hidden="true">
+                                            <div class="cl-vm-visual-top">
+                                                <span></span><span></span><span></span>
+                                                <strong>vCISO // {{ strtoupper($m['name']) }}</strong>
+                                                <i class="fas {{ $m['icon'] }} cl-vm-top-icon"></i>
+                                            </div>
+                                            <div class="cl-vmc">
+                                                @foreach ($m['console'] as $row)
+                                                    <div class="cl-vmc-row">
+                                                        <b>{{ $row[0] }}</b>
+                                                        <span>{{ $row[1] }}</span>
+                                                        <em class="cl-vmc-chip {{ $row[3] }}">{{ $row[2] }}</em>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="cl-vm-visual-status">
+                                                <span class="cl-vm-dot"></span> MODULE ACTIVE
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="cl-vciso-widget cl-vciso-wide">
-                            <span>Quarter Roadmap</span>
-                            <div class="cl-vciso-roadmap">
-                                <b>Assess</b>
-                                <b>Prioritize</b>
-                                <b>Execute</b>
-                                <b>Report</b>
-                            </div>
-                        </div>
-                        <div class="cl-vciso-widget cl-vciso-wide">
-                            <span>Executive Security Brief</span>
-                            <p>Top risks mapped to business impact, control gaps, owners, due dates, and next board decision.</p>
-                        </div>
                     </div>
-                </div>
-
-                <div class="cl-vciso-float cl-vciso-float-one">
-                    <i class="fas fa-lock"></i>
-                    <span>Policy Updated</span>
-                </div>
-                <div class="cl-vciso-float cl-vciso-float-two">
-                    <i class="fas fa-bolt"></i>
-                    <span>Incident Ready</span>
-                </div>
+                @endforeach
             </div>
-        </div>
-
-        <div class="cl-vciso-pillars">
-            @foreach ($pillars as $pillar)
-                <article class="cl-vciso-pillar" data-reveal>
-                    <i class="fas {{ $pillar['icon'] }}"></i>
-                    <h3>{{ $pillar['title'] }}</h3>
-                    <p>{{ $pillar['text'] }}</p>
-                </article>
-            @endforeach
         </div>
     </div>
 </section>
 
 @push('styles')
 <style>
+    /* Section blends with the page background (no stark panel). */
     .cl-vciso-product {
         position: relative;
         overflow: hidden;
@@ -109,283 +197,183 @@
             radial-gradient(740px 420px at 92% 92%, rgba(228, 31, 61, 0.11), transparent 62%),
             linear-gradient(180deg, rgba(5, 12, 23, 0.96), rgba(7, 17, 31, 1));
     }
-    .cl-vciso-product-card {
-        display: grid;
-        grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr);
-        gap: 2.4rem;
-        align-items: center;
-        padding: clamp(1.25rem, 3.2vw, 2.35rem);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background:
-            linear-gradient(135deg, rgba(16, 31, 58, 0.88), rgba(7, 17, 31, 0.96)),
-            radial-gradient(600px 260px at 80% 18%, rgba(255, 72, 101, 0.14), transparent 62%);
-        box-shadow: 0 34px 90px rgba(0, 0, 0, 0.46);
+    .cl-vm-card {
+        border: 1px solid var(--line-soft);
+        border-radius: 14px;
+        overflow: hidden;
+        background: linear-gradient(160deg, rgba(11, 20, 48, 0.5), rgba(7, 15, 29, 0.55));
     }
-    .cl-vciso-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: .48rem;
-        margin-bottom: 1rem;
-        padding: .42rem .72rem;
-        border-radius: 50rem;
-        color: var(--warm-soft);
-        background: rgba(255, 72, 101, 0.11);
-        border: 1px solid rgba(255, 72, 101, 0.2);
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: .72rem;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-    }
-    .cl-vciso-product-copy h2 {
-        max-width: 720px;
-        margin-bottom: 1rem;
-        font-size: clamp(2rem, 4.4vw, 4rem);
-        line-height: .98;
-    }
-    .cl-vciso-checks {
-        display: grid;
-        gap: .72rem;
-        margin: 1.45rem 0 1.7rem;
-    }
-    .cl-vciso-checks span {
+
+    .cl-vm-item { border-bottom: 1px solid var(--line-soft); }
+    .cl-vm-item:last-child { border-bottom: 0; }
+
+    .cl-vm-toggle {
         display: flex;
-        gap: .65rem;
+        align-items: center;
+        gap: .9rem;
+        width: 100%;
+        padding: 1.15rem 1.4rem;
+        border: 0;
+        background: transparent;
+        color: var(--white);
+        font-family: 'Chakra Petch', sans-serif;
+        font-weight: 700;
+        font-size: 1.08rem;
+        text-align: left;
+        cursor: pointer;
+        transition: background .2s var(--ease), color .2s var(--ease);
+    }
+    .cl-vm-toggle:hover { background: rgba(47, 107, 255, 0.06); }
+    .cl-vm-toggle[aria-expanded="true"] { color: var(--warm-soft); background: rgba(16, 31, 58, 0.5); }
+
+    .cl-vm-plus {
+        flex: 0 0 auto;
+        font-size: .8rem;
+        color: var(--red-soft);
+        transition: transform .25s var(--ease);
+    }
+    .cl-vm-toggle[aria-expanded="true"] .cl-vm-plus { transform: rotate(45deg); }
+
+    .cl-vm-panel { padding: .5rem 1.4rem 1.9rem; }
+
+    .cl-vm-headline {
+        font-family: 'Chakra Petch', sans-serif;
+        font-size: clamp(1.35rem, 2.6vw, 2rem);
+        line-height: 1.15;
+        color: var(--white);
+        margin-bottom: .9rem;
+    }
+    .cl-vm-hl { color: var(--blue-bright); text-shadow: 0 0 22px rgba(47, 107, 255, 0.35); }
+
+    .cl-vm-body { color: var(--muted); margin-bottom: 1.1rem; max-width: 640px; }
+
+    .cl-vm-points li {
+        display: flex;
         align-items: flex-start;
+        gap: .65rem;
         color: var(--text);
-        font-size: .94rem;
+        margin-bottom: .55rem;
     }
-    .cl-vciso-checks i {
-        margin-top: .18rem;
-        color: var(--warm-soft);
-    }
-    .cl-vciso-product-visual {
-        position: relative;
-        min-height: 430px;
-        display: grid;
-        place-items: center;
-        isolation: isolate;
-    }
-    .cl-vciso-product-visual::before {
-        content: "";
-        position: absolute;
-        width: 78%;
-        aspect-ratio: 1;
-        border-radius: 50%;
-        background:
-            radial-gradient(circle, rgba(255, 72, 101, 0.16), transparent 42%),
-            radial-gradient(circle, rgba(109, 156, 255, 0.1), transparent 62%);
-        filter: blur(3px);
-        z-index: -1;
-    }
-    .cl-vciso-console {
-        width: min(100%, 620px);
-        border: 1px solid rgba(130, 165, 220, 0.22);
+    .cl-vm-points li:last-child { margin-bottom: 0; }
+    .cl-vm-points i { color: var(--warm-soft); margin-top: .26rem; flex: 0 0 auto; }
+
+    /* Module visual — mini console (blends, no invented copy) */
+    .cl-vm-visual {
+        border: 1px solid var(--line);
         border-radius: 10px;
         overflow: hidden;
-        background: rgba(5, 12, 23, 0.9);
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
-        transform: perspective(1200px) rotateY(-7deg) rotateX(2deg);
+        background: rgba(5, 12, 23, 0.85);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
     }
-    .cl-vciso-console-top {
+    .cl-vm-visual-top {
         display: flex;
         align-items: center;
-        gap: .45rem;
-        padding: .78rem .9rem;
+        gap: .4rem;
+        padding: .7rem .9rem;
         border-bottom: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.035);
+        background: rgba(255, 255, 255, 0.03);
     }
-    .cl-vciso-console-top span {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: var(--red-soft);
-        opacity: .72;
-    }
-    .cl-vciso-console-top span:nth-child(2) { background: var(--warm-soft); }
-    .cl-vciso-console-top span:nth-child(3) { background: var(--blue-bright); }
-    .cl-vciso-console-top strong {
-        margin-left: .55rem;
-        color: var(--muted);
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: .76rem;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-    }
-    .cl-vciso-console-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: .85rem;
-        padding: 1rem;
-    }
-    .cl-vciso-widget {
-        min-height: 116px;
-        padding: .9rem;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        background: rgba(16, 31, 58, 0.74);
-    }
-    .cl-vciso-widget span,
-    .cl-vciso-widget small {
-        display: block;
+    .cl-vm-visual-top span { width: 8px; height: 8px; border-radius: 50%; background: var(--red-soft); opacity: .75; }
+    .cl-vm-visual-top span:nth-child(2) { background: var(--warm-soft); }
+    .cl-vm-visual-top span:nth-child(3) { background: var(--blue-bright); }
+    .cl-vm-visual-top strong {
+        margin-left: .5rem;
         color: var(--muted);
         font-family: 'IBM Plex Mono', monospace;
         font-size: .68rem;
-        letter-spacing: .08em;
-        text-transform: uppercase;
+        letter-spacing: .1em;
     }
-    .cl-vciso-widget strong {
-        display: block;
-        margin: .55rem 0 .22rem;
-        color: var(--white);
-        font-family: 'Chakra Petch', sans-serif;
-        font-size: 2.3rem;
-        line-height: 1;
-    }
-    .cl-vciso-score strong {
-        color: var(--warm-soft);
-    }
-    .cl-vciso-wide {
-        grid-column: span 3;
-        min-height: 92px;
-    }
-    .cl-vciso-wide p {
-        margin: .65rem 0 0;
-        color: var(--text);
-        font-size: .86rem;
-        line-height: 1.55;
-    }
-    .cl-vciso-bars {
-        height: 68px;
-        display: flex;
-        align-items: end;
-        gap: .42rem;
-        margin-top: .75rem;
-    }
-    .cl-vciso-bars i {
+    .cl-vm-visual-top strong {
         flex: 1;
-        height: var(--h);
-        border-radius: 4px 4px 0 0;
-        background: linear-gradient(180deg, var(--red-soft), var(--blue-bright));
-        opacity: .86;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
-    .cl-vciso-roadmap {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: .55rem;
-        margin-top: .85rem;
-    }
-    .cl-vciso-roadmap b {
-        color: var(--text);
-        border: 1px solid rgba(255, 191, 27, 0.2);
-        border-radius: 5px;
-        padding: .55rem .35rem;
-        text-align: center;
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: .7rem;
-        font-weight: 600;
-        background: rgba(255, 72, 101, 0.08);
-    }
-    .cl-vciso-float {
-        position: absolute;
-        display: inline-flex;
+    .cl-vm-top-icon { flex: 0 0 auto; font-size: .9rem; }
+    .cl-vm-team-blue .cl-vm-top-icon { color: var(--blue-bright); filter: drop-shadow(0 0 10px rgba(47, 107, 255, 0.5)); }
+    .cl-vm-team-red .cl-vm-top-icon { color: var(--red-soft); filter: drop-shadow(0 0 10px rgba(228, 31, 61, 0.5)); }
+
+    /* Module telemetry rows — each console reads like that module's dashboard */
+    .cl-vmc { display: grid; gap: .55rem; padding: .95rem; }
+    .cl-vmc-row {
+        display: flex;
         align-items: center;
-        gap: .55rem;
-        padding: .72rem .85rem;
-        border: 1px solid var(--line);
+        gap: .7rem;
+        padding: .62rem .78rem;
+        border: 1px solid var(--line-soft);
         border-radius: 6px;
-        background: rgba(7, 17, 31, 0.84);
-        color: var(--text);
+        background: rgba(16, 31, 58, 0.5);
+    }
+    .cl-vmc-row b {
+        flex: 0 0 auto;
+        color: var(--white);
         font-family: 'IBM Plex Mono', monospace;
-        font-size: .72rem;
-        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.38);
-        animation: clVcisoFloat 5.4s ease-in-out infinite;
+        font-weight: 600;
+        font-size: .64rem;
+        letter-spacing: .1em;
     }
-    .cl-vciso-float i {
-        color: var(--warm-soft);
-    }
-    .cl-vciso-float-one {
-        left: 0;
-        bottom: 18%;
-    }
-    .cl-vciso-float-two {
-        right: 0;
-        top: 18%;
-        animation-delay: 1.4s;
-    }
-    @keyframes clVcisoFloat {
-        50% { transform: translateY(-12px); }
-    }
-    .cl-vciso-pillars {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-    .cl-vciso-pillar {
-        min-height: 100%;
-        padding: 1.15rem;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(16, 31, 58, 0.68);
-    }
-    .cl-vciso-pillar i {
-        color: var(--warm-soft);
-        font-size: 1.3rem;
-        margin-bottom: .85rem;
-    }
-    .cl-vciso-pillar h3 {
-        margin-bottom: .45rem;
-        font-size: 1rem;
-    }
-    .cl-vciso-pillar p {
-        margin: 0;
+    .cl-vmc-row span {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         color: var(--muted);
-        font-size: .86rem;
-        line-height: 1.55;
+        font-size: .78rem;
     }
+    .cl-vmc-chip {
+        flex: 0 0 auto;
+        font-style: normal;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: .6rem;
+        letter-spacing: .08em;
+        padding: .22rem .5rem;
+        border-radius: 4px;
+        border: 1px solid;
+    }
+    .cl-vmc-chip.blue { color: var(--blue-bright); border-color: rgba(47, 107, 255, 0.45); background: rgba(47, 107, 255, 0.12); }
+    .cl-vmc-chip.red { color: var(--red-soft); border-color: rgba(228, 31, 61, 0.45); background: rgba(228, 31, 61, 0.12); }
+    .cl-vmc-chip.warm { color: var(--warm-soft); border-color: rgba(255, 191, 27, 0.4); background: rgba(255, 138, 0, 0.1); }
+
+    /* Rows tick in when a module opens */
+    .collapse .cl-vmc-row { opacity: 0; transform: translateY(8px); }
+    .collapse.show .cl-vmc-row { animation: clVmcIn .45s var(--ease) both; }
+    .collapse.show .cl-vmc-row:nth-child(2) { animation-delay: .14s; }
+    .collapse.show .cl-vmc-row:nth-child(3) { animation-delay: .28s; }
+    @keyframes clVmcIn { to { opacity: 1; transform: none; } }
+
+    .cl-vm-visual-status {
+        padding: .65rem .9rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: .68rem;
+        letter-spacing: .12em;
+    }
+    .cl-vm-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-right: .35rem;
+        border-radius: 50%;
+        background: var(--blue-bright);
+        box-shadow: 0 0 10px rgba(47, 107, 255, 0.7);
+        animation: clVmPulse 1.8s ease-in-out infinite;
+    }
+    .cl-vm-team-red .cl-vm-dot {
+        background: var(--red-soft);
+        box-shadow: 0 0 10px rgba(228, 31, 61, 0.7);
+    }
+    @keyframes clVmPulse { 50% { opacity: .35; } }
 
     @media (max-width: 991.98px) {
-        .cl-vciso-product-card {
-            grid-template-columns: 1fr;
-        }
-        .cl-vciso-product-visual {
-            min-height: 360px;
-        }
-        .cl-vciso-console {
-            transform: none;
-        }
-        .cl-vciso-pillars {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    @media (max-width: 575.98px) {
-        .cl-vciso-product-visual {
-            min-height: 0;
-            display: block;
-        }
-        .cl-vciso-console-grid {
-            grid-template-columns: 1fr;
-        }
-        .cl-vciso-wide {
-            grid-column: auto;
-        }
-        .cl-vciso-roadmap {
-            grid-template-columns: 1fr 1fr;
-        }
-        .cl-vciso-float {
-            position: static;
-            margin-top: .75rem;
-            width: 100%;
-        }
-        .cl-vciso-pillars {
-            grid-template-columns: 1fr;
-        }
+        .cl-vm-panel { padding: .25rem 1.1rem 1.5rem; }
+        .cl-vm-toggle { padding: 1rem 1.1rem; }
     }
     @media (prefers-reduced-motion: reduce) {
-        .cl-vciso-float {
-            animation: none !important;
-        }
+        .cl-vm-dot { animation: none !important; }
+        .collapse .cl-vmc-row { opacity: 1 !important; transform: none !important; animation: none !important; }
     }
 </style>
 @endpush

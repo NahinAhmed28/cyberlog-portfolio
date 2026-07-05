@@ -1,17 +1,16 @@
 @extends('layouts.portfolio')
 
-@section('title', 'Capacity Building & Security Awareness Training — Cyberlog')
+@section('title', 'Awareness & Security Training - Cyberlog')
 
 @section('content')
 
 {{-- Section 1 — Hero --}}
 @include('partials.page-hero', [
-    'eyebrow' => 'Capacity Building Training',
-    'heading' => 'Train Your Team to Be Your <span class="text-teal">Human Firewall</span>',
-    'subheading' => 'The human layer is often the most vulnerable. Cyberlog helps you turn your people into your greatest security asset through practical, role-based cybersecurity training.',
+    'eyebrow' => 'Services',
+    'heading' => 'Awareness &amp; <span class="text-teal">Security Training</span>',
+    'subheading' => "Strengthen your organization's human firewall with practical, role-based cybersecurity training built on real-world attack scenarios.",
     'badges' => ['Awareness Training', 'Phishing Simulation', 'Role-based Curriculum'],
-    'primaryCta' => ['label' => 'Book a Demo', 'url' => route('contact')],
-    'secondaryCta' => ['label' => 'Watch Video', 'url' => '#approach'],
+    'primaryCta' => ['label' => 'Talk to an Expert', 'url' => route('contact')],
     'heroIcon' => 'fas fa-graduation-cap',
     'heroCaption' => 'Security awareness training',
 ])
@@ -19,15 +18,27 @@
 {{-- Section 2 — Client --}}
 @include('partials.clients')
 
-{{-- Section 3 — Hero slide (ref: cira.ca) --}}
-<section class="page-section cl-hero text-white" id="human-firewall">
-    <div class="container text-center py-4">
-        <h2 class="cl-hero-heading mb-3">Your people are your first line of defense</h2>
-        <p class="lead text-white-50 lead-narrow mb-4">
-            CIRA-style cybersecurity awareness training that's engaging, measurable, and built to
-            change behavior — not just tick a compliance box.
-        </p>
-        <a class="btn btn-primary btn-xl text-white fw-bold" href="{{ route('contact') }}">Book a Demo</a>
+{{-- Section 3 — Importance --}}
+<section class="page-section bg-navy-soft text-white" id="importance">
+    <div class="container">
+        <p class="section-eyebrow text-center mb-2">Importance</p>
+        <h2 class="page-section-heading text-center text-uppercase text-white mb-5">Importance.</h2>
+        <div class="row g-4">
+            @foreach ([
+                ['fa-users', 'Human Risk', 'People remain the most targeted attack surface in any organization.'],
+                ['fa-circle-exclamation', 'Costly Mistakes', 'A single untrained click can undo millions spent on technical defenses.'],
+                ['fa-shield-halved', 'Active Defense', 'Awareness training turns employees into defenders, not liabilities.'],
+                ['fa-repeat', 'Lasting Behavior', 'Practical, scenario-based learning builds habits that stick beyond the session.'],
+            ] as $item)
+                <div class="col-md-6 col-lg-3">
+                    <div class="cl-solution-card h-100 text-center">
+                        <div class="cl-solution-icon mx-auto"><i class="fas {{ $item[0] }}"></i></div>
+                        <h5 class="fw-bold">{{ $item[1] }}</h5>
+                        <p class="text-muted small mb-0">{{ $item[2] }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 </section>
 
@@ -38,10 +49,10 @@
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">How We Train Your Team</h2>
         <div class="row g-4">
             @foreach ([
-                ['fa-clipboard-list', 'Assess', 'Baseline your team with a phishing simulation and knowledge assessment.'],
-                ['fa-chalkboard-user', 'Train', 'Bite-sized, role-based modules covering real-world threats and best practices.'],
-                ['fa-fish', 'Simulate', 'Ongoing phishing simulations that reinforce learning in context.'],
-                ['fa-chart-simple', 'Measure', 'Track metrics that prove the training is actually reducing human cyber risk.'],
+                ['fa-clipboard-list', 'Baseline', 'Phishing simulation and awareness assessment to establish your starting point.'],
+                ['fa-chalkboard-user', 'Train', 'Role-based, bite-sized modules covering real-world threats and best practices.'],
+                ['fa-fish', 'Simulate', 'Ongoing phishing exercises that reinforce learning in real-world context.'],
+                ['fa-chart-simple', 'Track', 'Post-training metrics that prove awareness is improving over time.'],
             ] as $w)
                 <div class="col-md-6 col-lg-3">
                     <div class="cl-solution-card h-100 text-center">
@@ -55,7 +66,7 @@
     </div>
 </section>
 
-{{-- Section 5 — Impact statistics --}}
+{{-- Section 5 — Professional Courses --}}
 <section class="page-section bg-light" id="courses">
     <div class="container">
         <p class="section-eyebrow text-center mb-2">Professional Courses</p>
@@ -141,11 +152,12 @@
             <div class="col-md-6 col-lg-5">
                 <div class="cl-price-card featured h-100 d-flex flex-column">
                     <h4 class="fw-bold">Enterprise</h4>
-                    <p class="text-muted">For 25+ employees with active directory or M365.</p>
+                    <p class="text-muted">50+ employees</p>
                     <ul class="list-unstyled text-start mb-4">
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>User sync with AD / Microsoft 365</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Department-specific reports &amp; assignments</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Multiple admins &amp; SSO</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Department-specific training tracks and reporting</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Dedicated program coordinator</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Custom phishing simulation campaigns</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Multiple admin access</li>
                         <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Designed to support large organizations</li>
                     </ul>
                     <a class="btn btn-primary text-white fw-bold mt-auto" href="{{ route('contact') }}">Get a Quote</a>
@@ -154,14 +166,14 @@
             <div class="col-md-6 col-lg-5">
                 <div class="cl-price-card h-100 d-flex flex-column">
                     <h4 class="fw-bold">Small Teams</h4>
-                    <p class="text-muted">For teams of 1–25 employees.</p>
+                    <p class="text-muted">5-50 employees</p>
                     <ul class="list-unstyled text-start mb-4">
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Simple set-up</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Pre-configured curriculum &amp; workflows</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Access to full course library</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Simple, fast setup</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Pre-configured training curriculum</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Full access to the training module library</li>
                         <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Designed with small teams in mind</li>
                     </ul>
-                    <a class="btn btn-outline-secondary fw-bold mt-auto" href="{{ route('contact') }}">Buy Now</a>
+                    <a class="btn btn-outline-secondary fw-bold mt-auto" href="{{ route('contact') }}">Get Started</a>
                 </div>
             </div>
         </div>

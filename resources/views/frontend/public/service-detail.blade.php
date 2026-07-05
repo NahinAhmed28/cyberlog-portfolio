@@ -30,7 +30,19 @@
             'points' => ['Endpoint and server artifact review', 'Timeline reconstruction and evidence handling', 'Log and account activity analysis', 'Root-cause and remediation reporting'],
         ],
     ];
-    $service = $items[$slug] ?? $items['malware-analysis'];
+    // 12-service catalogue detail pages (config/cyberlog_services.php).
+    $cfg = collect(config('cyberlog_services', []))->firstWhere('route', $slug);
+    if ($cfg && ! empty($cfg['detail'])) {
+        $service = [
+            'title'   => $cfg['title'],
+            'eyebrow' => $cfg['detail']['eyebrow'],
+            'icon'    => $cfg['icon'],
+            'summary' => $cfg['desc'],
+            'points'  => $cfg['detail']['points'],
+        ];
+    } else {
+        $service = $items[$slug] ?? $items['malware-analysis'];
+    }
 @endphp
 
 @extends('frontend.public.layouts.public')
