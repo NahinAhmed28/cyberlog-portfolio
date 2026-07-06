@@ -1226,12 +1226,12 @@ html.js [data-reveal].is-in {
 }
 .footer .cl-footer-tagline {
     position: absolute;
-    /* Pulled inward from the right edge per feedback — right of center, not flush right. */
-    left: auto;
-    right: 5%;
+    /* Pulled inward from the right edge per feedback, right of center but not flush right. */
+    left: 72%;
+    right: auto;
     bottom: calc(100% + .35rem);
     white-space: nowrap;
-    text-align: right;
+    text-align: left;
 }
 .cl-wordmark {
     margin-top: 0;

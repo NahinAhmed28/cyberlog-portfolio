@@ -2,40 +2,49 @@
 @php
     $screens = [
         [
-            'cat' => 'Financial Market Infrastructure',
-            'name' => 'Dhaka Stock Exchange (DSE)',
-            'shot' => 'dse.png',
-            'url' => 'https://www.dsebd.org/',
-            'desc' => "Cyberlog delivered SOC support for Dhaka Stock Exchange, Bangladesh's critical capital market infrastructure and one of the country's highest-value financial technology environments.",
-            'stats' => [['24/7', 'SOC Monitoring'], ['99.99%', 'Capital Market Cyber Defense Uptime']],
-            'accent' => 'var(--blue-bright)',
-        ],
-        [
-            'cat' => 'Financial Institute',
-            'name' => 'Bangladesh Finance',
-            'shot' => 'bdfinance.png',
-            'url' => 'https://bd.finance/',
-            'desc' => 'Cyberlog conducted VAPT for Bangladesh Finance to identify, validate, and prioritize exploitable security risks across its digital environment.',
-            'stats' => [['360', 'Security Risk Review'], ['10+', 'High-Priority Risks Validated']],
-            'accent' => 'var(--red-soft)',
-        ],
-        [
             'cat' => 'Government Organization',
-            'name' => 'Bangladesh Investment Development Authority (BIDA)',
-            'shot' => 'bida.png',
-            'url' => 'https://bida.gov.bd/',
-            'desc' => 'Cyberlog conducted cybersecurity capacity building for the BIDA IT team and supported a cybersecurity assessment to improve readiness, visibility, and resilience.',
-            'stats' => [['250%+', "Employee Skill Increase"], ['12', 'Security Areas Reviewed']],
+            'name' => 'National Academy for Planning and Development',
+            'shot' => 'napd.png',
+            'url' => 'https://napd.gov.bd/',
+            'desc' => 'Cyberlog works with NAPD, a national public-sector training and planning institution, to support cybersecurity awareness and capacity-building readiness for government teams.',
+            'stats' => [['Government', 'Training Institution'], ['Capacity', 'Building Support']],
+            'accent' => 'var(--warm-soft)',
+        ],
+        [
+            'cat' => 'Law Enforcement',
+            'name' => 'Bangladesh Police',
+            'shot' => 'police.png',
+            'url' => 'https://www.police.gov.bd/',
+            'desc' => 'Cyberlog supports cybersecurity readiness for Bangladesh Police through awareness, assessment, and capacity-building initiatives for critical public-service operations.',
+            'stats' => [['Public Safety', 'Law Enforcement'], ['Cybersecurity', 'Capacity Support']],
             'accent' => 'var(--blue-bright)',
         ],
         [
-            'cat' => 'Advertisement Industry',
-            'name' => 'Adcomm Limited',
-            'shot' => 'adcomm.png',
-            'url' => 'https://adcommad.com/',
-            'desc' => 'Cyberlog supported Adcomm Limited with ISO 27001 implementation and employee cybersecurity capacity building to strengthen compliance readiness and workforce awareness.',
-            'stats' => [['93', 'ISO Controls Mapped'], ['200+', 'Employees Trained']],
+            'cat' => 'Education',
+            'name' => 'Bangladesh University of Business and Technology',
+            'shot' => 'bubt.png',
+            'url' => 'https://www.bubt.edu.bd/',
+            'desc' => 'Cyberlog supports BUBT with cybersecurity awareness and skill-building activities for students, faculty, and technology teams in the education sector.',
+            'stats' => [['Education', 'Sector'], ['Awareness', 'Training Support']],
+            'accent' => '#42e6a4',
+        ],
+        [
+            'cat' => 'Digital Government',
+            'name' => 'Aspire to Innovate (a2i)',
+            'shot' => 'a2i.png',
+            'url' => 'https://a2i.gov.bd/',
+            'desc' => "Cyberlog works with a2i, Bangladesh's digital transformation programme, supporting cybersecurity awareness and digital-service resilience across public-sector initiatives.",
+            'stats' => [['Digital', 'Government'], ['Cyber', 'Capacity Support']],
             'accent' => 'var(--red-soft)',
+        ],
+        [
+            'cat' => 'Development Organization',
+            'name' => 'United Nations Development Programme',
+            'shot' => 'undp.png',
+            'url' => 'https://www.undp.org/bangladesh',
+            'desc' => "Cyberlog supports cybersecurity capacity-building and awareness needs aligned with UNDP Bangladesh's development and digital resilience priorities.",
+            'stats' => [['Development', 'Organization'], ['Digital', 'Resilience Support']],
+            'accent' => '#6d9cff',
         ],
     ];
 @endphp
@@ -124,6 +133,7 @@
     .cl-deck-card:nth-child(2) { transform: translateY(-34px) scale(.965); z-index: 50; opacity: .8; }
     .cl-deck-card:nth-child(3) { transform: translateY(-68px) scale(.93); z-index: 40; opacity: .6; }
     .cl-deck-card:nth-child(4) { transform: translateY(-102px) scale(.895); z-index: 30; opacity: .45; }
+    .cl-deck-card:nth-child(5) { transform: translateY(-126px) scale(.86); z-index: 20; opacity: .34; }
 
     .cl-deck-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr); gap: 1.75rem; align-items: center; }
     .cl-deck-cat { font-family: 'IBM Plex Mono', monospace; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cat, var(--blue-bright)); }
