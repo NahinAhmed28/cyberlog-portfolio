@@ -6,36 +6,46 @@
             'year' => '2022',
             'title' => 'The foundation of a cyber vision',
             'text' => "Cyberlog began with a clear mission to support Bangladesh's growing digital ecosystem through practical, impact-driven cybersecurity.",
-            'x' => 7,
-            'y' => 86,
+            'x' => 9,
+            'y' => 84,
+            'tone' => '#ffbf1b',
+            'toneRgb' => '255, 191, 27',
         ],
         [
             'year' => '2023',
             'title' => 'Building industry presence',
             'text' => 'Cyberlog strengthened its market presence, expanded professional networks, and became recognized as a specialized cybersecurity company.',
-            'x' => 25,
-            'y' => 76,
+            'x' => 27,
+            'y' => 72,
+            'tone' => '#6d9cff',
+            'toneRgb' => '109, 156, 255',
         ],
         [
             'year' => '2024',
             'title' => 'Contributing to national cyber capacity',
             'text' => 'The company expanded its role through awareness, capacity building, advisory involvement, and contribution to cybersecurity maturity across institutions.',
-            'x' => 47,
-            'y' => 65,
+            'x' => 48,
+            'y' => 60,
+            'tone' => '#42e6a4',
+            'toneRgb' => '66, 230, 164',
         ],
         [
             'year' => '2025',
             'title' => 'Trusted across critical sectors',
             'text' => 'Cyberlog entered a stronger growth phase, earning trust across government, finance, education, enterprise, and critical sectors as a long-term cybersecurity partner.',
-            'x' => 65,
+            'x' => 67,
             'y' => 50,
+            'tone' => '#ffbf1b',
+            'toneRgb' => '255, 191, 27',
         ],
         [
             'year' => '2026',
             'title' => 'Scaling cyber resilience',
             'text' => 'Cyberlog is moving toward a structured, product-led, and partnership-driven future to become a trusted cybersecurity brand for enterprises and critical digital infrastructure.',
-            'x' => 87,
-            'y' => 34,
+            'x' => 86,
+            'y' => 40,
+            'tone' => '#42e6a4',
+            'toneRgb' => '66, 230, 164',
         ],
     ];
 @endphp
@@ -52,8 +62,6 @@
         </div>
 
         <div class="cl-story-chart" data-reveal>
-            <div class="cl-story-watermark" aria-hidden="true">Cyberlog</div>
-
             <svg class="cl-story-lines" viewBox="0 0 1000 440" preserveAspectRatio="none" aria-hidden="true">
                 <defs>
                     <linearGradient id="clStoryLine" x1="0" y1="0" x2="1" y2="0">
@@ -68,7 +76,7 @@
             </svg>
 
             @foreach ($milestones as $milestone)
-                <article class="cl-story-milestone" style="--x: {{ $milestone['x'] }}%; --y: {{ $milestone['y'] }}%;">
+                <article class="cl-story-milestone" style="--x: {{ $milestone['x'] }}%; --y: {{ $milestone['y'] }}%; --tone: {{ $milestone['tone'] }}; --tone-rgb: {{ $milestone['toneRgb'] }};">
                     <span class="cl-story-dot" aria-hidden="true"></span>
                     <div class="cl-story-stem" aria-hidden="true"></div>
                     <div class="cl-story-card">
@@ -90,8 +98,12 @@
 
 @push('styles')
 <style>
+    /* Whole section (title → chart → stats) sized to fit one screen height. */
     .cl-story-section {
-        overflow: hidden;
+        overflow-x: clip;
+        overflow-y: visible;
+        padding-top: clamp(2rem, 4vh, 3.25rem);
+        padding-bottom: clamp(2rem, 4vh, 3.25rem);
         background:
             radial-gradient(800px 420px at 82% 12%, rgba(255, 72, 101, 0.12), transparent 58%),
             linear-gradient(180deg, rgba(7, 17, 31, 0.34), rgba(11, 24, 48, 0.72));
@@ -99,13 +111,13 @@
     .cl-story-head {
         display: flex;
         align-items: flex-end;
-        margin-bottom: 2.2rem;
+        margin-bottom: 1.3rem;
     }
     .cl-story-title {
         margin: 0;
         font-family: 'Chakra Petch', sans-serif;
-        font-size: clamp(2.4rem, 7vw, 5.8rem);
-        line-height: .86;
+        font-size: clamp(2rem, 4.6vw, 3.5rem);
+        line-height: .9;
         text-transform: uppercase;
         color: var(--white);
     }
@@ -115,8 +127,9 @@
     /* No boxed panel — the growth chart blends straight into the section background. */
     .cl-story-chart {
         position: relative;
-        min-height: 640px;
-        overflow: hidden;
+        /* vh-based so the chart scales with the screen instead of forcing a scroll */
+        min-height: clamp(430px, 54vh, 600px);
+        overflow: visible;
     }
     .cl-story-chart::before {
         content: "";
@@ -131,25 +144,12 @@
         -webkit-mask-image: radial-gradient(ellipse at 50% 60%, rgba(0, 0, 0, .95), transparent 82%);
         mask-image: radial-gradient(ellipse at 50% 60%, rgba(0, 0, 0, .95), transparent 82%);
     }
-    .cl-story-watermark {
-        position: absolute;
-        left: 4%;
-        top: -1rem;
-        font-family: 'Chakra Petch', sans-serif;
-        font-size: clamp(4rem, 14vw, 10rem);
-        line-height: .8;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: rgba(238, 245, 255, 0.035);
-        text-shadow: 0 0 42px rgba(109, 156, 255, 0.1);
-        pointer-events: none;
-        user-select: none;
-    }
     .cl-story-lines {
         position: absolute;
         inset: auto 0 0;
         width: 100%;
         height: 78%;
+        overflow: visible;
     }
     .cl-story-terrain { fill: rgba(109, 156, 255, 0.055); }
     .cl-story-grid-line {
@@ -172,10 +172,10 @@
 
     .cl-story-milestone {
         position: absolute;
-        left: clamp(8.5rem, var(--x), calc(100% - 8.5rem));
+        left: clamp(9rem, var(--x), calc(100% - 9rem));
         top: 0;
         height: var(--y);
-        width: min(270px, 24vw);
+        width: clamp(236px, 20vw, 292px);
         transform: translateX(-50%);
         color: var(--text);
     }
@@ -187,51 +187,57 @@
         height: 12px;
         transform: translate(-50%, -50%);
         border-radius: 999px;
-        background: var(--warm-soft);
+        background: var(--tone);
         box-shadow:
             0 0 0 5px rgba(7, 17, 31, 0.78),
-            0 0 22px rgba(255, 72, 101, 0.58);
+            0 0 22px rgba(var(--tone-rgb), 0.62);
         z-index: 3;
     }
     .cl-story-stem {
         position: absolute;
         left: 50%;
-        top: 175px;
+        top: auto;
         bottom: 0;
+        height: 2.45rem;
         width: 1px;
         margin-inline: auto;
-        background: linear-gradient(180deg, rgba(255, 191, 27, 0.08), rgba(255, 72, 101, 0.58));
+        background: linear-gradient(180deg, rgba(var(--tone-rgb), 0.08), rgba(var(--tone-rgb), 0.74));
     }
     /* Readable glass cards — larger type per feedback */
     .cl-story-card {
         position: absolute;
         left: 0;
         right: 0;
-        top: 0;
+        top: auto;
+        bottom: 2.45rem;
         padding: .9rem 1rem;
-        border: 1px solid var(--line-soft);
-        border-left: 2px solid rgba(255, 191, 27, 0.45);
+        overflow-wrap: anywhere;
+        border: 1px solid rgba(var(--tone-rgb), .24);
+        border-left: 2px solid rgba(var(--tone-rgb), 0.72);
         border-radius: 8px;
-        background: rgba(9, 18, 33, 0.7);
+        background:
+            radial-gradient(220px 140px at 0% 0%, rgba(var(--tone-rgb), .14), transparent 72%),
+            rgba(9, 18, 33, 0.72);
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
+        box-shadow: 0 16px 38px rgba(0, 0, 0, .28), 0 0 24px rgba(var(--tone-rgb), .08);
     }
     .cl-story-year {
         display: block;
         margin-bottom: .5rem;
         font-family: 'IBM Plex Mono', monospace;
         font-weight: 700;
-        color: var(--warm-soft);
+        color: var(--tone);
         font-size: .95rem;
     }
     .cl-story-card h3 {
         color: var(--white);
-        font-size: 1.08rem;
+        font-size: clamp(.98rem, 1.08vw, 1.08rem);
         line-height: 1.22;
         margin-bottom: .5rem;
     }
     .cl-story-card p {
-        color: var(--text);
+        color: rgba(247, 251, 255, .86);
         font-size: .88rem;
         line-height: 1.5;
         margin: 0;
@@ -241,13 +247,13 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
-        margin-top: 1rem;
+        margin-top: .9rem;
     }
     .cl-story-stats div {
         display: flex;
         align-items: center;
         gap: .85rem;
-        padding: 1rem 1.1rem;
+        padding: .7rem 1rem;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: rgba(16, 31, 58, 0.72);
@@ -266,7 +272,7 @@
             min-height: 0;
             padding: 0;
         }
-        .cl-story-lines, .cl-story-watermark { display: none; }
+        .cl-story-lines { display: none; }
         .cl-story-milestone {
             position: relative;
             left: auto;

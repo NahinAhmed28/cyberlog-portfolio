@@ -37,26 +37,51 @@
     .cl-vben-panel {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        border-radius: 16px;
-        overflow: hidden;
-        background: linear-gradient(160deg, #0b1430, #0a1126);
-        box-shadow: 0 30px 80px rgba(5, 20, 60, 0.4);
+        gap: 1rem;
+        border-radius: 0;
+        overflow: visible;
+        background: transparent;
+        box-shadow: none;
     }
     .cl-vben {
+        position: relative;
         padding: 1.85rem;
-        border-right: 1px solid var(--line-soft);
-        border-bottom: 1px solid var(--line-soft);
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        box-shadow: none;
+        transition: transform .22s var(--ease);
     }
-    .cl-vben:nth-child(3n) { border-right: 0; }
-    .cl-vben:nth-last-child(-n+3) { border-bottom: 0; }
-    .cl-vben i { color: var(--warm-soft); font-size: 1.4rem; margin-bottom: .9rem; display: block; }
-    .cl-vben h5 { font-family: 'Chakra Petch', sans-serif; color: var(--white); font-size: 1.05rem; margin-bottom: .5rem; }
-    .cl-vben p { color: var(--muted); font-size: .9rem; line-height: 1.55; margin: 0; }
+    .cl-vben:hover { transform: translateY(-3px); }
+    .cl-vben i {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(255, 191, 27, .24);
+        border-radius: 10px;
+        color: #fff3c4;
+        background: rgba(255, 191, 27, .08);
+        font-size: 1.18rem;
+        box-shadow: 0 0 18px rgba(255, 191, 27, .12);
+    }
+    .cl-vben h5 {
+        font-family: 'Chakra Petch', sans-serif;
+        color: #ffffff;
+        font-size: 1.05rem;
+        margin-bottom: .55rem;
+        text-shadow: 0 0 14px rgba(255, 255, 255, .16);
+    }
+    .cl-vben p {
+        color: rgba(247, 251, 255, .88);
+        font-size: .92rem;
+        line-height: 1.6;
+        margin: 0;
+    }
 
     @media (max-width: 767.98px) {
         .cl-vben-panel { grid-template-columns: 1fr; }
-        .cl-vben { border-right: 0; }
-        .cl-vben:last-child { border-bottom: 0; }
     }
 </style>
 @endpush

@@ -24,13 +24,10 @@
 
 {{-- Section 7 (New System Sensor) removed per feedback --}}
 
-{{-- Section 8 — Talk to the Expert (form) --}}
-@include('frontend.public.partials.soc.expert')
-
-{{-- Section 9 — Pricing --}}
+{{-- Section 8 — Pricing --}}
 @include('frontend.public.partials.soc.pricing')
 
-{{-- Section 10 — Reviews --}}
+{{-- Section 9 — Reviews --}}
 @include('frontend.public.partials.soc.reviews')
 
 {{-- Closing CTA --}}

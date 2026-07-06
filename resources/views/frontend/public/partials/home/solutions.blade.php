@@ -11,9 +11,6 @@
                 <p class="section-eyebrow mb-2" data-reveal>Security Solutions</p>
                 <h2 class="page-section-heading text-secondary mb-0" data-reveal>Explore Our <span class="cl-title-accent">Security Solutions</span></h2>
             </div>
-            <p class="cl-solutions-copy text-muted mb-0" data-reveal>
-                Cyberlog helps organizations monitor threats, validate security risks, strengthen defenses, improve compliance, and build long-term cyber resilience.
-            </p>
         </div>
 
         <div class="cl-solutions-grid">

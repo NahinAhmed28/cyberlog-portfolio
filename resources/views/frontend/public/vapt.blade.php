@@ -29,7 +29,7 @@
 {{-- Section 8 (System Success Story) removed per feedback --}}
 
 {{-- Section 9: Review section. --}}
-@include('frontend.public.partials.vapt.reviews')
+@include('partials.reviews')
 
 @include('partials.talk-to-expert', [
     'title' => 'Ready to test your defenses?',

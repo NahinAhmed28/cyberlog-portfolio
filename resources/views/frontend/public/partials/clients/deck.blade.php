@@ -105,7 +105,7 @@
             rgba(5, 12, 23, .72);
     }
     .cl-deck-wrap { max-width: 1120px; margin: 2.4rem auto 0; }
-    .cl-deck { position: relative; min-height: 520px; padding-top: 118px; }
+    .cl-deck { position: relative; min-height: 555px; padding-top: 118px; }
 
     .cl-deck-card {
         position: absolute; left: 0; right: 0; top: 118px;
@@ -167,7 +167,7 @@
         transform: scale(1.045);
     }
 
-    .cl-deck-nav { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-top: 2rem; }
+    .cl-deck-nav { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-top: 2.85rem; }
     .cl-deck-dots { display: flex; gap: .5rem; }
     .cl-deck-dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: var(--line); cursor: pointer; transition: all .25s var(--ease); }
     .cl-deck-dot.active { background: var(--blue-bright); width: 26px; border-radius: 6px; }

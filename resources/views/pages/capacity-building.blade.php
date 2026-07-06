@@ -132,12 +132,23 @@
 </section>
 
 {{-- Section 6 — Client (compact strip) --}}
+@php
+    $trainingClients = [
+        ['name' => 'National Academy for Planning and Development', 'url' => 'https://napd.gov.bd/', 'logo' => 'assets/img/clients/working-with/napd.png'],
+        ['name' => 'Bangladesh Police', 'url' => 'https://www.police.gov.bd/', 'logo' => 'assets/img/clients/working-with/police.png'],
+        ['name' => 'Bangladesh University of Business and Technology', 'url' => 'https://www.bubt.edu.bd/', 'logo' => 'assets/img/clients/working-with/bubt.png'],
+        ['name' => 'Aspire to Innovate (a2i)', 'url' => 'https://a2i.gov.bd/', 'logo' => 'assets/img/clients/working-with/a2i.png'],
+        ['name' => 'United Nations Development Programme', 'url' => 'https://www.undp.org/', 'logo' => 'assets/img/clients/working-with/undp.png'],
+    ];
+@endphp
 <section class="page-section" id="trusted">
     <div class="container text-center">
         <p class="section-eyebrow mb-4">Trusted by teams across government, finance &amp; enterprise</p>
         <div class="cl-client-strip">
-            @foreach (['a2i', 'BIDA', 'Bangladesh Police', 'BUBT', 'Dhaka Stock Exchange', 'Adcomm Limited', 'NAPD'] as $c)
-                <span class="cl-client-logo">{{ $c }}</span>
+            @foreach ($trainingClients as $client)
+                <a class="cl-client-logo" href="{{ $client['url'] }}" target="_blank" rel="noopener" aria-label="{{ $client['name'] }}">
+                    <img src="{{ asset($client['logo']) }}" alt="{{ $client['name'] }}" loading="eager" decoding="async">
+                </a>
             @endforeach
         </div>
     </div>

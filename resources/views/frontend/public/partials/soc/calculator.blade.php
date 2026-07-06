@@ -73,10 +73,9 @@
 
     .cl-calc-out { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 1.5rem; margin-top: .5rem; }
     .cl-calc-cost { font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 2.6rem; line-height: 1; }
-    /* Amount blurred per feedback — exact figure shared in the tailored quote. */
-    .cl-calc-cost span { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; filter: blur(9px); user-select: none; }
+    .cl-calc-cost span { color: var(--blue-bright); -webkit-text-fill-color: var(--blue-bright); filter: none; user-select: text; text-shadow: 0 0 18px rgba(109, 156, 255, .38); }
     .cl-calc-cost small { font-family: 'IBM Plex Mono', monospace; font-size: .9rem; color: var(--muted); -webkit-text-fill-color: var(--muted); margin-left: .35rem; }
-    .cl-calc-break { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--muted); margin-top: .5rem; filter: blur(4px); user-select: none; }
+    .cl-calc-break { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--muted); margin-top: .5rem; filter: none; user-select: text; }
 </style>
 @endpush
 

@@ -259,7 +259,7 @@ section[id], header[id] { scroll-margin-top: 68px; }
     z-index: 1040; /* above page sections (z-index:2) so the Services dropdown is clickable */
 }
 #mainNav.navbar-shrink { background: rgba(5, 12, 23, 0.98) !important; }
-#mainNav .dropdown-menu { z-index: 1050; margin-top: .35rem; box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.55); }
+#mainNav .dropdown-menu { z-index: 1050; margin-top: 0; box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.55); }
 #mainNav .navbar-brand img { height: 34px !important; }
 #mainNav .navbar-brand {
     font-family: 'Chakra Petch', sans-serif;
@@ -305,6 +305,9 @@ section[id], header[id] { scroll-margin-top: 68px; }
 #mainNav .dropdown-divider { border-color: var(--line); }
 #mainNav .cl-services-menu { min-width: 330px; }
 @media (min-width: 992px) {
+    #mainNav .nav-item.dropdown {
+        position: relative;
+    }
     #mainNav .nav-item.dropdown:hover > .dropdown-menu,
     #mainNav .nav-item.dropdown:focus-within > .dropdown-menu {
         display: block;
@@ -313,9 +316,17 @@ section[id], header[id] { scroll-margin-top: 68px; }
 #mainNav .dropdown-submenu { position: relative; }
 #mainNav .dropdown-submenu > .dropdown-menu {
     top: -.4rem;
-    left: 100%;
-    margin-left: .2rem;
+    left: calc(100% - 1px);
+    margin-left: 0;
     min-width: 320px;
+}
+#mainNav .dropdown-submenu > .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -.45rem;
+    width: .45rem;
 }
 #mainNav .dropdown-submenu:hover > .dropdown-menu,
 #mainNav .dropdown-submenu:focus-within > .dropdown-menu {
@@ -337,6 +348,9 @@ section[id], header[id] { scroll-margin-top: 68px; }
         border-color: var(--line-soft);
         box-shadow: none;
         background: rgba(7, 17, 31, .56);
+    }
+    #mainNav .dropdown-submenu > .dropdown-menu::before {
+        display: none;
     }
     #mainNav .dropdown-submenu > .dropdown-toggle::after {
         transform: none;
@@ -833,6 +847,159 @@ section[id], header[id] { scroll-margin-top: 68px; }
 @keyframes clStar { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
 .cl-review .badge { background: var(--blue-dim) !important; color: var(--blue-bright) !important; border: 1px solid var(--line) !important; }
 
+.cl-proof-reviews {
+    overflow: hidden;
+}
+.cl-proof-kicker {
+    color: var(--muted);
+}
+.cl-proof-title {
+    color: var(--white);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.08;
+    text-transform: none !important;
+}
+.cl-proof-title span {
+    color: var(--warm-soft);
+}
+.cl-proof-copy {
+    max-width: 760px;
+    margin-inline: auto;
+}
+.cl-proof-grid {
+    margin-top: clamp(2.4rem, 5vw, 3.4rem);
+}
+.cl-proof-card {
+    position: relative;
+    min-height: 335px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4.45rem clamp(1.15rem, 2.2vw, 1.65rem) 1.55rem;
+    border: 1px solid rgba(255, 255, 255, .13);
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(14, 16, 18, .9), rgba(5, 8, 11, .96)),
+        radial-gradient(420px 220px at 50% 0%, rgba(255, 138, 0, .08), transparent 64%);
+    box-shadow: 0 20px 46px rgba(0, 0, 0, .34);
+    transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+.cl-proof-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(255, 138, 0, .36), transparent) top / 70% 1px no-repeat;
+    opacity: .7;
+}
+.cl-proof-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 191, 27, .42);
+    box-shadow: 0 26px 62px rgba(0, 0, 0, .42), 0 0 24px rgba(255, 138, 0, .08);
+}
+.cl-proof-badge {
+    position: absolute;
+    top: -29px;
+    left: 50%;
+    width: 68px;
+    height: 68px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    padding: .42rem;
+    color: #07111f;
+    background: linear-gradient(180deg, #f8fbff, #d9e9f6);
+    border: 1px solid rgba(255, 255, 255, .82);
+    clip-path: polygon(50% 0, 78% 13%, 100% 28%, 91% 62%, 78% 87%, 50% 100%, 22% 87%, 9% 62%, 0 28%, 22% 13%);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .36), 0 0 0 4px rgba(255, 255, 255, .04);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .43rem;
+    line-height: 1;
+    text-transform: uppercase;
+}
+.cl-proof-badge strong {
+    color: #07111f;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: .94rem;
+    line-height: .9;
+}
+.cl-proof-badge span {
+    display: block;
+}
+.cl-proof-badge-gartner strong {
+    font-size: .56rem;
+    line-height: 1;
+}
+.cl-proof-badge-clutch strong {
+    font-size: .82rem;
+}
+.cl-proof-award {
+    max-width: 17rem;
+    min-height: 3.5rem;
+    margin: 0 auto 1rem;
+    color: var(--white);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: .9rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+.cl-proof-rating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .16rem;
+    margin-bottom: .95rem;
+    color: var(--warm-soft);
+    font-size: .86rem;
+}
+.cl-proof-rating span {
+    margin-left: .35rem;
+    color: var(--white);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .74rem;
+    font-weight: 700;
+}
+.cl-proof-quote {
+    max-width: 18.5rem;
+    margin: 0 auto 1.25rem;
+    color: #f2f6ff;
+    font-size: .84rem;
+    font-style: italic;
+    line-height: 1.62;
+}
+.cl-proof-link {
+    margin-top: auto;
+    color: var(--warm-soft);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .72rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.cl-proof-link i {
+    margin-left: .28rem;
+    transform: translateY(-1px);
+    transition: transform .2s var(--ease);
+}
+.cl-proof-link:hover {
+    color: var(--white);
+}
+.cl-proof-link:hover i {
+    transform: translate(3px, -4px);
+}
+@media (max-width: 767.98px) {
+    .cl-proof-card {
+        min-height: 0;
+    }
+    .cl-proof-award {
+        min-height: 0;
+    }
+}
+
 /* ===================================================================
    RADIAL (vCISO) capability diagram
    =================================================================== */
@@ -1059,10 +1226,12 @@ html.js [data-reveal].is-in {
 }
 .footer .cl-footer-tagline {
     position: absolute;
-    left: calc(100% - .82em);
+    /* Pulled inward from the right edge per feedback — right of center, not flush right. */
+    left: auto;
+    right: 5%;
     bottom: calc(100% + .35rem);
     white-space: nowrap;
-    text-align: left;
+    text-align: right;
 }
 .cl-wordmark {
     margin-top: 0;
