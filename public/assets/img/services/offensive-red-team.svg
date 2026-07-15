@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Red team attack simulation visual</title>
+  <desc id="desc">A red offensive security illustration with a simulated attack path, target rings, and threat events.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090d18"/>
+      <stop offset="1" stop-color="#270712"/>
+    </linearGradient>
+    <radialGradient id="flare" cx=".62" cy=".38" r=".6">
+      <stop offset="0" stop-color="#ff3151" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#ff3151" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0v48" fill="none" stroke="#ffffff" stroke-opacity=".05"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="600" rx="28" fill="url(#bg)"/>
+  <rect width="960" height="600" rx="28" fill="url(#grid)"/>
+  <rect width="960" height="600" rx="28" fill="url(#flare)"/>
+  <path d="M160 500C300 410 415 390 530 320s160-170 320-190" fill="none" stroke="#ff3151" stroke-width="6" stroke-dasharray="22 14" stroke-linecap="round" opacity=".9" filter="url(#glow)"/>
+  <path d="M120 420c128-52 238-18 338-84 94-60 150-158 292-174" fill="none" stroke="#ffb51b" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+  <g opacity=".9">
+    <rect x="78" y="90" width="340" height="180" rx="20" fill="#101827" stroke="#ff3151" stroke-opacity=".4"/>
+    <circle cx="114" cy="128" r="8" fill="#ff3151"/>
+    <circle cx="148" cy="128" r="8" fill="#ffb51b"/>
+    <circle cx="182" cy="128" r="8" fill="#2f6bff"/>
+    <path d="M110 170h196M110 204h242M110 238h176" stroke="#b9c7de" stroke-opacity=".45" stroke-width="10" stroke-linecap="round"/>
+    <path d="M110 170h92M110 238h128" stroke="#ff3151" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(560 110)">
+    <circle cx="170" cy="170" r="132" fill="#0c1322" stroke="#ff3151" stroke-opacity=".6" stroke-width="3"/>
+    <circle cx="170" cy="170" r="88" fill="none" stroke="#ff3151" stroke-opacity=".35" stroke-width="3"/>
+    <circle cx="170" cy="170" r="54" fill="none" stroke="#ffb51b" stroke-opacity=".55" stroke-width="3"/>
+    <path d="M170 42v256M42 170h256" stroke="#ffffff" stroke-opacity=".12"/>
+    <path d="M170 170l76-58" stroke="#ff3151" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+    <circle cx="252" cy="112" r="14" fill="#ff3151" filter="url(#glow)"/>
+  </g>
+  <g transform="translate(330 360)">
+    <path d="M92 0c46 0 84 38 84 84v68H10V84C10 38 48 0 92 0Z" fill="#121a2a" stroke="#ff3151" stroke-opacity=".42"/>
+    <circle cx="92" cy="82" r="48" fill="#050c17" stroke="#ffb51b" stroke-opacity=".45"/>
+    <path d="M70 86c16 20 36 20 52 0M58 74h68" stroke="#ff3151" stroke-width="9" stroke-linecap="round"/>
+    <path d="M34 156h136" stroke="#ffffff" stroke-opacity=".2" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g fill="#ff3151" filter="url(#glow)">
+    <circle cx="124" cy="452" r="10"/>
+    <circle cx="458" cy="316" r="10"/>
+    <circle cx="802" cy="160" r="10"/>
+  </g>
+</svg>

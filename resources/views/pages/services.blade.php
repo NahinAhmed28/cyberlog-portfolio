@@ -4,6 +4,26 @@
 
 @section('content')
 
+@php
+    $serviceHref = function ($service) {
+        $groupRoutes = [
+            'offensive' => 'offensive-security-services',
+            'defensive' => 'defensive-security-services',
+        ];
+
+        $group = $service['group'] ?? null;
+        if (isset($groupRoutes[$group]) && Route::has($groupRoutes[$group])) {
+            return route($groupRoutes[$group]);
+        }
+
+        if (Route::has($service['route'])) {
+            return route($service['route']);
+        }
+
+        return '#';
+    };
+@endphp
+
 {{-- Hero — box removed per feedback (centered, single column) --}}
 @include('partials.page-hero', [
     'eyebrow' => 'Our Services',
@@ -19,9 +39,8 @@
 
         <div class="row g-4">
             @foreach (config('cyberlog_services', []) as $sol)
-                @php $href = Route::has($sol['route']) ? route($sol['route']) : '#'; @endphp
                 <div class="col-md-6 col-lg-4">
-                    <a class="cl-solution-card h-100" href="{{ $href }}">
+                    <a class="cl-solution-card h-100" href="{{ $serviceHref($sol) }}">
                         <div class="cl-solution-icon"><i class="fas {{ $sol['icon'] }}"></i></div>
                         <h4 class="h5">{!! $sol['title'] !!}</h4>
                         <p class="text-muted mb-3">{{ $sol['desc'] }}</p>

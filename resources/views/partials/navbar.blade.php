@@ -7,11 +7,8 @@
         ['label' => 'VAPT / Pen Testing', 'pub' => 'public.vapt', 'legacy' => 'vapt'],
         ['label' => 'Security Audits & ISO 27001', 'pub' => 'public.it-audit', 'legacy' => 'it-audit'],
         ['label' => 'Security Awareness Training', 'pub' => 'public.capacity-building', 'legacy' => 'capacity-building'],
-        ['label' => 'Defense Services', 'pub' => 'public.defense-services', 'legacy' => 'defense-services'],
-        ['label' => 'Malware Analysis', 'pub' => 'public.malware-analysis', 'legacy' => 'public.malware-analysis'],
-        ['label' => 'Next-Gen Firewall Protection', 'pub' => 'public.next-gen-firewall', 'legacy' => 'public.next-gen-firewall'],
-        ['label' => 'Backup and Recovery', 'pub' => 'public.backup-recovery', 'legacy' => 'public.backup-recovery'],
-        ['label' => 'Digital Forensics', 'pub' => 'public.digital-forensics', 'legacy' => 'public.digital-forensics'],
+        ['label' => 'Offensive Security Services', 'pub' => 'public.offensive-security-services', 'legacy' => 'offensive-security-services'],
+        ['label' => 'Defensive Security Services', 'pub' => 'public.defensive-security-services', 'legacy' => 'defensive-security-services'],
     ];
 
     $serviceRouteNames = [
@@ -20,11 +17,9 @@
         'public.vapt', 'vapt',
         'public.it-audit', 'it-audit',
         'public.capacity-building', 'capacity-building',
+        'public.offensive-security-services', 'offensive-security-services',
+        'public.defensive-security-services', 'defensive-security-services',
         'public.defense-services', 'defense-services',
-        'public.malware-analysis',
-        'public.next-gen-firewall',
-        'public.backup-recovery',
-        'public.digital-forensics',
     ];
 @endphp
 
@@ -49,14 +44,14 @@
             <ul class="navbar-nav ms-auto align-items-lg-center">
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded {{ request()->routeIs('home') ? 'active' : '' }}"
+                    <a class="nav-link py-2 px-0 px-lg-3 rounded {{ request()->routeIs('home') ? 'active' : '' }}"
                        href="{{ route('home') }}">
                         Home
                     </a>
                 </li>
 
                 <li class="nav-item dropdown mx-0 mx-lg-1">
-                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded {{ request()->routeIs(...$serviceRouteNames) ? 'active' : '' }}"
+                    <a class="nav-link dropdown-toggle py-2 px-0 px-lg-3 rounded {{ request()->routeIs(...$serviceRouteNames) ? 'active' : '' }}"
                        href="#"
                        id="legacyServicesDropdown"
                        role="button"
@@ -81,14 +76,14 @@
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded {{ request()->routeIs('public.vciso', 'vciso') ? 'active' : '' }}"
+                    <a class="nav-link py-2 px-0 px-lg-3 rounded {{ request()->routeIs('public.vciso', 'vciso') ? 'active' : '' }}"
                        href="{{ $u('public.vciso', 'vciso') }}">
                         vCISO
                     </a>
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded {{ request()->routeIs('public.about', 'about') ? 'active' : '' }}"
+                    <a class="nav-link py-2 px-0 px-lg-3 rounded {{ request()->routeIs('public.about', 'about') ? 'active' : '' }}"
                        href="{{ $u('public.about', 'about') }}">
                         About Us
                     </a>

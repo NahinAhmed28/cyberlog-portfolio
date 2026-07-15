@@ -5,26 +5,21 @@
 @section('content')
 
 @php
-    $svcUrl = fn ($r) => Route::has($r) ? route($r) : '#';
-
     $offensive = [
         [
             'title'   => 'Red Team Assessment',
-            'route'   => 'red-team',
             'icon'    => 'fa-user-secret',
             'points'  => ['Authorized, controlled attack simulations', 'Tests people, processes, and technology', 'Validates real-world defense readiness'],
             'related' => ['Ethical Hacking', 'Social Engineering', 'Vulnerability Exploitation'],
         ],
         [
             'title'   => 'Web, API & Mobile Application Security Testing',
-            'route'   => 'app-security-testing',
             'icon'    => 'fa-mobile-screen-button',
             'points'  => ['Full-stack testing across web, API, and mobile', 'Mapped to the OWASP Top 10', 'Manual and automated assessment'],
             'related' => ['Web App Scanning', 'API Testing', 'Mobile Application Testing'],
         ],
         [
             'title'   => 'Network Security Assessment',
-            'route'   => 'network-security',
             'icon'    => 'fa-network-wired',
             'points'  => ['Internal and external network testing', 'Identifies misconfigurations and exposed services', 'Hands-on exploitation, not just scanning'],
             'related' => ['Server-Side Testing', 'Penetration Testing'],
@@ -34,14 +29,12 @@
     $defensive = [
         [
             'title'   => 'Threat Intelligence',
-            'route'   => 'threat-intelligence',
             'icon'    => 'fa-satellite-dish',
             'points'  => ['Continuous monitoring of emerging threats', 'Detects leaked credentials and exposed assets', 'Early warning for proactive defense'],
             'related' => ['Threat Hunting', 'SIEM Solution'],
         ],
         [
             'title'   => 'Digital Forensics & Incident Response',
-            'route'   => 'digital-forensics',
             'icon'    => 'fa-fingerprint',
             'points'  => ['Investigates cyber incidents and evidence', 'Supports containment and root-cause analysis', 'Guides recovery and prevention actions'],
             'related' => ['Incident Response', 'Evidence Analysis', 'Containment Support'],
@@ -58,7 +51,7 @@
         @foreach ($offensive as $block)
             <div class="row g-4 g-lg-5 align-items-center cl-ds-row">
                 <div class="col-lg-6 {{ $loop->odd ? '' : 'order-lg-2' }}">
-                    <a class="cl-ds-title" href="{{ $svcUrl($block['route']) }}">{{ $block['title'] }} <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="cl-ds-title">{{ $block['title'] }}</h3>
                     <ul class="cl-ds-points list-unstyled">
                         @foreach ($block['points'] as $p)
                             <li><i class="fas fa-circle-plus"></i>{{ $p }}</li>
@@ -72,9 +65,9 @@
                     </div>
                 </div>
                 <div class="col-lg-6 {{ $loop->odd ? '' : 'order-lg-1' }}">
-                    <a class="cl-ds-visual cl-ds-visual-red" href="{{ $svcUrl($block['route']) }}" aria-label="{{ $block['title'] }}">
+                    <div class="cl-ds-visual cl-ds-visual-red" aria-label="{{ $block['title'] }}">
                         <i class="fas {{ $block['icon'] }}"></i>
-                    </a>
+                    </div>
                 </div>
             </div>
         @endforeach
@@ -89,7 +82,7 @@
         @foreach ($defensive as $block)
             <div class="row g-4 g-lg-5 align-items-center cl-ds-row">
                 <div class="col-lg-6 {{ $loop->odd ? '' : 'order-lg-2' }}">
-                    <a class="cl-ds-title" href="{{ $svcUrl($block['route']) }}">{{ $block['title'] }} <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="cl-ds-title">{{ $block['title'] }}</h3>
                     <ul class="cl-ds-points list-unstyled">
                         @foreach ($block['points'] as $p)
                             <li><i class="fas fa-circle-plus blue"></i>{{ $p }}</li>
@@ -103,9 +96,9 @@
                     </div>
                 </div>
                 <div class="col-lg-6 {{ $loop->odd ? '' : 'order-lg-1' }}">
-                    <a class="cl-ds-visual cl-ds-visual-blue" href="{{ $svcUrl($block['route']) }}" aria-label="{{ $block['title'] }}">
+                    <div class="cl-ds-visual cl-ds-visual-blue" aria-label="{{ $block['title'] }}">
                         <i class="fas {{ $block['icon'] }}"></i>
-                    </a>
+                    </div>
                 </div>
             </div>
         @endforeach
@@ -129,13 +122,8 @@
         font-weight: 700;
         font-size: clamp(1.35rem, 2.4vw, 1.85rem);
         color: var(--white);
-        text-decoration: none;
         margin-bottom: 1.1rem;
-        transition: color .2s var(--ease);
     }
-    .cl-ds-title:hover { color: var(--warm-soft); }
-    .cl-ds-title i { font-size: .8em; margin-left: .4rem; transition: transform .2s var(--ease); }
-    .cl-ds-title:hover i { transform: translateX(5px); }
 
     .cl-ds-points { margin-bottom: 1.1rem; }
     .cl-ds-points li {

@@ -1,6 +1,6 @@
 @extends('layouts.portfolio')
 
-@section('title', 'Cyberlog — Build Cyber Resilience Before Attackers Build Access')
+@section('title', 'Cyberlog - Smarter Intelligence. Stronger Security.')
 
 @section('content')
 
@@ -9,20 +9,14 @@
     <div class="container">
         <div class="row align-items-center g-5">
 
-            <div class="col-lg-7">
+            <div class="col-lg-7 text-center">
                 <p class="cl-hero-eyebrow mb-3" data-reveal data-hero>
                     THREAT INTELLIGENCE · MANAGED SOC · OFFENSIVE SECURITY<span class="cl-cursor"></span>
                 </p>
 
                 <h1 class="cl-hero-heading mb-4" data-reveal data-hero>
-                    Build Cyber <span class="accent">Resilience</span> Before Attackers Build Access
+                    Smarter Intelligence. <span class="accent">Stronger Security.</span>
                 </h1>
-
-                <p class="lead text-muted lead-narrow ms-0 mb-4" data-reveal data-hero>
-                    Cyberlog delivers offensive security, managed SOC, compliance, threat
-                    intelligence, and innovative solutions for enterprises, government
-                    organizations, financial institutions, and critical infrastructure.
-                </p>
 
                 <div class="d-flex flex-wrap gap-2 mb-4" data-reveal data-hero>
                     <span class="cl-tag"><i class="fas fa-bug"></i>Penetration Testing</span>
@@ -118,6 +112,7 @@
         </div>
 
         <div class="row g-4">
+            @php $catalogue = collect(config('cyberlog_services', []))->keyBy('route'); @endphp
             @foreach ([
                 ['route' => 'soc', 'icon' => 'fa-desktop', 'title' => 'SOC as a Service', 'desc' => '24/7 monitoring, threat detection, and incident response from a mature security operations center.'],
                 ['route' => 'vapt', 'icon' => 'fa-bug', 'title' => 'VAPT / Pen Testing', 'desc' => 'Vulnerability assessment and black/grey/white-box penetration testing across your digital systems.'],
@@ -126,8 +121,18 @@
                 ['route' => 'defense-services', 'icon' => 'fa-tower-broadcast', 'title' => 'Defense Services', 'desc' => 'Threat intel, incident response, firewall management, risk assessment, and backup.'],
                 ['route' => 'vciso', 'icon' => 'fa-user-shield', 'title' => 'vCISO', 'desc' => 'Virtual CISO support for governance, strategy, compliance, and long-term cyber resilience.'],
             ] as $sol)
+                @php
+                    $svc = $catalogue->get($sol['route']);
+                    if ($svc && isset($svc['group']) && $svc['group'] === 'defensive') {
+                        $href = route('defensive-security-services');
+                    } elseif ($svc && isset($svc['group']) && $svc['group'] === 'offensive') {
+                        $href = route('offensive-security-services');
+                    } else {
+                        $href = route($sol['route']);
+                    }
+                @endphp
                 <div class="col-md-6 col-lg-4">
-                    <a class="cl-solution-card" href="{{ route($sol['route']) }}">
+                    <a class="cl-solution-card" href="{{ $href }}">
                         <div class="cl-solution-icon"><i class="fas {{ $sol['icon'] }}"></i></div>
                         <h4 class="h5">{!! $sol['title'] !!}</h4>
                         <p class="text-muted mb-3">{{ $sol['desc'] }}</p>
@@ -203,10 +208,10 @@
             <div class="col-lg-6">
                 <div class="row g-3">
                     @foreach ([
-                        ['500+', 'Users protected across managed services'],
-                        ['14+', 'Enterprise &amp; government clients'],
-                        ['24/7', 'Security operations coverage'],
-                        ['93', 'ISO 27001 controls implemented'],
+                        ['500+', 'Users Protected Across Managed Services'],
+                        ['14+', 'Enterprise &amp; Government Clients'],
+                        ['24/7', 'Security Operations Coverage'],
+                        ['93', 'ISO 27001 Controls Implemented'],
                     ] as $m)
                         <div class="col-6">
                             <div class="cl-benefit text-center">

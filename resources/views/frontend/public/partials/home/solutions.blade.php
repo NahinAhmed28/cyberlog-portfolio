@@ -1,7 +1,23 @@
 {{-- Home > Security Solutions — 9 service cards from config/cyberlog_services.php. --}}
 @php
     $solutions = config('cyberlog_services', []);
-    $svcUrl = fn ($route) => Route::has($route) ? route($route) : '#';
+    $svcUrl = function ($service) {
+        $groupRoutes = [
+            'offensive' => 'offensive-security-services',
+            'defensive' => 'defensive-security-services',
+        ];
+
+        $group = $service['group'] ?? null;
+        if (isset($groupRoutes[$group]) && Route::has($groupRoutes[$group])) {
+            return route($groupRoutes[$group]);
+        }
+
+        if (Route::has($service['route'])) {
+            return route($service['route']);
+        }
+
+        return '#';
+    };
 @endphp
 
 <section class="page-section cl-solutions-section" id="solutions">
@@ -15,7 +31,7 @@
 
         <div class="cl-solutions-grid">
             @foreach ($solutions as $solution)
-                <a class="cl-solution-tile" href="{{ $svcUrl($solution['route']) }}" data-reveal>
+                <a class="cl-solution-tile" href="{{ $svcUrl($solution) }}" data-reveal>
                     <div class="cl-solution-top">
                         <span class="cl-solution-mark"><i class="fas {{ $solution['icon'] }}"></i></span>
                         <span class="cl-solution-kicker">{{ $solution['kicker'] }}</span>

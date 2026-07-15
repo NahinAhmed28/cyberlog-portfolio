@@ -3,48 +3,39 @@
     $screens = [
         [
             'cat' => 'Government Organization',
-            'name' => 'National Academy for Planning and Development',
-            'shot' => 'napd.png',
-            'url' => 'https://napd.gov.bd/',
-            'desc' => 'Cyberlog works with NAPD, a national public-sector training and planning institution, to support cybersecurity awareness and capacity-building readiness for government teams.',
-            'stats' => [['Government', 'Training Institution'], ['Capacity', 'Building Support']],
-            'accent' => 'var(--warm-soft)',
+            'name' => 'Dhaka Stock Exchange (DSE)',
+            'shot' => 'dse.png',
+            'url' => 'https://www.dsebd.org/',
+            'desc' => "Cyberlog delivered SOC support for Dhaka Stock Exchange, Bangladesh's most critical capital market infrastructure and one of the country's highest-value financial technology environments.",
+            'stats' => [['24/7', 'SOC Monitoring'], ['99.99%', 'Uptime For Capital Market Cyber Defense']],
+            'accent' => '#0a57db',
         ],
         [
-            'cat' => 'Law Enforcement',
-            'name' => 'Bangladesh Police',
-            'shot' => 'police.png',
-            'url' => 'https://www.police.gov.bd/',
-            'desc' => 'Cyberlog supports cybersecurity readiness for Bangladesh Police through awareness, assessment, and capacity-building initiatives for critical public-service operations.',
-            'stats' => [['Public Safety', 'Law Enforcement'], ['Cybersecurity', 'Capacity Support']],
-            'accent' => 'var(--blue-bright)',
+            'cat' => 'Financial Institute',
+            'name' => 'Bangladesh Finance',
+            'shot' => 'bdfinance.png',
+            'url' => 'https://bd.finance/',
+            'desc' => 'Cyberlog conducted VAPT for Bangladesh Finance to identify, validate, and prioritize exploitable security risks across its digital environment.',
+            'stats' => [['360°', 'Security Risk Review'], ['10+', 'High-Priority Risks Validated']],
+            'accent' => '#f01843',
         ],
         [
-            'cat' => 'Education',
-            'name' => 'Bangladesh University of Business and Technology',
-            'shot' => 'bubt.png',
-            'url' => 'https://www.bubt.edu.bd/',
-            'desc' => 'Cyberlog supports BUBT with cybersecurity awareness and skill-building activities for students, faculty, and technology teams in the education sector.',
-            'stats' => [['Education', 'Sector'], ['Awareness', 'Training Support']],
-            'accent' => '#42e6a4',
+            'cat' => 'Government Organization',
+            'name' => 'Bangladesh Investment Development Authority (BIDA)',
+            'shot' => 'bida.png',
+            'url' => 'https://bida.gov.bd/',
+            'desc' => 'Cyberlog conducted cybersecurity capacity building for the IT team of Bangladesh Investment Development Authority and supported the organization with a cybersecurity assessment to improve technical readiness, risk visibility, and institutional cyber resilience.',
+            'stats' => [['250%+', "Increase In Employees' Cybersecurity Skills"], ['12', 'Security Areas Reviewed']],
+            'accent' => '#1f9f72',
         ],
         [
-            'cat' => 'Digital Government',
-            'name' => 'Aspire to Innovate (a2i)',
-            'shot' => 'a2i.png',
-            'url' => 'https://a2i.gov.bd/',
-            'desc' => "Cyberlog works with a2i, Bangladesh's digital transformation programme, supporting cybersecurity awareness and digital-service resilience across public-sector initiatives.",
-            'stats' => [['Digital', 'Government'], ['Cyber', 'Capacity Support']],
-            'accent' => 'var(--red-soft)',
-        ],
-        [
-            'cat' => 'Development Organization',
-            'name' => 'United Nations Development Programme',
-            'shot' => 'undp.png',
-            'url' => 'https://www.undp.org/bangladesh',
-            'desc' => "Cyberlog supports cybersecurity capacity-building and awareness needs aligned with UNDP Bangladesh's development and digital resilience priorities.",
-            'stats' => [['Development', 'Organization'], ['Digital', 'Resilience Support']],
-            'accent' => '#6d9cff',
+            'cat' => 'Advertisement Industry',
+            'name' => 'Adcomm Limited',
+            'shot' => 'adcomm.png',
+            'url' => 'https://adcomm.com.bd/',
+            'desc' => 'Cyberlog supported Adcomm Limited with ISO 27001 implementation and employee cybersecurity capacity building to strengthen compliance readiness and workforce security awareness.',
+            'stats' => [['93', 'ISO Controls Mapped'], ['200+', 'Employees Trained']],
+            'accent' => '#ff8a00',
         ],
     ];
 @endphp
@@ -52,7 +43,7 @@
 <section class="page-section cl-client-screens" id="client-websites">
     <div class="container">
         <p class="section-eyebrow text-center mb-2">Client Websites</p>
-        <h2 class="page-section-heading text-center text-secondary mb-0">Security Work Across <span class="cl-title-accent">Live Digital Platforms</span></h2>
+        <h2 class="page-section-heading text-center text-secondary mb-0"><span class="cl-trusted">Trusted by</span> <span class="cl-title-accent">Government &amp; Enterprise.</span></h2>
 
         <div class="cl-deck-wrap">
             <div class="cl-deck" id="clDeck">
@@ -72,7 +63,7 @@
                                     @endforeach
                                 </div>
                                 <a class="cl-deck-btn" href="{{ $screen['url'] }}" target="_blank" rel="noopener">
-                                    Open Website <i class="fas fa-arrow-up-right-from-square"></i>
+                                    View Details <i class="fas fa-arrow-right"></i>
                                 </a>
                             </div>
                             <div class="cl-deck-preview">
@@ -108,63 +99,129 @@
 @push('styles')
 <style>
     .cl-client-screens {
+        color: #06101f;
+        min-height: 0;
+        display: block;
+        padding-top: clamp(2rem, 4vh, 3rem) !important;
+        padding-bottom: clamp(1.5rem, 3vh, 2.4rem) !important;
         background:
-            radial-gradient(860px 420px at 14% 8%, rgba(109, 156, 255, .08), transparent 62%),
-            radial-gradient(680px 360px at 88% 80%, rgba(255, 72, 101, .08), transparent 64%),
-            rgba(5, 12, 23, .72);
+            radial-gradient(980px 460px at 12% 12%, rgba(109, 156, 255, .18), transparent 62%),
+            radial-gradient(720px 360px at 88% 82%, rgba(10, 87, 219, .12), transparent 64%),
+            linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%) !important;
+        overflow: hidden;
     }
-    .cl-deck-wrap { max-width: 1120px; margin: 2.4rem auto 0; }
-    .cl-deck { position: relative; min-height: 555px; padding-top: 118px; }
+    .cl-client-screens .container {
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: clamp(1rem, 2vh, 1.5rem);
+    }
+    .cl-client-screens .page-section-heading {
+        position: relative;
+        z-index: 4;
+        color: #f8fbff !important;
+        font-size: clamp(1.75rem, 3vw, 2.65rem);
+        line-height: 1.02;
+        text-shadow: none;
+        margin-bottom: 0.8rem;
+    }
+    .cl-client-screens .page-section-heading .cl-trusted { color: #f8fbff !important; }
+    .cl-client-screens .cl-title-accent {
+        color: var(--warm-soft) !important;
+    }
+    .cl-deck-wrap { width: 100%; max-width: min(100%, 1120px); margin: clamp(1.9rem, 4.4vh, 2.7rem) auto 0; }
+    .cl-deck { position: relative; height: clamp(378px, 53vh, 470px); padding-top: 74px; }
 
     .cl-deck-card {
-        position: absolute; left: 0; right: 0; top: 118px;
-        background: linear-gradient(160deg, rgba(16, 31, 58, .98), rgba(7, 17, 31, .96));
-        border: 1px solid var(--line); border-radius: 8px;
-        padding: 1.75rem;
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.42);
+        position: absolute; left: 0; right: 0; top: 74px;
+        color: #06101f;
+        background:
+            linear-gradient(145deg, rgba(133, 170, 249, .98), rgba(104, 145, 238, .98));
+        border: 1px solid rgba(45, 88, 169, .18); border-radius: 8px;
+        padding: clamp(.95rem, 1.5vw, 1.25rem);
+        overflow: hidden;
+        box-shadow: 0 34px 76px rgba(12, 43, 104, 0.26);
         transition: transform .45s var(--ease), opacity .45s var(--ease), border-color .25s var(--ease);
         transform-origin: center top;
         will-change: transform, opacity;
         cursor: pointer;
     }
-    .cl-deck-card.is-front { cursor: default; }
-    .cl-deck-card:hover { border-color: var(--cat, var(--blue-bright)); }
-    .cl-deck-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 60; opacity: 1; }
-    .cl-deck-card:nth-child(2) { transform: translateY(-34px) scale(.965); z-index: 50; opacity: .8; }
-    .cl-deck-card:nth-child(3) { transform: translateY(-68px) scale(.93); z-index: 40; opacity: .6; }
-    .cl-deck-card:nth-child(4) { transform: translateY(-102px) scale(.895); z-index: 30; opacity: .45; }
-    .cl-deck-card:nth-child(5) { transform: translateY(-126px) scale(.86); z-index: 20; opacity: .34; }
-
-    .cl-deck-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr); gap: 1.75rem; align-items: center; }
-    .cl-deck-cat { font-family: 'IBM Plex Mono', monospace; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cat, var(--blue-bright)); }
-    .cl-deck-name { font-family: 'Chakra Petch', sans-serif; font-size: clamp(1.35rem, 2.4vw, 2rem); font-weight: 700; color: var(--white); margin: .45rem 0 .6rem; line-height: 1.12; }
-    .cl-deck-desc { color: var(--muted); font-size: .94rem; line-height: 1.65; }
-    .cl-deck-stats { display: flex; flex-wrap: wrap; gap: 1.5rem 2rem; margin: 1.35rem 0; }
-    .cl-deck-num {
-        font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 2.1rem; line-height: 1;
-        background: var(--grad); -webkit-background-clip: text; background-clip: text;
-        -webkit-text-fill-color: transparent; color: transparent;
+    .cl-deck-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+            linear-gradient(90deg, rgba(255, 255, 255, .18), transparent 38%),
+            radial-gradient(520px 240px at 82% 16%, rgba(255, 255, 255, .26), transparent 68%);
     }
-    .cl-deck-lbl { color: var(--muted); font-size: .72rem; margin-top: .35rem; max-width: 170px; line-height: 1.35; }
+    .cl-deck-card.is-front { cursor: default; }
+    .cl-deck-card:hover { border-color: var(--cat, #0a57db); }
+    .cl-deck-card:nth-child(1) { transform: translateY(0) scale(1); z-index: 60; opacity: 1; }
+    .cl-deck-card:nth-child(2) { transform: translateY(-30px) scale(.968); z-index: 50; opacity: .8; }
+    .cl-deck-card:nth-child(3) { transform: translateY(-60px) scale(.936); z-index: 40; opacity: .6; }
+    .cl-deck-card:nth-child(4) { transform: translateY(-90px) scale(.904); z-index: 30; opacity: .45; }
+
+    .cl-deck-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(390px, 1.12fr) minmax(340px, .88fr);
+        gap: clamp(1rem, 2.2vw, 1.75rem);
+        align-items: center;
+    }
+    .cl-deck-cat {
+        display: block;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: clamp(.86rem, 1.2vw, 1rem);
+        letter-spacing: 0;
+        text-transform: none;
+        color: #06101f;
+    }
+    .cl-deck-name {
+        font-family: 'Chakra Petch', sans-serif;
+        font-size: clamp(1.28rem, 2vw, 1.85rem);
+        font-weight: 700;
+        color: #020817;
+        margin: .65rem 0 .6rem;
+        line-height: 1.06;
+    }
+    .cl-deck-desc {
+        color: #102958;
+        font-size: clamp(.78rem, .94vw, .88rem);
+        line-height: 1.36;
+        max-width: 46rem;
+        margin-bottom: 0;
+    }
+    .cl-deck-stats { display: flex; flex-wrap: wrap; gap: .75rem clamp(1.35rem, 2.5vw, 2.2rem); margin: clamp(.75rem, 1.7vh, 1.05rem) 0; }
+    .cl-deck-num {
+        font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: clamp(1.75rem, 2.9vw, 2.7rem); line-height: .92;
+        background: none; -webkit-background-clip: initial; background-clip: initial;
+        -webkit-text-fill-color: currentColor; color: #020817;
+    }
+    .cl-deck-lbl { color: #0d244e; font-size: clamp(.72rem, .86vw, .82rem); margin-top: .32rem; max-width: 230px; line-height: 1.25; }
     .cl-deck-btn {
         display: inline-flex; align-items: center; gap: .5rem;
-        background: var(--blue-deep); color: #fff; text-decoration: none;
-        border: 1px solid var(--line); border-radius: 4px; padding: .58rem 1rem; font-size: .85rem;
+        background: #020817; color: #fff; text-decoration: none;
+        border: 1px solid #020817; border-radius: 999px; padding: .62rem 1rem; font-size: .82rem;
+        font-weight: 700;
         transition: all .2s var(--ease);
     }
-    .cl-deck-btn:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .cl-deck-btn:hover { background: #0a57db; border-color: #0a57db; color: #fff; }
     .cl-deck-btn i { transition: transform .2s var(--ease); }
-    .cl-deck-btn:hover i { transform: translate(3px, -3px); }
+    .cl-deck-btn:hover i { transform: translateX(4px); }
 
-    .cl-browser { border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: #050c17; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.42); }
-    .cl-browser-bar { display: flex; align-items: center; gap: 6px; padding: .55rem .7rem; background: rgba(255, 255, 255, 0.04); border-bottom: 1px solid var(--line); }
+    .cl-browser { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, .42); background: #f8fbff; box-shadow: 0 24px 52px rgba(8, 35, 91, 0.28); }
+    .cl-browser-bar { display: none; align-items: center; gap: 6px; padding: .55rem .7rem; background: rgba(255, 255, 255, 0.04); border-bottom: 1px solid var(--line); }
     .cl-browser-bar span { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); opacity: .5; }
     .cl-browser-body {
         display: block;
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 16 / 8.4;
+        max-height: clamp(220px, 32vh, 245px);
         position: relative;
         overflow: hidden;
-        background: #050c17;
+        background: #f8fbff;
     }
     .cl-browser-body img {
         width: 100%; height: 100%;
@@ -177,20 +234,44 @@
         transform: scale(1.045);
     }
 
-    .cl-deck-nav { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-top: 2.85rem; }
+    .cl-deck-nav {
+        position: relative;
+        z-index: 80;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        min-height: 46px;
+        margin-top: clamp(.65rem, 1.6vh, 1rem);
+    }
     .cl-deck-dots { display: flex; gap: .5rem; }
-    .cl-deck-dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: var(--line); cursor: pointer; transition: all .25s var(--ease); }
-    .cl-deck-dot.active { background: var(--blue-bright); width: 26px; border-radius: 6px; }
-    .cl-deck-arrow { width: 42px; height: 42px; border-radius: 50%; background: var(--surface); border: 1px solid var(--line); color: var(--white); cursor: pointer; display: grid; place-items: center; transition: all .2s var(--ease); }
-    .cl-deck-arrow:hover { background: var(--blue); border-color: var(--blue); }
+    .cl-deck-dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: rgba(6, 16, 31, .24); cursor: pointer; transition: all .25s var(--ease); }
+    .cl-deck-dot.active { background: #0a57db; width: 26px; border-radius: 6px; }
+    .cl-deck-arrow { width: 42px; height: 42px; border-radius: 50%; background: #fff; border: 1px solid rgba(10, 87, 219, .2); color: #06101f; cursor: pointer; display: grid; place-items: center; transition: all .2s var(--ease); box-shadow: 0 10px 24px rgba(12, 43, 104, .12); }
+    .cl-deck-arrow:hover { background: #0a57db; border-color: #0a57db; color: #fff; }
 
     @media (max-width: 991.98px) {
+        .cl-client-screens {
+            min-height: 0;
+            padding-top: 4rem !important;
+            padding-bottom: 4rem !important;
+        }
+        .cl-client-screens .container {
+            min-height: 0;
+            display: block;
+        }
         .cl-deck-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 767.98px) {
-        .cl-deck { min-height: 0; padding-top: 0; }
+        .cl-deck-name { max-width: 100%; }
+        .cl-deck { height: auto; min-height: 0; padding-top: 0; }
         .cl-deck-card { position: relative; transform: none !important; opacity: 1 !important; margin-bottom: 1.25rem; top: auto; }
         .cl-deck-nav { display: none; }
+    }
+    @media (max-width: 767.98px) {
+        .cl-deck-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 575.98px) {
+        .cl-deck-card { padding: 1.1rem; }
+        .cl-deck-stats { grid-template-columns: 1fr; }
     }
 </style>
 @endpush
@@ -210,7 +291,7 @@
     function layout() {
         order.forEach(function (ci, pos) {
             var card = cards[ci];
-            card.style.transform = 'translateY(' + (-34 * pos) + 'px) scale(' + (1 - 0.035 * pos) + ')';
+            card.style.transform = 'translateY(' + (-30 * pos) + 'px) scale(' + (1 - 0.032 * pos) + ')';
             card.style.zIndex = String(60 - pos * 10);
             card.style.opacity = pos === 0 ? '1' : String(Math.max(0.28, 0.8 - 0.14 * (pos - 1)));
             card.classList.toggle('is-front', pos === 0);
@@ -231,7 +312,7 @@
         startAuto();
     }
     function startAuto() {
-        if (reduce || autoTimer || window.innerWidth < 768) return;
+        if (reduce || autoTimer || window.innerWidth < 992) return;
         autoTimer = window.setInterval(next, 3200);
     }
     function stopAuto() {
@@ -242,7 +323,7 @@
 
     cards.forEach(function (card, i) {
         card.addEventListener('click', function (event) {
-            if (window.innerWidth < 768) return;
+            if (window.innerWidth < 992) return;
             if (!card.classList.contains('is-front')) {
                 event.preventDefault();
                 bringFront(i);

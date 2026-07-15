@@ -2,7 +2,23 @@
      and a large glowing "Cyberlog" wordmark at the bottom. --}}
 @php
     $u = fn ($pub, $legacy) => Route::has($pub) ? route($pub) : (Route::has($legacy) ? route($legacy) : '#');
-    $svcUrl = fn ($route) => Route::has($route) ? route($route) : '#';
+    $svcUrl = function ($service) {
+        $groupRoutes = [
+            'offensive' => 'offensive-security-services',
+            'defensive' => 'defensive-security-services',
+        ];
+
+        $group = $service['group'] ?? null;
+        if (isset($groupRoutes[$group]) && Route::has($groupRoutes[$group])) {
+            return route($groupRoutes[$group]);
+        }
+
+        if (Route::has($service['route'])) {
+            return route($service['route']);
+        }
+
+        return '#';
+    };
 @endphp
 
 <footer class="footer pt-5 pb-4">
@@ -15,7 +31,7 @@
                 <div class="cl-foot-head">Services</div>
                 <div class="cl-foot-services">
                     @foreach (config('cyberlog_services', []) as $svc)
-                        <a class="cl-foot-link" href="{{ $svcUrl($svc['route']) }}">{{ $svc['title'] }}</a>
+                        <a class="cl-foot-link" href="{{ $svcUrl($svc) }}">{{ $svc['title'] }}</a>
                     @endforeach
                 </div>
             </div>
@@ -39,6 +55,7 @@
                 <div class="d-flex gap-2">
                     <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
                     <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/company/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/cyberlog_bd/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-fw fa-instagram"></i></a>
                     {{-- TODO: confirm the real X/Twitter profile URL --}}
                     <a class="btn btn-outline-light btn-social" href="https://x.com/cyberlogbd" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-fw fa-x-twitter"></i></a>
                 </div>
@@ -54,8 +71,10 @@
 
         {{-- Big glowing wordmark --}}
         <div class="cl-wordmark-wrap">
-            <div class="mono cl-footer-tagline text-muted small">CYBER SAFE UNIVERSE</div>
-            <div class="cl-wordmark" aria-hidden="true"><span>CYBERLO</span><span>G</span></div>
+            <div class="cl-wordmark-lockup">
+                <div class="mono cl-footer-tagline text-muted small">CYBER SAFE UNIVERSE</div>
+                <div class="cl-wordmark" aria-hidden="true"><span>CYBERL</span><span>OG</span></div>
+            </div>
         </div>
 
     </div>

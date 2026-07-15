@@ -280,13 +280,16 @@ section[id], header[id] { scroll-margin-top: 68px; }
     letter-spacing: .08em;
     color: var(--text) !important;
     position: relative;
-    padding-top: .58rem !important;
-    padding-bottom: .58rem !important;
+    padding-top: .38rem !important;
+    padding-bottom: .46rem !important;
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
 }
 #mainNav .nav-link::after {
     content: "";
     position: absolute;
-    left: .9rem; right: .9rem; bottom: .55rem;
+    left: .9rem; right: .9rem; bottom: .18rem;
     height: 2px;
     background: var(--red);
     transform: scaleX(0);
@@ -294,7 +297,10 @@ section[id], header[id] { scroll-margin-top: 68px; }
     transition: transform .25s var(--ease);
 }
 #mainNav .nav-link:hover::after, #mainNav .nav-link.active::after { transform: scaleX(1); }
-#mainNav .nav-link:hover, #mainNav .nav-link.active { color: var(--white) !important; }
+#mainNav .nav-link:hover, #mainNav .nav-link.active {
+    color: var(--white) !important;
+    background: transparent !important;
+}
 #mainNav .dropdown-menu {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -473,6 +479,9 @@ section[id], header[id] { scroll-margin-top: 68px; }
     line-height: 1.05;
     color: var(--white);
     text-transform: none;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .cl-hero-heading .accent {
     position: relative;
@@ -623,11 +632,17 @@ section[id], header[id] { scroll-margin-top: 68px; }
 .cl-client-strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.25rem 2.5rem; }
 .cl-marquee { overflow: hidden; -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .cl-marquee-track {
-    display: flex; gap: 2.5rem; width: max-content;
+    display: flex; width: max-content;
     animation: clMarquee 32s linear infinite;
 }
 .cl-marquee:hover .cl-marquee-track { animation-play-state: paused; }
-@keyframes clMarquee { to { transform: translateX(-50%); } }
+.cl-marquee-set {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 2.5rem;
+    padding-right: 2.5rem;
+}
+@keyframes clMarquee { to { transform: translateX(calc(-100% / 3)); } }
 
 .cl-client-logo {
     display: inline-flex; align-items: center; justify-content: center;
@@ -1144,7 +1159,7 @@ html.js [data-reveal].is-in {
     color: var(--white) !important;
     border: 1px solid var(--red);
     border-radius: var(--r);
-    padding: .5rem 1.1rem;
+    padding: .35rem .8rem;
     background: var(--red);
     box-shadow: 0 0 0 0 rgba(228, 31, 61, 0.48);
     animation: clPulseRed 2.8s ease-in-out infinite;
@@ -1224,14 +1239,16 @@ html.js [data-reveal].is-in {
     max-width: 100%;
     margin: 2.7rem auto 0;
 }
+.footer .cl-wordmark-lockup {
+    position: relative;
+    display: inline-block;
+}
 .footer .cl-footer-tagline {
     position: absolute;
-    /* Pulled inward from the right edge per feedback, right of center but not flush right. */
-    left: 72%;
-    right: auto;
+    right: 0;
     bottom: calc(100% + .35rem);
     white-space: nowrap;
-    text-align: left;
+    text-align: right;
 }
 .cl-wordmark {
     margin-top: 0;
@@ -1249,6 +1266,9 @@ html.js [data-reveal].is-in {
     .footer .cl-wordmark-wrap {
         width: 100%;
         margin-top: 2.2rem;
+    }
+    .footer .cl-wordmark-lockup {
+        display: block;
     }
     .footer .cl-footer-tagline {
         position: static;

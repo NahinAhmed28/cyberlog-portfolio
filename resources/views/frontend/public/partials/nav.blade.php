@@ -14,11 +14,16 @@
         ->map(fn ($route) => $byRoute->get($route))
         ->filter()
         ->values();
-    $offensiveServices = collect($services)->where('group', 'offensive')->values();
-    $defensiveServices = collect($services)->where('group', 'defensive')->values();
-
     $serviceRouteNames = array_merge(
-        ['services', 'public.services', 'defense-services'],
+        [
+            'services',
+            'public.services',
+            'offensive-security-services',
+            'public.offensive-security-services',
+            'defensive-security-services',
+            'public.defensive-security-services',
+            'defense-services',
+        ],
         array_map(fn ($s) => $s['route'], $services)
     );
 @endphp
@@ -43,14 +48,14 @@
             <ul class="navbar-nav ms-auto align-items-lg-center">
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded {{ $is('public.home', 'home') }}"
+                    <a class="nav-link py-2 px-0 px-lg-3 rounded {{ $is('public.home', 'home') }}"
                        href="{{ $u('public.home', 'home') }}">
                         Home
                     </a>
                 </li>
 
                 <li class="nav-item dropdown mx-0 mx-lg-1">
-                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded {{ request()->routeIs(...$serviceRouteNames) ? 'active' : '' }}"
+                    <a class="nav-link dropdown-toggle py-2 px-0 px-lg-3 rounded {{ request()->routeIs(...$serviceRouteNames) ? 'active' : '' }}"
                        href="#"
                        id="servicesDropdown"
                        role="button"
@@ -75,53 +80,29 @@
 
                         <li><hr class="dropdown-divider"></li>
 
-                        <li class="dropdown-submenu dropend">
-                            <a class="dropdown-item dropdown-toggle cl-submenu-toggle"
-                               href="{{ $u('public.defense-services', 'defense-services') }}#offensive"
-                               role="button"
-                               aria-expanded="false">
+                        <li>
+                            <a class="dropdown-item" href="{{ $u('public.offensive-security-services', 'offensive-security-services') }}">
                                 Offensive Security Services
                             </a>
-                            <ul class="dropdown-menu cl-submenu-menu">
-                                @foreach ($offensiveServices as $svc)
-                                    <li>
-                                        <a class="dropdown-item" href="{{ $svcUrl($svc['route']) }}">
-                                            {{ $svc['title'] }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
                         </li>
 
-                        <li class="dropdown-submenu dropend">
-                            <a class="dropdown-item dropdown-toggle cl-submenu-toggle"
-                               href="{{ $u('public.defense-services', 'defense-services') }}#defensive"
-                               role="button"
-                               aria-expanded="false">
+                        <li>
+                            <a class="dropdown-item" href="{{ $u('public.defensive-security-services', 'defensive-security-services') }}">
                                 Defensive Security Services
                             </a>
-                            <ul class="dropdown-menu cl-submenu-menu">
-                                @foreach ($defensiveServices as $svc)
-                                    <li>
-                                        <a class="dropdown-item" href="{{ $svcUrl($svc['route']) }}">
-                                            {{ $svc['title'] }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
                         </li>
                     </ul>
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded {{ $is('public.vciso', 'vciso') }}"
+                    <a class="nav-link py-2 px-0 px-lg-3 rounded {{ $is('public.vciso', 'vciso') }}"
                        href="{{ $u('public.vciso', 'vciso') }}">
                         vCISO
                     </a>
                 </li>
 
                 <li class="nav-item dropdown mx-0 mx-lg-1">
-                    <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded {{ $is('public.about','about','public.our-team','our-team','public.career','career','public.contact','contact') }}"
+                    <a class="nav-link dropdown-toggle py-2 px-0 px-lg-3 rounded {{ $is('public.about','about','public.our-team','our-team','public.career','career','public.contact','contact') }}"
                        href="#" id="companyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Company
                     </a>

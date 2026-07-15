@@ -4,28 +4,14 @@
 
 <section class="cl-hero cl-home-hero" id="page-top">
 
-    <canvas class="cl-hero-canvas" id="clHeroCanvas" aria-hidden="true"></canvas>
+    <canvas class="cl-vapt-net cl-home-vapt-net" data-net aria-hidden="true"></canvas>
 
     <div class="container text-center">
 
         <h1 class="cl-hero-heading mb-4" data-reveal data-hero>
-            Build <br class="d-sm-none"><span class="accent">Cyber Resilience</span><br class="d-none d-md-block"><br class="d-sm-none">
-            Before Attackers <br class="d-sm-none">Build Access
+            Smarter Intelligence.<br class="d-sm-none">
+            <span class="accent">Stronger Security.</span>
         </h1>
-
-        {{-- All hero text white per feedback --}}
-        <p class="lead text-muted lead-narrow cl-hero-copy mb-4" data-reveal data-hero>
-            <span class="cl-copy-white">Cyberlog delivers</span>
-            <span class="cl-copy-white">offensive security</span>,
-            <span class="cl-copy-white">managed SOC</span>,
-            <span class="cl-copy-white">compliance</span>,
-            <span class="cl-copy-white">threat intelligence</span>,
-            and <span class="cl-copy-white">innovative solutions</span> for
-            <span class="cl-copy-white">enterprises</span>,
-            <span class="cl-copy-white">government organizations</span>,
-            <span class="cl-copy-white">financial institutions</span>,
-            and <span class="cl-copy-white">critical infrastructure</span>.
-        </p>
 
         {{-- TODO: copy — hero CTA button(s) not specified in the brief --}}
 
@@ -39,7 +25,7 @@
             <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-bug"></i>Penetration Testing</span></span></div>
             <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-desktop"></i>Security Operations Center (SOC)</span></span></div>
             <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-clipboard-check"></i>Security Audit &amp; Training</span></span></div>
-            <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-user-shield"></i>vCISO</span></span></div>
+            <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-robot"></i>AI Automation</span></span></div>
         </div>
 
     </div>
@@ -56,9 +42,9 @@
         isolation: isolate;
         padding: 6.4rem 0 3.4rem;
         background:
-            radial-gradient(920px 560px at 50% 42%, rgba(44, 191, 177, 0.11), transparent 64%),
-            radial-gradient(720px 420px at 68% 22%, rgba(109, 156, 255, 0.08), transparent 68%),
-            linear-gradient(180deg, #050c17 0%, #03070d 100%);
+            radial-gradient(860px 520px at 80% 8%, rgba(228, 31, 61, 0.15), transparent 62%),
+            radial-gradient(760px 480px at 4% 94%, rgba(109, 156, 255, 0.1), transparent 66%),
+            linear-gradient(180deg, rgba(7, 17, 31, 0.98), rgba(5, 12, 23, 0.98));
         color: #ffffff;
     }
     .cl-home-hero::before,
@@ -66,35 +52,17 @@
         content: "";
         position: absolute;
         inset: 0;
-        pointer-events: none;
-        z-index: 1;
+        display: none;
     }
-    .cl-home-hero::before {
-        background:
-            radial-gradient(820px 520px at 50% 45%, rgba(15, 42, 45, 0.34), transparent 72%),
-            linear-gradient(180deg, rgba(5, 12, 23, 0.18), rgba(2, 7, 13, 0.76));
-    }
-    .cl-home-hero::after {
-        opacity: .28;
-        background:
-            linear-gradient(115deg, transparent 0 44%, rgba(255, 255, 255, 0.045) 48%, transparent 52% 100%),
-            linear-gradient(rgba(215, 233, 255, 0.055) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(215, 233, 255, 0.04) 1px, transparent 1px);
-        background-size: 100% 100%, 72px 72px, 72px 72px;
-        -webkit-mask-image: radial-gradient(circle at 50% 46%, rgba(0, 0, 0, .98), transparent 82%);
-        mask-image: radial-gradient(circle at 50% 46%, rgba(0, 0, 0, .98), transparent 82%);
-        animation: clHeroMeshDrift 34s linear infinite;
-    }
-    .cl-hero-canvas {
+    .cl-home-vapt-net {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
         z-index: 0;
         display: block;
-        opacity: .78;
+        opacity: 1;
         pointer-events: none;
-        filter: brightness(.82) contrast(1.08) saturate(.76);
     }
     .cl-home-hero .container {
         position: relative;
@@ -216,14 +184,14 @@
     }
     .cl-chip i { color: var(--chip, #ffffff); filter: drop-shadow(0 0 8px var(--chip, rgba(109, 156, 255, 0.65))); }
 
-    /* Colorful chips - one accent each (blue / red / warm / violet) */
+    /* Colorful chips - one accent each (blue / red / blue / violet) */
     .cl-drift-chip:nth-child(1) { --chip: var(--blue-bright); }
     .cl-drift-chip:nth-child(2) { --chip: var(--red-soft); }
-    .cl-drift-chip:nth-child(3) { --chip: var(--warm-soft); }
+    .cl-drift-chip:nth-child(3) { --chip: var(--blue-bright); }
     .cl-drift-chip:nth-child(4) { --chip: #9d8bff; }
     .cl-drift-chip:nth-child(1) .cl-chip { background: rgba(21, 44, 92, 0.8); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(47, 107, 255, 0.22); }
     .cl-drift-chip:nth-child(2) .cl-chip { background: rgba(74, 18, 34, 0.74); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(228, 31, 61, 0.2); }
-    .cl-drift-chip:nth-child(3) .cl-chip { background: rgba(84, 52, 8, 0.68); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(255, 138, 0, 0.2); }
+    .cl-drift-chip:nth-child(3) .cl-chip { background: rgba(18, 44, 88, 0.78); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(47, 107, 255, 0.24); }
     .cl-drift-chip:nth-child(4) .cl-chip { background: rgba(43, 32, 96, 0.74); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(111, 91, 255, 0.24); }
     .cl-drift-chip .cl-chip { animation: clDrift 7s ease-in-out infinite; }
     .cl-drift-chip:nth-child(2) .cl-chip { animation-delay: 1.2s; }
@@ -245,8 +213,8 @@
             z-index: 1;
         }
         .cl-drift-chip { position: absolute; will-change: transform; }
-        .cl-drift-chip:nth-child(1) { top: max(12%, 82px); left: clamp(2rem, 17vw, 15rem); }
-        .cl-drift-chip:nth-child(2) { top: max(8%, 66px); right: clamp(2rem, 17vw, 15rem); }
+        .cl-drift-chip:nth-child(1) { top: max(16%, 112px); left: clamp(2rem, 17vw, 15rem); }
+        .cl-drift-chip:nth-child(2) { top: max(12%, 96px); right: clamp(2rem, 17vw, 15rem); }
         .cl-drift-chip:nth-child(3) { bottom: 12%; left: clamp(2rem, 18vw, 16rem); }
         .cl-drift-chip:nth-child(4) { bottom: 19%; right: clamp(2rem, 18vw, 16rem); }
     }
@@ -451,8 +419,8 @@
         }
         function drawAmbientGlow(time) {
             var glow = ctx.createRadialGradient(w * .5, h * .46, 0, w * .5, h * .46, Math.max(w, h) * .55);
-            glow.addColorStop(0, 'rgba(255,255,255,0.045)');
-            glow.addColorStop(.34, 'rgba(126,178,255,0.062)');
+            glow.addColorStop(0, 'rgba(255,255,255,0.07)');
+            glow.addColorStop(.34, 'rgba(150,190,255,0.1)');
             glow.addColorStop(1, 'rgba(7,17,31,0)');
             ctx.fillStyle = glow;
             ctx.fillRect(0, 0, w, h);
@@ -475,23 +443,23 @@
                 var b = nodes[link.b];
                 var p = pointOnLink(link, .5);
                 var pulse = (Math.sin(time * 0.001 + link.phase) + 1) / 2;
-                var alpha = (link.warm ? .085 : .105) + pulse * .04;
+                var alpha = (link.warm ? .12 : .16) + pulse * .05;
 
                 ctx.beginPath();
                 ctx.moveTo(a.x, a.y);
                 ctx.quadraticCurveTo(p.cx, p.cy, b.x, b.y);
                 ctx.strokeStyle = link.warm
                     ? 'rgba(255,255,255,' + alpha + ')'
-                    : 'rgba(172,205,255,' + alpha + ')';
-                ctx.lineWidth = link.warm ? .9 : .82;
+                    : 'rgba(220,235,255,' + alpha + ')';
+                ctx.lineWidth = link.warm ? 1.05 : .95;
                 ctx.stroke();
 
                 if (a.hub || b.hub) {
                     ctx.beginPath();
                     ctx.moveTo(a.x, a.y);
                     ctx.quadraticCurveTo(p.cx, p.cy, b.x, b.y);
-                    ctx.strokeStyle = 'rgba(255,255,255,' + (.025 + pulse * .02) + ')';
-                    ctx.lineWidth = 1.7;
+                    ctx.strokeStyle = 'rgba(255,255,255,' + (.045 + pulse * .03) + ')';
+                    ctx.lineWidth = 1.95;
                     ctx.stroke();
                 }
             }
@@ -508,12 +476,12 @@
                 var d = dx * dx + dy * dy;
                 if (d > 22000) continue;
 
-                var alpha = 0.26 * (1 - d / 22000);
+                var alpha = 0.34 * (1 - d / 22000);
                 ctx.beginPath();
                 ctx.moveTo(n.x, n.y);
                 ctx.quadraticCurveTo((n.x + mouse.x) / 2 + dy * .08, (n.y + mouse.y) / 2 - dx * .08, mouse.x, mouse.y);
                 ctx.strokeStyle = 'rgba(255,255,255,' + alpha + ')';
-                ctx.lineWidth = .9;
+                ctx.lineWidth = 1.05;
                 ctx.stroke();
             }
             ctx.restore();
@@ -532,15 +500,15 @@
                 var link = links[s.link % links.length];
                 var p = pointOnLink(link, s.t);
                 var back = pointOnLink(link, Math.max(0, s.t - .055));
-                var color = s.warm ? '255,255,255' : '128,179,255';
+                var color = s.warm ? '255,255,255' : '200,225,255';
 
                 ctx.beginPath();
                 ctx.moveTo(back.x, back.y);
                 ctx.lineTo(p.x, p.y);
-                ctx.strokeStyle = 'rgba(' + color + ',0.48)';
-                ctx.lineWidth = s.size;
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = 'rgba(' + color + ',0.58)';
+                ctx.strokeStyle = 'rgba(' + color + ',0.62)';
+                ctx.lineWidth = s.size + .18;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = 'rgba(' + color + ',0.72)';
                 ctx.stroke();
 
                 ctx.beginPath();

@@ -17,7 +17,7 @@
 
 <header class="cl-vciso-hero" id="page-top">
     <div class="container">
-        <div class="row align-items-center g-5">
+        <div class="row align-items-center g-5 cl-vciso-hero-row">
             <div class="col-lg-5">
                 <p class="section-eyebrow mb-3" data-reveal data-hero>Virtual CISO</p>
                 <h1 class="cl-vciso-title mb-4" data-reveal data-hero>
@@ -55,43 +55,45 @@
                             loading="eager"
                             decoding="async">
                     </figure>
+                </div>
+            </div>
+        </div>
 
-                    <div class="cl-vciso-diagram" aria-label="vCISO service coverage diagram">
-                        <svg class="cl-vciso-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                            <path d="M50 50 C36 48 30 20 16 18" />
-                            <path d="M50 50 C34 50 25 41 9 41" />
-                            <path d="M50 50 C34 54 29 66 14 66" />
-                            <path d="M50 50 C41 64 38 82 27 84" />
-                            <path d="M50 50 C64 48 70 20 84 18" />
-                            <path d="M50 50 C66 50 75 41 91 41" />
-                            <path d="M50 50 C66 54 71 66 86 66" />
-                            <path d="M50 50 C59 64 62 82 73 84" />
-                        </svg>
+        <div class="cl-vciso-diagram-row">
+            <div class="cl-vciso-diagram" aria-label="vCISO service coverage diagram">
+                <svg class="cl-vciso-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M50 50 C36 48 30 20 16 18" />
+                    <path d="M50 50 C34 50 25 41 9 41" />
+                    <path d="M50 50 C34 54 29 66 14 66" />
+                    <path d="M50 50 C41 64 38 82 27 84" />
+                    <path d="M50 50 C64 48 70 20 84 18" />
+                    <path d="M50 50 C66 50 75 41 91 41" />
+                    <path d="M50 50 C66 54 71 66 86 66" />
+                    <path d="M50 50 C59 64 62 82 73 84" />
+                </svg>
 
-                        <div class="cl-vciso-core" aria-label="vCISO core">
-                            <span class="cl-vciso-ring"></span>
-                            <span class="cl-vciso-ring cl-vciso-ring-two"></span>
-                            <div class="cl-vciso-core-badge">
-                                <img src="{{ asset('assets/img/cyberlog-logo.png') }}" alt="Cyberlog">
-                                <strong>vCISO</strong>
-                            </div>
-                        </div>
-
-                        @foreach ($leftNodes as $node)
-                            <div class="cl-vciso-node cl-vciso-node-left" style="--x: {{ $node['x'] }}%; --y: {{ $node['y'] }}%;">
-                                <i class="fas {{ $node['icon'] }}"></i>
-                                <span>{{ $node['label'] }}</span>
-                            </div>
-                        @endforeach
-
-                        @foreach ($rightNodes as $node)
-                            <div class="cl-vciso-node cl-vciso-node-right" style="--x: {{ $node['x'] }}%; --y: {{ $node['y'] }}%;">
-                                <span>{{ $node['label'] }}</span>
-                                <i class="fas {{ $node['icon'] }}"></i>
-                            </div>
-                        @endforeach
+                <div class="cl-vciso-core" aria-label="vCISO core">
+                    <span class="cl-vciso-ring"></span>
+                    <span class="cl-vciso-ring cl-vciso-ring-two"></span>
+                    <div class="cl-vciso-core-badge">
+                        <img src="{{ asset('assets/img/cyberlog-logo.png') }}" alt="Cyberlog">
+                        <strong>vCISO</strong>
                     </div>
                 </div>
+
+                @foreach ($leftNodes as $node)
+                    <div class="cl-vciso-node cl-vciso-node-left" style="--x: {{ $node['x'] }}%; --y: {{ $node['y'] }}%;">
+                        <i class="fas {{ $node['icon'] }}"></i>
+                        <span>{{ $node['label'] }}</span>
+                    </div>
+                @endforeach
+
+                @foreach ($rightNodes as $node)
+                    <div class="cl-vciso-node cl-vciso-node-right" style="--x: {{ $node['x'] }}%; --y: {{ $node['y'] }}%;">
+                        <span>{{ $node['label'] }}</span>
+                        <i class="fas {{ $node['icon'] }}"></i>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -101,11 +103,11 @@
 <style>
     .cl-vciso-hero {
         position: relative;
-        min-height: 92vh;
+        min-height: 0;
         display: flex;
         align-items: center;
         overflow: hidden;
-        padding: 9rem 0 5rem;
+        padding: 8rem 0 4.5rem;
         background:
             radial-gradient(850px 460px at 82% 10%, rgba(255, 72, 101, 0.15), transparent 62%),
             radial-gradient(700px 420px at 8% 92%, rgba(109, 156, 255, 0.12), transparent 66%),
@@ -126,10 +128,13 @@
         position: relative;
         z-index: 1;
     }
+    .cl-vciso-hero-row {
+        min-height: 390px;
+    }
     .cl-vciso-title {
-        font-size: clamp(2.45rem, 5.4vw, 5rem);
-        line-height: .96;
-        margin: 0;
+        font-size: clamp(2rem, 2.75vw, 2.8rem);
+        line-height: 1.02;
+        margin: 0 0 .75rem;
     }
     .cl-vciso-title span {
         display: inline-block;
@@ -142,16 +147,16 @@
     .cl-vciso-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: .85rem;
-        margin-bottom: 1.35rem;
+        gap: .58rem;
+        margin-bottom: .78rem;
     }
     .cl-vciso-primary,
     .cl-vciso-secondary {
         border-radius: var(--r);
         font-family: 'IBM Plex Mono', monospace;
-        font-size: .84rem;
+        font-size: .72rem;
         letter-spacing: .04em;
-        padding: .8rem 1.1rem;
+        padding: .58rem .8rem;
     }
     .cl-vciso-primary {
         color: #fff !important;
@@ -176,12 +181,12 @@
     .cl-vciso-proof {
         display: flex;
         flex-wrap: wrap;
-        gap: .6rem;
+        gap: .42rem;
         color: var(--muted);
-        font-size: .85rem;
+        font-size: .72rem;
     }
     .cl-vciso-proof span {
-        padding: .52rem .72rem;
+        padding: .34rem .48rem;
         border: 1px solid var(--line);
         background: rgba(16, 31, 58, 0.58);
         border-radius: var(--r);
@@ -195,6 +200,12 @@
         width: min(58vw, 860px);
         max-width: 100%;
         margin-left: auto;
+    }
+    .cl-vciso-hero .lead {
+        max-width: 560px;
+        margin-bottom: .82rem !important;
+        font-size: clamp(.9rem, 1.12vw, .98rem);
+        line-height: 1.46;
     }
     .cl-vciso-dashboard {
         position: relative;
@@ -238,11 +249,16 @@
         aspect-ratio: 1900 / 867;
         object-fit: cover;
     }
+    .cl-vciso-diagram-row {
+        margin-top: clamp(2rem, 4vw, 3rem);
+    }
 
     /* Legacy diagram styles remain available for older cached markup. */
     .cl-vciso-diagram {
         position: relative;
-        min-height: 580px;
+        min-height: clamp(390px, 38vw, 560px);
+        max-width: 1120px;
+        margin: 0 auto;
         background:
             radial-gradient(circle at 50% 50%, rgba(255, 72, 101, 0.14), transparent 24%),
             radial-gradient(circle at 50% 50%, rgba(109, 156, 255, 0.09), transparent 38%);
@@ -385,26 +401,6 @@
         justify-content: flex-end;
         text-align: right;
     }
-    .cl-vciso-visual-stack .cl-vciso-diagram {
-        min-height: 360px;
-    }
-    .cl-vciso-visual-stack .cl-vciso-core {
-        width: 132px;
-        height: 132px;
-    }
-    .cl-vciso-visual-stack .cl-vciso-core-badge {
-        width: 92px;
-        height: 92px;
-    }
-    .cl-vciso-visual-stack .cl-vciso-node {
-        width: min(204px, 28vw);
-        min-height: 52px;
-        padding: .68rem .78rem;
-    }
-    .cl-vciso-visual-stack .cl-vciso-node span {
-        font-size: .7rem;
-    }
-
     @media (max-width: 991.98px) {
         .cl-vciso-hero {
             min-height: 0;

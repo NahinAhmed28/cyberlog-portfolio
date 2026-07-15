@@ -8,14 +8,8 @@
     <div class="container d-flex align-items-center flex-column">
 
         <h1 class="masthead-heading text-uppercase mb-4">
-            Build Cyber Resilience Before Attackers Build Access
+            Smarter Intelligence. Stronger Security.
         </h1>
-
-        <p class="masthead-subheading font-weight-light mb-4">
-            Cyberlog delivers offensive security, managed SOC, compliance, threat intelligence,
-            and innovative solutions for enterprises, government organizations, financial institutions,
-            and critical infrastructure.
-        </p>
 
         <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
             <span class="badge bg-light text-dark p-3">Penetration Testing</span>

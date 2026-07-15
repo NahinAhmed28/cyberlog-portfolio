@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Digital forensics visual</title>
+  <desc id="desc">A digital forensics illustration with a fingerprint, evidence timeline, and incident response panels.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050c17"/>
+      <stop offset="1" stop-color="#101827"/>
+    </linearGradient>
+    <radialGradient id="halo" cx=".35" cy=".38" r=".55">
+      <stop offset="0" stop-color="#2f6bff" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#2f6bff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M50 0H0v50" fill="none" stroke="#ffffff" stroke-opacity=".03"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="600" rx="28" fill="url(#bg)"/>
+  <rect width="960" height="600" rx="28" fill="url(#grid)"/>
+  <rect width="960" height="600" rx="28" fill="url(#halo)"/>
+  <g transform="translate(92 104)">
+    <rect width="360" height="280" rx="22" fill="#0d1726" stroke="#2f6bff" stroke-opacity=".32"/>
+    <rect x="28" y="34" width="304" height="180" rx="14" fill="#101827"/>
+    <path d="M74 126c26-64 122-68 150 0 14 32-8 54-30 74M128 216c-14-28-4-66 22-84 26-18 64-10 76 22M96 186c-10-48 20-92 64-98 52-6 88 32 94 86M152 236c-6-28 8-52 30-58" fill="none" stroke="#5ea8ff" stroke-width="6" stroke-linecap="round" opacity=".9"/>
+    <path d="M44 246h272" stroke="#b9c7de" stroke-opacity=".22" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(522 96)">
+    <rect width="340" height="210" rx="20" fill="#101827" stroke="#2f6bff" stroke-opacity=".36"/>
+    <path d="M36 46h104M36 84h186M36 124h146M36 164h226" stroke="#b9c7de" stroke-opacity=".34" stroke-width="12" stroke-linecap="round"/>
+    <path d="M240 60h20M250 50v20" stroke="#22d3ee" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(422 340)">
+    <circle cx="84" cy="80" r="78" fill="#0c1322" stroke="#2f6bff" stroke-opacity=".45" stroke-width="4"/>
+    <path d="M52 80c0-40 32-72 72-72s72 32 72 72-32 72-72 72-72-32-72-72Z" fill="#101827"/>
+    <path d="M84 36v88M56 80h56" stroke="#2f6bff" stroke-width="8" stroke-linecap="round"/>
+    <path d="M64 58c10-10 24-10 34 0M64 102c10 10 24 10 34 0" stroke="#22d3ee" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+  </g>
+  <g transform="translate(158 382)">
+    <rect width="260" height="82" rx="16" fill="#101827" stroke="#2f6bff" stroke-opacity=".24"/>
+    <circle cx="38" cy="44" r="12" fill="#2f6bff"/>
+    <circle cx="82" cy="44" r="12" fill="#ff3151"/>
+    <circle cx="126" cy="44" r="12" fill="#ffb51b"/>
+    <path d="M56 62h168" stroke="#b9c7de" stroke-opacity=".3" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <path d="M434 210c74 14 102 54 120 106M386 418c52-38 84-66 132-76" fill="none" stroke="#22d3ee" stroke-width="4" stroke-dasharray="12 12" stroke-linecap="round" opacity=".7"/>
+</svg>

@@ -1,6 +1,6 @@
 @extends('frontend.public.layouts.public')
 
-@section('title', 'Cyberlog — Build Cyber Resilience Before Attackers Build Access')
+@section('title', 'Cyberlog - Smarter Intelligence. Stronger Security.')
 
 @section('content')
 
@@ -9,22 +9,19 @@
 {{-- 1. Hero / Landing --}}
 @include('frontend.public.partials.home.hero')
 
-{{-- 2. Our Clients — old sliding logo animation, restored under the hero --}}
+{{-- 2. Our Clients - old sliding logo animation, restored under the hero --}}
 @include('partials.clients')
 
-{{-- 3. Website screenshot shuffle — no logos and no loading placeholder --}}
+{{-- 3. Website screenshot shuffle - no logos and no loading placeholder --}}
 @include('frontend.public.partials.clients.deck')
 
-{{-- 4. Client feedback --}}
-@include('partials.reviews')
-
-{{-- 5. Technical Diagram (engagement process) --}}
+{{-- 4. Technical Diagram (engagement process) --}}
 @include('frontend.public.partials.home.tech-diagram')
 
-{{-- 6. Security Solutions (Explore Our Security Solutions) --}}
+{{-- 5. Security Solutions (Explore Our Security Solutions) --}}
 @include('frontend.public.partials.home.solutions')
 
-{{-- 7. Our Story (timeline) --}}
+{{-- 6. Our Story (timeline) --}}
 @include('frontend.public.partials.home.our-story')
 
 {{-- Removed per client feedback ("some slides should not be included"):

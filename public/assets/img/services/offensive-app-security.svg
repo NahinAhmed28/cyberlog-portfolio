@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Application security testing visual</title>
+  <desc id="desc">A security testing illustration with a code window, mobile device, and vulnerability markers.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="1" stop-color="#190818"/>
+    </linearGradient>
+    <radialGradient id="blaze" cx=".7" cy=".4" r=".5">
+      <stop offset="0" stop-color="#ff3151" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#ff3151" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0v42" fill="none" stroke="#ffffff" stroke-opacity=".045"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="600" rx="28" fill="url(#bg)"/>
+  <rect width="960" height="600" rx="28" fill="url(#grid)"/>
+  <rect width="960" height="600" rx="28" fill="url(#blaze)"/>
+  <g transform="translate(84 90)">
+    <rect width="540" height="360" rx="22" fill="#0c1726" stroke="#2f6bff" stroke-opacity=".3"/>
+    <rect x="0" y="0" width="540" height="60" rx="22" fill="#15233a"/>
+    <circle cx="34" cy="30" r="8" fill="#ff3151"/>
+    <circle cx="68" cy="30" r="8" fill="#ffb51b"/>
+    <circle cx="102" cy="30" r="8" fill="#2f6bff"/>
+    <path d="M56 114h148M56 154h280M56 194h212M56 234h328M56 274h180M56 314h303" stroke="#b9c7de" stroke-opacity=".35" stroke-width="14" stroke-linecap="round"/>
+    <path d="M56 154h84M216 194h92M56 274h122" stroke="#ff3151" stroke-width="14" stroke-linecap="round"/>
+    <path d="M442 96l34 34-34 34M396 96l-34 34 34 34" fill="none" stroke="#ffb51b" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(654 132)">
+    <rect width="178" height="326" rx="26" fill="#0c1726" stroke="#ff3151" stroke-opacity=".45" stroke-width="3"/>
+    <rect x="18" y="36" width="142" height="248" rx="14" fill="#101827"/>
+    <circle cx="90" cy="318" r="14" fill="#15233a" stroke="#ffffff" stroke-opacity=".18"/>
+    <path d="M46 92h94M46 132h72M46 172h104M46 232h72" stroke="#b9c7de" stroke-opacity=".34" stroke-width="10" stroke-linecap="round"/>
+    <path d="M46 200h98" stroke="#ff3151" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(520 300)" filter="url(#glow)">
+    <circle cx="72" cy="72" r="52" fill="#240b16" stroke="#ff3151" stroke-width="4"/>
+    <path d="M72 36v72M42 72h60M50 46l44 52M94 46 50 98" stroke="#ff3151" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="72" cy="72" r="18" fill="#ff3151"/>
+  </g>
+  <path d="M608 236c58-34 106-26 158 12M608 384c72 18 116-2 158-52" fill="none" stroke="#ffb51b" stroke-width="4" stroke-dasharray="12 14" stroke-linecap="round" opacity=".82"/>
+</svg>

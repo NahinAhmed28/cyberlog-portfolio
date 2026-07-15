@@ -1,12 +1,23 @@
 {{-- Reusable "Trusted Clients" section using the restored sliding logo marquee. --}}
 @php
-    // Real client logos only (working-with PNGs) - no text-placeholder SVGs per feedback.
+    // Feedback-folder logos, ordered left-to-right by the supplied reference image.
     $clients = [
-        ['name' => 'National Academy for Planning and Development', 'sector' => 'Government Organization', 'url' => 'https://napd.gov.bd/', 'logo' => 'assets/img/clients/working-with/napd.png'],
-        ['name' => 'Bangladesh Police', 'sector' => 'Law Enforcement', 'url' => 'https://www.police.gov.bd/', 'logo' => 'assets/img/clients/working-with/police.png'],
-        ['name' => 'Bangladesh University of Business and Technology', 'sector' => 'Education', 'url' => 'https://www.bubt.edu.bd/', 'logo' => 'assets/img/clients/working-with/bubt.png'],
-        ['name' => 'Aspire to Innovate (a2i)', 'sector' => 'Digital Government', 'url' => 'https://a2i.gov.bd/', 'logo' => 'assets/img/clients/working-with/a2i.png'],
-        ['name' => 'United Nations Development Programme', 'sector' => 'Development Organization', 'url' => 'https://www.undp.org/', 'logo' => 'assets/img/clients/working-with/undp.png'],
+        ['name' => 'Government of Bangladesh', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/feedback/1. png-clipart-national-emblem-of-bangladesh-logo-organization-business-business-emblem-text.png'],
+        ['name' => 'Bangladesh Finance', 'sector' => 'Financial Institute', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 10, 2026, 04_39_30 PM.png'],
+        ['name' => 'Dhaka Stock Exchange', 'sector' => 'Capital Market', 'url' => '#', 'logo' => 'images/clients/feedback/03-dhaka-stock-exchange.png'],
+        ['name' => 'Bangladesh Petroleum Institute', 'sector' => 'Government Institute', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_37_03 PM.png'],
+        ['name' => 'National Academy for Planning and Development', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_28_28 PM.png'],
+        ['name' => 'Aspire to Innovate (a2i)', 'sector' => 'Digital Government', 'url' => '#', 'logo' => 'images/clients/feedback/6._a2i-logo-png_seeklogo-258213-removebg-preview.png'],
+        ['name' => 'Cabinet Division', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_08_11 PM.png'],
+        ['name' => 'ICT Division', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/feedback/8._ict-division-future-is-here-logo-png_seeklogo-369049-removebg-preview.png'],
+        ['name' => 'United Nations Development Programme', 'sector' => 'Development Organization', 'url' => '#', 'logo' => 'images/clients/feedback/9. UNDP.png'],
+        ['name' => 'Akij Venture', 'sector' => 'Enterprise', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_55_04 PM.png'],
+        ['name' => 'Aamar Taka', 'sector' => 'Financial Technology', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 10, 2026, 04_51_52 PM.png'],
+        ['name' => 'Adcomm Limited', 'sector' => 'Advertisement Industry', 'url' => '#', 'logo' => 'images/clients/feedback/12. Adcomm_51_1409.png'],
+        ['name' => 'Nazimgarh', 'sector' => 'Hospitality', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 10, 2026, 05_10_31 PM.png'],
+        ['name' => 'Vibe Gaming', 'sector' => 'Gaming', 'url' => '#', 'logo' => 'images/clients/feedback/14. Vibe Gaminglogo-website-1.png'],
+        ['name' => 'LegalX', 'sector' => 'Legal Technology', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_00_38 PM.png'],
+        ['name' => 'Purbachal Apparel Limited', 'sector' => 'Manufacturing', 'url' => '#', 'logo' => 'images/clients/feedback/16. Purbachal.png'],
     ];
     $clientAnimation = $clientAnimation ?? 'marquee';
 @endphp
@@ -24,7 +35,11 @@
                 <div class="cl-client-shuffle" data-client-shuffle>
                     @foreach ($clients as $c)
                         <article class="cl-client-shuffle-card" tabindex="0">
-                            <a class="cl-client-shuffle-link" href="{{ $c['url'] }}" target="_blank" rel="noopener" aria-label="{{ $c['name'] }} website">
+                            @php($href = $c['url'] ?? '#')
+                            <a class="cl-client-shuffle-link"
+                               href="{{ $href }}"
+                               @if ($href !== '#') target="_blank" rel="noopener" @endif
+                               aria-label="{{ $c['name'] }} website">
                                 <span class="cl-client-shuffle-sector">{{ $c['sector'] }}</span>
                                 <span class="cl-client-shuffle-logo">
                                     <img src="{{ asset($c['logo']) }}" alt="{{ $c['name'] }}" loading="eager" decoding="async">
@@ -48,16 +63,22 @@
         @else
             <div class="cl-marquee">
                 <div class="cl-marquee-track">
-                    @foreach ($clients as $c)
-                        <a class="cl-client-logo" href="{{ $c['url'] }}" target="_blank" rel="noopener" aria-label="{{ $c['name'] }}">
-                            <img src="{{ asset($c['logo']) }}" alt="{{ $c['name'] }}" loading="eager" decoding="async">
-                        </a>
-                    @endforeach
-                    @foreach ($clients as $c)
-                        <a class="cl-client-logo" href="{{ $c['url'] }}" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-                            <img src="{{ asset($c['logo']) }}" alt="" loading="eager" decoding="async">
-                        </a>
-                    @endforeach
+                    @for ($set = 0; $set < 3; $set++)
+                        <div class="cl-marquee-set" @if ($set > 0) aria-hidden="true" @endif>
+                            @foreach ($clients as $c)
+                                @php($href = $c['url'] ?? '#')
+                                <a class="cl-client-logo"
+                                   href="{{ $href }}"
+                                   @if ($href !== '#') target="_blank" rel="noopener" @endif
+                                   @if ($set === 0) aria-label="{{ $c['name'] }}" @else tabindex="-1" @endif>
+                                    <img src="{{ asset($c['logo']) }}"
+                                         alt="{{ $set === 0 ? $c['name'] : '' }}"
+                                         loading="eager"
+                                         decoding="async">
+                                </a>
+                            @endforeach
+                        </div>
+                    @endfor
                 </div>
             </div>
         @endif

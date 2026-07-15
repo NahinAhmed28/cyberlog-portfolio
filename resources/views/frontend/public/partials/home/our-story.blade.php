@@ -6,8 +6,8 @@
             'year' => '2022',
             'title' => 'The foundation of a cyber vision',
             'text' => "Cyberlog began with a clear mission to support Bangladesh's growing digital ecosystem through practical, impact-driven cybersecurity.",
-            'x' => 9,
-            'y' => 84,
+            'x' => 8,
+            'y' => 86,
             'tone' => '#ffbf1b',
             'toneRgb' => '255, 191, 27',
         ],
@@ -15,8 +15,8 @@
             'year' => '2023',
             'title' => 'Building industry presence',
             'text' => 'Cyberlog strengthened its market presence, expanded professional networks, and became recognized as a specialized cybersecurity company.',
-            'x' => 27,
-            'y' => 72,
+            'x' => 29,
+            'y' => 75,
             'tone' => '#6d9cff',
             'toneRgb' => '109, 156, 255',
         ],
@@ -24,8 +24,8 @@
             'year' => '2024',
             'title' => 'Contributing to national cyber capacity',
             'text' => 'The company expanded its role through awareness, capacity building, advisory involvement, and contribution to cybersecurity maturity across institutions.',
-            'x' => 48,
-            'y' => 60,
+            'x' => 50,
+            'y' => 64,
             'tone' => '#42e6a4',
             'toneRgb' => '66, 230, 164',
         ],
@@ -33,8 +33,8 @@
             'year' => '2025',
             'title' => 'Trusted across critical sectors',
             'text' => 'Cyberlog entered a stronger growth phase, earning trust across government, finance, education, enterprise, and critical sectors as a long-term cybersecurity partner.',
-            'x' => 67,
-            'y' => 50,
+            'x' => 71,
+            'y' => 55,
             'tone' => '#ffbf1b',
             'toneRgb' => '255, 191, 27',
         ],
@@ -42,8 +42,8 @@
             'year' => '2026',
             'title' => 'Scaling cyber resilience',
             'text' => 'Cyberlog is moving toward a structured, product-led, and partnership-driven future to become a trusted cybersecurity brand for enterprises and critical digital infrastructure.',
-            'x' => 86,
-            'y' => 40,
+            'x' => 92,
+            'y' => 47,
             'tone' => '#42e6a4',
             'toneRgb' => '66, 230, 164',
         ],
@@ -89,9 +89,9 @@
         </div>
 
         <div class="cl-story-stats" data-reveal>
-            <div><strong>14+</strong><span>Enterprise and government clients</span></div>
-            <div><strong>24/7</strong><span>Security operations coverage</span></div>
-            <div><strong>500+</strong><span>Users protected across services</span></div>
+            <div><strong>14+</strong><span>Enterprise And Government Clients</span></div>
+            <div><strong>24/7</strong><span>Security Operations Coverage</span></div>
+            <div><strong>500+</strong><span>Users Protected Across Services</span></div>
         </div>
     </div>
 </section>
@@ -128,8 +128,8 @@
     .cl-story-chart {
         position: relative;
         /* vh-based so the chart scales with the screen instead of forcing a scroll */
-        min-height: clamp(430px, 54vh, 600px);
-        overflow: visible;
+        min-height: clamp(500px, 58vh, 650px);
+        overflow: clip;
     }
     .cl-story-chart::before {
         content: "";
@@ -172,10 +172,10 @@
 
     .cl-story-milestone {
         position: absolute;
-        left: clamp(9rem, var(--x), calc(100% - 9rem));
+        left: clamp(8rem, var(--x), calc(100% - 8rem));
         top: 0;
         height: var(--y);
-        width: clamp(236px, 20vw, 292px);
+        width: clamp(206px, 15vw, 240px);
         transform: translateX(-50%);
         color: var(--text);
     }
@@ -231,15 +231,15 @@
         font-size: .95rem;
     }
     .cl-story-card h3 {
-        color: var(--white);
-        font-size: clamp(.98rem, 1.08vw, 1.08rem);
+        color: var(--tone);
+        font-size: clamp(.88rem, .98vw, 1rem);
         line-height: 1.22;
         margin-bottom: .5rem;
     }
     .cl-story-card p {
-        color: rgba(247, 251, 255, .86);
-        font-size: .88rem;
-        line-height: 1.5;
+        color: rgba(var(--tone-rgb), .9);
+        font-size: .8rem;
+        line-height: 1.48;
         margin: 0;
     }
 
@@ -266,7 +266,7 @@
     }
     .cl-story-stats span { color: var(--text); font-size: .95rem; line-height: 1.4; }
 
-    @media (max-width: 991.98px) {
+    @media (max-width: 1199.98px) {
         .cl-story-head { align-items: flex-start; }
         .cl-story-chart {
             min-height: 0;
@@ -290,7 +290,7 @@
         .cl-story-card {
             position: static;
             grid-column: 2;
-            padding: 0;
+            padding: .95rem 1rem;
         }
         .cl-story-year {
             grid-column: 1;
@@ -301,6 +301,14 @@
     }
     @media (max-width: 767.98px) {
         .cl-story-stats { grid-template-columns: 1fr; }
+        .cl-story-milestone {
+            grid-template-columns: minmax(0, 1fr);
+            gap: .7rem;
+        }
+        .cl-story-card,
+        .cl-story-year {
+            grid-column: 1;
+        }
     }
     @media (prefers-reduced-motion: reduce) {
         .cl-story-growth-line { animation: none !important; stroke-dashoffset: 0; }

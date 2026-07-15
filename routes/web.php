@@ -33,17 +33,9 @@ Route::view('/services/soc', 'frontend.public.soc')->name('soc');
 Route::view('/services/vapt', 'frontend.public.vapt')->name('vapt');
 Route::view('/services/it-audit', 'pages.it-audit')->name('it-audit');
 Route::view('/services/capacity-building', 'pages.capacity-building')->name('capacity-building');
-Route::view('/services/defense-services', 'pages.defense-services')->name('defense-services');
-
-// Dedicated detail pages for the 9-service catalogue (config/cyberlog_services.php).
-// Services flagged with a 'detail' block render via the generic service-detail view.
-foreach ((array) config('cyberlog_services', []) as $svc) {
-    if (! empty($svc['detail'])) {
-        Route::view('/services/' . $svc['route'], 'frontend.public.service-detail')
-            ->defaults('service', $svc['route'])
-            ->name($svc['route']);
-    }
-}
+Route::view('/services/offensive-security-services', 'pages.offensive-security-services')->name('offensive-security-services');
+Route::view('/services/defensive-security-services', 'pages.defensive-security-services')->name('defensive-security-services');
+Route::redirect('/services/defense-services', '/services/offensive-security-services')->name('defense-services');
 
 // Solutions
 Route::view('/vciso', 'frontend.public.vciso')->name('vciso');
