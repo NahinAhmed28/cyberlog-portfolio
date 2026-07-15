@@ -21,7 +21,7 @@
         </p>
 
         {{-- Floating service chips - clear of the copy, arranged above/below on desktop. --}}
-         <!--- CCclear of the copy, arranged above/below on desktop. >
+         <!--- CCclear of the copy, arranged above/below on desktop. --->
         <div class="cl-drift">
             <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-bug"></i>Penetration Testing</span></span></div>
             <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-desktop"></i>Security Operations Center (SOC)</span></span></div>
