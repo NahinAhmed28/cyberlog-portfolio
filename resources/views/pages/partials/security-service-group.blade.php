@@ -3,7 +3,12 @@
         <div class="cl-sg-hero-grid">
             <div>
                 <p class="section-eyebrow mb-3">{{ $eyebrow }}</p>
-                <h1 class="cl-sg-title">{{ $title }}</h1>
+                @php
+                    $titleWords = preg_split('/\s+/', trim($title), 2);
+                @endphp
+                <h1 class="cl-sg-title">
+                    <span>{{ $titleWords[0] }}</span>{{ isset($titleWords[1]) ? ' ' . $titleWords[1] : '' }}
+                </h1>
                 <p class="cl-sg-summary">{{ $summary }}</p>
                 @if (! empty($switchHref) && ! empty($switchLabel))
                     <a class="btn btn-outline-light btn-xl" href="{{ $switchHref }}">{{ $switchLabel }}</a>
@@ -31,7 +36,10 @@
             <article class="cl-sg-row {{ $loop->even ? 'is-even' : '' }}">
                 <div class="cl-sg-copy">
                     <span class="cl-sg-kicker">{{ $service['kicker'] }}</span>
-                    <h2>{{ $service['title'] }}</h2>
+                    @php
+                        $serviceTitleWords = preg_split('/\s+/', trim($service['title']), 2);
+                    @endphp
+                    <h2><span>{{ $serviceTitleWords[0] }}</span>{{ isset($serviceTitleWords[1]) ? ' ' . $serviceTitleWords[1] : '' }}</h2>
                     <p>{{ $service['desc'] }}</p>
 
                     <div class="cl-sg-detail">
@@ -106,6 +114,11 @@
         font-size: clamp(2.45rem, 6vw, 5.25rem);
         line-height: .92;
         text-transform: uppercase;
+        color: var(--white) !important;
+    }
+    .cl-sg-title span,
+    .cl-sg-copy h2 span {
+        color: var(--warm-soft) !important;
     }
     .cl-sg-summary {
         max-width: 710px;
@@ -189,7 +202,7 @@
     }
     .cl-sg-copy h2 {
         margin-bottom: .85rem;
-        color: var(--white);
+        color: var(--white) !important;
         font-size: clamp(1.55rem, 3vw, 2.45rem);
         line-height: 1.04;
     }
@@ -279,11 +292,13 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transform: scale(1.08);
+        /* The generated artwork includes a pale outer mat; crop it inside the
+           frame while keeping the image's proportions intact. */
+        transform: scale(1.18);
         transition: transform .45s var(--ease);
     }
     .cl-sg-row:hover .cl-sg-visual-img {
-        transform: scale(1.115);
+        transform: scale(1.225);
     }
     .cl-sg-visual i {
         color: var(--sg-accent);
