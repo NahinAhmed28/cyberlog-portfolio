@@ -3,31 +3,31 @@
     $reviewUrl = Route::has('public.clients') ? route('public.clients') : (Route::has('clients') ? route('clients') : '#');
     $reviews = [
         [
-            'source' => 'G2',
-            'sourceKey' => 'g2',
-            'badgeTop' => 'High',
-            'badgeBottom' => 'Performer',
-            'award' => 'Named as a High Performer for security assessment services',
-            'rating' => '4.8',
-            'quote' => "Cyberlog's VAPT work showed strong professionalism and helped improve our cyber defense posture.",
+            'source'      => 'BIDA (Bangladesh Investment Development Authority)',
+            'sourceKey'   => 'bida',
+            'badgeTop'    => 'Government',
+            'badgeBottom' => 'Platform',
+            'award'       => 'National Investment Platform Assessment',
+            'rating'      => '5.0',
+            'quote'       => "As Bangladesh's national investment platform, our systems can't afford weak points. Cyberlog's VAPT team identified real, exploitable risks across our platform and gave us a clear path to fix them, the kind of assessment a government platform needs.",
         ],
         [
-            'source' => 'Gartner',
-            'sourceKey' => 'gartner',
-            'badgeTop' => 'Peer',
-            'badgeBottom' => 'Insights',
-            'award' => 'Managed Detection and Response (MDR)',
-            'rating' => '4.9',
-            'quote' => 'Their pen testers found issues our previous vendor missed. The remediation guidance was clear and prioritized.',
+            'source'      => 'a2i (Aspire to Innovate)',
+            'sourceKey'   => 'a2i',
+            'badgeTop'    => 'Citizen',
+            'badgeBottom' => 'Services',
+            'award'       => 'Methodical & Thorough Security Testing',
+            'rating'      => '5.0',
+            'quote'       => "Our digital services reach millions of citizens, so security testing has to be thorough and precise. Cyberlog's assessment was methodical, well-documented, and gave our technical team exactly the evidence needed to prioritize fixes.",
         ],
         [
-            'source' => 'Clutch',
-            'sourceKey' => 'clutch',
-            'badgeTop' => 'Top',
-            'badgeBottom' => 'Company',
-            'award' => 'Named as a top cybersecurity company in Bangladesh',
-            'rating' => '5.0',
-            'quote' => 'From ISO 27001 to staff training, Cyberlog has been a genuine partner in our compliance journey.',
+            'source'      => 'AamarTaka.com',
+            'sourceKey'   => 'aamartaka',
+            'badgeTop'    => 'Financial',
+            'badgeBottom' => 'Marketplace',
+            'award'       => 'Core Trust & Actionable Engineering Reports',
+            'rating'      => '5.0',
+            'quote'       => "As a financial marketplace handling sensitive customer data, security testing isn't a formality for us, it's core to trust. Cyberlog's VAPT team found real, practical risks in our platform and helped us close them fast, with reporting our engineering team could act on immediately.",
         ],
     ];
 @endphp
@@ -48,7 +48,7 @@
                     <article class="cl-proof-card h-100" data-reveal>
                         <div class="cl-proof-badge cl-proof-badge-{{ $review['sourceKey'] }}" aria-hidden="true">
                             <span>{{ $review['badgeTop'] }}</span>
-                            <strong>{{ $review['source'] }}</strong>
+                            <strong style="font-size: .5rem;">{{ $review['source'] }}</strong>
                             <span>{{ $review['badgeBottom'] }}</span>
                         </div>
                         <h3 class="cl-proof-award">{{ $review['award'] }}</h3>

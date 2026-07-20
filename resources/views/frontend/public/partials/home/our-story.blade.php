@@ -43,7 +43,7 @@
             'title' => 'Scaling cyber resilience',
             'text' => 'Cyberlog is moving toward a structured, product-led, and partnership-driven future to become a trusted cybersecurity brand for enterprises and critical digital infrastructure.',
             'x' => 92,
-            'y' => 47,
+            'y' => 50,
             'tone' => '#42e6a4',
             'toneRgb' => '66, 230, 164',
         ],
@@ -148,7 +148,7 @@
         position: absolute;
         inset: auto 0 0;
         width: 100%;
-        height: 78%;
+        height: 50%;
         overflow: visible;
     }
     .cl-story-terrain { fill: rgba(109, 156, 255, 0.055); }

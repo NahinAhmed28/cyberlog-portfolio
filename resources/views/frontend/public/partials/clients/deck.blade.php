@@ -245,26 +245,29 @@
         margin-top: clamp(.65rem, 1.6vh, 1rem);
     }
     .cl-deck-dots { display: flex; gap: .5rem; }
-    .cl-deck-dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: rgba(6, 16, 31, .24); cursor: pointer; transition: all .25s var(--ease); }
+    .cl-deck-dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: rgb(158 165 178); cursor: pointer; transition: all .25s var(--ease); }
     .cl-deck-dot.active { background: #0a57db; width: 26px; border-radius: 6px; }
     .cl-deck-arrow { width: 42px; height: 42px; border-radius: 50%; background: #fff; border: 1px solid rgba(10, 87, 219, .2); color: #06101f; cursor: pointer; display: grid; place-items: center; transition: all .2s var(--ease); box-shadow: 0 10px 24px rgba(12, 43, 104, .12); }
     .cl-deck-arrow:hover { background: #0a57db; border-color: #0a57db; color: #fff; }
 
     @media (max-width: 991.98px) {
         .cl-client-screens {
-            min-height: 0;
             padding-top: 4rem !important;
             padding-bottom: 4rem !important;
         }
-        .cl-client-screens .container {
-            min-height: 0;
-            display: block;
+        .cl-deck { height: clamp(340px, 62vw, 430px); padding-top: 60px; }
+        .cl-deck-card {
+            top: 60px;
+            padding: clamp(.85rem, 3vw, 1.15rem);
         }
-        .cl-deck-grid { grid-template-columns: 1fr; }
-        .cl-deck-name { max-width: 100%; }
-        .cl-deck { height: auto; min-height: 0; padding-top: 0; }
-        .cl-deck-card { position: relative; transform: none !important; opacity: 1 !important; margin-bottom: 1.25rem; top: auto; }
-        .cl-deck-nav { display: none; }
+        .cl-deck-grid {
+            grid-template-columns: 1fr;
+            gap: .9rem;
+        }
+        .cl-browser-body {
+            max-height: clamp(130px, 26vw, 190px);
+        }
+        .cl-deck-nav { display: flex; }
     }
     @media (max-width: 767.98px) {
         .cl-deck-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -272,6 +275,9 @@
     @media (max-width: 575.98px) {
         .cl-deck-card { padding: 1.1rem; }
         .cl-deck-stats { grid-template-columns: 1fr; }
+        .cl-deck { height: 650px; }
+        .cl-browser-body img { aspect-ratio: 16/9; }
+        .cl-browser-body { max-height: max-content; }
     }
 </style>
 @endpush
@@ -312,7 +318,7 @@
         startAuto();
     }
     function startAuto() {
-        if (reduce || autoTimer || window.innerWidth < 992) return;
+        if (reduce || autoTimer) return;
         autoTimer = window.setInterval(next, 3200);
     }
     function stopAuto() {
@@ -323,7 +329,6 @@
 
     cards.forEach(function (card, i) {
         card.addEventListener('click', function (event) {
-            if (window.innerWidth < 992) return;
             if (!card.classList.contains('is-front')) {
                 event.preventDefault();
                 bringFront(i);

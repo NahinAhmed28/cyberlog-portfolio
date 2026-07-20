@@ -1,24 +1,24 @@
 {{-- Reusable "Trusted Clients" section using the restored sliding logo marquee. --}}
 @php
     // Feedback-folder logos, ordered left-to-right by the supplied reference image.
-    $clients = [
-        ['name' => 'Government of Bangladesh', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/feedback/1. png-clipart-national-emblem-of-bangladesh-logo-organization-business-business-emblem-text.png'],
-        ['name' => 'Bangladesh Finance', 'sector' => 'Financial Institute', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 10, 2026, 04_39_30 PM.png'],
-        ['name' => 'Dhaka Stock Exchange', 'sector' => 'Capital Market', 'url' => '#', 'logo' => 'images/clients/feedback/03-dhaka-stock-exchange.png'],
-        ['name' => 'Bangladesh Petroleum Institute', 'sector' => 'Government Institute', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_37_03 PM.png'],
-        ['name' => 'National Academy for Planning and Development', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_28_28 PM.png'],
-        ['name' => 'Aspire to Innovate (a2i)', 'sector' => 'Digital Government', 'url' => '#', 'logo' => 'images/clients/feedback/6._a2i-logo-png_seeklogo-258213-removebg-preview.png'],
-        ['name' => 'Cabinet Division', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_08_11 PM.png'],
-        ['name' => 'ICT Division', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/feedback/8._ict-division-future-is-here-logo-png_seeklogo-369049-removebg-preview.png'],
-        ['name' => 'United Nations Development Programme', 'sector' => 'Development Organization', 'url' => '#', 'logo' => 'images/clients/feedback/9. UNDP.png'],
-        ['name' => 'Akij Venture', 'sector' => 'Enterprise', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_55_04 PM.png'],
-        ['name' => 'Aamar Taka', 'sector' => 'Financial Technology', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 10, 2026, 04_51_52 PM.png'],
-        ['name' => 'Adcomm Limited', 'sector' => 'Advertisement Industry', 'url' => '#', 'logo' => 'images/clients/feedback/12. Adcomm_51_1409.png'],
-        ['name' => 'Nazimgarh', 'sector' => 'Hospitality', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 10, 2026, 05_10_31 PM.png'],
-        ['name' => 'Vibe Gaming', 'sector' => 'Gaming', 'url' => '#', 'logo' => 'images/clients/feedback/14. Vibe Gaminglogo-website-1.png'],
-        ['name' => 'LegalX', 'sector' => 'Legal Technology', 'url' => '#', 'logo' => 'images/clients/feedback/ChatGPT Image Jul 9, 2026, 04_00_38 PM.png'],
-        ['name' => 'Purbachal Apparel Limited', 'sector' => 'Manufacturing', 'url' => '#', 'logo' => 'images/clients/feedback/16. Purbachal.png'],
-    ];
+$clients = [
+    ['name' => 'Government of Bangladesh', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/gono-projatontri-bangladesh-sarkar.png'],
+    ['name' => 'BIDA', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/bida.png'],
+    ['name' => 'Dhaka Stock Exchange Ltd', 'sector' => 'Capital Market', 'url' => '#', 'logo' => 'images/clients/dhaka-stock-exchange-ltd.png'],
+    ['name' => 'Bangladesh Petroleum Institute (BPI)', 'sector' => 'Government Institute', 'url' => '#', 'logo' => 'images/clients/bangladesh-petroleum-institute-bpi.png'],
+    ['name' => 'National Academy for Planning and Development', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/national-academy-for-planning-and-development.png'],
+    ['name' => 'A2i', 'sector' => 'Digital Government', 'url' => '#', 'logo' => 'images/clients/a2i.png'],
+    ['name' => 'Cabinet Division', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/cabinet-division.png'],
+    ['name' => 'ICT Division', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/ict-division.png'],
+    ['name' => 'UNDP', 'sector' => 'Development Organization', 'url' => '#', 'logo' => 'images/clients/undp.png'],
+    ['name' => 'Akij Venture', 'sector' => 'Enterprise', 'url' => '#', 'logo' => 'images/clients/akij-venture.png'],
+    ['name' => 'Aamar Taka', 'sector' => 'Financial Technology', 'url' => '#', 'logo' => 'images/clients/aamar-taka.png'],
+    ['name' => 'Adcomm', 'sector' => 'Advertisement Industry', 'url' => '#', 'logo' => 'images/clients/adcomm.png'],
+    ['name' => 'Nazimgarh', 'sector' => 'Hospitality', 'url' => '#', 'logo' => 'images/clients/nazimgarh.png'],
+    ['name' => 'Vibe Gaming', 'sector' => 'Gaming', 'url' => '#', 'logo' => 'images/clients/vibe-gaming.png'],
+    ['name' => 'Legal X', 'sector' => 'Legal Technology', 'url' => '#', 'logo' => 'images/clients/legal-x.png'],
+    ['name' => 'Purbachal', 'sector' => 'Manufacturing', 'url' => '#', 'logo' => 'images/clients/purbachal.png'],
+];
     $clientAnimation = $clientAnimation ?? 'marquee';
 @endphp
 

@@ -9,7 +9,7 @@
     $items = [
         [
             'route' => 'red-team',
-            'image' => 'assets/img/services/offensive-red-team-reference.png',
+            'image' => 'assets/img/services/offensive/red-team-assessment.png',
             'imageAlt' => 'Red team assessment attack simulation visual',
             'lead' => 'Simulate realistic attack behavior before real attackers do.',
             'points' => [
@@ -20,7 +20,7 @@
         ],
         [
             'route' => 'app-security-testing',
-            'image' => 'assets/img/services/offensive-app-security-reference.png',
+            'image' => 'assets/img/services/offensive/web-api-mobile-application-security-testing.png',
             'imageAlt' => 'Application security testing visual for web API and mobile platforms',
             'lead' => 'Validate exploitable weaknesses across digital products.',
             'points' => [
@@ -31,7 +31,7 @@
         ],
         [
             'route' => 'network-security',
-            'image' => 'assets/img/services/offensive-network-security-reference.png',
+            'image' => 'assets/img/services/offensive/network-security-assessment.png',
             'imageAlt' => 'Network security assessment visual with firewall and infrastructure nodes',
             'lead' => 'Map infrastructure exposure and reduce attack paths.',
             'points' => [

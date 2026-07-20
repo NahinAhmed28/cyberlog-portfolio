@@ -24,13 +24,13 @@
     };
 @endphp
 
-{{-- Hero — box removed per feedback (centered, single column) --}}
+{{-- Hero — box removed per feedback (centered, single column) 
 @include('partials.page-hero', [
     'eyebrow' => 'Our Services',
     'heading' => 'Full-Spectrum <span class="text-teal">Cyber Defense</span>',
     'subheading' => 'From offensive testing to managed operations and compliance, Cyberlog delivers the services that protect enterprises, government, and critical infrastructure.',
     'centered' => true,
-])
+])--}}
 
 <section class="page-section" id="all-services">
     <div class="container">

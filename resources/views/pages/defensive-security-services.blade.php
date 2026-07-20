@@ -9,7 +9,7 @@
     $items = [
         [
             'route' => 'threat-intelligence',
-            'image' => 'assets/img/services/defensive-threat-intelligence-reference.png',
+            'image' => 'assets/img/services/defensive/threat-intelligence.png',
             'imageAlt' => 'Threat intelligence monitoring visual with global signals and alert indicators',
             'lead' => 'Turn external threat signals into early warning and action.',
             'points' => [
@@ -20,7 +20,7 @@
         ],
         [
             'route' => 'digital-forensics',
-            'image' => 'assets/img/services/defensive-digital-forensics-reference.png',
+            'image' => 'assets/img/services/defensive/cybersecurity-consultancy.png',
             'imageAlt' => 'Digital forensics and incident response visual with fingerprint and evidence timeline',
             'lead' => 'Investigate incidents, preserve evidence, and guide recovery.',
             'points' => [

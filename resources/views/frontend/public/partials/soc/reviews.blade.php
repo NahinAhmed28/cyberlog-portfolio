@@ -3,31 +3,31 @@
     $reviewUrl = Route::has('public.clients') ? route('public.clients') : (Route::has('clients') ? route('clients') : '#');
     $reviews = [
         [
-            'source' => 'G2',
-            'sourceKey' => 'g2',
-            'badgeTop' => 'High',
-            'badgeBottom' => 'Performer',
-            'award' => 'Named as a High Performer for SOC visibility and response',
-            'rating' => '4.8',
-            'quote' => 'Cyberlog helped us bring our logs, alerts, and monitoring into one clear SOC workflow. Our team now has better visibility across critical systems.',
+            'source'      => 'Dhaka Stock Exchange (DSE)',
+            'sourceKey'   => 'dse',
+            'badgeTop'    => 'Financial',
+            'badgeBottom' => 'Infrastructure',
+            'award'       => 'Critical Financial Infrastructure Provider',
+            'rating'      => '5.0',
+            'quote'       => "As a critical financial infrastructure provider, security visibility isn't optional for us. Cyberlog's SOC team gave us continuous monitoring and faster incident response across our trading systems, with reporting our management could actually act on.",
         ],
         [
-            'source' => 'Gartner',
-            'sourceKey' => 'gartner',
-            'badgeTop' => 'Peer',
-            'badgeBottom' => 'Insights',
-            'award' => 'Managed Detection and Response (MDR)',
-            'rating' => '4.9',
-            'quote' => 'The SOC team improved our alert triage process and helped us focus on real threats instead of wasting time on unnecessary alerts.',
+            'source'      => 'Bangladesh Petroleum Institute (BPI)',
+            'sourceKey'   => 'bpi',
+            'badgeTop'    => 'Energy &',
+            'badgeBottom' => 'Research',
+            'award'       => 'Government & Energy Sector Security',
+            'rating'      => '5.0',
+            'quote'       => "Cyberlog helped us structure our security monitoring from the ground up, better log visibility, faster alert triage, and clear guidance whenever something needed attention.",
         ],
         [
-            'source' => 'Clutch',
-            'sourceKey' => 'clutch',
-            'badgeTop' => 'Top',
-            'badgeBottom' => 'Company',
-            'award' => 'Named as a top cybersecurity partner for incident response',
-            'rating' => '5.0',
-            'quote' => "Cyberlog's incident response support gave us practical guidance during suspicious activity. Their reporting was clear, actionable, and useful for management.",
+            'source'      => 'Adcomm Limited',
+            'sourceKey'   => 'adcomm',
+            'badgeTop'    => 'Enterprise',
+            'badgeBottom' => 'Security',
+            'award'       => 'Practical Incident Response Partner',
+            'rating'      => '5.0',
+            'quote'       => "Cyberlog's SOC support gave our team peace of mind. Their alerts were relevant, not noisy, and their incident response guidance was practical and easy for us to follow.",
         ],
     ];
 @endphp
@@ -48,7 +48,7 @@
                     <article class="cl-proof-card h-100" data-reveal>
                         <div class="cl-proof-badge cl-proof-badge-{{ $review['sourceKey'] }}" aria-hidden="true">
                             <span>{{ $review['badgeTop'] }}</span>
-                            <strong>{{ $review['source'] }}</strong>
+                            <strong style="font-size: 0.5rem;">{{ $review['source'] }}</strong>
                             <span>{{ $review['badgeBottom'] }}</span>
                         </div>
                         <h3 class="cl-proof-award">{{ $review['award'] }}</h3>

@@ -198,12 +198,6 @@
     .cl-drift-chip:nth-child(2) .cl-chip { animation-delay: 1.2s; }
     .cl-drift-chip:nth-child(3) .cl-chip { animation-delay: 2.4s; }
     .cl-drift-chip:nth-child(4) .cl-chip { animation-delay: 3.6s; }
-    @keyframes clDrift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
-
-    /* Desktop - reference-style floating chips:
-       staggered diagonally in the band ABOVE the heading and the band BELOW the
-       copy, pulled inboard from the edges. Never beside the text, never stacked. */
-    @media (min-width: 1200px) {
         .cl-drift {
             position: absolute;
             inset: 0;
@@ -213,11 +207,48 @@
             pointer-events: none;
             z-index: 1;
         }
+        .cl-drift {
+            justify-content: flex-start;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0 .75rem .35rem;
+            margin-inline: -.75rem;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        
         .cl-drift-chip { position: absolute; will-change: transform; }
         .cl-drift-chip:nth-child(1) { top: max(16%, 112px); left: clamp(2rem, 17vw, 15rem); }
         .cl-drift-chip:nth-child(2) { top: max(12%, 96px); right: clamp(2rem, 17vw, 15rem); }
         .cl-drift-chip:nth-child(3) { bottom: 12%; left: clamp(2rem, 18vw, 16rem); }
         .cl-drift-chip:nth-child(4) { bottom: 19%; right: clamp(2rem, 18vw, 16rem); }
+    @keyframes clDrift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+    /* Desktop - reference-style floating chips:
+       staggered diagonally in the band ABOVE the heading and the band BELOW the
+       copy, pulled inboard from the edges. Never beside the text, never stacked. */
+    @media (max-width: 991px) {
+        .cl-drift-chip:nth-child(1) { top: max(16%, 112px); left: 1rem; }
+        .cl-drift-chip:nth-child(2) { top: max(12%, 96px); right: 1rem; }
+        .cl-drift-chip:nth-child(3) { bottom: 12%; left: 1rem; }
+        .cl-drift-chip:nth-child(4) { bottom: 19%; right: 1rem; }
+    }
+    
+    @media (max-width: 767px) {
+        .cl-drift-chip:nth-child(1) { top: max(16%, 112px); left: 0; }
+        .cl-drift-chip:nth-child(2) { top: max(12%, 96px); right: 0; }
+        .cl-drift-chip:nth-child(3) { bottom: 12%; left: 0; }
+        .cl-drift-chip:nth-child(4) { bottom: 19%; right: 0; }
+    }
+    
+    @media (max-width: 576px) {
+        .cl-drift-chip:nth-child(1) { top: max(16%, 112px); left: 3rem; }
+        .cl-drift-chip:nth-child(2) { top: 3rem; right: 3rem; }
+        .cl-drift-chip:nth-child(3) { bottom: 12%; left: 3rem; }
+        .cl-drift-chip:nth-child(4) { bottom: 8rem; right: 3rem; }
+        .cl-chip {
+            font-size:10px;
+        }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -247,15 +278,6 @@
             max-width: 20.25rem;
             margin-left: auto;
             margin-right: auto;
-        }
-        .cl-drift {
-            justify-content: flex-start;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 0 .75rem .35rem;
-            margin-inline: -.75rem;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
         }
         .cl-drift::-webkit-scrollbar { display: none; }
         .cl-chip {

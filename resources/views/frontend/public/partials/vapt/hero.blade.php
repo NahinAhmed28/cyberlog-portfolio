@@ -26,7 +26,7 @@
                             <i class="fas fa-bug"></i>
                         </div>
                         <div>
-                            <h2>Attack path validation</h2>
+                            <h2>From Exposure to Exploit</h2>
                             <p>External exposure, authentication bypass, privilege escalation, and data-access impact.</p>
                         </div>
                     </div>

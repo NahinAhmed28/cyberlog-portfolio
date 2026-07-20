@@ -1,10 +1,46 @@
 {{-- SOC › Custom pricing tiers --}}
 @php
-    $plans = [
-        ['Essential', 'For organizations starting with structured SOC monitoring and basic security visibility.', ['SIEM setup and configuration', 'Log collection from key systems', 'Alert monitoring and triage', 'Monthly security summary', 'Basic incident guidance'], false],
-        ['Advanced', 'For organizations that need stronger detection, response support, and threat intelligence.', ['Everything in Essential', 'Custom detection rules', 'Threat intelligence support', 'Incident investigation support', 'Regular tuning and reporting', 'Remediation guidance'], true],
-        ['Enterprise', 'For high-risk, regulated, or large environments that need full SOC coverage and response readiness.', ['Everything in Advanced', 'Dedicated SOC analyst support', 'Proactive threat hunting', 'Digital and network forensics support', 'Incident response retainer', 'Executive reporting'], false],
-    ];
+$plans = [
+    [
+        'Essential', 
+        'For organizations starting with structured SOC monitoring and basic security visibility.', 
+        [
+            'SIEM setup and configuration', 
+            'Log collection from key systems', 
+            'Alert monitoring and triage', 
+            'Monthly security summary', 
+            'Basic incident guidance'
+        ], 
+        false
+    ],
+    [
+        'Advanced', 
+        'For organizations that need stronger detection, response support, and threat intelligence.', 
+        [
+            'Everything in Essential', 
+            'Custom detection rules', 
+            'Threat intelligence support', 
+            'Incident investigation support', 
+            'Regular tuning and reporting', 
+            'Remediation guidance'
+        ], 
+        true // Most Popular
+    ],
+    [
+        'Enterprise', 
+        'For high-risk, regulated, or large environments that need full SOC coverage and response readiness.', 
+        [
+            'Everything in Advanced', 
+            'Dedicated SOC analyst support', 
+            'Proactive threat hunting', 
+            'Digital and network forensics support', 
+            'Incident response retainer', 
+            'Executive reporting',
+            'Compliance & audit support (ISO 27001, regulatory reporting)'
+        ], 
+        false
+    ],
+];
     $contact = Route::has('public.contact') ? route('public.contact') : (Route::has('contact') ? route('contact') : '#');
 @endphp
 

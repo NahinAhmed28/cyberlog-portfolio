@@ -1,11 +1,12 @@
 {{-- SOC › Comparison — which SOC model delivers real value (ref: underdefense.com) --}}
 @php
-    $rows = [
-        ['model' => 'In-House SOC',            'cost' => '$750,000', 'setup' => '6 months', 'mttr' => '4.0', 'stopped' => '70%', 'sla' => '70%',   'hl' => false],
-        ['model' => 'Hybrid SOC (Co-Managed)', 'cost' => '$400,000', 'setup' => '1 month',  'mttr' => '2.5', 'stopped' => '90%', 'sla' => '90%',   'hl' => false],
-        ['model' => 'Fully Outsourced SOC',    'cost' => '$280,000', 'setup' => '2 weeks',  'mttr' => '1.5', 'stopped' => '92%', 'sla' => '92%',   'hl' => false],
-        ['model' => 'Cyberlog SOCaaS',         'cost' => '$192,000', 'setup' => '1 week',   'mttr' => '0.5', 'stopped' => '96%', 'sla' => '99.9%', 'hl' => true],
-    ];
+$rows = [
+    ['model' => 'In-House SOC',              'cost' => '$750,000', 'setup' => '9 months', 'mttr' => '4.5', 'stopped' => '75%', 'sla' => '70%',    'hl' => false],
+    ['model' => 'Hybrid SOC (Co-Managed)',   'cost' => '$400,000', 'setup' => '5 months', 'mttr' => '2.5', 'stopped' => '85%', 'sla' => '85%',    'hl' => false],
+    ['model' => 'Fully Outsourced SOC',      'cost' => '$280,000', 'setup' => '2 months', 'mttr' => '1.0', 'stopped' => '90%', 'sla' => '88%',    'hl' => false],
+    ['model' => 'UnderDefense SOCaaS',       'cost' => '$192,000', 'setup' => '1 month',  'mttr' => '0.5', 'stopped' => '96%', 'sla' => '99.9%',  'hl' => false],
+    ['model' => 'Cyberlog SOC',              'cost' => '$150,000', 'setup' => '2 weeks',  'mttr' => '0.4', 'stopped' => '97%', 'sla' => '99.95%','hl' => true],
+];
 @endphp
 
 <section class="page-section" id="comparison">
