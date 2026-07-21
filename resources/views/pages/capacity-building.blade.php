@@ -9,10 +9,12 @@
     'eyebrow' => 'Services',
     'heading' => 'Awareness &amp; <span class="text-teal">Security Training</span>',
     'subheading' => "Strengthen your organization's human firewall with practical, role-based cybersecurity training built on real-world attack scenarios.",
-    'badges' => ['Awareness Training', 'Phishing Simulation', 'Role-based Curriculum'],
+    //'badges' => ['Awareness Training', 'Phishing Simulation', 'Role-based Curriculum'],
     'primaryCta' => ['label' => 'Talk to an Expert', 'url' => route('contact')],
     'heroIcon' => 'fas fa-graduation-cap',
     'heroCaption' => 'Security awareness training',
+    'centered' => false,
+    'noCenteredHeading' => true
 ])
 
 {{-- Section 2 — Client --}}
@@ -21,8 +23,8 @@
 {{-- Section 3 — Importance --}}
 <section class="page-section bg-navy-soft text-white" id="importance">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">Importance</p>
-        <h2 class="page-section-heading text-center text-uppercase text-white mb-5">Importance.</h2>
+        <p class="section-eyebrow text-center mb-2">WHY IT MATTERS</p>
+        <h2 class="page-section-heading text-center text-uppercase text-white mb-5">WHY IT MATTERS</h2>
         <div class="row g-4">
             @foreach ([
                 ['fa-users', 'Human Risk', 'People remain the most targeted attack surface in any organization.'],
@@ -66,7 +68,7 @@
     </div>
 </section>
 
-{{-- Section 5 — Professional Courses --}}
+{{-- Section 5 — Professional Courses 
 <section class="page-section bg-light" id="courses">
     <div class="container">
         <p class="section-eyebrow text-center mb-2">Professional Courses</p>
@@ -97,7 +99,7 @@
         </div>
     </div>
 </section>
-
+--}}
 <section class="page-section bg-navy-soft text-white" id="impact">
     <div class="container">
         <div class="row align-items-center g-5">
@@ -140,7 +142,7 @@
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Get Your Staff Started With Training Today</h2>
         <div class="row g-4 justify-content-center">
             <div class="col-md-6 col-lg-5">
-                <div class="cl-price-card featured h-100 d-flex flex-column">
+                <div class="cl-price-card h-100 d-flex flex-column">
                     <h4 class="fw-bold">Enterprise</h4>
                     <p class="text-muted">50+ employees</p>
                     <ul class="list-unstyled text-start mb-4">
@@ -163,7 +165,7 @@
                         <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Full access to the training module library</li>
                         <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Designed with small teams in mind</li>
                     </ul>
-                    <a class="btn btn-outline-secondary fw-bold mt-auto" href="{{ route('contact') }}">Get Started</a>
+                    <a class="btn btn-primary fw-bold mt-auto" href="{{ route('contact') }}">Get Started</a>
                 </div>
             </div>
         </div>

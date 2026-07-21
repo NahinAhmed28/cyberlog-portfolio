@@ -9,7 +9,7 @@
     'eyebrow' => 'IT Security Audit & ISO/IEC 27001',
     'heading' => 'Strengthen Security Controls and <span class="text-teal">Prepare for Compliance</span>',
     'subheading' => 'Cyberlog helps organizations review IT systems, identify security gaps, improve governance, and prepare for ISO/IEC 27001 implementation and audit readiness.',
-    'badges' => ['ISO 27001', 'Gap Assessment', 'Risk Treatment', 'Audit Readiness'],
+    //'badges' => ['ISO 27001', 'Gap Assessment', 'Risk Treatment', 'Audit Readiness'],
     'centered' => true,
 ])
 
@@ -31,7 +31,8 @@
                 ['fa-certificate', 'Prepare for Certification', 'A proper implementation roadmap helps your organization move confidently toward ISO 27001 certification.'],
             ] as $v)
                 <div class="col-md-6 col-lg-4">
-                    <div class="cl-benefit h-100 text-center">
+                    {{--<div class="cl-benefit h-100 text-center">--}}
+                    <div>
                         <i class="fas {{ $v[0] }} mb-3" style="font-size:2rem;"></i>
                         <h5 class="fw-bold">{{ $v[1] }}</h5>
                         <p class="text-muted small mb-0">{{ $v[2] }}</p>

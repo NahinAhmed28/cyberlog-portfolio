@@ -24,7 +24,7 @@ $plans = [
             'Regular tuning and reporting', 
             'Remediation guidance'
         ], 
-        true // Most Popular
+        false // Most Popular
     ],
     [
         'Enterprise', 
@@ -61,7 +61,7 @@ $plans = [
                                 <li class="mb-2"><i class="fas fa-circle-check text-primary me-2"></i>{!! $feat !!}</li>
                             @endforeach
                         </ul>
-                        <a class="btn {{ $plan[3] ? 'btn-primary text-white' : 'btn-outline-light' }} mt-auto fw-bold" href="{{ $contact }}">Get a Quote</a>
+                        <a class="btn {{ $plan[3] ? 'btn-primary text-white' : 'btn-primary text-white' }} mt-auto fw-bold" href="{{ $contact }}">Get a Quote</a>
                     </div>
                 </div>
             @endforeach

@@ -4,6 +4,13 @@
            $centered (bool, optional — single centered column, no side box),
            $heroIcon, $heroCaption (only used when not centered) --}}
 @php $isCentered = ! empty($centered); @endphp
+@php $noCenteredHeading = ! empty($noCenteredHeading); @endphp
+<style>
+    .cl-nav-cta.btn-xl {
+    padding: 1rem 1.75rem;
+    font-size: 1.25rem;
+}
+</style>
 <header class="cl-hero text-white py-5" id="hero">
     <div class="container py-5">
         <div class="row align-items-center g-5 {{ $isCentered ? 'justify-content-center text-center' : '' }}">
@@ -11,7 +18,7 @@
                 @isset($eyebrow)
                     <p class="section-eyebrow mb-3">{{ $eyebrow }}</p>
                 @endisset
-                <h1 class="cl-hero-heading mb-3">{!! $heading !!}</h1>
+                <h1 class="cl-hero-heading {{$noCenteredHeading ? 'text-start' : ''}} mb-3">{!! $heading !!}</h1>
                 <p class="lead text-white-50 mb-4">{{ $subheading }}</p>
 
                 @isset($badges)
@@ -23,7 +30,7 @@
                 @endisset
 
                 <div class="d-flex flex-wrap gap-3 {{ $isCentered ? 'justify-content-center' : '' }}">
-                    <a class="btn btn-primary btn-xl text-white fw-bold"
+                    <a class="btn btn-xl text-white fw-bold btn cl-nav-cta"
                        href="{{ $primaryCta['url'] ?? route('contact') }}">
                         {{ $primaryCta['label'] ?? 'Talk to an Expert' }}
                     </a>
