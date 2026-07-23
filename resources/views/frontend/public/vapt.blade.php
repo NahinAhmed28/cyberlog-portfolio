@@ -14,6 +14,9 @@
 {{-- Section 3: Security posture diagram. --}}
 @include('frontend.public.partials.vapt.posture')
 
+{{-- VAPT delivery metrics from client feedback. --}}
+@include('frontend.public.partials.vapt.numbers')
+
 {{-- Section 4: Penetration testing service calculator. --}}
 @include('frontend.public.partials.vapt.calculator')
 
@@ -28,8 +31,8 @@
 
 {{-- Section 8 (System Success Story) removed per feedback --}}
 
-{{-- Section 9: Review section. --}}
-@include('partials.reviews')
+{{-- Section 9: VAPT client feedback. --}}
+@include('frontend.public.partials.vapt.reviews')
 
 @include('partials.talk-to-expert', [
     'title' => 'Ready to test your defenses?',

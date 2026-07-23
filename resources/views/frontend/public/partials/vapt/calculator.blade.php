@@ -5,7 +5,6 @@
         ['APIs', '5 APIs', '3 to 5', '5 to 7', '7 to 9'],
         ['Mobile Applications', '5 apps', '5 to 7', '7 to 9', '9 to 12'],
         ['Network Assets / IPs', '5 IPs', '1 to 2', '2 to 3', '3 to 4'],
-        ['Cloud Assets', '5 assets', '3 to 5', '5 to 7', '7 to 10'],
     ];
 @endphp
 
@@ -27,16 +26,20 @@
             <div class="col-lg-7" data-reveal>
                 <div class="cl-vapt-calc">
                     <div class="cl-vapt-calc-row">
-                        <div class="cl-vapt-calc-head"><span>Web apps / portals</span><strong id="vaptCalcAppsVal">2</strong></div>
-                        <input class="cl-vapt-range" id="vaptCalcApps" type="range" min="1" max="20" value="2">
+                        <div class="cl-vapt-calc-head"><span>Web Applications</span><strong id="vaptCalcAppsVal">0</strong></div>
+                        <input class="cl-vapt-range" id="vaptCalcApps" type="range" min="0" max="20" value="0">
                     </div>
                     <div class="cl-vapt-calc-row">
-                        <div class="cl-vapt-calc-head"><span>APIs / mobile flows</span><strong id="vaptCalcApisVal">2</strong></div>
-                        <input class="cl-vapt-range" id="vaptCalcApis" type="range" min="0" max="20" value="2">
+                        <div class="cl-vapt-calc-head"><span>APIs</span><strong id="vaptCalcApisVal">0</strong></div>
+                        <input class="cl-vapt-range" id="vaptCalcApis" type="range" min="0" max="20" value="0">
                     </div>
                     <div class="cl-vapt-calc-row">
-                        <div class="cl-vapt-calc-head"><span>Network assets / IPs</span><strong id="vaptCalcIpsVal">25</strong></div>
-                        <input class="cl-vapt-range" id="vaptCalcIps" type="range" min="1" max="250" value="25">
+                        <div class="cl-vapt-calc-head"><span>Mobile Applications</span><strong id="vaptCalcMobileVal">0</strong></div>
+                        <input class="cl-vapt-range" id="vaptCalcMobile" type="range" min="0" max="20" value="0">
+                    </div>
+                    <div class="cl-vapt-calc-row">
+                        <div class="cl-vapt-calc-head"><span>Network Assets / IPs</span><strong id="vaptCalcIpsVal">0</strong></div>
+                        <input class="cl-vapt-range" id="vaptCalcIps" type="range" min="0" max="250" value="0">
                     </div>
                     <div class="cl-vapt-calc-row">
                         <div class="cl-vapt-calc-head mb-2"><span>Testing approach</span></div>
@@ -50,7 +53,7 @@
                     <div class="cl-vapt-calc-out">
                         {{-- Pricing on the LEFT --}}
                         <div class="cl-vapt-price">
-                            <div class="cl-vapt-price-fig"><span id="vaptCalcPrice">$0</span></div>
+                            <div class="cl-vapt-price-fig"><span id="vaptCalcPrice">BDT 0</span></div>
                             <div class="cl-vapt-out-lbl">estimated cost</div>
                         </div>
                         {{-- Analysis Days on the RIGHT --}}
@@ -145,29 +148,33 @@
     var apps = document.getElementById('vaptCalcApps');
     if (!apps) return;
     var apis = document.getElementById('vaptCalcApis');
+    var mobile = document.getElementById('vaptCalcMobile');
     var ips = document.getElementById('vaptCalcIps');
     var appsVal = document.getElementById('vaptCalcAppsVal');
     var apisVal = document.getElementById('vaptCalcApisVal');
+    var mobileVal = document.getElementById('vaptCalcMobileVal');
     var ipsVal = document.getElementById('vaptCalcIpsVal');
     var days = document.getElementById('vaptCalcDays');
     var price = document.getElementById('vaptCalcPrice');
     var breakdown = document.getElementById('vaptCalcBreak');
     var approach = document.getElementById('vaptCalcApproach');
     var mult = 1.25;
-    var DAY_RATE = 850; // indicative $ per analyst day
+    var DAY_RATE_BDT = 12000; // indicative BDT per analyst day
 
     function compute() {
-        var appCount = +apps.value, apiCount = +apis.value, ipCount = +ips.value;
-        var raw = (appCount * 3.5) + (apiCount * 2.2) + Math.ceil(ipCount / 12) + 3;
-        var total = Math.max(5, Math.ceil(raw * mult));
+        var appCount = +apps.value, apiCount = +apis.value, mobileCount = +mobile.value, ipCount = +ips.value;
+        var hasScope = appCount + apiCount + mobileCount + ipCount > 0;
+        var raw = (appCount * 3.5) + (apiCount * 2.2) + (mobileCount * 4.2) + Math.ceil(ipCount / 5);
+        var total = hasScope ? Math.max(1, Math.ceil(raw * mult)) : 0;
         appsVal.textContent = appCount;
         apisVal.textContent = apiCount;
+        mobileVal.textContent = mobileCount;
         ipsVal.textContent = ipCount;
         days.textContent = total;
-        price.textContent = '$' + (total * DAY_RATE).toLocaleString('en-US');
-        breakdown.textContent = appCount + ' apps + ' + apiCount + ' API/mobile flows + ' + ipCount + ' IPs x ' + mult + ' approach multiplier';
+        price.textContent = 'BDT ' + (total * DAY_RATE_BDT).toLocaleString('en-US');
+        breakdown.textContent = appCount + ' web apps + ' + apiCount + ' APIs + ' + mobileCount + ' mobile apps + ' + ipCount + ' IPs x ' + mult + ' approach multiplier';
     }
-    [apps, apis, ips].forEach(function (i) { i.addEventListener('input', compute); });
+    [apps, apis, mobile, ips].forEach(function (i) { i.addEventListener('input', compute); });
     approach.querySelectorAll('button').forEach(function (b) {
         b.addEventListener('click', function () {
             approach.querySelectorAll('button').forEach(function (x) { x.classList.remove('active'); });

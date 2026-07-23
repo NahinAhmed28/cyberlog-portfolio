@@ -51,8 +51,6 @@
 
             <div class="cl-vp-hub" aria-hidden="true">
                 <div class="cl-vp-core">
-                    <span>Cyberlog</span>
-                    {{--<i class="fas fa-shield-halved"></i>--}}
                     <strong>VAPT</strong>
                 </div>
             </div>

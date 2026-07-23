@@ -1,8 +1,23 @@
 @php
     $reviews = [
-        ['rating' => '4.8', 'quote' => 'Cyberlog helped us identify real security risks, not just scanner results. Their report was clear, practical, and easy for our technical team to act on.', 'name' => 'Head of IT, Enterprise Organization', 'badge' => 'VAPT Assessment'],
-        ['rating' => '4.9', 'quote' => 'The team validated each finding properly and explained the business impact. Their remediation guidance helped us fix issues faster.', 'name' => 'Technology Lead, Financial Sector', 'badge' => 'Remediation Support'],
-        ['rating' => '5.0', 'quote' => "Cyberlog's retesting process gave us confidence that the reported vulnerabilities were actually closed after remediation.", 'name' => 'Security Manager, Regulated Organization', 'badge' => 'Retesting & Validation'],
+        [
+            'rating' => '5.0',
+            'quote' => "As Bangladesh's national investment platform, our systems can't afford weak points. Cyberlog's VAPT team identified real, exploitable risks across our platform and gave us a clear path to fix them—the kind of assessment a government platform needs.",
+            'name' => 'BIDA (Bangladesh Investment Development Authority)',
+            'badge' => 'Government Platform',
+        ],
+        [
+            'rating' => '5.0',
+            'quote' => "Our digital services reach millions of citizens, so security testing has to be thorough and precise. Cyberlog's assessment was methodical, well-documented, and gave our technical team exactly the evidence needed to prioritize fixes.",
+            'name' => 'a2i (Aspire to Innovate)',
+            'badge' => 'Digital Public Services',
+        ],
+        [
+            'rating' => '5.0',
+            'quote' => "As a financial marketplace handling sensitive customer data, security testing isn't a formality for us—it's core to trust. Cyberlog's VAPT team found real, practical risks in our platform and helped us close them fast, with reporting our engineering team could act on immediately.",
+            'name' => 'AamarTaka.com',
+            'badge' => 'Financial Marketplace',
+        ],
     ];
 @endphp
 
@@ -10,8 +25,11 @@
     <div class="container">
         <p class="section-eyebrow text-center mb-2" data-reveal>CLIENT FEEDBACK</p>
         <h2 class="page-section-heading text-center text-secondary mb-2" data-reveal>
-            Our Clients Say It Best
+            Our Customers <span class="text-warning">Say It Best</span>
         </h2>
+        <p class="text-muted text-center lead-narrow mb-5" data-reveal>
+            Recognized by clients for practical security delivery, clear reporting, and measurable improvements.
+        </p>
 
         <div class="row g-4">
             @foreach ($reviews as $review)
