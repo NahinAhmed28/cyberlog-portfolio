@@ -1,7 +1,7 @@
 @extends('frontend.public.layouts.public')
 
-@section('title', 'vCISO - Virtual CISO Services - Cyberlog')
-@section('meta_description', 'Cyberlog vCISO gives organizations executive security leadership, cyber risk governance, compliance oversight, SOC alignment, and board-ready reporting without a full-time CISO hire.')
+@section('title', 'Prohoree 365 - Unified Cybersecurity Solution - Cyberlog')
+@section('meta_description', "Prohoree 365 is Cyberlog's unified cybersecurity solution, bringing security leadership, risk governance, compliance, SOC alignment, and security operations into one platform.")
 
 @section('content')
 
