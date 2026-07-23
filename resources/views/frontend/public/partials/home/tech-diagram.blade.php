@@ -49,23 +49,23 @@
             <div class="process-stage-grid">
                 <article class="process-card process-card-1">
                     <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step - 01</div>
-                    <h3>Security Discovery &amp; Risk Assessment</h3>
-                    <p>Understand people, systems, critical assets, and exposed attack paths.</p>
+                    <div class="process-step-meta">Step 01</div>
+                    <h3>Understanding Business &amp; Risks</h3>
+                    <p class="process-card-tag"><i class="fas fa-bullseye"></i>Scope &amp; Goals</p>
                     <div class="process-mini visual-discovery" aria-hidden="true">
                         <span class="stack stack-1"></span>
                         <span class="stack stack-2"></span>
                         <span class="stack stack-3"></span>
-                        <span class="mini-pill"><i class="fas fa-magnifying-glass-chart"></i>Asset Mapping</span>
+                        <span class="mini-pill"><i class="fas fa-magnifying-glass-chart"></i>Scope &amp; Goals</span>
                         <span class="mini-check"><i class="fas fa-check"></i></span>
                     </div>
                 </article>
 
                 <article class="process-card process-card-2">
                     <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step - 02</div>
-                    <h3>Threat Intelligence &amp; Architecture Planning</h3>
-                    <p>Convert risk signals into a practical security roadmap.</p>
+                    <div class="process-step-meta">Step 02</div>
+                    <h3>Security Assessment &amp; Discovery</h3>
+                    <p class="process-card-tag"><i class="fas fa-crosshairs"></i>Assets &amp; Exposure</p>
                     <div class="process-mini visual-research" aria-hidden="true">
                         <div class="chart-bars">
                             <span style="--h: 38%"></span>
@@ -82,34 +82,34 @@
 
                 <article class="process-card process-card-3">
                     <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step - 03</div>
-                    <h3>Implementation &amp; Secure Configuration</h3>
-                    <p>Deploy defenses, harden assets, and integrate monitoring controls.</p>
+                    <div class="process-step-meta">Step 03</div>
+                    <h3>Vulnerability Testing</h3>
+                    <p class="process-card-tag"><i class="fas fa-bug"></i>VAPT / App Security</p>
                     <div class="process-mini visual-build" aria-hidden="true">
                         <span class="build-panel panel-a"></span>
                         <span class="build-panel panel-b"></span>
-                        <span class="build-chip chip-a"><i class="fas fa-lock"></i>Policy</span>
-                        <span class="build-chip chip-b"><i class="fas fa-server"></i>SIEM</span>
+                        <span class="build-chip chip-a"><i class="fas fa-bug"></i>VAPT</span>
+                        <span class="build-chip chip-b"><i class="fas fa-code"></i>AppSec</span>
                     </div>
                 </article>
 
                 <article class="process-card process-card-4">
                     <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step - 04</div>
-                    <h3>Testing, Validation &amp; Incident Simulation</h3>
-                    <p>Validate real exposure with VAPT, red team testing, and control review.</p>
+                    <div class="process-step-meta">Step 04</div>
+                    <h3>Protection &amp; Implementation</h3>
+                    <p class="process-card-tag"><i class="fas fa-shield-halved"></i>SOC / Hardening</p>
                     <div class="process-mini visual-test" aria-hidden="true">
-                        <span class="test-row row-a"><i class="fas fa-bug"></i>VAPT Validation</span>
-                        <span class="test-row row-b"><i class="fas fa-user-secret"></i>Red Team Drill</span>
+                        <span class="test-row row-a"><i class="fas fa-shield-halved"></i>SOC Protection</span>
+                        <span class="test-row row-b"><i class="fas fa-lock"></i>System Hardening</span>
                         <span class="paper-plane"><i class="fas fa-location-arrow"></i></span>
                     </div>
                 </article>
 
                 <article class="process-card process-card-5">
                     <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step - 05</div>
-                    <h3>Continuous Monitoring &amp; Response</h3>
-                    <p>Detect anomalies, triage incidents, and tune defenses as risk changes.</p>
+                    <div class="process-step-meta">Step 05</div>
+                    <h3>Monitoring &amp; Threat Detection</h3>
+                    <p class="process-card-tag"><i class="fas fa-satellite-dish"></i>Detect &amp; Respond</p>
                     <div class="process-mini visual-monitor" aria-hidden="true">
                         <span class="monitor-shell"></span>
                         <span class="monitor-line line-a"></span>
@@ -121,12 +121,12 @@
 
                 <article class="process-card process-card-6">
                     <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step - 06</div>
-                    <h3>Reporting, Compliance &amp; Improvement</h3>
-                    <p>Deliver executive reporting, audit evidence, and maturity improvements.</p>
+                    <div class="process-step-meta">Step 06</div>
+                    <h3>Reporting &amp; Continuous Improvement</h3>
+                    <p class="process-card-tag"><i class="fas fa-arrow-trend-up"></i>Remediation &amp; Compliance</p>
                     <div class="process-mini visual-report" aria-hidden="true">
-                        <span class="report-row"><i class="fas fa-clipboard-check"></i>Executive Report</span>
-                        <span class="report-row"><i class="fas fa-chart-line"></i>Maturity Growth</span>
+                        <span class="report-row"><i class="fas fa-clipboard-check"></i>Remediation</span>
+                        <span class="report-row"><i class="fas fa-chart-line"></i>Compliance</span>
                     </div>
                 </article>
             </div>
@@ -430,8 +430,11 @@
         margin: 0 0 .65rem;
         color: #f8fbff;
         font-family: 'Chakra Petch', sans-serif;
-        font-size: clamp(1.35rem, 2vw, 2rem);
-        line-height: 1.12;
+        font-size: clamp(1.4rem, 1.8vw, 1.9rem);
+        font-weight: 700;
+        line-height: 1.16;
+        overflow-wrap: anywhere;
+        text-shadow: 0 2px 18px rgba(0, 0, 0, .68);
     }
     .process-card p {
         max-width: 440px;
@@ -439,6 +442,30 @@
         color: rgba(248, 251, 255, .72);
         line-height: 1.55;
         font-size: .92rem;
+    }
+    .process-card .process-card-tag {
+        width: max-content;
+        max-width: 100%;
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        margin: .15rem 0 1rem;
+        border: 1px solid rgba(40, 244, 255, .36);
+        border-radius: 8px;
+        padding: .48rem .72rem;
+        background: rgba(7, 28, 54, .92);
+        color: #bffbff;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: .75rem;
+        font-weight: 700;
+        letter-spacing: .025em;
+        line-height: 1.25;
+        box-shadow: inset 3px 0 0 #28f4ff, 0 0 20px rgba(40, 244, 255, .08);
+        overflow-wrap: anywhere;
+    }
+    .process-card-tag i {
+        flex: 0 0 auto;
+        color: #28f4ff;
     }
     .process-mini {
         position: relative;
@@ -753,6 +780,19 @@
         transform: none;
         transition: opacity 1s var(--ease), transform 1s var(--ease);
     }
+    html.js .process-diagram-wrap[data-reveal].is-in .process-card {
+        animation: processCardIn .72s var(--ease) backwards;
+    }
+    html.js .process-diagram-wrap[data-reveal].is-in .process-card:nth-child(2) { animation-delay: .08s; }
+    html.js .process-diagram-wrap[data-reveal].is-in .process-card:nth-child(3) { animation-delay: .16s; }
+    html.js .process-diagram-wrap[data-reveal].is-in .process-card:nth-child(4) { animation-delay: .24s; }
+    html.js .process-diagram-wrap[data-reveal].is-in .process-card:nth-child(5) { animation-delay: .32s; }
+    html.js .process-diagram-wrap[data-reveal].is-in .process-card:nth-child(6) { animation-delay: .4s; }
+
+    @keyframes processCardIn {
+        from { opacity: 0; transform: translateY(20px) scale(.98); }
+        to { opacity: 1; transform: none; }
+    }
 
     @keyframes processAmbient {
         0%, 100% { opacity: .58; transform: scale(1); }
@@ -847,79 +887,198 @@
 
     @media (max-width: 1199.98px) {
         .process-diagram-wrap {
-            width: min(980px, 94vw) !important;
-            max-width: min(980px, 94vw) !important;
-            min-height: 0;
+            width: min(980px, 96vw) !important;
+            max-width: min(980px, 96vw) !important;
+            min-height: clamp(570px, 78vw, 760px);
         }
         .process-stage-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            grid-template-rows: auto;
-            min-height: 0;
-            padding-bottom: 260px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: clamp(.8rem, 2vw, 1.5rem);
+            min-height: clamp(570px, 78vw, 760px);
+            padding: clamp(1rem, 2.2vw, 1.8rem);
         }
-        .process-card-4,
-        .process-card-6 {
-            margin-top: 0;
+        .process-card {
+            border-radius: 24px;
+            padding: clamp(1rem, 1.7vw, 1.35rem);
+        }
+        .process-card h3 {
+            font-size: clamp(1rem, 1.8vw, 1.4rem);
+        }
+        .process-card .process-card-tag {
+            font-size: clamp(.62rem, 1vw, .72rem);
+        }
+        .process-mini {
+            min-height: clamp(112px, 14vw, 145px);
         }
         .process-core {
-            top: auto;
-            bottom: 54px;
-            width: 180px;
-            height: 180px;
+            display: grid;
+            top: 46%;
+            width: clamp(130px, 16vw, 180px);
+            height: clamp(130px, 16vw, 180px);
         }
-        .process-link-map,
         .process-spark {
             display: none;
+        }
+        .process-link-map {
+            display: block;
         }
     }
     @media (max-width: 767.98px) {
         .process-section {
-            padding: 4rem 0 3.8rem;
+            padding: 3.5rem 0 3rem;
         }
         .process-diagram-wrap {
-            width: min(100%, 94vw) !important;
-            max-width: min(100%, 94vw) !important;
-            border-radius: 22px;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-height: clamp(390px, 118vw, 560px);
+            border-radius: 18px;
         }
         .process-stage-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            padding: 1rem 1rem 230px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: repeat(2, minmax(0, 1fr));
+            gap: clamp(.35rem, 1.6vw, .7rem);
+            min-height: clamp(390px, 118vw, 560px);
+            padding: clamp(.45rem, 1.8vw, .75rem);
         }
         .process-card {
             min-height: 0;
-            border-radius: 20px;
-            padding: 1.2rem;
+            border-radius: 12px;
+            padding: clamp(.48rem, 1.8vw, .75rem);
         }
         .process-card h3 {
-            font-size: 1.24rem;
+            max-width: calc(100% - .3rem);
+            margin-bottom: .35rem;
+            padding-right: 0;
+            font-size: clamp(.57rem, 2.3vw, .86rem);
+            line-height: 1.15;
         }
-        .process-card p {
-            font-size: .86rem;
+        .process-step-meta {
+            margin-bottom: .45rem;
+            padding: .2rem .4rem;
+            font-size: clamp(.42rem, 1.55vw, .58rem);
+        }
+        .process-beacon {
+            top: .5rem;
+            right: .5rem;
+            width: 6px;
+            height: 6px;
+            box-shadow: 0 0 0 3px rgba(109, 156, 255, .11), 0 0 10px rgba(109, 156, 255, .76);
         }
         .process-mini {
-            min-height: 134px;
-            margin-top: 1rem;
+            min-height: clamp(64px, 19vw, 92px);
+            margin-top: auto;
+            border-radius: 8px;
+        }
+        .process-card .process-card-tag {
+            gap: .25rem;
+            margin: 0 0 .4rem;
+            border-radius: 5px;
+            padding: .2rem .32rem;
+            font-size: clamp(.39rem, 1.45vw, .54rem);
+            box-shadow: inset 2px 0 0 #28f4ff;
+        }
+        .process-card-tag i {
+            display: none;
         }
         .process-core {
-            bottom: 42px;
-            width: 152px;
-            height: 152px;
+            width: clamp(72px, 22vw, 112px);
+            height: clamp(72px, 22vw, 112px);
             box-shadow:
-                0 0 0 18px rgba(47, 107, 255, .08),
-                0 0 48px rgba(47, 107, 255, .28);
+                0 0 0 10px rgba(47, 107, 255, .08),
+                0 0 30px rgba(47, 107, 255, .32);
         }
         .process-core-mark {
-            width: 64px;
-            height: 64px;
-            font-size: 1.35rem;
+            width: clamp(32px, 9vw, 46px);
+            height: clamp(32px, 9vw, 46px);
+            font-size: clamp(.7rem, 2.8vw, 1rem);
         }
         .process-core-copy {
-            bottom: 18px;
+            bottom: 8px;
+            min-width: 70px;
+        }
+        .process-core-copy span {
+            display: none;
+        }
+        .process-core-copy strong {
+            font-size: clamp(.36rem, 1.25vw, .5rem);
+        }
+        .process-core-orbit {
+            inset: -10px;
+        }
+        .orbit-b {
+            inset: -22px;
+        }
+        .process-core-sweep {
+            inset: -8px;
         }
         .process-scan,
         .process-bg-grid {
             display: none;
+        }
+        .mini-pill,
+        .test-row,
+        .report-row,
+        .build-chip,
+        .risk-badge {
+            font-size: clamp(.36rem, 1.3vw, .5rem);
+        }
+        .mini-pill i,
+        .test-row i,
+        .report-row i,
+        .build-chip i {
+            display: none;
+        }
+        .mini-pill,
+        .test-row,
+        .report-row {
+            min-height: 25px;
+            padding: 0 .35rem;
+        }
+        .mini-pill {
+            top: 30%;
+        }
+        .row-a,
+        .report-row:first-child {
+            top: 18%;
+        }
+        .row-b,
+        .report-row:last-child {
+            top: 58%;
+        }
+        .chip-a {
+            left: 10%;
+            top: 32%;
+            padding: .35rem;
+        }
+        .chip-b {
+            right: 8%;
+            top: 55%;
+            padding: .35rem;
+        }
+    }
+    @media (max-width: 379.98px) {
+        .process-section .container-fluid {
+            padding-right: .55rem !important;
+            padding-left: .55rem !important;
+        }
+        .process-diagram-wrap,
+        .process-card {
+            border-radius: 16px;
+        }
+        .process-stage-grid {
+            gap: .3rem;
+            padding: .38rem;
+        }
+        .process-card {
+            padding: .42rem;
+        }
+        .process-step-meta {
+            margin-bottom: .35rem;
+            padding: .16rem .28rem;
+        }
+        .process-mini {
+            min-height: 58px;
         }
     }
     @media (prefers-reduced-motion: reduce) {

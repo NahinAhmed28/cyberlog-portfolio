@@ -7,6 +7,9 @@
 {{-- Section 1 — Hero --}}
 @include('frontend.public.partials.soc.hero')
 
+{{-- New Section — Managed Services by the Numbers --}}
+@include('frontend.public.partials.soc.numbers')
+
 {{-- Section 2 — Client (As like Home Page) --}}
 @include('partials.clients')
 
