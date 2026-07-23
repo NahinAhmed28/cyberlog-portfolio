@@ -5,27 +5,21 @@
         [
             'source'      => 'Dhaka Stock Exchange (DSE)',
             'sourceKey'   => 'dse',
-            'badgeTop'    => 'Financial',
-            'badgeBottom' => 'Infrastructure',
-            'award'       => 'Critical Financial Infrastructure Provider',
+            'initials'    => 'DSE',
             'rating'      => '5.0',
             'quote'       => "As a critical financial infrastructure provider, security visibility isn't optional for us. Cyberlog's SOC team gave us continuous monitoring and faster incident response across our trading systems, with reporting our management could actually act on.",
         ],
         [
             'source'      => 'Bangladesh Petroleum Institute (BPI)',
             'sourceKey'   => 'bpi',
-            'badgeTop'    => 'Energy &',
-            'badgeBottom' => 'Research',
-            'award'       => 'Government & Energy Sector Security',
+            'initials'    => 'BPI',
             'rating'      => '5.0',
             'quote'       => "Cyberlog helped us structure our security monitoring from the ground up, better log visibility, faster alert triage, and clear guidance whenever something needed attention.",
         ],
         [
             'source'      => 'Adcomm Limited',
             'sourceKey'   => 'adcomm',
-            'badgeTop'    => 'Enterprise',
-            'badgeBottom' => 'Security',
-            'award'       => 'Practical Incident Response Partner',
+            'initials'    => 'AD',
             'rating'      => '5.0',
             'quote'       => "Cyberlog's SOC support gave our team peace of mind. Their alerts were relevant, not noisy, and their incident response guidance was practical and easy for us to follow.",
         ],
@@ -47,11 +41,9 @@
                 <div class="col-md-4">
                     <article class="cl-proof-card h-100" data-reveal>
                         <div class="cl-proof-badge cl-proof-badge-{{ $review['sourceKey'] }}" aria-hidden="true">
-                            <span>{{ $review['badgeTop'] }}</span>
-                            <strong style="font-size: 0.5rem;">{{ $review['source'] }}</strong>
-                            <span>{{ $review['badgeBottom'] }}</span>
+                            <strong>{{ $review['initials'] }}</strong>
                         </div>
-                        <h3 class="cl-proof-award">{{ $review['award'] }}</h3>
+                        <h3 class="cl-proof-award">{{ $review['source'] }}</h3>
                         <div class="cl-proof-rating" aria-label="{{ $review['rating'] }} out of 5 stars">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             <span>{{ $review['rating'] }}</span>
@@ -63,3 +55,16 @@
         </div>
     </div>
 </section>
+
+@push('styles')
+<style>
+    .cl-proof-reviews .cl-proof-badge strong {
+        font-size: .9rem;
+        letter-spacing: -.02em;
+    }
+    .cl-proof-reviews .cl-proof-award {
+        max-width: 19rem;
+        font-size: 1.02rem;
+    }
+</style>
+@endpush

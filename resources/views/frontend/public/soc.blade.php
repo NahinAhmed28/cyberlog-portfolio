@@ -8,7 +8,6 @@
 @include('frontend.public.partials.soc.hero')
 
 {{-- New Section — Managed Services by the Numbers --}}
-@include('frontend.public.partials.soc.numbers')
 
 {{-- Section 2 — Client (As like Home Page) --}}
 @include('partials.clients')
@@ -22,6 +21,9 @@
 {{-- Section 5 — Matrix --}}
 @include('frontend.public.partials.soc.matrix')
 
+{{-- Managed Services by the Numbers --}}
+@include('frontend.public.partials.soc.numbers')
+
 {{-- Section 6 — Benefits --}}
 @include('frontend.public.partials.soc.benefits')
 
@@ -33,17 +35,10 @@
 {{-- Section 9 — Reviews --}}
 @include('frontend.public.partials.soc.reviews')
 
-{{-- Closing CTA --}}
-<section class="page-section">
-    <div class="container">
-        <div class="cl-cta d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3" data-reveal>
-            <div>
-                <h3 class="fw-bold mb-1">Still evaluating SOC options?</h3>
-                <p class="mb-0 text-white-50">We'll walk you through the pros, cons, and pricing — no pressure.</p>
-            </div>
-            <a class="btn btn-primary btn-xl text-white fw-bold" href="{{ Route::has('public.contact') ? route('public.contact') : (Route::has('contact') ? route('contact') : '#') }}">Talk to an Expert</a>
-        </div>
-    </div>
-</section>
+{{-- Closing CTA — use shared partial for consistent CTA across services --}}
+@include('partials.talk-to-expert', [
+    'title' => 'Still evaluating SOC options?',
+    'text' => "We'll walk you through the pros, cons, and pricing — no pressure."
+])
 
 @endsection

@@ -195,15 +195,13 @@
         min-height: 820px;
         margin: 0 auto;
         overflow: hidden;
-        border: 1px solid rgba(109, 156, 255, .2);
+        border: 0;
         border-radius: 34px;
         background:
             radial-gradient(circle at 50% 50%, rgba(47, 107, 255, .2), transparent 27%),
             radial-gradient(circle at 50% 50%, rgba(228, 31, 61, .08), transparent 42%),
             rgba(5, 12, 23, .72);
-        box-shadow:
-            inset 0 0 0 1px rgba(255, 255, 255, .035),
-            0 44px 120px rgba(0, 0, 0, .45);
+        box-shadow: 0 44px 120px rgba(0, 0, 0, .34);
         isolation: isolate;
     }
     .process-diagram-wrap::before,
@@ -328,17 +326,16 @@
         min-width: 0;
         display: flex;
         flex-direction: column;
-        border: 1px solid rgba(109, 156, 255, .2);
+        border: 0;
         border-radius: 32px;
         padding: clamp(1.4rem, 2.1vw, 2rem);
         background:
-            linear-gradient(145deg, rgba(21, 36, 64, .78), rgba(8, 17, 34, .82)) padding-box,
-            linear-gradient(135deg, rgba(109, 156, 255, .42), rgba(228, 31, 61, .1)) border-box;
+            radial-gradient(circle at 24% 8%, rgba(109, 156, 255, .16), transparent 42%),
+            linear-gradient(145deg, rgba(20, 36, 65, .62), rgba(8, 17, 34, .58));
         color: #f8fbff;
         box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, .08),
             inset 0 -60px 120px rgba(47, 107, 255, .08),
-            0 26px 80px rgba(0, 0, 0, .36);
+            0 20px 58px rgba(0, 0, 0, .22);
         -webkit-backdrop-filter: blur(18px);
         backdrop-filter: blur(18px);
         transition: transform .28s var(--ease), border-color .28s var(--ease), box-shadow .28s var(--ease);
@@ -359,24 +356,26 @@
         inset: 0;
         pointer-events: none;
         border-radius: inherit;
-        border: 1px solid rgba(255, 255, 255, .05);
-        box-shadow: inset 0 0 44px rgba(109, 156, 255, .08);
+        border: 0;
+        box-shadow:
+            inset 0 0 52px rgba(109, 156, 255, .06),
+            inset 0 1px 0 rgba(255, 255, 255, .025);
     }
     .process-card:hover {
         transform: translateY(-6px);
-        border-color: rgba(109, 156, 255, .46);
         box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, .1),
             inset 0 -60px 120px rgba(47, 107, 255, .12),
-            0 34px 90px rgba(0, 0, 0, .44),
-            0 0 34px rgba(109, 156, 255, .18);
+            0 28px 72px rgba(0, 0, 0, .3),
+            0 0 40px rgba(109, 156, 255, .1);
     }
     .process-card-2,
     .process-card-5 {
         background:
             radial-gradient(circle at 50% 92%, rgba(47, 107, 255, .22), transparent 38%),
             linear-gradient(145deg, rgba(11, 30, 70, .88), rgba(8, 17, 42, .88));
-        border-color: rgba(47, 107, 255, .36);
+        box-shadow:
+            inset 0 -60px 120px rgba(47, 107, 255, .09),
+            0 20px 58px rgba(0, 0, 0, .2);
     }
     .process-card-4,
     .process-card-6 {
@@ -471,13 +470,15 @@
         position: relative;
         min-height: 162px;
         margin-top: auto;
-        border: 1px solid rgba(47, 107, 255, .22);
+        border: 0;
         border-radius: 16px;
         overflow: hidden;
         background:
             radial-gradient(circle at 50% 70%, rgba(47, 107, 255, .2), transparent 55%),
             linear-gradient(180deg, rgba(9, 27, 66, .54), rgba(7, 16, 32, .7));
-        box-shadow: inset 0 0 36px rgba(47, 107, 255, .12);
+        box-shadow:
+            inset 0 0 36px rgba(47, 107, 255, .09),
+            0 12px 32px rgba(0, 0, 0, .12);
     }
     .process-mini::before {
         content: "";
