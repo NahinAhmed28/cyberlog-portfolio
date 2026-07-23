@@ -130,7 +130,7 @@
         {{-- TODO: copy — section heading not provided in the checklist --}}
         <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>
             Bangladesh's First Unified Cybersecurity Solution:
-            <span class="cl-title-accent">Prohoree 365</span>
+            <span class="cl-title-accent d-block">Prohoree 365</span>
         </h2>
 
         <div class="cl-vm-card" data-reveal>
