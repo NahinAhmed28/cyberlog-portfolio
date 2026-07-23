@@ -148,7 +148,7 @@
     }
     .cl-trusted-client {
         min-width: 0;
-        min-height: 132px;
+        min-height: 164px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -174,19 +174,19 @@
     }
     .cl-trusted-logo {
         position: relative;
-        width: 56px;
-        height: 56px;
+        width: 88px;
+        height: 88px;
         display: grid;
         place-items: center;
-        margin-bottom: .7rem;
+        margin-bottom: .8rem;
         border: 1px solid rgba(228, 31, 61, .28);
         border-radius: 50%;
         overflow: hidden;
         background: rgba(228, 31, 61, .04);
     }
     .cl-trusted-logo img {
-        width: 76%;
-        height: 76%;
+        width: 84%;
+        height: 84%;
         object-fit: contain;
         filter: grayscale(1) brightness(1.45);
         opacity: .72;
@@ -222,7 +222,8 @@
     }
     @media (max-width: 575.98px) {
         .cl-trusted-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
-        .cl-trusted-client { min-height: 120px; }
+        .cl-trusted-client { min-height: 142px; }
+        .cl-trusted-logo { width: 72px; height: 72px; }
         .cl-industry-tile { min-height: 124px; }
     }
 </style>
