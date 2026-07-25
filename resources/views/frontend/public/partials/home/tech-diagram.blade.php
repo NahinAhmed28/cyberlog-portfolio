@@ -52,13 +52,6 @@
                     <div class="process-step-meta">Step 01</div>
                     <h3>Understanding Business &amp; Risks</h3>
                     <p class="process-card-tag"><i class="fas fa-bullseye"></i>Scope &amp; Goals</p>
-                    <div class="process-mini visual-discovery" aria-hidden="true">
-                        <span class="stack stack-1"></span>
-                        <span class="stack stack-2"></span>
-                        <span class="stack stack-3"></span>
-                        <span class="mini-pill"><i class="fas fa-magnifying-glass-chart"></i>Scope &amp; Goals</span>
-                        <span class="mini-check"><i class="fas fa-check"></i></span>
-                    </div>
                 </article>
 
                 <article class="process-card process-card-2">
@@ -66,18 +59,6 @@
                     <div class="process-step-meta">Step 02</div>
                     <h3>Security Assessment &amp; Discovery</h3>
                     <p class="process-card-tag"><i class="fas fa-crosshairs"></i>Assets &amp; Exposure</p>
-                    <div class="process-mini visual-research" aria-hidden="true">
-                        <div class="chart-bars">
-                            <span style="--h: 38%"></span>
-                            <span style="--h: 54%"></span>
-                            <span style="--h: 72%"></span>
-                            <span style="--h: 88%"></span>
-                            <span style="--h: 56%"></span>
-                            <span style="--h: 32%"></span>
-                        </div>
-                        <span class="risk-badge">Risk 82</span>
-                        <span class="chart-arc"></span>
-                    </div>
                 </article>
 
                 <article class="process-card process-card-3">
@@ -85,12 +66,6 @@
                     <div class="process-step-meta">Step 03</div>
                     <h3>Vulnerability Testing</h3>
                     <p class="process-card-tag"><i class="fas fa-bug"></i>VAPT / App Security</p>
-                    <div class="process-mini visual-build" aria-hidden="true">
-                        <span class="build-panel panel-a"></span>
-                        <span class="build-panel panel-b"></span>
-                        <span class="build-chip chip-a"><i class="fas fa-bug"></i>VAPT</span>
-                        <span class="build-chip chip-b"><i class="fas fa-code"></i>AppSec</span>
-                    </div>
                 </article>
 
                 <article class="process-card process-card-4">
@@ -98,11 +73,6 @@
                     <div class="process-step-meta">Step 04</div>
                     <h3>Protection &amp; Implementation</h3>
                     <p class="process-card-tag"><i class="fas fa-shield-halved"></i>SOC / Hardening</p>
-                    <div class="process-mini visual-test" aria-hidden="true">
-                        <span class="test-row row-a"><i class="fas fa-shield-halved"></i>SOC Protection</span>
-                        <span class="test-row row-b"><i class="fas fa-lock"></i>System Hardening</span>
-                        <span class="paper-plane"><i class="fas fa-location-arrow"></i></span>
-                    </div>
                 </article>
 
                 <article class="process-card process-card-5">
@@ -110,13 +80,6 @@
                     <div class="process-step-meta">Step 05</div>
                     <h3>Monitoring &amp; Threat Detection</h3>
                     <p class="process-card-tag"><i class="fas fa-satellite-dish"></i>Detect &amp; Respond</p>
-                    <div class="process-mini visual-monitor" aria-hidden="true">
-                        <span class="monitor-shell"></span>
-                        <span class="monitor-line line-a"></span>
-                        <span class="monitor-line line-b"></span>
-                        <span class="monitor-avatar"><i class="fas fa-user-shield"></i></span>
-                        <span class="monitor-alert"></span>
-                    </div>
                 </article>
 
                 <article class="process-card process-card-6">
@@ -124,10 +87,6 @@
                     <div class="process-step-meta">Step 06</div>
                     <h3>Reporting &amp; Continuous Improvement</h3>
                     <p class="process-card-tag"><i class="fas fa-arrow-trend-up"></i>Remediation &amp; Compliance</p>
-                    <div class="process-mini visual-report" aria-hidden="true">
-                        <span class="report-row"><i class="fas fa-clipboard-check"></i>Remediation</span>
-                        <span class="report-row"><i class="fas fa-chart-line"></i>Compliance</span>
-                    </div>
                 </article>
             </div>
         </div>
@@ -138,12 +97,20 @@
 <style>
     .process-section {
         position: relative;
-        padding: 5rem 0 4.5rem;
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        padding: clamp(1.5rem, 4vh, 3rem) 0;
         overflow: hidden;
         background:
             radial-gradient(900px 520px at 50% 52%, rgba(47, 107, 255, .18), transparent 68%),
             radial-gradient(760px 460px at 78% 16%, rgba(228, 31, 61, .1), transparent 62%),
             linear-gradient(180deg, #050c17 0%, #081426 50%, #050c17 100%);
+    }
+    .process-section > .container-fluid {
+        display: flex;
+        min-height: 0;
+        flex-direction: column;
     }
     .process-section::before {
         content: "";
@@ -182,7 +149,7 @@
         position: relative;
         z-index: 1;
         max-width: 720px;
-        margin: 0 auto 2.4rem;
+        margin: 0 auto clamp(1rem, 2.5vh, 2rem);
         color: rgba(248, 251, 255, .78);
         text-align: center;
         line-height: 1.8;
@@ -192,16 +159,14 @@
         position: relative;
         width: min(1520px, 96vw) !important;
         max-width: min(1520px, 96vw) !important;
-        min-height: 820px;
+        height: min(820px, calc(100svh - 205px));
+        min-height: 460px;
         margin: 0 auto;
-        overflow: hidden;
+        overflow: visible;
         border: 0;
-        border-radius: 34px;
-        background:
-            radial-gradient(circle at 50% 50%, rgba(47, 107, 255, .2), transparent 27%),
-            radial-gradient(circle at 50% 50%, rgba(228, 31, 61, .08), transparent 42%),
-            rgba(5, 12, 23, .72);
-        box-shadow: 0 44px 120px rgba(0, 0, 0, .34);
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
         isolation: isolate;
     }
     .process-diagram-wrap::before,
@@ -213,37 +178,13 @@
         pointer-events: none;
     }
     .process-diagram-wrap::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        background:
-            radial-gradient(circle at 18% 18%, rgba(109, 156, 255, .12), transparent 22%),
-            radial-gradient(circle at 84% 82%, rgba(228, 31, 61, .1), transparent 24%),
-            linear-gradient(120deg, transparent 0 42%, rgba(109, 156, 255, .08) 50%, transparent 58%);
-        animation: processAmbient 9s ease-in-out infinite;
+        content: none;
     }
     .process-diagram-wrap::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        background:
-            linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
-        background-size: 34px 34px;
-        opacity: .5;
+        content: none;
     }
     .process-bg-grid {
-        position: absolute;
-        inset: 1.2rem;
-        z-index: 0;
-        border-radius: 28px;
-        background:
-            repeating-linear-gradient(0deg, transparent 0 54px, rgba(109, 156, 255, .08) 55px, transparent 56px),
-            repeating-linear-gradient(90deg, transparent 0 54px, rgba(228, 31, 61, .05) 55px, transparent 56px);
-        opacity: .6;
-        animation: processGridMove 18s linear infinite;
+        display: none;
     }
     .process-scan {
         position: absolute;
@@ -315,9 +256,10 @@
         z-index: 4;
         display: grid;
         grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.1fr) minmax(280px, 1fr);
-        grid-template-rows: repeat(2, minmax(330px, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
         gap: clamp(1.35rem, 3vw, 3.2rem);
-        min-height: 820px;
+        height: 100%;
+        min-height: 0;
         padding: clamp(1.5rem, 3vw, 3.1rem);
     }
     .process-card {
@@ -326,6 +268,7 @@
         min-width: 0;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         border: 0;
         border-radius: 32px;
         padding: clamp(1.4rem, 2.1vw, 2rem);
@@ -378,9 +321,7 @@
             0 20px 58px rgba(0, 0, 0, .2);
     }
     .process-card-4,
-    .process-card-6 {
-        margin-top: .8rem;
-    }
+    .process-card-6 { margin-top: 0; }
     .process-card > * {
         position: relative;
         z-index: 1;
@@ -425,6 +366,7 @@
         box-shadow: 0 0 22px rgba(47, 107, 255, .25);
     }
     .process-card h3 {
+        width: 100%;
         max-width: 430px;
         margin: 0 0 .65rem;
         color: #f8fbff;
@@ -443,28 +385,37 @@
         font-size: .92rem;
     }
     .process-card .process-card-tag {
-        width: max-content;
+        width: fit-content;
         max-width: 100%;
+        box-sizing: border-box;
         display: inline-flex;
         align-items: center;
         gap: .5rem;
         margin: .15rem 0 1rem;
-        border: 1px solid rgba(40, 244, 255, .36);
-        border-radius: 8px;
+        border: 0;
+        border-radius: 14px;
         padding: .48rem .72rem;
-        background: rgba(7, 28, 54, .92);
-        color: #bffbff;
+        background: linear-gradient(135deg, #2f6bff, #1f4fd1);
+        color: #fff;
         font-family: 'IBM Plex Mono', monospace;
         font-size: .75rem;
         font-weight: 700;
         letter-spacing: .025em;
         line-height: 1.25;
-        box-shadow: inset 3px 0 0 #28f4ff, 0 0 20px rgba(40, 244, 255, .08);
-        overflow-wrap: anywhere;
+        box-shadow: 0 0 28px rgba(47, 107, 255, .38);
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: normal;
     }
     .process-card-tag i {
         flex: 0 0 auto;
-        color: #28f4ff;
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border-radius: 9px;
+        background: rgba(5, 20, 52, .48);
+        color: #fff;
     }
     .process-mini {
         position: relative;
@@ -687,9 +638,9 @@
         position: absolute;
         z-index: 7;
         left: 50%;
-        top: 46%;
-        width: clamp(180px, 15vw, 250px);
-        height: clamp(180px, 15vw, 250px);
+        top: 50%;
+        width: clamp(140px, 12vw, 200px);
+        height: clamp(140px, 12vw, 200px);
         transform: translate(-50%, -50%);
         display: grid;
         place-items: center;
@@ -712,45 +663,49 @@
     }
     .process-core-orbit {
         inset: -24px;
-        border: 1px solid rgba(109, 156, 255, .34);
-        border-left-color: var(--warm-soft);
-        border-bottom-color: var(--red-soft);
-        animation: coreOrbit 8s linear infinite;
+        border: 1px solid rgba(109, 156, 255, .16);
+        border-left-color: rgba(255, 191, 27, .18);
+        border-bottom-color: rgba(228, 31, 61, .16);
+        opacity: .34;
+        animation: coreOrbit 18s linear infinite;
     }
     .orbit-b {
         inset: -54px;
         border-style: dashed;
-        border-color: rgba(109, 156, 255, .18);
-        animation: coreOrbitReverse 14s linear infinite;
+        border-color: rgba(109, 156, 255, .1);
+        opacity: .22;
+        animation: coreOrbitReverse 28s linear infinite;
     }
     .process-core-sweep {
         inset: -18px;
-        background: conic-gradient(from 0deg, rgba(109, 156, 255, .44), transparent 18%, transparent 100%);
+        background: conic-gradient(from 0deg, rgba(109, 156, 255, .16), transparent 18%, transparent 100%);
         mask-image: radial-gradient(circle, transparent 0 44%, #000 46% 74%, transparent 76%);
-        animation: coreSweep 4.2s linear infinite;
+        opacity: .24;
+        animation: coreSweep 12s linear infinite;
     }
     .process-core-pulse {
         inset: 20px;
-        border: 1px solid rgba(109, 156, 255, .4);
-        animation: corePulse 3.2s ease-in-out infinite;
+        border: 1px solid rgba(109, 156, 255, .16);
+        opacity: .28;
+        animation: corePulse 6s ease-in-out infinite;
     }
     .process-core-mark {
         position: relative;
         z-index: 2;
-        width: 82px;
-        height: 82px;
+        width: clamp(58px, 5vw, 74px);
+        height: clamp(58px, 5vw, 74px);
         display: grid;
         place-items: center;
         border-radius: 50%;
         background: radial-gradient(circle at 48% 42%, #28f4ff, #2f6bff 55%, #07152e 78%);
         color: #fff;
-        font-size: 1.75rem;
+        font-size: clamp(1.1rem, 1.5vw, 1.55rem);
         box-shadow: 0 0 44px rgba(47, 107, 255, .76);
         animation: markPulse 2.8s ease-in-out infinite;
     }
     .process-core-copy {
         position: absolute;
-        bottom: 28px;
+        bottom: clamp(14px, 1.5vw, 22px);
         left: 50%;
         transform: translateX(-50%);
         display: grid;
@@ -890,13 +845,15 @@
         .process-diagram-wrap {
             width: min(980px, 96vw) !important;
             max-width: min(980px, 96vw) !important;
-            min-height: clamp(570px, 78vw, 760px);
+            height: min(760px, calc(100svh - 190px));
+            min-height: 430px;
         }
         .process-stage-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
             grid-template-rows: repeat(2, minmax(0, 1fr));
             gap: clamp(.8rem, 2vw, 1.5rem);
-            min-height: clamp(570px, 78vw, 760px);
+            height: 100%;
+            min-height: 0;
             padding: clamp(1rem, 2.2vw, 1.8rem);
         }
         .process-card {
@@ -927,19 +884,35 @@
     }
     @media (max-width: 767.98px) {
         .process-section {
-            padding: 3.5rem 0 3rem;
+            padding: clamp(1rem, 2.5vh, 1.75rem) 0;
+        }
+        .process-label {
+            margin-bottom: .35rem;
+            font-size: .68rem;
+        }
+        .process-title {
+            margin-bottom: .4rem;
+            font-size: clamp(1.1rem, 6.7vw, 2.3rem);
+            white-space: nowrap;
+        }
+        .process-subtitle {
+            margin-bottom: clamp(.65rem, 1.8vh, 1rem);
+            font-size: clamp(.72rem, 2.8vw, .9rem);
+            line-height: 1.45;
         }
         .process-diagram-wrap {
             width: 100% !important;
             max-width: 100% !important;
-            min-height: clamp(390px, 118vw, 560px);
-            border-radius: 18px;
+            height: min(560px, calc(100svh - 155px));
+            min-height: 360px;
+            border-radius: 0;
         }
         .process-stage-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
             grid-template-rows: repeat(2, minmax(0, 1fr));
             gap: clamp(.35rem, 1.6vw, .7rem);
-            min-height: clamp(390px, 118vw, 560px);
+            height: 100%;
+            min-height: 0;
             padding: clamp(.45rem, 1.8vw, .75rem);
         }
         .process-card {
@@ -974,13 +947,17 @@
         .process-card .process-card-tag {
             gap: .25rem;
             margin: 0 0 .4rem;
-            border-radius: 5px;
+            border-radius: 8px;
             padding: .2rem .32rem;
             font-size: clamp(.39rem, 1.45vw, .54rem);
-            box-shadow: inset 2px 0 0 #28f4ff;
+            box-shadow: 0 0 16px rgba(47, 107, 255, .3);
         }
         .process-card-tag i {
-            display: none;
+            width: 17px;
+            height: 17px;
+            display: grid;
+            border-radius: 5px;
+            font-size: .5rem;
         }
         .process-core {
             width: clamp(72px, 22vw, 112px);
@@ -1063,7 +1040,6 @@
             padding-right: .55rem !important;
             padding-left: .55rem !important;
         }
-        .process-diagram-wrap,
         .process-card {
             border-radius: 16px;
         }
@@ -1080,6 +1056,93 @@
         }
         .process-mini {
             min-height: 58px;
+        }
+    }
+    @media (max-height: 849.98px) {
+        .process-card {
+            padding: clamp(.7rem, 1.4vw, 1rem);
+        }
+        .process-step-meta {
+            margin-bottom: .45rem;
+        }
+        .process-card h3 {
+            margin-bottom: .35rem;
+            font-size: clamp(.85rem, 1.55vw, 1.3rem);
+        }
+        .process-card .process-card-tag {
+            margin-bottom: .45rem;
+        }
+        .process-mini {
+            min-height: clamp(64px, 10vh, 90px);
+        }
+    }
+    @media (max-height: 699.98px) {
+        .process-section {
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+        }
+        .process-label {
+            margin-bottom: .2rem;
+        }
+        .process-title {
+            margin-bottom: .25rem;
+        }
+        .process-subtitle {
+            margin-bottom: .55rem;
+            line-height: 1.35;
+        }
+        .process-stage-grid {
+            gap: .45rem;
+            padding: .55rem;
+        }
+        .process-card {
+            padding: .55rem;
+        }
+        .process-step-meta {
+            margin-bottom: .35rem;
+        }
+        .process-card .process-card-tag {
+            margin-bottom: .35rem;
+        }
+        .process-mini {
+            min-height: 64px;
+        }
+    }
+    @media (max-width: 767.98px) and (max-height: 599.98px) {
+        .process-diagram-wrap {
+            height: calc(100svh - 135px);
+            min-height: 300px;
+        }
+        .process-subtitle {
+            font-size: .68rem;
+        }
+        .process-mini {
+            min-height: 48px;
+        }
+    }
+    @media (max-width: 767.98px) {
+        .process-card {
+            padding: clamp(.38rem, 1.7vw, .68rem);
+        }
+        .process-card h3 {
+            margin-bottom: clamp(.22rem, .8vh, .38rem);
+            font-size: clamp(.5rem, 2.15vw, .82rem);
+            line-height: 1.12;
+        }
+        .process-step-meta {
+            margin-bottom: clamp(.22rem, .8vh, .4rem);
+            padding: .18rem .36rem;
+            font-size: clamp(.4rem, 1.45vw, .55rem);
+            line-height: 1.15;
+        }
+        .process-card .process-card-tag {
+            max-width: 100%;
+            gap: .2rem;
+            margin: 0;
+            border-radius: 7px;
+            padding: clamp(.18rem, .8vw, .3rem) clamp(.26rem, 1vw, .42rem);
+            font-size: clamp(.36rem, 1.38vw, .52rem);
+            line-height: 1.18;
         }
     }
     @media (prefers-reduced-motion: reduce) {
