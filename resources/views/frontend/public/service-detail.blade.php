@@ -1,6 +1,6 @@
 @php
-    $slug = request()->route('service');
-    // 9-service catalogue detail pages (config/cyberlog_services.php).
+    $slug = $slug ?? request()->route('service');
+    // Standalone catalogue detail pages (config/cyberlog_services.php).
     $cfg = collect(config('cyberlog_services', []))->firstWhere('route', $slug);
     if ($cfg && ! empty($cfg['detail'])) {
         $service = [

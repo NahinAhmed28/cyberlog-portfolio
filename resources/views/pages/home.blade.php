@@ -136,7 +136,7 @@
                         <div class="cl-solution-icon"><i class="fas {{ $sol['icon'] }}"></i></div>
                         <h4 class="h5">{!! $sol['title'] !!}</h4>
                         <p class="text-muted mb-3">{{ $sol['desc'] }}</p>
-                        <span class="text-teal fw-semibold">Learn more <i class="fas fa-arrow-right ms-1"></i></span>
+                        <span class="text-teal fw-semibold">Learn More <i class="fas fa-arrow-right ms-1"></i></span>
                     </a>
                 </div>
             @endforeach

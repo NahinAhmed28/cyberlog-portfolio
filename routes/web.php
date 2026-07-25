@@ -33,9 +33,12 @@ Route::view('/services/soc', 'frontend.public.soc')->name('soc');
 Route::view('/services/vapt', 'frontend.public.vapt')->name('vapt');
 Route::view('/services/it-audit', 'pages.it-audit')->name('it-audit');
 Route::view('/services/capacity-building', 'pages.capacity-building')->name('capacity-building');
+Route::view('/services/secure-code-review', 'frontend.public.service-detail', [
+    'slug' => 'secure-code-review',
+])->name('secure-code-review');
 Route::view('/services/offensive-security-services', 'pages.offensive-security-services')->name('offensive-security-services');
 Route::view('/services/defensive-security-services', 'pages.defensive-security-services')->name('defensive-security-services');
-Route::redirect('/services/defense-services', '/services/offensive-security-services')->name('defense-services');
+Route::redirect('/services/defense-services', '/services/defensive-security-services')->name('defense-services');
 
 // Solutions
 Route::view('/vciso', 'frontend.public.vciso')->name('vciso');
