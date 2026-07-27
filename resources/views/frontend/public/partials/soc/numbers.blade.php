@@ -2,7 +2,7 @@
 <section class="page-section cl-soc-proof cl-soc-numbers">
     <div class="container">
         <div class="cl-soc-proof-heading text-center" data-reveal>
-            <p class="cl-soc-kicker mb-2"><span></span>Operational Impact<span></span></p>
+            <p class="section-eyebrow text-center mb-2"><span></span>Operational Impact<span></span></p>
             <h2 class="page-section-heading text-white mb-2">Cyberlog SOC</h2>
             <p class="cl-soc-numbers-subtitle mb-0">Managed Services by the Numbers</p>
         </div>

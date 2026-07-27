@@ -24,7 +24,7 @@
 <section class="page-section cl-vapt-box-section" id="box-types">
     <div class="container">
         <div class="text-center mb-5">
-            <p class="section-eyebrow mb-2" data-reveal>Testing Approaches</p>
+            <p class="section-eyebrow text-center mb-2" data-reveal>Testing Approaches</p>
             <h2 class="page-section-heading text-secondary mb-3" data-reveal>Black Box, Grey Box &amp; White Box Testing</h2>
             <p class="text-muted lead-narrow mb-0" data-reveal>
                 Choose the testing approach based on available access, project goal, and required assessment depth.

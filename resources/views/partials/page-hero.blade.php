@@ -16,7 +16,7 @@
         <div class="row align-items-center g-5 {{ $isCentered ? 'justify-content-center text-center' : '' }}">
             <div class="{{ $isCentered ? 'col-lg-9' : 'col-lg-7' }}">
                 @isset($eyebrow)
-                    <p class="section-eyebrow mb-3">{{ $eyebrow }}</p>
+                    <p class="section-eyebrow mb-3 {{ $isCentered ? 'text-center' : '' }}">{{ $eyebrow }}</p>
                 @endisset
                 <h1 class="cl-hero-heading {{$noCenteredHeading ? 'text-start' : ''}} mb-3">{!! $heading !!}</h1>
                 <p class="lead text-white-50 mb-4">{{ $subheading }}</p>

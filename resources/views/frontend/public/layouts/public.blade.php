@@ -18,6 +18,36 @@
     <link href="{{ asset('css/cyberlog.css') }}" rel="stylesheet">
 
     @stack('styles')
+    
+    <style>
+        @media (max-width: 991.98px) {
+    #mainNav {
+        position: relative;
+        z-index: 2;
+        overflow: visible !important;
+    }
+
+    #mainNav .navbar-collapse {
+        overflow: visible !important;
+    }
+
+    #mainNav .navbar-nav .dropdown-menu.show {
+        display: block !important;
+        position: static !important;
+        z-index: 9999 !important;
+        float: none !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+        padding-left: 1rem;
+        box-shadow: none;
+        border: none;
+    }
+    #mainNav .dropdown-item {
+        font-size: 10px;
+        padding: 6px;
+    }
+}
+    </style>
 </head>
 
 <body id="page-top">
@@ -33,6 +63,77 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/cyberlog.js') }}"></script>
+    <script>
+window.addEventListener('load', function () {
+    setTimeout(function () {
+
+        // ── Patch Bootstrap Dropdown prototype to disable hide on mobile ──
+        const DropdownProto = bootstrap.Dropdown.prototype;
+        const originalHide = DropdownProto.hide;
+        const originalToggle = DropdownProto.toggle;
+
+        DropdownProto.hide = function () {
+            if (window.innerWidth < 992) return; // block on mobile
+            return originalHide.apply(this, arguments);
+        };
+
+        DropdownProto.toggle = function () {
+            if (window.innerWidth < 992) return; // block on mobile
+            return originalToggle.apply(this, arguments);
+        };
+
+        // ── Now attach your own fresh listeners ──
+        document.querySelectorAll('.navbar-nav .dropdown-toggle').forEach(function (toggle) {
+            toggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                const parent = this.closest('.dropdown');
+                const menu   = parent.querySelector('.dropdown-menu');
+                const isOpen = menu.classList.contains('show');
+
+                document.querySelectorAll('.navbar-nav .dropdown-menu.show').forEach(function (m) {
+                    if (m !== menu) {
+                        m.classList.remove('show');
+                        m.closest('.dropdown').querySelector('.dropdown-toggle')
+                         .setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                menu.classList.toggle('show', !isOpen);
+                this.setAttribute('aria-expanded', String(!isOpen));
+            });
+        });
+
+        // Let menu item links fire normally
+        document.querySelectorAll('.navbar-nav .dropdown-menu a').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.stopImmediatePropagation();
+            });
+        });
+
+        // Outside click closes dropdowns
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.navbar-nav')) {
+                document.querySelectorAll('.navbar-nav .dropdown-menu.show').forEach(function (m) {
+                    m.classList.remove('show');
+                    m.closest('.dropdown').querySelector('.dropdown-toggle')
+                     .setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+
+    }, 300);
+});
+// Block only synthetic (non-trusted) clicks on the toggler
+document.querySelector('.navbar-toggler').addEventListener('click', function (e) {
+    if (!e.isTrusted) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        console.log('Blocked synthetic toggler click');
+    }
+}, true);
+    </script>
 
     @stack('scripts')
 </body>

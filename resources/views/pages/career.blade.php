@@ -11,6 +11,7 @@
     'primaryCta' => ['label' => 'View Open Roles', 'url' => '#openings'],
     'heroIcon' => 'fas fa-briefcase',
     'heroCaption' => 'Grow with us',
+    'noCenteredHeading' => true
 ])
 
 {{-- Why join us --}}

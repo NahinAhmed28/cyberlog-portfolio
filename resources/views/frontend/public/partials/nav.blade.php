@@ -56,7 +56,7 @@
 
                 <li class="nav-item dropdown mx-0 mx-lg-1">
                     <a class="nav-link dropdown-toggle py-2 px-0 px-lg-3 rounded {{ request()->routeIs(...$serviceRouteNames) ? 'active' : '' }}"
-                       href="#"
+                       href="javascript:void(0)"
                        id="servicesDropdown"
                        role="button"
                        data-bs-toggle="dropdown"
@@ -103,7 +103,7 @@
 
                 <li class="nav-item dropdown mx-0 mx-lg-1">
                     <a class="nav-link dropdown-toggle py-2 px-0 px-lg-3 rounded {{ $is('public.about','about','public.our-team','our-team','public.career','career','public.contact','contact') }}"
-                       href="#" id="companyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                       href="javascript:void(0)" id="companyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Company
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="companyDropdown">

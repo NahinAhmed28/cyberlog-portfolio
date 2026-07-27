@@ -221,7 +221,7 @@
         max-height: clamp(220px, 32vh, 245px);
         position: relative;
         overflow: hidden;
-        background: #f8fbff;
+        background: #f8fbff;width:100%;
     }
     .cl-browser-body img {
         width: 100%; height: 100%;

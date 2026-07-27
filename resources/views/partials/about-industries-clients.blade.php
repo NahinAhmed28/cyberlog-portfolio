@@ -35,10 +35,12 @@
         <div class="row g-3">
             @foreach ($aboutIndustries as $industry)
                 <div class="col-md-6 col-lg-4">
-                    <article class="cl-industry-tile h-100" data-reveal>
+                    <article class="cl-industry-tile h-100" style="align-items: flex-start;gap: 18px;" data-reveal>
                         <i class="fas {{ $industry[0] }}"></i>
+                        <div class="d-flex flex-column">
                         <strong>{{ $industry[1] }}</strong>
                         <span>{{ $industry[2] }}</span>
+                        <div>
                     </article>
                 </div>
             @endforeach

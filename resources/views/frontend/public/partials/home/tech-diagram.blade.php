@@ -1,7 +1,7 @@
 <section class="process-section" id="how-we-work">
     <div class="container-fluid px-3 px-lg-4">
 
-        <p class="process-label">// HOW WE WORK</p>
+        <p class="section-eyebrow text-center mb-2">HOW WE WORK</p>
 
         <h2 class="process-title">
             <span class="process-title-light">OUR ENGAGEMENT</span> <span class="process-title-accent">PROCESS</span>
@@ -884,7 +884,7 @@
     }
     @media (max-width: 767.98px) {
         .process-section {
-            padding: clamp(1rem, 2.5vh, 1.75rem) 0;
+            padding: clamp(1rem, 2.5vh, 1.75rem) 0;min-height:unset;
         }
         .process-label {
             margin-bottom: .35rem;
@@ -903,9 +903,10 @@
         .process-diagram-wrap {
             width: 100% !important;
             max-width: 100% !important;
-            height: min(560px, calc(100svh - 155px));
+            /*height: min(560px, calc(100svh - 155px));*/
             min-height: 360px;
             border-radius: 0;
+            height:max-content;
         }
         .process-stage-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -916,9 +917,10 @@
             padding: clamp(.45rem, 1.8vw, .75rem);
         }
         .process-card {
-            min-height: 0;
+            min-height: 140px;
             border-radius: 12px;
             padding: clamp(.48rem, 1.8vw, .75rem);
+            height: fit-content;
         }
         .process-card h3 {
             max-width: calc(100% - .3rem);
@@ -960,8 +962,8 @@
             font-size: .5rem;
         }
         .process-core {
-            width: clamp(72px, 22vw, 112px);
-            height: clamp(72px, 22vw, 112px);
+            width: 60px;top: 50%;
+            height: 60px;transform: translate(-50%, -100%);
             box-shadow:
                 0 0 0 10px rgba(47, 107, 255, .08),
                 0 0 30px rgba(47, 107, 255, .32);
@@ -973,13 +975,13 @@
         }
         .process-core-copy {
             bottom: 8px;
-            min-width: 70px;
+            min-width: 70px;z-index:2;
         }
         .process-core-copy span {
             display: none;
         }
         .process-core-copy strong {
-            font-size: clamp(.36rem, 1.25vw, .5rem);
+            font-size: 5px;
         }
         .process-core-orbit {
             inset: -10px;

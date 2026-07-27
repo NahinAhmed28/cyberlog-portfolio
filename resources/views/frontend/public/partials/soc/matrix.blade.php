@@ -16,7 +16,7 @@
 <section class="page-section cl-soc-proof cl-soc-matrix-section" id="matrix">
     <div class="container">
         <div class="cl-soc-proof-heading text-center" data-reveal>
-            <p class="cl-soc-kicker mb-2"><span></span>Managed SOC Coverage<span></span></p>
+            <p class="section-eyebrow text-center mb-2"><span></span>Managed SOC Coverage<span></span></p>
             <h2 class="page-section-heading text-white mb-2">What's Included in Each Tier</h2>
             <p class="cl-soc-proof-copy mb-0">Choose the level of monitoring, response, and analyst support your environment requires.</p>
         </div>
