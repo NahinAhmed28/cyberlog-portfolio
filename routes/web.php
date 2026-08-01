@@ -36,6 +36,7 @@ Route::view('/services/capacity-building', 'pages.capacity-building')->name('cap
 Route::view('/services/secure-code-review', 'frontend.public.service-detail', [
     'slug' => 'secure-code-review',
 ])->name('secure-code-review');
+Route::view('/services/ai-and-automation', 'frontend.public.ai-automation')->name('ai-automation');
 Route::view('/services/offensive-security-services', 'pages.offensive-security-services')->name('offensive-security-services');
 Route::view('/services/defensive-security-services', 'pages.defensive-security-services')->name('defensive-security-services');
 Route::redirect('/services/defense-services', '/services/defensive-security-services')->name('defense-services');

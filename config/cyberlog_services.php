@@ -50,6 +50,16 @@ return [
         'detail' => null,
     ],
     [
+        'title' => 'AI & Automation',
+        'icon' => 'fa-solid fa-robot',
+        'route' => 'ai-automation',
+        'group' => 'primary',
+        'kicker' => 'Artificial Intelligence & Automation',
+        'desc' => 'Practical AI and automation programs that transform your workforce into confident adopters of intelligent technologies.',
+        'tags' => ['AI Fundamentals', 'Workflow Automation', 'Productivity Boost'],
+        'detail' => null,
+    ],
+    [
         'title' => 'Red Team Assessment',
         'icon' => 'fa-user-secret',
         'route' => 'red-team',

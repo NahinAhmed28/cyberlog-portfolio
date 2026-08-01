@@ -9,10 +9,33 @@
     'heading' => 'Build a Career in <span class="text-teal">Cyber Defense</span>',
     'subheading' => 'Join a team that defends the organizations that matter most. We are always looking for talented people who want to make a real impact in cybersecurity.',
     'primaryCta' => ['label' => 'View Open Roles', 'url' => '#openings'],
-    'heroIcon' => 'fas fa-briefcase',
-    'heroCaption' => 'Grow with us',
+    'heroIcon' => 'fa-solid fa-circle-play',
+    'heroCaption' => 'Play Video',
     'noCenteredHeading' => true
 ])
+
+{{-- Why join us --}}
+<section class="page-section" id="why-join">
+    <div class="container">
+        <p class="section-eyebrow text-center mb-2">Our Values</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Our Values</h2>
+        <div class="row g-4">
+            @foreach ([
+                ['fa-solid fa-magnifying-glass', 'Transparency', ''],
+                ['fa-solid fa-bullseye', 'Precision', ''],
+                ['fa-solid fa-ribbon', 'Excellence', ''],
+            ] as $w)
+                <div class="col-md-4">
+                    <div class="cl-benefit h-100 text-center">
+                        <i class="fas {{ $w[0] }} mb-3" style="font-size:2rem;"></i>
+                        <h5 class="fw-bold">{!! $w[1] !!}</h5>
+                        <p class="text-muted small mb-0">{{ $w[2] }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
 
 {{-- Why join us --}}
 <section class="page-section" id="why-join">

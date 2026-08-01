@@ -4,12 +4,12 @@
 
 @section('content')
 
-@include('partials.page-hero', [
+{{--@include('partials.page-hero', [
     'eyebrow' => 'About Us',
     'heading' => 'Defending What <span class="text-teal">Matters Most</span>',
     'subheading' => 'Cyberlog is a cyber defense partner for enterprises, government, and financial institutions — combining offensive security, managed operations, and compliance expertise.',
     'centered' => true,
-])
+])--}}
 
 {{-- Who We Are + Statistics --}}
 <section class="page-section" id="story">

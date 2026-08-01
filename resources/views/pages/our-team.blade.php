@@ -69,6 +69,230 @@
     </div>
 </section>
 
+
+
+{{-- ======================================================
+    OUR TEAMS
+====================================================== --}}
+
+
+<section class="page-section bg-navy-soft" id="teams">
+
+<div class="container">
+
+
+<p class="section-eyebrow text-center mb-2">
+Our Teams
+</p>
+
+
+<h2 class="page-section-heading text-center text-uppercase text-white mb-3">
+
+Built to 
+<span class="cl-title-accent">
+Attack, Defend & Innovate
+</span>
+
+</h2>
+
+
+
+<p class="text-center text-muted mx-auto mb-5"
+style="max-width:760px">
+
+Our specialists work across offensive security,
+defensive operations, data intelligence, and AI automation
+to deliver complete cybersecurity solutions.
+
+</p>
+
+
+
+<div class="row g-4">
+
+
+{{-- Offensive --}}
+
+<div class="col-md-6 col-lg-3">
+
+<div class="cl-solution-card h-100">
+
+
+<div class="cl-solution-icon">
+
+<i class="fas fa-crosshairs"></i>
+
+</div>
+
+
+<h5 class="fw-bold">
+Offensive Team
+</h5>
+
+
+<div class="small text-danger text-uppercase mb-3">
+Red Team
+</div>
+
+
+
+<ul class="small text-muted ps-3 mb-0">
+
+<li>Penetration Testing</li>
+<li>White & Gray Box Testing</li>
+<li>API & Mobile Testing</li>
+<li>Social Engineering</li>
+<li>Ethical Hacking</li>
+<li>Vulnerability Exploitation</li>
+
+</ul>
+
+
+</div>
+
+</div>
+
+
+
+
+
+{{-- Data --}}
+
+<div class="col-md-6 col-lg-3">
+
+<div class="cl-solution-card h-100">
+
+
+<div class="cl-solution-icon">
+
+<i class="fas fa-database"></i>
+
+</div>
+
+
+<h5 class="fw-bold">
+Data Management Team
+</h5>
+
+
+<div class="small text-primary text-uppercase mb-3">
+Purple Team
+</div>
+
+
+<ul class="small text-muted ps-3 mb-0">
+
+<li>Data Analysis</li>
+<li>Gap Analysis</li>
+<li>Security Assessment</li>
+<li>Managed Security</li>
+<li>System Improvement</li>
+
+</ul>
+
+
+</div>
+
+</div>
+
+
+
+
+
+{{-- Defensive --}}
+
+<div class="col-md-6 col-lg-3">
+
+<div class="cl-solution-card h-100">
+
+
+<div class="cl-solution-icon">
+
+<i class="fas fa-shield-halved"></i>
+
+</div>
+
+
+<h5 class="fw-bold">
+Defensive Team
+</h5>
+
+
+<div class="small text-info text-uppercase mb-3">
+Blue Team
+</div>
+
+
+<ul class="small text-muted ps-3 mb-0">
+
+<li>SOC Support</li>
+<li>Incident Response</li>
+<li>Threat Hunting</li>
+<li>Digital Forensics</li>
+<li>Firewall Protection</li>
+<li>SIEM Solutions</li>
+
+</ul>
+
+
+</div>
+
+</div>
+
+
+
+
+
+{{-- AI --}}
+
+<div class="col-md-6 col-lg-3">
+
+<div class="cl-solution-card h-100">
+
+
+<div class="cl-solution-icon">
+
+<i class="fas fa-robot"></i>
+
+</div>
+
+
+<h5 class="fw-bold">
+AI & Automation Team
+</h5>
+
+
+<div class="small text-warning text-uppercase mb-3">
+Innovation Unit
+</div>
+
+
+<ul class="small text-muted ps-3 mb-0">
+
+<li>AI Threat Detection</li>
+<li>Automated Scanning</li>
+<li>Security Orchestration</li>
+<li>Alert Intelligence</li>
+<li>Predictive Risk Analysis</li>
+<li>Custom Security Tools</li>
+
+</ul>
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
 @include('partials.talk-to-expert', [
     'title' => 'Want to work with our team?',
     'text' => 'Talk to a Cyberlog security specialist about your environment and goals.',

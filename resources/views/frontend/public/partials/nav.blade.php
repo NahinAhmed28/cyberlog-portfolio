@@ -9,7 +9,7 @@
     $svcUrl = fn ($r) => Route::has($r) ? route($r) : '#';
     $byRoute = collect($services)->keyBy('route');
 
-    $primaryRoutes = ['soc', 'vapt', 'it-audit', 'capacity-building'];
+    $primaryRoutes = ['soc', 'vapt', 'it-audit', 'capacity-building','ai-automation'];
     $primaryServices = collect($primaryRoutes)
         ->map(fn ($route) => $byRoute->get($route))
         ->filter()

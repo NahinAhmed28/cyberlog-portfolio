@@ -21,7 +21,7 @@
                 <p class="text-muted mb-4">Tell us a little about your environment and goals — we'll get back to you with the right team.</p>
                 <ul class="list-unstyled">
                     <li class="mb-3"><i class="fas fa-location-dot text-teal me-2"></i>374 Tejgaon Industrial Area, 3rd Floor, Dhaka 1208, Bangladesh</li>
-                    <li class="mb-3"><i class="fas fa-envelope text-teal me-2"></i><a class="link-secondary text-decoration-none" href="mailto:info@cyberlog.bd">info@cyberlog.bd</a></li>
+                    <li class="mb-3"><i class="fas fa-envelope text-teal me-2"></i><a class="text-decoration-none" href="mailto:info@cyberlog.bd">info@cyberlog.bd</a></li>
                     <li class="mb-3"><i class="fas fa-phone text-teal me-2"></i>+880 1357-699084</li>
                 </ul>
                 <div class="d-flex gap-2">
@@ -64,10 +64,10 @@
         <p class="section-eyebrow text-center mb-2">Find Us</p>
         <h2 class="page-section-heading text-center text-secondary mb-4">Our <span class="cl-title-accent">Location</span></h2>
         <div class="cl-map">
-            <iframe
-                src="https://www.google.com/maps?q={{ urlencode('374 Tejgaon Industrial Area, 3rd Floor, Dhaka 1208, Bangladesh') }}&output=embed"
-                title="Cyberlog office location — Tejgaon, Dhaka"
-                loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3651.633442625472!2d90.3945519!3d23.7604475!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c1005d49b57d%3A0x5f3649e21b45c227!2sCyberlog%20Limited!5e0!3m2!1sen!2sin!4v1785575021075!5m2!1sen!2sin"
+            allowfullscreen="" 
+            loading="lazy" 
+            ></iframe>
         </div>
     </div>
 </section>
