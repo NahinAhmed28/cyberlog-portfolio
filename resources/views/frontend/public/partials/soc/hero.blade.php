@@ -36,16 +36,16 @@
                         <strong>SOC // Live Operations</strong>
                     </div>
                     <div class="cl-soc-live-stats">
-                        <div><strong>1204</strong><span>Alerts Triaged</span></div>
-                        <div><strong>0.5h</strong><span>Mean MTTR</span></div>
-                        <div><strong>38</strong><span>Threats Blocked</span></div>
+                        <div><strong data-soc-stat="alerts">1204</strong><span>Alerts Triaged</span></div>
+                        <div><strong data-soc-stat="mttr">0.5h</strong><span>Mean MTTR</span></div>
+                        <div><strong data-soc-stat="blocked">38</strong><span>Threats Blocked</span></div>
                     </div>
                     <div class="cl-soc-bars" aria-hidden="true">
                         @foreach ([24, 46, 34, 22, 38, 44, 31, 58, 36, 52, 61, 68, 35, 28, 42] as $height)
                             <span style="--h: {{ $height }}%;"></span>
                         @endforeach
                     </div>
-                    <div class="cl-soc-log">
+                    <div class="cl-soc-log" data-soc-live-log aria-live="polite" aria-label="Live security event log">
                         <p>13:15:50 <span>[VERIFIED]</span> MFA challenge - success</p>
                         <p>13:15:48 <span>[WATCHED]</span> CVE-2026-1100 - 36 hosts</p>
                         <p>13:15:46 <span>[QUARANTINE]</span> malware sample - sandbox-07</p>
@@ -137,6 +137,7 @@
         border-radius: 3px 3px 0 0;
         background: linear-gradient(180deg, #6d9cff, rgba(47, 107, 255, .34));
         box-shadow: 0 0 12px rgba(109, 156, 255, .28);
+        transition: height .65s var(--ease), background .35s ease, box-shadow .35s ease;
     }
     .cl-soc-log {
         padding: .75rem 1rem 1rem;
@@ -146,10 +147,23 @@
     }
     .cl-soc-log p { margin: .14rem 0; color: var(--muted); }
     .cl-soc-log span { color: var(--red-soft); }
+    .cl-soc-log p.is-new { animation: cl-soc-log-in .38s var(--ease) both; }
+    .cl-soc-live-top span { animation: cl-soc-live-pulse 1.6s ease-in-out infinite; }
+    @keyframes cl-soc-log-in {
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes cl-soc-live-pulse {
+        50% { opacity: .45; box-shadow: 0 0 5px rgba(109, 156, 255, .35); }
+    }
     @media (max-width: 767.98px) {
         .cl-soc-live-stats { grid-template-columns: 1fr; }
         .cl-soc-live-stats div { border-right: 0; border-bottom: 1px solid var(--line); }
         .cl-soc-live-stats div:last-child { border-bottom: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .cl-soc-log p.is-new, .cl-soc-live-top span { animation: none; }
+        .cl-soc-bars span { transition: none; }
     }
 </style>
 @endpush

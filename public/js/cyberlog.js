@@ -115,6 +115,52 @@
             setInterval(push, 1900);
         }
 
+        /* ---------- SOC live operations console ---------- */
+        var socLog = document.querySelector('[data-soc-live-log]');
+        if (socLog && !reduce) {
+            var socEvents = [
+                ['VERIFIED', 'MFA challenge - success'],
+                ['WATCHED', 'unusual egress - finance-vlan'],
+                ['QUARANTINE', 'malware sample - sandbox-07'],
+                ['BLOCKED', 'brute-force - 203.0.113.*'],
+                ['DENIED', 'lateral move - host-1142'],
+                ['TRIAGED', 'identity alert - account-207'],
+                ['CONTAINED', 'phishing URL - mail-gateway'],
+                ['PATCHED', 'critical CVE - 18 hosts']
+            ];
+            var alertStat = document.querySelector('[data-soc-stat="alerts"]');
+            var blockedStat = document.querySelector('[data-soc-stat="blocked"]');
+            var mttrStat = document.querySelector('[data-soc-stat="mttr"]');
+            var socBars = document.querySelectorAll('.cl-soc-bars span');
+            var alerts = parseInt(alertStat.textContent, 10) || 1204;
+            var blocked = parseInt(blockedStat.textContent, 10) || 38;
+
+            function socTime() { return new Date().toTimeString().slice(0, 8); }
+            function updateSocConsole() {
+                var event = socEvents[Math.floor(Math.random() * socEvents.length)];
+                var row = document.createElement('p');
+                row.className = 'is-new';
+                row.innerHTML = socTime() + ' <span>[' + event[0] + ']</span> ' + event[1];
+                socLog.insertBefore(row, socLog.firstChild);
+                while (socLog.children.length > 5) socLog.removeChild(socLog.lastChild);
+
+                alerts += Math.floor(Math.random() * 4) + 1;
+                if (event[0] === 'BLOCKED' || event[0] === 'CONTAINED' || event[0] === 'DENIED') blocked += 1;
+                alertStat.textContent = alerts;
+                blockedStat.textContent = blocked;
+                mttrStat.textContent = (0.4 + Math.random() * 0.2).toFixed(1) + 'h';
+
+                socBars.forEach(function (bar) {
+                    var height = Math.floor(22 + Math.random() * 52);
+                    bar.style.height = height + '%';
+                    bar.style.background = height > 62
+                        ? 'linear-gradient(180deg, #bd7bff, rgba(109, 156, 255, .38))'
+                        : 'linear-gradient(180deg, #6d9cff, rgba(47, 107, 255, .34))';
+                });
+            }
+            setInterval(updateSocConsole, 1700);
+        }
+
         /* ---------- Reusable particle network (any <canvas data-net>) ---------- */
         document.querySelectorAll('canvas[data-net]').forEach(function (cv) {
             var nctx = cv.getContext && cv.getContext('2d');

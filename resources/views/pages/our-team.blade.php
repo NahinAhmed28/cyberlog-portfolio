@@ -19,25 +19,18 @@
         @php
             $team = [
                 [
+                    'name'  => 'Nazim Farhan Choudhury',
+                    'role'  => 'Chairman',
+                    'photo' => 'https://iid.dev/wp-content/uploads/2016/11/Nazim-Farhan-Choudhury-photo.jpg',
+                    'bio'   => 'Guides Cyberlog leadership vision, governance, and long-term organizational growth.',
+                    'social'=> ['linkedin' => 'https://www.linkedin.com/in/nazim-farhan-choudhury-661786'],
+                ],
+                [
                     'name'  => 'Hridoy Mustofa',
-                    'role'  => 'CTO / CEO',
+                    'role'  => 'Managing Director',
                     'photo' => 'assets/img/team/hridoy-mustofa.png',
                     'bio'   => 'Leads Cyberlog technology direction, cyber defense delivery, and security innovation.',
-                    'social'=> ['facebook' => 'https://www.facebook.com/cyberlogbd/', 'linkedin' => 'https://www.linkedin.com/company/cyberlogbd/'],
-                ],
-                [
-                    'name'  => 'Jesmin Ara',
-                    'role'  => 'Chairman',
-                    'photo' => 'assets/img/team/jesmin-ara.png',
-                    'bio'   => 'Guides Cyberlog leadership vision, governance, and long-term organizational growth.',
-                    'social'=> ['facebook' => 'https://www.facebook.com/cyberlogbd/', 'linkedin' => 'https://www.linkedin.com/company/cyberlogbd/'],
-                ],
-                [
-                    'name'  => 'Sadia Afrin Akhi',
-                    'role'  => 'Managing Director',
-                    'photo' => 'assets/img/team/sadia-afrin-akhi.png',
-                    'bio'   => 'Oversees business operations, client relationships, and strategic execution.',
-                    'social'=> ['facebook' => 'https://www.facebook.com/cyberlogbd/', 'linkedin' => 'https://www.linkedin.com/company/cyberlogbd/'],
+                    'social'=> ['linkedin' => 'https://www.linkedin.com/in/hridoymustofa'],
                 ],
             ];
         @endphp
@@ -48,7 +41,7 @@
                     <article class="cl-team-card h-100">
                         <div class="cl-team-photo">
                             @if ($member['photo'])
-                                <img src="{{ asset($member['photo']) }}" alt="{{ $member['name'] }}" loading="eager" decoding="sync">
+                                <img src="{{ str_starts_with($member['photo'], 'http') ? $member['photo'] : asset($member['photo']) }}" alt="{{ $member['name'] }}" loading="eager" decoding="sync">
                             @else
                                 <i class="fas fa-user"></i>
                             @endif
@@ -58,8 +51,11 @@
                             <h3 class="cl-team-name">{{ $member['name'] }}</h3>
                             <p class="cl-team-bio">{{ $member['bio'] }}</p>
                             <div class="cl-team-social">
-                                <a href="{{ $member['social']['facebook'] }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="{{ $member['social']['linkedin'] }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                @foreach ($member['social'] as $network => $url)
+                                    <a href="{{ $url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ ucfirst($network) }}">
+                                        <i class="fab fa-{{ $network === 'linkedin' ? 'linkedin-in' : $network }}"></i>
+                                    </a>
+                                @endforeach
                             </div>
                         </div>
                     </article>
@@ -115,7 +111,7 @@ to deliver complete cybersecurity solutions.
 
 <div class="col-md-6 col-lg-3">
 
-<div class="cl-solution-card h-100">
+<div class="cl-solution-card cl-team-unit cl-team-unit--red h-100">
 
 
 <div class="cl-solution-icon">
@@ -160,7 +156,7 @@ Red Team
 
 <div class="col-md-6 col-lg-3">
 
-<div class="cl-solution-card h-100">
+<div class="cl-solution-card cl-team-unit cl-team-unit--purple h-100">
 
 
 <div class="cl-solution-icon">
@@ -203,7 +199,7 @@ Purple Team
 
 <div class="col-md-6 col-lg-3">
 
-<div class="cl-solution-card h-100">
+<div class="cl-solution-card cl-team-unit cl-team-unit--blue h-100">
 
 
 <div class="cl-solution-icon">
@@ -247,7 +243,7 @@ Blue Team
 
 <div class="col-md-6 col-lg-3">
 
-<div class="cl-solution-card h-100">
+<div class="cl-solution-card cl-team-unit cl-team-unit--innovation h-100">
 
 
 <div class="cl-solution-icon">
@@ -293,15 +289,42 @@ Innovation Unit
 </section>
 
 
-@include('partials.talk-to-expert', [
-    'title' => 'Want to work with our team?',
-    'text' => 'Talk to a Cyberlog security specialist about your environment and goals.',
-])
-
 @endsection
 
 @push('styles')
 <style>
+    .cl-team-unit {
+        --unit-rgb: 109, 156, 255;
+        --unit-color: #6d9cff;
+        position: relative;
+        overflow: hidden;
+        border-color: rgba(var(--unit-rgb), .34);
+        background:
+            radial-gradient(circle at 88% 8%, rgba(var(--unit-rgb), .2), transparent 37%),
+            linear-gradient(155deg, rgba(var(--unit-rgb), .09), rgba(7, 17, 31, .9) 58%);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035), 0 18px 42px rgba(0, 0, 0, .2);
+    }
+    .cl-team-unit::before {
+        content: ''; position: absolute; inset: 0 0 auto; height: 3px;
+        background: linear-gradient(90deg, transparent, var(--unit-color), transparent);
+        opacity: .9;
+    }
+    .cl-team-unit--red { --unit-rgb: 255, 72, 101; --unit-color: #ff4865; }
+    .cl-team-unit--purple { --unit-rgb: 189, 123, 255; --unit-color: #bd7bff; }
+    .cl-team-unit--blue { --unit-rgb: 61, 179, 255; --unit-color: #3db3ff; }
+    .cl-team-unit--innovation { --unit-rgb: 255, 177, 56; --unit-color: #ffb138; }
+    .cl-team-unit .cl-solution-icon {
+        color: var(--unit-color);
+        border-color: rgba(var(--unit-rgb), .42);
+        background: rgba(var(--unit-rgb), .12);
+        box-shadow: 0 0 24px rgba(var(--unit-rgb), .16);
+    }
+    .cl-team-unit h5 { color: #fff; }
+    .cl-team-unit li::marker { color: var(--unit-color); }
+    .cl-team-unit:hover {
+        border-color: rgba(var(--unit-rgb), .72);
+        box-shadow: 0 22px 54px rgba(0, 0, 0, .34), 0 0 30px rgba(var(--unit-rgb), .11);
+    }
     .cl-team-card {
         background: linear-gradient(165deg, var(--surface), var(--bg-alt));
         border: 1px solid var(--line);

@@ -32,7 +32,7 @@
                     <a class="cl-foot-link" href="#">Vulnerability Assessment & Penetration Testing (VAPT)</a>
                     <a class="cl-foot-link" href="#">IT Security Audit & ISO/IEC 27001</a>
                     <a class="cl-foot-link" href="#">Awareness & Security Training</a>
-                    <a class="cl-foot-link" href="#">AI & Automation</a>
+                    <a class="cl-foot-link" href="{{ route('ai-automation') }}">AI & Automation</a>
                 {{--<div class="cl-foot-services">
                     @foreach (config('cyberlog_services', []) as $svc)
                         <a class="cl-foot-link" href="{{ $svcUrl($svc) }}">{{ $svc['title'] }}</a>

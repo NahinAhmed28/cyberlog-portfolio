@@ -34,10 +34,10 @@
             </div>
 
             <div class="col-lg-6">
-                <div class="cl-step text-center is-in d-flex align-items-center justify-content-center flex-column gap-2" style="height: 24rem;" data-reveal="" style="transition-delay: 0ms;">
-                    <i class="fa-regular fa-image" style="font-size: 6rem;"></i>
-                    <p class="mt-3 mb-0 text-white-50">Placeholder Image</p>
-                </div>
+                <figure class="cl-ai-hero-visual mb-0" data-reveal data-hero>
+                    <img src="{{ asset('assets/img/services/ai-automation-flow.svg') }}"
+                         alt="Animated AI automation workflow connecting data, intelligence, and business actions">
+                </figure>
             </div>
         </div>
     </div>
@@ -50,6 +50,13 @@
     .cl-soc-hero .container { position: relative; z-index: 2; }
     .cl-soc-h { font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--white); line-height: 1.05; }
     .cl-nav-cta.btn-xl{ padding: 1rem 1.75rem;font-size: 1.25rem; }
+    .cl-ai-hero-visual {
+        position: relative; padding: 1rem; overflow: hidden;
+        border: 1px solid rgba(109, 156, 255, .22); border-radius: 12px;
+        background: rgba(7, 15, 29, .58);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, .38), 0 0 42px rgba(47, 107, 255, .09);
+    }
+    .cl-ai-hero-visual img { display: block; width: 100%; height: auto; }
     .cl-soc-chip {
         display: inline-flex; align-items: center; gap: .5rem;
         font-family: 'IBM Plex Mono', monospace; font-size: .8rem; color: var(--white);
@@ -414,11 +421,11 @@
             connected digital systems.
         </p>
 
-        <div class="row g-4">
+        <div class="row g-4 cl-ai-benefit-grid">
 
             <!-- 1 -->
             <div class="col-md-6 col-lg-4">
-                <div class="cl-solution-card h-100">
+                <div class="cl-ai-benefit-card h-100">
 
                     <div class="cl-solution-icon">
                         <i class="fas fa-bolt"></i>
@@ -439,7 +446,7 @@
 
             <!-- 2 -->
             <div class="col-md-6 col-lg-4">
-                <div class="cl-solution-card h-100">
+                <div class="cl-ai-benefit-card h-100">
 
                     <div class="cl-solution-icon">
                         <i class="fas fa-sitemap"></i>
@@ -459,7 +466,7 @@
 
             <!-- 3 -->
             <div class="col-md-6 col-lg-4">
-                <div class="cl-solution-card h-100">
+                <div class="cl-ai-benefit-card h-100">
 
                     <div class="cl-solution-icon">
                         <i class="fas fa-check-circle"></i>
@@ -479,7 +486,7 @@
 
             <!-- 4 -->
             <div class="col-md-6 col-lg-4">
-                <div class="cl-solution-card h-100">
+                <div class="cl-ai-benefit-card h-100">
 
                     <div class="cl-solution-icon">
                         <i class="fas fa-chart-line"></i>
@@ -499,7 +506,7 @@
 
             <!-- 5 -->
             <div class="col-md-6 col-lg-4">
-                <div class="cl-solution-card h-100">
+                <div class="cl-ai-benefit-card h-100">
 
                     <div class="cl-solution-icon">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -519,7 +526,7 @@
 
             <!-- 6 -->
             <div class="col-md-6 col-lg-4">
-                <div class="cl-solution-card h-100">
+                <div class="cl-ai-benefit-card h-100">
 
                     <div class="cl-solution-icon">
                         <i class="fas fa-coins"></i>
@@ -542,14 +549,14 @@
     </div>
 </section>
 
-<section class="page-section bg-navy text-white" id="client-feedback">
+<section class="page-section cl-proof-reviews" id="client-feedback">
     <div class="container">
 
         <p class="section-eyebrow text-center mb-2">
             CLIENT FEEDBACK
         </p>
 
-        <h2 class="page-section-heading text-center text-uppercase text-white mb-3">
+        <h2 class="page-section-heading cl-proof-title text-center mb-3">
             Our Clients
             <span class="cl-title-accent">Say It Best</span>
         </h2>
@@ -559,21 +566,21 @@
             operations, reduce manual work, and deliver faster, smarter services.
         </p>
 
-        <div class="row g-4">
+        <div class="row g-4 cl-proof-grid">
 
             <!-- Review 1 -->
             <div class="col-lg-4">
-                <div class="cl-solution-card h-100 text-center">
+                <article class="cl-proof-card h-100" data-reveal>
 
-                    <div class="cl-solution-icon mx-auto">
+                    <div class="cl-proof-badge" aria-hidden="true">
                         <i class="fas fa-city"></i>
                     </div>
 
-                    <h5 class="fw-bold mb-2">
+                    <h3 class="cl-proof-award">
                         Smart City Chuadanga
-                    </h5>
+                    </h3>
 
-                    <div class="text-warning mb-3">
+                    <div class="cl-proof-rating" aria-label="5.0 out of 5 stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -582,28 +589,28 @@
                         <span class="ms-2 fw-semibold">5.0</span>
                     </div>
 
-                    <p class="text-muted small fst-italic mb-0">
+                    <p class="cl-proof-quote">
                         “Cyberlog helped us digitize and automate our city service
                         workflows. What once took days now happens in real time,
                         giving our team a single platform to manage everything.”
                     </p>
 
-                </div>
+                </article>
             </div>
 
             <!-- Review 2 -->
             <div class="col-lg-4">
-                <div class="cl-solution-card h-100 text-center">
+                <article class="cl-proof-card h-100" data-reveal>
 
-                    <div class="cl-solution-icon mx-auto">
+                    <div class="cl-proof-badge" aria-hidden="true">
                         <i class="fas fa-flask"></i>
                     </div>
 
-                    <h5 class="fw-bold mb-2">
+                    <h3 class="cl-proof-award">
                         Bangladesh Petroleum Institute
-                    </h5>
+                    </h3>
 
-                    <div class="text-warning mb-3">
+                    <div class="cl-proof-rating" aria-label="5.0 out of 5 stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -612,28 +619,28 @@
                         <span class="ms-2 fw-semibold">5.0</span>
                     </div>
 
-                    <p class="text-muted small fst-italic mb-0">
+                    <p class="cl-proof-quote">
                         “Cyberlog automated our reporting and internal processes,
                         improving visibility across operations while significantly
                         reducing repetitive manual work.”
                     </p>
 
-                </div>
+                </article>
             </div>
 
             <!-- Review 3 -->
             <div class="col-lg-4">
-                <div class="cl-solution-card h-100 text-center">
+                <article class="cl-proof-card h-100" data-reveal>
 
-                    <div class="cl-solution-icon mx-auto">
+                    <div class="cl-proof-badge" aria-hidden="true">
                         <i class="fas fa-industry"></i>
                     </div>
 
-                    <h5 class="fw-bold mb-2">
+                    <h3 class="cl-proof-award">
                         Akij Venture Ltd.
-                    </h5>
+                    </h3>
 
-                    <div class="text-warning mb-3">
+                    <div class="cl-proof-rating" aria-label="5.0 out of 5 stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -642,18 +649,47 @@
                         <span class="ms-2 fw-semibold">5.0</span>
                     </div>
 
-                    <p class="text-muted small fst-italic mb-0">
+                    <p class="cl-proof-quote">
                         “Cyberlog delivered an automation platform that perfectly
                         matched our workflow. The solution streamlined operations
                         and improved efficiency across the organization.”
                     </p>
 
-                </div>
+                </article>
             </div>
 
         </div>
 
     </div>
 </section>
+
+@include('partials.talk-to-expert', [
+    'title' => 'Ready to put AI to work?',
+    'text' => 'Talk with our experts about a practical automation roadmap built around your existing workflows.'
+])
+
+@push('styles')
+<style>
+    .cl-ai-benefit-card {
+        position: relative; padding: 1.85rem; border: 0; border-radius: 8px;
+        background: transparent; box-shadow: none; transition: transform .22s var(--ease);
+    }
+    .cl-ai-benefit-card:hover { transform: translateY(-3px); }
+    .cl-ai-benefit-card .cl-solution-icon {
+        width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 1rem;
+        border: 1px solid rgba(109, 156, 255, .28); border-radius: 10px;
+        color: #dceaff; background: rgba(109, 156, 255, .08); font-size: 1.2rem;
+        box-shadow: 0 0 18px rgba(109, 156, 255, .14);
+    }
+    .cl-ai-benefit-card h5 {
+        color: #fff; font-family: 'Chakra Petch', sans-serif; font-size: 1.05rem;
+        text-shadow: 0 0 14px rgba(255, 255, 255, .16);
+    }
+    .cl-ai-benefit-card p { color: rgba(247, 251, 255, .88) !important; font-size: .92rem !important; line-height: 1.6; }
+    #client-feedback .cl-proof-badge { font-size: 1.2rem; }
+    #client-feedback .cl-proof-award { max-width: 19rem; font-size: 1.02rem; }
+    @media (prefers-reduced-motion: reduce) { .cl-ai-benefit-card { transition: none; } }
+</style>
+@endpush
 
 @endsection

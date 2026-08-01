@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" role="img" aria-labelledby="title desc">
+  <title id="title">AI automation workflow</title>
+  <desc id="desc">Data signals travel through an AI core and emerge as automated business actions.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101f3a" stop-opacity=".96"/><stop offset="1" stop-color="#07111f" stop-opacity=".98"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#6d9cff"/><stop offset=".54" stop-color="#bd7bff"/><stop offset="1" stop-color="#ff8a00"/>
+    </linearGradient>
+    <radialGradient id="core"><stop stop-color="#bd7bff" stop-opacity=".4"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/></radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect x="1" y="1" width="718" height="558" rx="24" fill="url(#panel)" stroke="#6d9cff" stroke-opacity=".22"/>
+  <g fill="none" stroke="#6d9cff" stroke-opacity=".18">
+    <path d="M32 84H688M32 168H688M32 252H688M32 336H688M32 420H688M120 32V528M240 32V528M360 32V528M480 32V528M600 32V528"/>
+  </g>
+  <circle cx="360" cy="280" r="150" fill="url(#core)">
+    <animate attributeName="r" values="138;158;138" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".6;1;.6" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <g fill="none" stroke="url(#flow)" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 12">
+    <path d="M105 126C220 126 230 230 310 256"><animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.6s" repeatCount="indefinite"/></path>
+    <path d="M105 280H290"><animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.3s" repeatCount="indefinite"/></path>
+    <path d="M105 434C220 434 230 330 310 304"><animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.8s" repeatCount="indefinite"/></path>
+    <path d="M410 256C490 230 500 126 615 126"><animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.7s" repeatCount="indefinite"/></path>
+    <path d="M430 280H615"><animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.4s" repeatCount="indefinite"/></path>
+    <path d="M410 304C490 330 500 434 615 434"><animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.9s" repeatCount="indefinite"/></path>
+  </g>
+  <g font-family="IBM Plex Mono, monospace" text-anchor="middle">
+    <g fill="#101f3a" stroke="#6d9cff" stroke-opacity=".55"><rect x="42" y="92" width="126" height="68" rx="12"/><rect x="42" y="246" width="126" height="68" rx="12"/><rect x="42" y="400" width="126" height="68" rx="12"/></g>
+    <g fill="#dceaff" font-size="14"><text x="105" y="120">DOCUMENTS</text><text x="105" y="141" fill="#8094b7" font-size="11">INPUT</text><text x="105" y="274">BUSINESS DATA</text><text x="105" y="295" fill="#8094b7" font-size="11">INPUT</text><text x="105" y="428">WORKFLOWS</text><text x="105" y="449" fill="#8094b7" font-size="11">INPUT</text></g>
+    <g fill="#101f3a" stroke="#ff8a00" stroke-opacity=".55"><rect x="552" y="92" width="126" height="68" rx="12"/><rect x="552" y="246" width="126" height="68" rx="12"/><rect x="552" y="400" width="126" height="68" rx="12"/></g>
+    <g fill="#fff1d6" font-size="14"><text x="615" y="120">INSIGHTS</text><text x="615" y="141" fill="#bba98c" font-size="11">ACTION</text><text x="615" y="274">DECISIONS</text><text x="615" y="295" fill="#bba98c" font-size="11">ACTION</text><text x="615" y="428">AUTOMATION</text><text x="615" y="449" fill="#bba98c" font-size="11">ACTION</text></g>
+    <g filter="url(#glow)"><circle cx="360" cy="280" r="70" fill="#0b1730" stroke="url(#flow)" stroke-width="3"/><circle cx="360" cy="280" r="51" fill="none" stroke="#bd7bff" stroke-opacity=".5"><animateTransform attributeName="transform" type="rotate" from="0 360 280" to="360 360 280" dur="8s" repeatCount="indefinite"/></circle></g>
+    <text x="360" y="274" fill="#fff" font-family="Chakra Petch, sans-serif" font-size="25" font-weight="700">AI CORE</text><text x="360" y="299" fill="#bdc9df" font-size="11">LEARN · REASON · ACT</text>
+  </g>
+  <g fill="#fff"><circle cx="214" cy="280" r="4"><animate attributeName="cx" values="168;290" dur="1.8s" repeatCount="indefinite"/></circle><circle cx="506" cy="280" r="4"><animate attributeName="cx" values="430;552" dur="1.8s" repeatCount="indefinite"/></circle></g>
+  <style>@media (prefers-reduced-motion:reduce){animate,animateTransform{display:none}}</style>
+</svg>

@@ -5,13 +5,6 @@
 @section('content')
 
 {{-- Hero — box removed per feedback (centered, single column) --}}
-@include('partials.page-hero', [
-    'eyebrow' => 'Contact',
-    'heading' => "We'd <span class=\"text-teal\">Love to Hear</span> From You",
-    'subheading' => 'Get in touch with our team and we will reach out to discuss your security needs and how Cyberlog can help.',
-    'centered' => true,
-])
-
 <section class="page-section" id="contact-form">
     <div class="container">
         <div class="row g-5">
@@ -71,8 +64,6 @@
         </div>
     </div>
 </section>
-
-@include('partials.talk-to-expert')
 
 @endsection
 
