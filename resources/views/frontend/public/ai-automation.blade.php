@@ -35,8 +35,12 @@
 
             <div class="col-lg-6">
                 <figure class="cl-ai-hero-visual mb-0" data-reveal data-hero>
-                    <img src="{{ asset('assets/img/services/ai-automation-flow.svg') }}"
-                         alt="Animated AI automation workflow connecting data, intelligence, and business actions">
+                    <!-- <img src="{{ asset('assets/img/services/ai-automation-flow.svg') }}"
+                         alt="Animated AI automation workflow connecting data, intelligence, and business actions"> -->
+    <video width="630" height="360" autoplay muted loop playsinline>
+    <source src="{{ asset('assets/img/services/AI-and-Automation.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
                 </figure>
             </div>
         </div>
@@ -51,7 +55,7 @@
     .cl-soc-h { font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--white); line-height: 1.05; }
     .cl-nav-cta.btn-xl{ padding: 1rem 1.75rem;font-size: 1.25rem; }
     .cl-ai-hero-visual {
-        position: relative; padding: 1rem; overflow: hidden;
+        position: relative; margin: 0 !important; overflow: hidden;
         border: 1px solid rgba(109, 156, 255, .22); border-radius: 12px;
         background: rgba(7, 15, 29, .58);
         box-shadow: 0 30px 80px rgba(0, 0, 0, .38), 0 0 42px rgba(47, 107, 255, .09);
