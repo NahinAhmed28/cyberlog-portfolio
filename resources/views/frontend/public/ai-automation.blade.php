@@ -37,7 +37,7 @@
                 <figure class="cl-ai-hero-visual mb-0" data-reveal data-hero>
                     <!-- <img src="{{ asset('assets/img/services/ai-automation-flow.svg') }}"
                          alt="Animated AI automation workflow connecting data, intelligence, and business actions"> -->
-    <video width="630" height="360" autoplay muted loop playsinline>
+    <video width="100%" height="auto" autoplay muted loop playsinline>
     <source src="{{ asset('assets/img/services/AI-and-Automation.mp4') }}" type="video/mp4">
     Your browser does not support the video tag.
 </video>
