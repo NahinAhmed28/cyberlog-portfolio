@@ -23,14 +23,20 @@
                     'role'  => 'Chairman',
                     'photo' => 'https://iid.dev/wp-content/uploads/2016/11/Nazim-Farhan-Choudhury-photo.jpg',
                     'bio'   => 'Guides Cyberlog leadership vision, governance, and long-term organizational growth.',
-                    'social'=> ['linkedin' => 'https://www.linkedin.com/in/nazim-farhan-choudhury-661786'],
+                    'social'=> [
+                        'facebook' => 'https://www.facebook.com/nazimfarhanc',
+                        'linkedin' => 'https://www.linkedin.com/in/nazim-farhan-choudhury-661786/',
+                    ],
                 ],
                 [
                     'name'  => 'Hridoy Mustofa',
                     'role'  => 'Managing Director',
                     'photo' => 'assets/img/team/hridoy-mustofa.png',
                     'bio'   => 'Leads Cyberlog technology direction, cyber defense delivery, and security innovation.',
-                    'social'=> ['linkedin' => 'https://www.linkedin.com/in/hridoymustofa'],
+                    'social'=> [
+                        'facebook' => 'https://www.facebook.com/hridoy.mustofa',
+                        'linkedin' => 'https://www.linkedin.com/in/hridoymustofa/',
+                    ],
                 ],
             ];
         @endphp

@@ -17,49 +17,25 @@
 
 <header class="cl-vciso-hero" id="page-top">
     <div class="container">
-        <div class="row align-items-center g-5 cl-vciso-hero-row">
-            <div class="col-lg-5">
-                <p class="section-eyebrow mb-3" data-reveal data-hero>Virtual CISO</p>
-                <h1 class="cl-vciso-title mb-4" data-reveal data-hero>
-                    Executive <span>Security <br class="cl-vciso-mobile-break">Leadership</span>
-                    <br class="cl-vciso-mobile-break">Without the
-                    <br class="cl-vciso-mobile-break">Full-Time Cost
-                </h1>
-                <p class="lead text-muted mb-4" data-reveal data-hero>
-                    Cyberlog's vCISO service gives your organization a senior security leader to own
-                    strategy, governance, compliance, risk reporting, and operational security maturity.
-                </p>
-
-                <div class="cl-vciso-actions" data-reveal data-hero>
-                    <a class="btn cl-vciso-primary" href="{{ route('contact') }}">
-                        <i class="fas fa-headset me-2"></i>Talk to a vCISO
-                    </a>
-                    <a class="btn cl-vciso-secondary" href="#vciso-platform">
-                        <i class="fas fa-diagram-project me-2"></i>Explore Model
-                    </a>
-                </div>
-
-                <div class="cl-vciso-proof" data-reveal data-hero>
-                    <span><strong>Board</strong> ready reporting</span>
-                    <span><strong>ISO</strong> and GRC guidance</span>
-                    <span><strong>SOC</strong> aligned oversight</span>
-                </div>
-            </div>
-
-            <div class="col-lg-7">
-                <div class="cl-vciso-visual-stack">
-                    <figure class="cl-vciso-dashboard">
-                        <img
-                            src="{{ asset('assets/img/vciso/client-dashboard.svg') }}"
-                            alt="Cyberlog vCISO client dashboard showing a live cyber threat map, attack feed, and integrated security services"
-                            loading="eager"
-                            decoding="async">
-                    </figure>
-                </div>
-            </div>
+        <div class="cl-vciso-components-heading cl-vciso-components-heading-top" data-reveal data-hero>
+            <p class="section-eyebrow mb-2">Prohoree 365</p>
+            <h1 class="cl-vciso-title mb-0">
+                Bangladesh's First Unified Cybersecurity Solution:
+                <span>Prohoree 365</span>
+            </h1>
         </div>
 
-        <div class="cl-vciso-diagram-row">
+        <div class="cl-vciso-dashboard-row" data-reveal data-hero>
+            <figure class="cl-vciso-dashboard">
+                <img
+                    src="{{ asset('assets/img/vciso/client-dashboard.svg') }}"
+                    alt="Prohoree 365 dashboard showing a live cyber threat map, attack feed, and integrated security services"
+                    loading="eager"
+                    decoding="async">
+            </figure>
+        </div>
+
+        <div class="cl-vciso-diagram-row" data-reveal>
             <div class="cl-vciso-diagram" aria-label="vCISO service coverage diagram">
                 <svg class="cl-vciso-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <path d="M50 50 C36 48 30 20 16 18" />
@@ -72,12 +48,11 @@
                     <path d="M50 50 C59 64 62 82 73 84" />
                 </svg>
 
-                <div class="cl-vciso-core" aria-label="vCISO core">
+                <div class="cl-vciso-core" aria-label="Prohoree 365 core">
                     <span class="cl-vciso-ring"></span>
                     <span class="cl-vciso-ring cl-vciso-ring-two"></span>
                     <div class="cl-vciso-core-badge">
-                        <img src="{{ asset('assets/img/cyberlog-logo.png') }}" alt="Cyberlog">
-                        <strong>vCISO</strong>
+                        <strong>Prohoree<br>365</strong>
                     </div>
                 </div>
 
@@ -96,6 +71,12 @@
                 @endforeach
             </div>
         </div>
+
+        <div class="cl-vciso-components-heading" data-reveal>
+            <p class="section-eyebrow mb-2">Prohoree 365</p>
+            <h2 class="cl-vciso-components-title mb-0">Prohoree 365 Components</h2>
+        </div>
+
     </div>
 </header>
 
@@ -129,7 +110,8 @@
         z-index: 1;
     }
     .cl-vciso-hero-row {
-        min-height: 390px;
+        min-height: 0;
+        margin-bottom: .75rem;
     }
     .cl-vciso-title {
         font-size: clamp(2rem, 2.75vw, 2.8rem);
@@ -143,6 +125,21 @@
     }
     .cl-vciso-mobile-break {
         display: none;
+    }
+    .cl-vciso-intro {
+        width: min(100%, 980px);
+    }
+    .cl-vciso-components-heading {
+        margin-top: clamp(2.5rem, 5vw, 4.5rem);
+    }
+    .cl-vciso-components-heading-top { margin-top: 0; }
+    .cl-vciso-components-title {
+        color: var(--warm-soft);
+        font-family: 'Chakra Petch', sans-serif;
+        font-size: clamp(2rem, 4.6vw, 3.7rem);
+        font-weight: 700;
+        line-height: 1.04;
+        text-shadow: 0 0 26px rgba(255, 138, 0, .3);
     }
     .cl-vciso-actions {
         display: flex;
@@ -202,10 +199,14 @@
         margin-left: auto;
     }
     .cl-vciso-hero .lead {
-        max-width: 560px;
+        max-width: 780px;
         margin-bottom: .82rem !important;
         font-size: clamp(.9rem, 1.12vw, .98rem);
         line-height: 1.46;
+    }
+    .cl-vciso-dashboard-row {
+        width: 100%;
+        margin-top: 0;
     }
     .cl-vciso-dashboard {
         position: relative;
@@ -250,7 +251,8 @@
         object-fit: cover;
     }
     .cl-vciso-diagram-row {
-        margin-top: clamp(2rem, 4vw, 3rem);
+        width: 100%;
+        margin-top: clamp(1.5rem, 3vw, 2.5rem);
     }
 
     /* Legacy diagram styles remain available for older cached markup. */
@@ -336,17 +338,14 @@
         background: radial-gradient(circle at 50% 26%, rgba(255, 191, 27, 0.16), rgba(7, 17, 31, 0.92));
         box-shadow: 0 0 36px rgba(255, 72, 101, 0.28);
     }
-    .cl-vciso-core-badge img {
-        display: block;
-        max-width: 62%;
-        height: auto;
-        filter: drop-shadow(0 0 10px rgba(255, 191, 27, 0.25));
-    }
     .cl-vciso-core-badge strong {
         color: var(--white);
         font-family: 'Chakra Petch', sans-serif;
-        letter-spacing: .08em;
-        font-size: .88rem;
+        letter-spacing: .06em;
+        font-size: 1.05rem;
+        line-height: 1.08;
+        text-align: center;
+        text-shadow: 0 0 14px rgba(255, 191, 27, .32);
     }
     .cl-vciso-node {
         position: absolute;
