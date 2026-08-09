@@ -17,13 +17,18 @@
 
 <header class="cl-vciso-hero" id="page-top">
     <div class="container">
-        <div class="cl-vciso-components-heading cl-vciso-components-heading-top" data-reveal data-hero>
-            <p class="section-eyebrow mb-2">Prohoree 365</p>
-            <h1 class="cl-vciso-title mb-0">
-                Bangladesh's First Unified Cybersecurity Solution:
-                <span>Prohoree 365</span>
-            </h1>
+        <div class="row cl-vciso-hero-row">
+            <div class="col-12">
+                <div class="cl-vciso-intro">
+                <h1 class="cl-vciso-title mb-4" data-reveal data-hero>
+                    Bangladesh's First Unified Cybersecurity Solution:
+                    <span>Prohoree 365</span>
+                </h1>
+                </div>
+            </div>
         </div>
+
+
 
         <div class="cl-vciso-dashboard-row" data-reveal data-hero>
             <figure class="cl-vciso-dashboard">
@@ -71,12 +76,6 @@
                 @endforeach
             </div>
         </div>
-
-        <div class="cl-vciso-components-heading" data-reveal>
-            <p class="section-eyebrow mb-2">Prohoree 365</p>
-            <h2 class="cl-vciso-components-title mb-0">Prohoree 365 Components</h2>
-        </div>
-
     </div>
 </header>
 
@@ -110,8 +109,7 @@
         z-index: 1;
     }
     .cl-vciso-hero-row {
-        min-height: 0;
-        margin-bottom: .75rem;
+        min-height: 390px;
     }
     .cl-vciso-title {
         font-size: clamp(2rem, 2.75vw, 2.8rem);
@@ -132,7 +130,6 @@
     .cl-vciso-components-heading {
         margin-top: clamp(2.5rem, 5vw, 4.5rem);
     }
-    .cl-vciso-components-heading-top { margin-top: 0; }
     .cl-vciso-components-title {
         color: var(--warm-soft);
         font-family: 'Chakra Petch', sans-serif;
@@ -206,7 +203,7 @@
     }
     .cl-vciso-dashboard-row {
         width: 100%;
-        margin-top: 0;
+        margin-top: clamp(1.5rem, 3vw, 2.5rem);
     }
     .cl-vciso-dashboard {
         position: relative;
@@ -252,7 +249,7 @@
     }
     .cl-vciso-diagram-row {
         width: 100%;
-        margin-top: clamp(1.5rem, 3vw, 2.5rem);
+        margin-top: clamp(3rem, 6vw, 5rem);
     }
 
     /* Legacy diagram styles remain available for older cached markup. */
