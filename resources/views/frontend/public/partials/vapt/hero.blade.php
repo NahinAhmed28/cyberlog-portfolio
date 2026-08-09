@@ -28,6 +28,15 @@
                         <div>
                             <h2>From Exposure to Exploit</h2>
                             <p>External exposure, authentication bypass, privilege escalation, and data-access impact.</p>
+                            <div class="cl-vapt-live-chart" data-vapt-live-chart aria-label="Live vulnerability activity graph">
+                                @foreach ([36, 58, 44, 72, 51, 84, 63, 46, 76, 57, 88, 68] as $height)
+                                    <span style="--h: {{ $height }}%"></span>
+                                @endforeach
+                            </div>
+                            <div class="cl-vapt-live-meta">
+                                <span><strong data-vapt-findings>24</strong> findings</span>
+                                <span><strong data-vapt-requests>1,842</strong> requests tested</span>
+                            </div>
                         </div>
                     </div>
                     <div class="cl-vapt-steps" aria-label="VAPT assessment steps">
@@ -35,7 +44,7 @@
                             <div><span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>{{ $step }}</div>
                         @endforeach
                     </div>
-                    <div class="cl-vapt-logs">
+                    <div class="cl-vapt-logs" data-vapt-live-log aria-live="polite" aria-label="Live VAPT assessment log">
                         <p><span>[VALIDATED]</span> SQL injection impact confirmed</p>
                         <p><span>[MAPPED]</span> OWASP access control weakness</p>
                         <p><span>[QUEUED]</span> remediation evidence review</p>
@@ -121,6 +130,11 @@
         border-radius: 50%;
         border: 1px solid rgba(255, 191, 27, .28);
     }
+    .cl-vapt-radar::before {
+        content: ""; position: absolute; inset: 4px; border-radius: 50%;
+        background: conic-gradient(from 0deg, rgba(255, 72, 101, .5), transparent 18%, transparent 100%);
+        animation: clVaptRadarSweep 2.8s linear infinite;
+    }
     .cl-vapt-radar i { color: var(--white); filter: drop-shadow(0 0 14px rgba(255, 72, 101, .75)); }
     .cl-vapt-assessment h2 {
         font-family: 'Chakra Petch', sans-serif;
@@ -129,6 +143,18 @@
         margin-bottom: .55rem;
     }
     .cl-vapt-assessment p { color: var(--muted); line-height: 1.6; margin: 0; }
+    .cl-vapt-live-chart {
+        height: 58px; display: flex; align-items: end; gap: 5px; margin-top: 1.05rem;
+        padding-top: .5rem; border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .cl-vapt-live-chart span {
+        flex: 1; height: var(--h); min-height: 5px; border-radius: 2px 2px 0 0;
+        background: linear-gradient(180deg, var(--red-soft), rgba(143, 77, 255, .32));
+        box-shadow: 0 0 10px rgba(255, 72, 101, .2);
+        transition: height .62s var(--ease), opacity .35s ease;
+    }
+    .cl-vapt-live-meta { display: flex; justify-content: space-between; gap: .75rem; margin-top: .45rem; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: .62rem; text-transform: uppercase; }
+    .cl-vapt-live-meta strong { color: var(--warm-soft); font-size: .72rem; }
     .cl-vapt-steps {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -159,6 +185,11 @@
     }
     .cl-vapt-logs p { margin: .18rem 0; color: var(--muted); }
     .cl-vapt-logs span { color: var(--warm-soft); }
+    .cl-vapt-logs p.is-new { animation: clVaptLogIn .38s var(--ease) both; }
+    .cl-vapt-assessment-top > span { animation: clVaptLivePulse 1.5s ease-in-out infinite; }
+    @keyframes clVaptRadarSweep { to { transform: rotate(360deg); } }
+    @keyframes clVaptLogIn { from { opacity: 0; transform: translateY(-7px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes clVaptLivePulse { 50% { opacity: .4; box-shadow: 0 0 5px rgba(255,72,101,.3); } }
 
     @media (max-width: 767.98px) {
         .cl-vapt-assessment-main { grid-template-columns: 1fr; }
@@ -166,5 +197,46 @@
         .cl-vapt-steps div { border-right: 0; border-bottom: 1px solid var(--line); min-height: auto; }
         .cl-vapt-steps div:last-child { border-bottom: 0; }
     }
+    @media (prefers-reduced-motion: reduce) {
+        .cl-vapt-radar::before, .cl-vapt-logs p.is-new, .cl-vapt-assessment-top > span { animation: none; }
+        .cl-vapt-live-chart span { transition: none; }
+    }
 </style>
+@endpush
+
+@push('scripts')
+<script>
+(function () {
+    var log = document.querySelector('[data-vapt-live-log]');
+    if (!log || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var events = [
+        ['DISCOVERED', 'exposed admin endpoint identified'], ['TESTING', 'authentication flow under analysis'],
+        ['VALIDATED', 'broken access control impact confirmed'], ['MAPPED', 'finding mapped to OWASP Top 10'],
+        ['BLOCKED', 'rate limit engaged during safe test'], ['CAPTURED', 'evidence package securely recorded'],
+        ['RETESTED', 'remediation successfully verified'], ['QUEUED', 'business-logic test case scheduled']
+    ];
+    var bars = document.querySelectorAll('[data-vapt-live-chart] span');
+    var findingsEl = document.querySelector('[data-vapt-findings]');
+    var requestsEl = document.querySelector('[data-vapt-requests]');
+    var findings = parseInt(findingsEl.textContent, 10) || 24;
+    var requests = parseInt(requestsEl.textContent.replace(/,/g, ''), 10) || 1842;
+    function updateAssessment() {
+        var event = events[Math.floor(Math.random() * events.length)];
+        var row = document.createElement('p');
+        row.className = 'is-new';
+        row.innerHTML = '<span>[' + event[0] + ']</span> ' + event[1];
+        log.insertBefore(row, log.firstChild);
+        while (log.children.length > 3) log.removeChild(log.lastChild);
+        requests += Math.floor(Math.random() * 31) + 8;
+        if (event[0] === 'DISCOVERED' || event[0] === 'VALIDATED') findings += 1;
+        findingsEl.textContent = findings;
+        requestsEl.textContent = requests.toLocaleString('en-US');
+        bars.forEach(function (bar) {
+            bar.style.height = (24 + Math.floor(Math.random() * 65)) + '%';
+            bar.style.opacity = (.68 + Math.random() * .32).toFixed(2);
+        });
+    }
+    window.setInterval(updateAssessment, 1700);
+})();
+</script>
 @endpush

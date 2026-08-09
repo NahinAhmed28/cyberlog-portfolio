@@ -112,13 +112,14 @@
     .cl-soc-matrix-section .cl-cmp thead th {
         border: 0;
         padding: .85rem 1rem;
-        background: linear-gradient(90deg, #235bf0, #3478ff);
-        color: #fff;
+        background: linear-gradient(90deg, #142b55, #193765) !important;
+        color: #fff !important;
         font-family: 'IBM Plex Mono', monospace;
         font-size: .7rem;
-        font-weight: 700;
+        font-weight: 800;
         letter-spacing: .08em;
         text-transform: uppercase;
+        text-shadow: 0 0 12px rgba(255, 255, 255, .22);
     }
     .cl-soc-matrix-section .cl-cmp tbody td {
         border-color: rgba(109, 156, 255, .14);

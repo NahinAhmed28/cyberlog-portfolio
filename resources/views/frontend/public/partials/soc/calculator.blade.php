@@ -11,19 +11,18 @@
                     coverage level. Move the sliders for an indicative monthly figure, then request a
                     tailored quote for your exact scope.
                 </p>
-                <p class="text-muted small" data-reveal><i class="fas fa-circle-info text-primary me-1"></i> Indicative only — final pricing is scoped with our team.</p>
             </div>
 
             <div class="col-lg-7" data-reveal>
                 <div class="cl-calc">
                     <div class="cl-calc-row">
-                        <div class="cl-calc-head"><span>Endpoints / devices</span><span class="cl-calc-val" id="calcEpVal">500</span></div>
-                        <input type="range" id="calcEp" min="5" max="1000" step="5" value="500" class="cl-range">
+                        <div class="cl-calc-head"><span>Endpoints / devices</span><span class="cl-calc-val" id="calcEpVal">1</span></div>
+                        <input type="range" id="calcEp" min="1" max="1000" step="1" value="1" class="cl-range">
                     </div>
 
                     <div class="cl-calc-row">
-                        <div class="cl-calc-head"><span>Log volume <small class="text-muted">(GB / day)</small></span><span class="cl-calc-val" id="calcLogVal">50</span></div>
-                        <input type="range" id="calcLog" min="1" max="1000" step="1" value="50" class="cl-range">
+                        <div class="cl-calc-head"><span>Log volume <small class="text-muted">(GB / day)</small></span><span class="cl-calc-val" id="calcLogVal">1</span></div>
+                        <input type="range" id="calcLog" min="1" max="1000" step="1" value="1" class="cl-range">
                     </div>
 
                     <div class="cl-calc-row">
@@ -36,8 +35,7 @@
 
                     <div class="cl-calc-out">
                         <div>
-                            <div class="cl-calc-cost"><span id="calcCost">$0</span><small>/mo</small></div>
-                            <div class="cl-calc-break" id="calcBreak"></div>
+                            <div class="cl-calc-cost">$<span id="calcCost">0</span><small>/mo</small></div>
                         </div>
                         <a class="btn btn-primary text-white fw-bold" href="{{ Route::has('public.contact') ? route('public.contact') : (Route::has('contact') ? route('contact') : '#') }}">Get a Tailored Quote</a>
                     </div>
@@ -74,9 +72,8 @@
     .cl-calc-out { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 1.5rem; margin-top: .5rem; }
     .cl-calc-cost { font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 2.6rem; line-height: 1; }
     .cl-calc-cost span { color: var(--blue-bright); -webkit-text-fill-color: var(--blue-bright); filter: none; user-select: text; text-shadow: 0 0 18px rgba(109, 156, 255, .38); }
-    .cl-calc-cost span#calcCost{ filter: blur(5px);user-select: none; }
+    .cl-calc-cost span#calcCost { display: inline-block; filter: blur(6px); user-select: none; pointer-events: none; }
     .cl-calc-cost small { font-family: 'IBM Plex Mono', monospace; font-size: .9rem; color: var(--muted); -webkit-text-fill-color: var(--muted); margin-left: .35rem; }
-    .cl-calc-break { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--muted); margin-top: .5rem; filter: none; user-select: text; }
 </style>
 @endpush
 
@@ -90,20 +87,17 @@
     var epVal = document.getElementById('calcEpVal');
     var logVal = document.getElementById('calcLogVal');
     var costEl = document.getElementById('calcCost');
-    var breakEl = document.getElementById('calcBreak');
     var mult = 1;
 
     var BASE = 1500, PER_EP = 4, PER_GB = 35;
 
-    function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
     function compute() {
         var e = +ep.value, l = +log.value;
         var epCost = e * PER_EP, logCost = l * PER_GB;
         var total = Math.round(((BASE + epCost + logCost) * mult) / 50) * 50;
         epVal.textContent = e.toLocaleString('en-US');
         logVal.textContent = l;
-        costEl.textContent = fmt(total);
-        breakEl.innerHTML = 'base ' + fmt(BASE) + ' + endpoints ' + fmt(epCost) + ' + logs ' + fmt(logCost) + ' &times; ' + mult + ' coverage';
+        costEl.textContent = Math.round(total).toLocaleString('en-US');
     }
     ep.addEventListener('input', compute);
     log.addEventListener('input', compute);

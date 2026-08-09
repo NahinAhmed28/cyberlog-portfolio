@@ -13,12 +13,7 @@ $rows = [
     <div class="container">
         <p class="section-eyebrow text-center mb-2" data-reveal>Comparison</p>
         <h2 class="page-section-heading text-center text-secondary mb-2" data-reveal>Which SOC Model Delivers Real Value?</h2>
-        <p class="text-center text-muted lead-narrow mb-5" data-reveal>
-            Modelled on a typical mid-sized business — 500 employees, hybrid environment, 200 devices.
-            Here's how the options stack up on cost, speed, and outcomes.
-        </p>
-
-        <div class="cl-cmp-wrap" data-reveal>
+        <div class="cl-cmp-wrap mt-5" data-reveal>
             <div class="table-responsive">
                 <table class="table align-middle cl-compare cl-cmp mb-0">
                     <thead>
@@ -61,7 +56,17 @@ $rows = [
         box-shadow: 0 30px 80px rgba(5, 20, 60, 0.5);
     }
     .cl-cmp { --bs-table-bg: transparent; }
-    .cl-cmp thead th { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
+    .cl-cmp thead th {
+        background: #142b55 !important;
+        border-color: rgba(109, 156, 255, .24) !important;
+        color: #ffffff !important;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: .74rem;
+        font-weight: 800;
+        letter-spacing: .065em;
+        text-transform: uppercase;
+        text-shadow: 0 0 12px rgba(255, 255, 255, .22);
+    }
     .cl-cmp td, .cl-cmp th { padding: 1rem 1.25rem; white-space: nowrap; }
 </style>
 @endpush

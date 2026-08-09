@@ -50,6 +50,9 @@
             linear-gradient(180deg, rgba(7, 17, 31, .98), rgba(5, 12, 23, .98));
     }
     .cl-vapt-matrix-wrap {
+        width: 100%;
+        max-width: 1080px;
+        margin-inline: auto;
         overflow: hidden;
         border-radius: 10px;
         background: linear-gradient(160deg, #0b1430, #0a1126) padding-box,
@@ -57,13 +60,18 @@
         border: 1.5px solid transparent;
         box-shadow: 0 28px 76px rgba(5, 20, 60, 0.5);
     }
-    .cl-vapt-matrix { min-width: 720px; --bs-table-bg: transparent; color: var(--text); }
+    .cl-vapt-matrix { width: 100%; min-width: 720px; --bs-table-bg: transparent; color: var(--text); }
     .cl-vapt-matrix thead th {
-        padding: 1rem 1.25rem; color: var(--white);
-        background: rgba(16, 31, 58, .7); border-color: var(--line);
-        font-family: 'Chakra Petch', sans-serif; font-size: .95rem;
+        padding: 1rem 1.25rem;
+        color: #ffffff !important;
+        background: linear-gradient(90deg, #142b55, #193765) !important;
+        border-color: rgba(109, 156, 255, .24) !important;
+        font-family: 'Chakra Petch', sans-serif;
+        font-size: 1rem;
+        font-weight: 800;
+        text-shadow: 0 0 12px rgba(255, 255, 255, .22);
     }
-    .cl-vapt-matrix thead th:last-child { color: var(--warm-soft); }
+    .cl-vapt-matrix thead th:last-child { color: #ffffff !important; }
     .cl-vapt-matrix td { padding: 1rem 1.25rem; border-color: var(--line); vertical-align: top; }
     .cl-vapt-basic { color: var(--muted); }
     .cl-vapt-us { color: var(--white); background: rgba(228, 31, 61, .08); }

@@ -1,13 +1,4 @@
 {{-- VAPT › Service Calculator — Pricing (left) + Analysis Days (right) + scope table --}}
-@php
-    $scopeTable = [
-        ['Web Applications', '5 applications', '4 to 6', '6 to 8', '8 to 10'],
-        ['APIs', '5 APIs', '3 to 5', '5 to 7', '7 to 9'],
-        ['Mobile Applications', '5 apps', '5 to 7', '7 to 9', '9 to 12'],
-        ['Network Assets / IPs', '5 IPs', '1 to 2', '2 to 3', '3 to 4'],
-    ];
-@endphp
-
 <section class="page-section cl-vapt-calc-section" id="calculator">
     <div class="container">
         <div class="row g-5 align-items-center">
@@ -53,7 +44,7 @@
                     <div class="cl-vapt-calc-out">
                         {{-- Pricing on the LEFT --}}
                         <div class="cl-vapt-price">
-                            <div class="cl-vapt-price-fig"><span id="vaptCalcPrice">BDT 0</span></div>
+                            <div class="cl-vapt-price-fig">BDT <span id="vaptCalcPrice">0</span></div>
                             <div class="cl-vapt-out-lbl">estimated cost</div>
                         </div>
                         {{-- Analysis Days on the RIGHT --}}
@@ -68,33 +59,6 @@
             </div>
         </div>
 
-        {{-- Scope reference table --}}
-        <div class="cl-vapt-scope-wrap mt-5" data-reveal>
-            <div class="table-responsive">
-                <table class="table align-middle cl-vapt-scope mb-0">
-                    <thead>
-                        <tr>
-                            <th class="text-start">Category</th>
-                            <th>Scope Count</th>
-                            <th>Black Box</th>
-                            <th>Grey Box</th>
-                            <th>White Box</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($scopeTable as $r)
-                            <tr>
-                                <td class="text-start fw-semibold">{{ $r[0] }}</td>
-                                <td>{{ $r[1] }}</td>
-                                <td>{{ $r[2] }} analyst days</td>
-                                <td>{{ $r[3] }} analyst days</td>
-                                <td>{{ $r[4] }} analyst days</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -129,16 +93,12 @@
     .cl-vapt-price, .cl-vapt-effort { flex: 1; }
     .cl-vapt-effort { text-align: right; }
     .cl-vapt-price-fig, .cl-vapt-effort-fig { font-family: 'Chakra Petch', sans-serif; font-size: 2.4rem; font-weight: 700; line-height: 1; }
-    .cl-vapt-price-fig span { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+    .cl-vapt-price-fig { color: var(--warm-soft); }
+    .cl-vapt-price-fig span { display: inline-block; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; filter: blur(10px); user-select: none; pointer-events: none; }
     .cl-vapt-effort-fig span { color: var(--warm-soft); }
     .cl-vapt-out-lbl { margin-top: .35rem; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
     .cl-vapt-break { margin-top: .75rem; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: .72rem; }
 
-    .cl-vapt-scope-wrap { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: rgba(16, 31, 58, .72); box-shadow: 0 28px 76px rgba(0, 0, 0, .42); }
-    .cl-vapt-scope { min-width: 760px; --bs-table-bg: transparent; color: var(--text); }
-    .cl-vapt-scope thead th { padding: 1rem; color: var(--white); background: linear-gradient(120deg, rgba(228, 31, 61, .88), rgba(18, 58, 120, .82)); border-color: rgba(255,255,255,.1); font-family: 'Chakra Petch', sans-serif; font-size: .92rem; }
-    .cl-vapt-scope td { padding: .9rem 1rem; border-color: var(--line); }
-    .cl-vapt-scope tbody tr:hover td { background: rgba(255, 72, 101, .08); }
 </style>
 @endpush
 
@@ -171,7 +131,7 @@
         mobileVal.textContent = mobileCount;
         ipsVal.textContent = ipCount;
         days.textContent = total;
-        price.textContent = 'BDT ' + (total * DAY_RATE_BDT).toLocaleString('en-US');
+        price.textContent = (total * DAY_RATE_BDT).toLocaleString('en-US');
         breakdown.textContent = appCount + ' web apps + ' + apiCount + ' APIs + ' + mobileCount + ' mobile apps + ' + ipCount + ' IPs x ' + mult + ' approach multiplier';
     }
     [apps, apis, mobile, ips].forEach(function (i) { i.addEventListener('input', compute); });

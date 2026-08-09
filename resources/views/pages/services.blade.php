@@ -52,9 +52,6 @@
     </div>
 </section>
 
-{{-- Our Security Engagement Process (shared with the home page) --}}
-@include('frontend.public.partials.home.tech-diagram')
-
 @include('partials.talk-to-expert')
 
 @endsection

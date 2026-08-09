@@ -71,19 +71,19 @@
     .cl-vapt-posture .container {
         max-width: 1240px;
     }
+    .page-section.cl-vapt-posture { background: #050c17 !important; }
     .cl-vp-map {
         position: relative;
         min-height: 540px;
         margin: 0 auto;
-        border: 1px solid rgba(255, 255, 255, .09);
-        border-radius: 12px;
-        overflow: hidden;
+        border: 0;
+        border-radius: 0;
+        overflow: visible;
         background:
             radial-gradient(360px 300px at 50% 50%, rgba(255, 72, 101, .14), transparent 68%),
             radial-gradient(420px 320px at 28% 34%, rgba(143, 77, 255, .13), transparent 68%),
-            radial-gradient(420px 320px at 72% 36%, rgba(255, 79, 104, .12), transparent 68%),
-            linear-gradient(180deg, rgba(11, 14, 18, .96), rgba(5, 8, 12, .98));
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04), 0 24px 70px rgba(0, 0, 0, .34);
+            radial-gradient(420px 320px at 72% 36%, rgba(255, 79, 104, .12), transparent 68%);
+        box-shadow: none;
     }
     .cl-vp-map::before {
         content: "";
@@ -97,13 +97,7 @@
         opacity: .26;
         mask-image: radial-gradient(circle at 50% 50%, #000, transparent 76%);
     }
-    .cl-vp-map::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        background: radial-gradient(ellipse at center, transparent 0 48%, rgba(0, 0, 0, .34) 100%);
-    }
+    .cl-vp-map::after { display: none; }
     .cl-vp-wire {
         position: absolute;
         inset: 0;
@@ -117,12 +111,18 @@
         stroke-width: 1.15;
         stroke-linecap: round;
         stroke-linejoin: round;
+        stroke-dasharray: 7 10;
+        animation: clVpWireFlow 2.1s linear infinite;
     }
+    .cl-vp-wire-left path:nth-child(2n) { animation-duration: 2.7s; }
+    .cl-vp-wire-right path { animation-direction: reverse; }
+    .cl-vp-wire-right path:nth-child(2n) { animation-duration: 2.5s; }
     .cl-vp-wire-left path { stroke: url(#clVpLeftWire); }
     .cl-vp-wire-right path { stroke: url(#clVpRightWire); }
     .cl-vp-wire-dots circle {
         fill: #ff4f68;
         filter: drop-shadow(0 0 6px rgba(255, 79, 104, .72));
+        animation: clVpDotFlow 1.8s ease-in-out infinite alternate;
     }
     .cl-vp-wire-dots circle:nth-child(-n+4),
     .cl-vp-wire-dots circle:nth-child(9),
@@ -283,6 +283,8 @@
         0%, 100% { opacity: .52; transform: scale(.96); }
         50% { opacity: 1; transform: scale(1.04); }
     }
+    @keyframes clVpWireFlow { to { stroke-dashoffset: -34; } }
+    @keyframes clVpDotFlow { to { opacity: .3; } }
 
     @media (max-width: 991.98px) {
         .cl-vp-map {
@@ -337,7 +339,7 @@
     @media (max-width: 575.98px) {
         .cl-vp-map {
             padding: 1rem;
-            border-radius: 10px;
+            border-radius: 0;
         }
         .cl-vp-text {
             font-size: .88rem;
@@ -346,7 +348,9 @@
 
     @media (prefers-reduced-motion: reduce) {
         .cl-vp-hub::before,
-        .cl-vp-hub::after {
+        .cl-vp-hub::after,
+        .cl-vp-wire path,
+        .cl-vp-wire-dots circle {
             animation: none !important;
         }
     }
