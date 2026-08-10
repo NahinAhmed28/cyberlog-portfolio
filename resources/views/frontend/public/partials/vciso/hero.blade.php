@@ -32,11 +32,10 @@
 
         <div class="cl-vciso-dashboard-row" data-reveal data-hero>
             <figure class="cl-vciso-dashboard">
-                <img
-                    src="{{ asset('assets/img/vciso/client-dashboard.svg') }}"
-                    alt="Prohoree 365 dashboard showing a live cyber threat map, attack feed, and integrated security services"
-                    loading="eager"
-                    decoding="async">
+              <video width="100%" height="auto" autoplay muted loop playsinline>
+    <source src="{{ asset('assets/img/vciso/vciso.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
             </figure>
         </div>
 
@@ -108,9 +107,9 @@
         position: relative;
         z-index: 1;
     }
-    .cl-vciso-hero-row {
+    /* .cl-vciso-hero-row {
         min-height: 390px;
-    }
+    } */
     .cl-vciso-title {
         font-size: clamp(2rem, 2.75vw, 2.8rem);
         line-height: 1.02;

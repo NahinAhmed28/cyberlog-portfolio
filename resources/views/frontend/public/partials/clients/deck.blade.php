@@ -225,13 +225,13 @@
     }
     .cl-browser-body img {
         width: 100%; height: 100%;
-        object-fit: cover; object-position: top center;
+        object-fit: fill; object-position: top center;
         display: block;
         transition: transform .35s var(--ease);
     }
     .cl-deck-card.is-front .cl-browser-body img,
     .cl-deck-card:hover .cl-browser-body img {
-        transform: scale(1.045);
+        transform: scale(1);
     }
 
     .cl-deck-nav {
