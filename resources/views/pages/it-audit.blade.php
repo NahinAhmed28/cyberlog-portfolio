@@ -3,16 +3,50 @@
 @section('title', 'IT Security Audit & ISO/IEC 27001 — Cyberlog')
 
 @section('content')
+<style>
+    .cl-nav-cta.btn-xl {
+    padding: 1rem 1.75rem;
+    font-size: 1.25rem;
+}
+
+.cl-step{padding:0px;}
+</style>
 
 {{-- Section 1 — Hero (same treatment as SOC: centered, box removed) --}}
-@include('partials.page-hero', [
-    'eyebrow' => 'IT Security Audit & ISO/IEC 27001',
-    'heading' => 'Strengthen Security Controls and <span class="text-teal">Prepare for Compliance</span>',
-    'subheading' => 'Cyberlog helps organizations review IT systems, identify security gaps, improve governance, and prepare for ISO/IEC 27001 implementation and audit readiness.',
-    //'badges' => ['ISO 27001', 'Gap Assessment', 'Risk Treatment', 'Audit Readiness'],
-    'centered' => true,
-])
 
+
+<header class="cl-hero text-white py-5" id="hero">
+    <div class="container py-5">
+        <div class="row align-items-center g-5 ">
+            <div class="col-lg-7">
+                    <p class="section-eyebrow mb-3">IT Security Audit & ISO/IEC 27001</p>
+                <h1 class="cl-hero-heading text-start mb-3">Strengthen Security Controls and <span class="text-teal">Prepare for Compliance</span></h1>
+                <p class="lead text-white-50 mb-4">Cyberlog helps organizations review IT systems, identify security gaps, improve governance, and prepare for ISO/IEC 27001 implementation and audit readiness.</p>
+
+
+                <div class="d-flex flex-wrap gap-3">
+                    <a class="btn btn-xl text-white fw-bold btn cl-nav-cta"
+                       href="{{ route('contact') }}">
+                       Talk to an Expert
+                    </a>
+                </div>
+            </div>
+
+
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="cl-step text-center">
+                       
+                       
+                                <video width="100%" height="auto" autoplay muted loop playsinline>
+    <source src="{{ asset('assets/img/services/iso27001.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+                    </div>
+                </div>
+  
+        </div>
+    </div>
+</header>
 {{-- Section 2 — Client --}}
 @include('partials.clients')
 

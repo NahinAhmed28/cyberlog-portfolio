@@ -61,8 +61,9 @@
                 <div class="cl-foot-head">Contact</div>
                 <p class="text-muted mb-2"><i class="fas fa-location-dot text-primary me-2"></i>374 Tejgaon Industrial Area, 3rd Floor, Dhaka 1208, Bangladesh</p>
                 <p class="text-muted mb-2"><i class="fas fa-envelope text-primary me-2"></i><a class="link-light text-decoration-none" href="mailto:info@cyberlog.bd">info@cyberlog.bd</a></p>
-                <p class="text-muted mb-2"><i class="fas fa-phone text-primary me-2"></i>+880 1357-699084</p>
-                <p class="text-muted mb-3"><i class="fa-solid fa-earth-americas text-primary me-2"></i><a href="http://www.cyberlog.bd" target="_blank">http://www.cyberlog.bd</p>
+                <p class="text-muted mb-2"><i class="fas fa-phone text-primary me-2"></i>+880 1576-990884</p>
+                <p class="text-muted mb-3"><i class="fa-solid fa-earth-americas text-primary me-2"></i><a href="https://www.cyberlog.bd" target="_blank">https://www.cyberlog.bd</a></p>
+                <p class="text-muted mb-3">TRAD/DNCC/030973/2025</p>
                 <div class="d-flex gap-2">
                     <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
                     <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/company/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>

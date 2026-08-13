@@ -3,19 +3,48 @@
 @section('title', 'Awareness & Security Training - Cyberlog')
 
 @section('content')
+<style>
+    .cl-nav-cta.btn-xl {
+    padding: 1rem 1.75rem;
+    font-size: 1.25rem;
+}
 
-{{-- Section 1 — Hero --}}
-@include('partials.page-hero', [
-    'eyebrow' => 'Services',
-    'heading' => 'Awareness &amp; <span class="text-teal">Security Training</span>',
-    'subheading' => "Strengthen your organization's human firewall with practical, role-based cybersecurity training built on real-world attack scenarios.",
-    //'badges' => ['Awareness Training', 'Phishing Simulation', 'Role-based Curriculum'],
-    'primaryCta' => ['label' => 'Talk to an Expert', 'url' => route('contact')],
-    'heroIcon' => 'fas fa-graduation-cap',
-    'heroCaption' => 'Security awareness training',
-    'centered' => false,
-    'noCenteredHeading' => true
-])
+.cl-step{padding:0px;}
+</style>
+
+<header class="cl-hero text-white py-5" id="hero">
+    <div class="container py-5">
+        <div class="row align-items-center g-5 ">
+            <div class="col-lg-7">
+                    <p class="section-eyebrow mb-3">Awareness & Security Training</p>
+                <h1 class="cl-hero-heading text-start mb-3">Awareness &amp; <span class="text-teal">Security Training</span></h1>
+                <p class="lead text-white-50 mb-4">Strengthen your organization's human firewall with practical, role-based cybersecurity training built on real-world attack scenarios.</p>
+
+
+                <div class="d-flex flex-wrap gap-3">
+                    <a class="btn btn-xl text-white fw-bold btn cl-nav-cta"
+                       href="{{ route('contact') }}">
+                       Talk to an Expert
+                    </a>
+                </div>
+            </div>
+
+
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="cl-step text-center">
+                       
+                       
+                                <video width="100%" height="auto" autoplay muted loop playsinline>
+    <source src="{{ asset('assets/img/services/Awareness & Security Training.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+                   
+                    </div>
+                </div>
+  
+        </div>
+    </div>
+</header>
 
 {{-- Section 2 — Client --}}
 @include('partials.clients')
@@ -141,20 +170,7 @@
         <p class="section-eyebrow text-center mb-2">Get Started</p>
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Get Your Staff Started With Training Today</h2>
         <div class="row g-4 justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class="cl-price-card h-100 d-flex flex-column">
-                    <h4 class="fw-bold">Enterprise</h4>
-                    <p class="text-muted">50+ employees</p>
-                    <ul class="list-unstyled text-start mb-4">
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Department-specific training tracks and reporting</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Dedicated program coordinator</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Custom phishing simulation campaigns</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Multiple admin access</li>
-                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Designed to support large organizations</li>
-                    </ul>
-                    <a class="btn btn-primary text-white fw-bold mt-auto" href="{{ route('contact') }}">Get a Quote</a>
-                </div>
-            </div>
+         
             <div class="col-md-6 col-lg-5">
                 <div class="cl-price-card h-100 d-flex flex-column">
                     <h4 class="fw-bold">Small Teams</h4>
@@ -168,11 +184,25 @@
                     <a class="btn btn-primary fw-bold mt-auto" href="{{ route('contact') }}">Get Started</a>
                 </div>
             </div>
+               <div class="col-md-6 col-lg-5">
+                <div class="cl-price-card h-100 d-flex flex-column">
+                    <h4 class="fw-bold">Enterprise</h4>
+                    <p class="text-muted">50+ employees</p>
+                    <ul class="list-unstyled text-start mb-4">
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Department-specific training tracks and reporting</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Dedicated program coordinator</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Custom phishing simulation campaigns</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Multiple admin access</li>
+                        <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Designed to support large organizations</li>
+                    </ul>
+                    <a class="btn btn-primary text-white fw-bold mt-auto" href="{{ route('contact') }}">Get a Quote</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-{{-- Section 8 — Contact Us (ref: cira.ca) --}}
+{{-- Section 8 — Contact Us (ref: cira.ca) 
 <section class="page-section" id="contact">
     <div class="container">
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Us</h2>
@@ -199,5 +229,8 @@
         </div>
     </div>
 </section>
+--}}
+
+@include('partials.talk-to-expert', ['title' => 'Need a CISO without the full-time cost?', 'text' => 'Get executive security leadership from day one.'])
 
 @endsection

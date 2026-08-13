@@ -19,7 +19,7 @@ $rows = [
                     <thead>
                         <tr>
                             <th>SOC Model</th>
-                            <th>Yearly Cost</th>
+                         {{--   <th>Yearly Cost</th> --}}
                             <th>Setup Time</th>
                             <th>MTTR (hrs)</th>
                             <th>Threats Stopped</th>
@@ -30,9 +30,9 @@ $rows = [
                         @foreach ($rows as $r)
                             <tr class="{{ $r['hl'] ? 'cl-row-highlight' : '' }}">
                                 <td class="fw-semibold">
-                                    @if ($r['hl'])<i class="fas fa-shield-halved text-primary me-1"></i>@endif{{ $r['model'] }}
+                                    @if ($r['hl'])</i>@endif{{ $r['model'] }}
                                 </td>
-                                <td>{{ $r['cost'] }}</td>
+                              {{--  <td>{{ $r['cost'] }}</td> --}}
                                 <td>{{ $r['setup'] }}</td>
                                 <td>{{ $r['mttr'] }}</td>
                                 <td>{{ $r['stopped'] }}</td>
