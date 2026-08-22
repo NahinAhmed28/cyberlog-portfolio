@@ -195,7 +195,7 @@
                         <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Multiple admin access</li>
                         <li class="mb-2"><i class="fas fa-check text-teal me-2"></i>Designed to support large organizations</li>
                     </ul>
-                    <a class="btn btn-primary text-white fw-bold mt-auto" href="{{ route('contact') }}">Get a Quote</a>
+                    <a class="btn btn-primary text-white fw-bold mt-auto" href="{{ route('contact') }}">Get Started</a>
                 </div>
             </div>
         </div>

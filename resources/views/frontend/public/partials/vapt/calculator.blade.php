@@ -9,9 +9,6 @@
                     VAPT effort depends on asset count, application complexity, user roles, testing depth,
                     and environment type. Share your scope details to get an initial estimate from Cyberlog.
                 </p>
-                <p class="text-muted small mb-0" data-reveal>
-                    <i class="fas fa-circle-info text-primary me-1"></i> Indicative only. Final effort is confirmed after scoping.
-                </p>
             </div>
 
             <div class="col-lg-7" data-reveal>
@@ -54,7 +51,7 @@
                         </div>
                     </div>
                     <div class="cl-vapt-break" id="vaptCalcBreak"></div>
-                    <a class="btn btn-alert text-white fw-bold w-100 mt-3" href="{{ route('contact') }}">Get Custom Quote</a>
+                    <a class="btn btn-alert text-white fw-bold w-100 mt-3" href="{{ route('contact') }}">Get This Quote</a>
                 </div>
             </div>
         </div>

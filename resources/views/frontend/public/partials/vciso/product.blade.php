@@ -127,10 +127,8 @@
 <section class="page-section cl-vciso-product" id="vciso-platform">
     <div class="container">
         <p class="section-eyebrow text-center mb-2" data-reveal>Prohoree 365</p>
-        {{-- TODO: copy — section heading not provided in the checklist --}}
         <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>
-            Bangladesh's First Unified Cybersecurity Solution:
-            <span class="cl-title-accent d-block">Prohoree 365</span>
+            Prohoree 365 Components
         </h2>
 
         <div class="cl-vm-card" data-reveal>

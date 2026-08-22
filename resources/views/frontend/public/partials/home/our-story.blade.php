@@ -89,9 +89,9 @@
         </div>
 
         <div class="cl-story-stats" data-reveal>
-            <div><strong>14+</strong><span>Enterprise And Government Clients</span></div>
+            <div><strong>21+</strong><span>Enterprise And Government Clients</span></div>
             <div><strong>24/7</strong><span>Security Operations Coverage</span></div>
-            <div><strong>500+</strong><span>Users Protected Across Services</span></div>
+            <div><strong>5000+</strong><span>Users Protected Across Services</span></div>
         </div>
     </div>
 </section>

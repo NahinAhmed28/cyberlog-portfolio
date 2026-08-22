@@ -4,13 +4,6 @@
 
 @section('content')
 
-@include('partials.page-hero', [
-    'eyebrow' => 'Our Team',
-    'heading' => 'The People Behind <span class="text-teal">Cyberlog</span>',
-    'subheading' => 'A team of offensive and defensive security specialists dedicated to building digital resilience for organizations across Bangladesh.',
-    'centered' => true,
-])
-
 <section class="page-section" id="team">
     <div class="container">
         <p class="section-eyebrow text-center mb-2">Leadership</p>
