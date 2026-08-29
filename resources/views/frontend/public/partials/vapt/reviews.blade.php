@@ -4,19 +4,19 @@
             'rating' => '5.0',
             'quote' => "As Bangladesh's national investment platform, our systems can't afford weak points. Cyberlog's VAPT team identified real, exploitable risks across our platform and gave us a clear path to fix them—the kind of assessment a government platform needs.",
             'name' => 'BIDA (Bangladesh Investment Development Authority)',
-            'initials' => 'BIDA',
+            'logo' => 'images/clients/bida.png',
         ],
         [
             'rating' => '5.0',
             'quote' => "Our digital services reach millions of citizens, so security testing has to be thorough and precise. Cyberlog's assessment was methodical, well-documented, and gave our technical team exactly the evidence needed to prioritize fixes.",
             'name' => 'a2i (Aspire to Innovate)',
-            'initials' => 'a2i',
+            'logo' => 'images/clients/a2i.png',
         ],
         [
             'rating' => '5.0',
             'quote' => "As a financial marketplace handling sensitive customer data, security testing isn't a formality for us—it's core to trust. Cyberlog's VAPT team found real, practical risks in our platform and helped us close them fast, with reporting our engineering team could act on immediately.",
             'name' => 'AamarTaka.com',
-            'initials' => 'AT',
+            'logo' => 'images/clients/aamar-taka.png',
         ],
     ];
 @endphp
@@ -36,7 +36,7 @@
                 <div class="col-md-4">
                     <article class="cl-proof-card h-100" data-reveal>
                         <div class="cl-proof-badge" aria-hidden="true">
-                            <strong>{{ $review['initials'] }}</strong>
+                            <img src="{{ asset($review['logo']) }}" alt="" loading="lazy" decoding="async">
                         </div>
                         <h3 class="cl-proof-award">{{ $review['name'] }}</h3>
                         <div class="cl-proof-rating" aria-label="{{ $review['rating'] }} out of 5 stars">
@@ -59,9 +59,11 @@
             radial-gradient(740px 420px at 12% 18%, rgba(109, 156, 255, .08), transparent 62%),
             linear-gradient(180deg, rgba(5, 10, 18, .99), rgba(7, 17, 31, .98));
     }
-    .cl-vapt-proof-reviews .cl-proof-badge strong {
-        font-size: .72rem;
-        letter-spacing: -.02em;
+    .cl-vapt-proof-reviews .cl-proof-badge img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
     .cl-vapt-proof-reviews .cl-proof-award {
         max-width: 19rem;

@@ -577,7 +577,7 @@
                 <article class="cl-proof-card h-100" data-reveal>
 
                     <div class="cl-proof-badge" aria-hidden="true">
-                        <i class="fas fa-city"></i>
+                        <img src="{{ asset('images/clients/gono-projatontri-bangladesh-sarkar.png') }}" alt="" loading="lazy" decoding="async">
                     </div>
 
                     <h3 class="cl-proof-award">
@@ -607,7 +607,7 @@
                 <article class="cl-proof-card h-100" data-reveal>
 
                     <div class="cl-proof-badge" aria-hidden="true">
-                        <i class="fas fa-flask"></i>
+                        <img src="{{ asset('images/clients/bangladesh-petroleum-institute-bpi.png') }}" alt="" loading="lazy" decoding="async">
                     </div>
 
                     <h3 class="cl-proof-award">
@@ -637,7 +637,7 @@
                 <article class="cl-proof-card h-100" data-reveal>
 
                     <div class="cl-proof-badge" aria-hidden="true">
-                        <i class="fas fa-industry"></i>
+                        <img src="{{ asset('images/clients/akij-venture.png') }}" alt="" loading="lazy" decoding="async">
                     </div>
 
                     <h3 class="cl-proof-award">
@@ -690,7 +690,12 @@
         text-shadow: 0 0 14px rgba(255, 255, 255, .16);
     }
     .cl-ai-benefit-card p { color: rgba(247, 251, 255, .88) !important; font-size: .92rem !important; line-height: 1.6; }
-    #client-feedback .cl-proof-badge { font-size: 1.2rem; }
+    #client-feedback .cl-proof-badge img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
     #client-feedback .cl-proof-award { max-width: 19rem; font-size: 1.02rem; }
     @media (prefers-reduced-motion: reduce) { .cl-ai-benefit-card { transition: none; } }
 </style>

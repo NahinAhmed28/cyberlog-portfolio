@@ -32,8 +32,8 @@
 
         <div class="cl-vciso-dashboard-row" data-reveal data-hero>
             <figure class="cl-vciso-dashboard">
-              <video width="100%" height="auto" autoplay muted loop playsinline>
-    <source src="{{ asset('assets/img/vciso/vciso.mp4') }}" type="video/mp4">
+              <video autoplay muted loop playsinline>
+    <source src="{{ asset('assets/video/vapt_dashboard.mp4') }}" type="video/mp4">
     Your browser does not support the video tag.
 </video>
             </figure>
@@ -245,6 +245,15 @@
         height: auto;
         aspect-ratio: 1900 / 867;
         object-fit: cover;
+    }
+    .cl-vciso-dashboard video {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+        background: #040d1a;
     }
     .cl-vciso-diagram-row {
         width: 100%;
