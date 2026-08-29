@@ -33,7 +33,7 @@
         <div class="cl-vciso-dashboard-row" data-reveal data-hero>
             <figure class="cl-vciso-dashboard">
               <video autoplay muted loop playsinline>
-    <source src="{{ asset('assets/video/vapt_dashboard.mp4') }}" type="video/mp4">
+    <source src="{{ asset('assets/video/Vciso_Dashboard.mp4') }}" type="video/mp4">
     Your browser does not support the video tag.
 </video>
             </figure>

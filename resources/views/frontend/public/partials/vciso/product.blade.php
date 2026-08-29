@@ -3,11 +3,12 @@
 @php
     $modules = [
         // 'team' mirrors the hero diagram: blue = Defensive (Blue Team), red = Offensive & Assessment (Red Team).
-        // 'console' rows visualize the module's own bullets as dashboard telemetry (chrome, not marketing copy).
+        // 'screenshot' maps each component to its matching Prohoree 365 workspace capture.
         [
             'name' => 'VAPT',
             'icon' => 'fa-bug',
             'team' => 'red',
+            'screenshot' => 'assets/img/portfolio_website_SS/VAPT.png',
             'headline' => 'Get <span class="cl-vm-hl">Continuous and Validated</span> Vulnerability Insight for Your Business',
             'body' => "vCISO's VAPT module continuously scans your assets and validates exploitable weaknesses, combining automated discovery with manual testing for accurate, real-world findings.",
             'points' => ['Continuous vulnerability scanning', 'Manual exploitation validation', 'OWASP & CVSS-based risk scoring'],
@@ -21,6 +22,7 @@
             'name' => 'SOC',
             'icon' => 'fa-desktop',
             'team' => 'blue',
+            'screenshot' => 'assets/img/portfolio_website_SS/SOC.png',
             'headline' => 'Stay Protected with <span class="cl-vm-hl">Real-Time</span> Threat Monitoring',
             'body' => 'Our SOC module delivers centralized visibility into your environment, correlating logs and alerts so threats are caught the moment they emerge.',
             'points' => ['Centralized log correlation', 'Real-time alerting', 'Proactive threat hunting'],
@@ -34,6 +36,7 @@
             'name' => 'Incident Response',
             'icon' => 'fa-bolt',
             'team' => 'blue',
+            'screenshot' => 'assets/img/portfolio_website_SS/incident_response.png',
             'headline' => 'Respond <span class="cl-vm-hl">Faster</span> When It Matters Most',
             'body' => 'When an incident hits, vCISO guides your team through rapid containment and investigation, minimizing impact and downtime.',
             'points' => ['Rapid threat containment', 'Guided investigation workflows', 'Post-incident reporting'],
@@ -47,6 +50,7 @@
             'name' => 'Firewall Management',
             'icon' => 'fa-shield-virus',
             'team' => 'blue',
+            'screenshot' => 'assets/img/portfolio_website_SS/Resilence.png',
             'headline' => '<span class="cl-vm-hl">Centralized Control</span> Over Your Network Defenses',
             'body' => 'Manage and monitor your firewall policies from a single dashboard, with real-time visibility into rule changes and unauthorized access attempts.',
             'points' => ['Real-time rule monitoring', 'Policy configuration & updates', 'Unauthorized access alerts'],
@@ -60,6 +64,7 @@
             'name' => 'Risk Assessment',
             'icon' => 'fa-triangle-exclamation',
             'team' => 'red',
+            'screenshot' => 'assets/img/portfolio_website_SS/Risk_assesment.png',
             'headline' => 'Know Your Risk <span class="cl-vm-hl">Before It Becomes a Breach</span>',
             'body' => "vCISO continuously evaluates your organization's risk exposure, scoring assets by impact so your team always knows where to focus first.",
             'points' => ['Asset-based risk scoring', 'Business impact analysis', 'Prioritized remediation roadmap'],
@@ -73,6 +78,7 @@
             'name' => 'Backup',
             'icon' => 'fa-database',
             'team' => 'blue',
+            'screenshot' => 'assets/img/portfolio_website_SS/Backup.png',
             'headline' => 'Keep Your Business Running, <span class="cl-vm-hl">No Matter What</span>',
             'body' => 'Automated backups and fast recovery options ensure your critical data and operations are protected against disruption.',
             'points' => ['Automated backup scheduling', 'Secure off-site storage', 'Fast disaster recovery'],
@@ -86,6 +92,7 @@
             'name' => 'Data Encryption',
             'icon' => 'fa-lock',
             'team' => 'blue',
+            'screenshot' => 'assets/img/portfolio_website_SS/Data_encryption.png',
             'headline' => 'Protect Sensitive Data at <span class="cl-vm-hl">Every Layer</span>',
             'body' => 'Track encryption status across your critical assets in real time, ensuring sensitive data stays protected at rest and in transit.',
             'points' => ['End-to-end encryption status', 'Key management visibility', 'Compliance-ready reporting'],
@@ -99,6 +106,7 @@
             'name' => 'Capacity Building (Training)',
             'icon' => 'fa-graduation-cap',
             'team' => 'red',
+            'screenshot' => 'assets/img/portfolio_website_SS/Security&Training.png',
             'headline' => 'Build a <span class="cl-vm-hl">Security-Aware</span> Workforce',
             'body' => "Track your team's training progress and phishing readiness directly from the dashboard, turning awareness into a measurable metric.",
             'points' => ['Role-based training modules', 'Phishing simulation campaigns', 'Awareness progress tracking'],
@@ -112,6 +120,7 @@
             'name' => 'Threat Intelligence',
             'icon' => 'fa-satellite-dish',
             'team' => 'red',
+            'screenshot' => 'assets/img/portfolio_website_SS/Threat_inteligence.png',
             'headline' => 'Stay Ahead with <span class="cl-vm-hl">Real-Time</span> Threat Visibility',
             'body' => 'vCISO continuously monitors emerging threats and exposed assets across your digital footprint, giving your team early warning before risks become incidents.',
             'points' => ['Leaked credential monitoring', 'Phishing campaign detection', 'Industry-specific threat insights'],
@@ -155,25 +164,12 @@
                                         </ul>
                                     </div>
                                     <div class="col-lg-5">
-                                        <div class="cl-vm-visual cl-vm-team-{{ $m['team'] }}" aria-hidden="true">
-                                            <div class="cl-vm-visual-top">
-                                                <span></span><span></span><span></span>
-                                                <strong>vCISO // {{ strtoupper($m['name']) }}</strong>
-                                                <i class="fas {{ $m['icon'] }} cl-vm-top-icon"></i>
-                                            </div>
-                                            <div class="cl-vmc">
-                                                @foreach ($m['console'] as $row)
-                                                    <div class="cl-vmc-row">
-                                                        <b>{{ $row[0] }}</b>
-                                                        <span>{{ $row[1] }}</span>
-                                                        <em class="cl-vmc-chip {{ $row[3] }}">{{ $row[2] }}</em>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                            <div class="cl-vm-visual-status">
-                                                <span class="cl-vm-dot"></span> MODULE ACTIVE
-                                            </div>
-                                        </div>
+                                        <figure class="cl-vm-screenshot cl-vm-team-{{ $m['team'] }}">
+                                            <img src="{{ asset($m['screenshot']) }}"
+                                                 alt="{{ $m['name'] }} dashboard screenshot"
+                                                 loading="lazy"
+                                                 decoding="async">
+                                        </figure>
                                     </div>
                                 </div>
                             </div>
@@ -255,6 +251,26 @@
     }
     .cl-vm-points li:last-child { margin-bottom: 0; }
     .cl-vm-points i { color: var(--warm-soft); margin-top: .26rem; flex: 0 0 auto; }
+
+    .cl-vm-screenshot {
+        position: relative;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid rgba(109, 156, 255, .34);
+        border-radius: 10px;
+        background: #07111f;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, .4), 0 0 26px rgba(47, 107, 255, .08);
+    }
+    .cl-vm-screenshot.cl-vm-team-red {
+        border-color: rgba(228, 31, 61, .34);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, .4), 0 0 26px rgba(228, 31, 61, .08);
+    }
+    .cl-vm-screenshot img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
 
     /* Module visual — mini console (blends, no invented copy) */
     .cl-vm-visual {
