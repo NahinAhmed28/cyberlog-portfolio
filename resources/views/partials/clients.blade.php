@@ -66,16 +66,12 @@ $clients = [
                     @for ($set = 0; $set < 3; $set++)
                         <div class="cl-marquee-set" @if ($set > 0) aria-hidden="true" @endif>
                             @foreach ($clients as $c)
-                                @php($href = $c['url'] ?? '#')
-                                <a class="cl-client-logo"
-                                   href="{{ $href }}"
-                                   @if ($href !== '#') target="_blank" rel="noopener" @endif
-                                   @if ($set === 0) aria-label="{{ $c['name'] }}" @else tabindex="-1" @endif>
+                                <span class="cl-client-logo {{ $c['name'] === 'Purbachal' ? 'cl-client-logo--light' : '' }}">
                                     <img src="{{ asset($c['logo']) }}"
                                          alt="{{ $set === 0 ? $c['name'] : '' }}"
                                          loading="eager"
                                          decoding="async">
-                                </a>
+                                </span>
                             @endforeach
                         </div>
                     @endfor

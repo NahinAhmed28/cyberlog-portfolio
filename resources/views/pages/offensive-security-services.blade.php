@@ -41,15 +41,11 @@
             ],
         ],
         [
-            'route' => 'network-security',
+            'route' => 'secure-code-review',
             'image' => 'assets/img/services/offensive/source-code-security-audit.png',
-            'imageAlt' => 'Network security assessment visual with firewall and infrastructure nodes',
-            'lead' => 'Map infrastructure exposure and reduce attack paths.',
-            'points' => [
-                'Internal and external network assessment across services, servers, and access layers',
-                'Firewall, wireless, segmentation, and configuration review',
-                'Prioritized remediation for exposed services and reachable attack paths',
-            ],
+            'imageAlt' => 'Source code security audit visual with code analysis and security testing',
+            'lead' => 'Find and fix security weaknesses in your codebase.',
+            'points' => $catalogue->get('secure-code-review')['detail']['points'],
         ],
     ];
 

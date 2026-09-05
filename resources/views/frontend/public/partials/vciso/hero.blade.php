@@ -15,7 +15,7 @@
     ];
 @endphp
 
-<header class="cl-vciso-hero" id="page-top">
+<header class="cl-vciso-hero" id="hero">
     <div class="container">
         <div class="row cl-vciso-hero-row">
             <div class="col-12">
@@ -124,7 +124,15 @@
         display: none;
     }
     .cl-vciso-intro {
-        width: min(100%, 980px);
+        width: 100%;
+        container-type: inline-size;
+    }
+    @media (min-width: 768px) {
+        .cl-vciso-title {
+            font-size: clamp(1rem, 2.2vw, 2.8rem);
+            font-size: clamp(1rem, 2.9cqw, 2.8rem);
+            white-space: nowrap;
+        }
     }
     .cl-vciso-components-heading {
         margin-top: clamp(2.5rem, 5vw, 4.5rem);

@@ -28,10 +28,10 @@
             {{-- Services — the 9-service catalogue (config/cyberlog_services.php) --}}
             <div class="col-12 col-xl-4">
                 <div class="cl-foot-head">Major Services</div>
-                    <a class="cl-foot-link" href="#">Security Operations Center (SOC)</a>
-                    <a class="cl-foot-link" href="#">Vulnerability Assessment & Penetration Testing (VAPT)</a>
-                    <a class="cl-foot-link" href="#">IT Security Audit & ISO/IEC 27001</a>
-                    <a class="cl-foot-link" href="#">Awareness & Security Training</a>
+                    <a class="cl-foot-link" href="{{ route('soc') }}">Security Operations Center (SOC)</a>
+                    <a class="cl-foot-link" href="{{ route('vapt') }}">Vulnerability Assessment & Penetration Testing (VAPT)</a>
+                    <a class="cl-foot-link" href="{{ route('it-audit') }}">IT Security Audit & ISO/IEC 27001</a>
+                    <a class="cl-foot-link" href="{{ route('capacity-building') }}">Awareness & Security Training</a>
                     <a class="cl-foot-link" href="{{ route('ai-automation') }}">AI & Automation</a>
                 {{--<div class="cl-foot-services">
                     @foreach (config('cyberlog_services', []) as $svc)
@@ -51,7 +51,7 @@
             <div class="col-6 col-xl-2">
                 <div class="cl-foot-head">Company</div>
                 <a class="cl-foot-link" href="{{ $u('public.about', 'about') }}">About Us</a>
-                <a class="cl-foot-link" href="#">Our Team</a>
+                <a class="cl-foot-link" href="{{ route('our-team') }}">Our Team</a>
                 <a class="cl-foot-link" href="{{ $u('public.career', 'career') }}">Career</a>
                 <a class="cl-foot-link" href="{{ $u('public.contact', 'contact') }}">Contact</a>
             </div>

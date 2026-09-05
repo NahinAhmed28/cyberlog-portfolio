@@ -50,7 +50,8 @@
             'name' => 'Firewall Management',
             'icon' => 'fa-shield-virus',
             'team' => 'blue',
-            'screenshot' => 'assets/img/portfolio_website_SS/Resilence.png',
+            // No approved Firewall workspace capture was supplied. The resilience image shows backups.
+            'screenshot' => null,
             'headline' => '<span class="cl-vm-hl">Centralized Control</span> Over Your Network Defenses',
             'body' => 'Manage and monitor your firewall policies from a single dashboard, with real-time visibility into rule changes and unauthorized access attempts.',
             'points' => ['Real-time rule monitoring', 'Policy configuration & updates', 'Unauthorized access alerts'],
@@ -144,17 +145,17 @@
             <div class="accordion" id="vmAccordion">
                 @foreach ($modules as $i => $m)
                     <div class="cl-vm-item">
-                        <button class="cl-vm-toggle {{ $i === 0 ? '' : 'collapsed' }}" type="button"
-                                data-vm-target="#vm{{ $i }}"
-                                aria-expanded="{{ $i === 0 ? 'true' : 'false' }}" aria-controls="vm{{ $i }}">
+                        <button id="vm-toggle-{{ $i }}" class="cl-vm-toggle collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#vm{{ $i }}"
+                                aria-expanded="false" aria-controls="vm{{ $i }}">
                             <i class="fas fa-plus cl-vm-plus" aria-hidden="true"></i>
                             <span>{{ $m['name'] }}</span>
                         </button>
 
-                        <div id="vm{{ $i }}" class="collapse {{ $i === 0 ? 'show' : '' }}" data-bs-parent="#vmAccordion">
+                        <div id="vm{{ $i }}" class="collapse" data-bs-parent="#vmAccordion" role="region" aria-labelledby="vm-toggle-{{ $i }}">
                             <div class="cl-vm-panel">
-                                <div class="row g-4 g-lg-5 align-items-center">
-                                    <div class="col-lg-7">
+                                <div class="row gx-4 gx-lg-5 align-items-center">
+                                    <div class="{{ $m['screenshot'] ? 'col-lg-7' : 'col-12' }}">
                                         <h3 class="cl-vm-headline">{!! $m['headline'] !!}</h3>
                                         <p class="cl-vm-body">{{ $m['body'] }}</p>
                                         <ul class="cl-vm-points list-unstyled mb-0">
@@ -163,14 +164,16 @@
                                             @endforeach
                                         </ul>
                                     </div>
-                                    <div class="col-lg-5">
-                                        <figure class="cl-vm-screenshot cl-vm-team-{{ $m['team'] }}">
-                                            <img src="{{ asset($m['screenshot']) }}"
-                                                 alt="{{ $m['name'] }} dashboard screenshot"
-                                                 loading="lazy"
-                                                 decoding="async">
-                                        </figure>
-                                    </div>
+                                    @if ($m['screenshot'])
+                                        <div class="col-lg-5">
+                                            <figure class="cl-vm-screenshot cl-vm-team-{{ $m['team'] }}">
+                                                <img src="{{ asset($m['screenshot']) }}"
+                                                     alt="{{ $m['name'] }} dashboard screenshot"
+                                                     loading="lazy"
+                                                     decoding="async">
+                                            </figure>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -230,6 +233,7 @@
     .cl-vm-toggle[aria-expanded="true"] .cl-vm-plus { transform: rotate(45deg); }
 
     .cl-vm-panel { padding: .5rem 1.4rem 1.9rem; }
+    .cl-vm-panel > .row { row-gap: 1.5rem; }
 
     .cl-vm-headline {
         font-family: 'Chakra Petch', sans-serif;
@@ -391,49 +395,4 @@
         .collapse .cl-vmc-row { opacity: 1 !important; transform: none !important; animation: none !important; }
     }
 </style>
-@endpush
-
-@push('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var accordion = document.getElementById('vmAccordion');
-        if (!accordion || !window.bootstrap) return;
-
-        function setToggleState(panel, expanded) {
-            var toggle = accordion.querySelector('.cl-vm-toggle[aria-controls="' + panel.id + '"]');
-            if (!toggle) return;
-            toggle.classList.toggle('collapsed', !expanded);
-            toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-        }
-
-        accordion.querySelectorAll('.collapse').forEach(function (panel) {
-            panel.addEventListener('shown.bs.collapse', function () { setToggleState(panel, true); });
-            panel.addEventListener('hidden.bs.collapse', function () { setToggleState(panel, false); });
-        });
-
-        accordion.addEventListener('click', function (event) {
-            var toggle = event.target.closest('.cl-vm-toggle');
-            if (!toggle || !accordion.contains(toggle)) return;
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            var targetSelector = toggle.getAttribute('data-vm-target');
-            var panel = targetSelector ? accordion.querySelector(targetSelector) : null;
-            if (!panel) return;
-
-            var targetCollapse = window.bootstrap.Collapse.getOrCreateInstance(panel, { toggle: false });
-            if (panel.classList.contains('show')) {
-                targetCollapse.hide();
-                return;
-            }
-
-            accordion.querySelectorAll('.collapse.show').forEach(function (openPanel) {
-                if (openPanel === panel) return;
-                window.bootstrap.Collapse.getOrCreateInstance(openPanel, { toggle: false }).hide();
-            });
-            targetCollapse.show();
-        });
-    });
-</script>
 @endpush

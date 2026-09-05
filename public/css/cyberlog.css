@@ -679,18 +679,21 @@ section[id], header[id] { scroll-margin-top: 68px; }
     display: flex; width: max-content;
     animation: clMarquee 32s linear infinite;
 }
-.cl-marquee:hover .cl-marquee-track { animation-play-state: paused; }
+.cl-marquee:hover .cl-marquee-track,
+.cl-marquee:focus-within .cl-marquee-track { animation-play-state: paused; }
 .cl-marquee-set {
     display: flex;
     flex: 0 0 auto;
-    gap: 2.5rem;
-    padding-right: 2.5rem;
+    align-items: center;
+    gap: 1.5rem;
+    padding-right: 1.5rem;
 }
 @keyframes clMarquee { to { transform: translateX(calc(-100% / 3)); } }
 
 .cl-client-logo {
     display: inline-flex; align-items: center; justify-content: center;
-    min-width: 150px; height: 74px; padding: .75rem 1rem;
+    flex: 0 0 180px;
+    width: 180px; height: 120px; padding: 1rem .75rem;
     font-family: 'IBM Plex Mono', monospace;
     color: var(--muted); font-weight: 500; font-size: .85rem;
     text-decoration: none; white-space: nowrap;
@@ -699,14 +702,24 @@ section[id], header[id] { scroll-margin-top: 68px; }
 }
 .cl-client-logo img {
     display: block;
-    max-width: 136px;
-    max-height: 54px;
+    width: 100%;
+    height: 88px;
     object-fit: contain;
     filter: none;
     transition: filter .25s var(--ease), opacity .25s var(--ease), transform .25s var(--ease);
 }
 .cl-client-logo:hover { color: var(--blue-bright); opacity: 1; transform: translateY(-3px); }
-.cl-client-logo:hover img { transform: scale(1.16); }
+.cl-client-logo:hover img { transform: scale(1.04); }
+.cl-client-logo--light img { background: #f5f7fc; border-radius: 4px; padding: .5rem; }
+@media (max-width: 575.98px) {
+    .cl-client-logo { flex-basis: 150px; width: 150px; height: 104px; }
+    .cl-client-logo img { height: 72px; }
+    .cl-marquee-set { gap: 1rem; padding-right: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cl-marquee { overflow-x: auto; mask: none; -webkit-mask: none; }
+    .cl-marquee-set[aria-hidden="true"] { display: none; }
+}
 
 .cl-client-card {
     display: flex; align-items: center; justify-content: center; gap: .75rem;
@@ -1308,6 +1321,9 @@ html.js [data-reveal].is-in {
 }
 @media (max-width: 1199px) {
     .footer .cl-footer-tagline {right:0;}
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .cl-wordmark { font-size: 5.65rem; }
 }
 @media (max-width: 767.98px) {
     .footer .cl-wordmark-wrap {

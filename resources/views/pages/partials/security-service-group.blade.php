@@ -1,4 +1,4 @@
-<header class="cl-sg-hero cl-sg-{{ $theme }}" id="page-top">
+<header class="cl-sg-hero cl-sg-{{ $theme }}" id="hero">
     <div class="container">
         <div class="cl-sg-hero-grid">
             <div>
@@ -30,7 +30,7 @@
     </div>
 </header>
 
-<section class="page-section cl-sg-section">
+<section class="page-section cl-sg-section cl-sg-{{ $theme }}">
     <div class="container">
         @foreach ($services as $service)
             <article class="cl-sg-row {{ $loop->even ? 'is-even' : '' }}">
@@ -272,7 +272,9 @@
         box-shadow: 0 24px 68px rgba(0, 0, 0, .34);
     }
     .cl-sg-visual.has-image {
-        min-height: 300px;
+        min-height: 0;
+        aspect-ratio: auto;
+        display: block;
         isolation: isolate;
         background: #050c17;
     }
@@ -287,18 +289,10 @@
             radial-gradient(circle at 80% 18%, var(--sg-soft), transparent 34%);
     }
     .cl-sg-visual-img {
-        position: absolute;
-        inset: 0;
+        display: block;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* The generated artwork includes a pale outer mat; crop it inside the
-           frame while keeping the image's proportions intact. */
-        transform: scale(1.18);
-        transition: transform .45s var(--ease);
-    }
-    .cl-sg-row:hover .cl-sg-visual-img {
-        transform: scale(1.225);
+        height: auto;
+        object-fit: contain;
     }
     .cl-sg-visual i {
         color: var(--sg-accent);

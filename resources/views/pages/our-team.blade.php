@@ -14,7 +14,9 @@
                 [
                     'name'  => 'Nazim Farhan Choudhury',
                     'role'  => 'Chairman',
-                    'photo' => 'https://iid.dev/wp-content/uploads/2016/11/Nazim-Farhan-Choudhury-photo.jpg',
+                    'photo' => 'assets/img/team/nazim-farhan-choudhury.png',
+                    'width' => 1254,
+                    'height' => 1254,
                     'bio'   => 'Guides Cyberlog leadership vision, governance, and long-term organizational growth.',
                     'social'=> [
                         'facebook' => 'https://www.facebook.com/nazimfarhanc',
@@ -24,7 +26,9 @@
                 [
                     'name'  => 'Hridoy Mustofa',
                     'role'  => 'Managing Director',
-                    'photo' => 'assets/img/team/hridoy-mustofa.png',
+                    'photo' => 'assets/img/team/hridoy-mustofa.jpeg',
+                    'width' => 953,
+                    'height' => 960,
                     'bio'   => 'Leads Cyberlog technology direction, cyber defense delivery, and security innovation.',
                     'social'=> [
                         'facebook' => 'https://www.facebook.com/hridoy.mustofa',
@@ -40,7 +44,7 @@
                     <article class="cl-team-card h-100">
                         <div class="cl-team-photo">
                             @if ($member['photo'])
-                                <img src="{{ str_starts_with($member['photo'], 'http') ? $member['photo'] : asset($member['photo']) }}" alt="{{ $member['name'] }}" loading="eager" decoding="sync">
+                                <img src="{{ asset($member['photo']) }}" alt="{{ $member['name'] }}" width="{{ $member['width'] }}" height="{{ $member['height'] }}" loading="eager" decoding="async">
                             @else
                                 <i class="fas fa-user"></i>
                             @endif
@@ -333,7 +337,8 @@ Innovation Unit
     }
     .cl-team-card:hover { transform: translateY(-6px); border-color: var(--blue-bright); box-shadow: 0 22px 54px rgba(0, 0, 0, .4); }
     .cl-team-photo {
-        aspect-ratio: 4 / 5;
+        position: relative;
+        aspect-ratio: 1;
         display: grid; place-items: center;
         background:
             radial-gradient(circle at 50% 40%, rgba(109, 156, 255, .14), transparent 60%),
@@ -341,7 +346,7 @@ Innovation Unit
         border-bottom: 1px solid var(--line);
     }
     .cl-team-photo i { font-size: 4rem; color: var(--muted); }
-    .cl-team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .cl-team-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
     .cl-team-body { padding: 1.25rem 1.35rem 1.5rem; }
     .cl-team-role {
         font-family: 'IBM Plex Mono', monospace; font-size: .7rem; letter-spacing: .14em;
