@@ -15,7 +15,7 @@
                 <ul class="list-unstyled">
                     <li class="mb-3"><i class="fas fa-location-dot text-teal me-2"></i>374 Tejgaon Industrial Area, 3rd Floor, Dhaka 1208, Bangladesh</li>
                     <li class="mb-3"><i class="fas fa-envelope text-teal me-2"></i><a class="text-decoration-none" href="mailto:info@cyberlog.bd">info@cyberlog.bd</a></li>
-                    <li class="mb-3"><i class="fas fa-phone text-teal me-2"></i>+880 1357-699084</li>
+                    <li class="mb-3"><i class="fas fa-phone text-teal me-2"></i>+880 1576-990884</li>
                 </ul>
                 <div class="d-flex gap-2">
                     <a class="btn btn-outline-secondary btn-social" href="https://www.facebook.com/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>

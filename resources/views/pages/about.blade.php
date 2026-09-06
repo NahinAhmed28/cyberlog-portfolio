@@ -14,8 +14,6 @@
 {{-- Industry coverage and client grid, ordered per About page feedback. --}}
 @include('partials.about-industries-clients')
 
-@include('partials.reviews')
-
 @include('partials.talk-to-expert')
 
 @endsection
