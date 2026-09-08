@@ -636,7 +636,7 @@
             <div class="col-lg-4" data-reveal="pop">
                 <article class="cl-proof-card h-100">
 
-                    <div class="cl-proof-badge" aria-hidden="true">
+                    <div class="cl-proof-badge cl-proof-badge--akij" aria-hidden="true">
                         <img src="{{ asset('images/clients/akij-venture.png') }}" alt="" loading="lazy" decoding="async">
                     </div>
 
@@ -696,6 +696,14 @@
         width: 96px;
         height: 96px;
         top: -42px;
+    }
+    #client-feedback .cl-proof-badge--akij {
+        width: 176px;
+        padding: .65rem .85rem;
+        background: #10244a;
+        border-color: rgba(109, 156, 255, .4);
+        border-radius: 12px;
+        clip-path: none;
     }
     #client-feedback .cl-proof-badge img {
         display: block;
