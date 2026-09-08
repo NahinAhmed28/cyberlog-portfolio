@@ -1,6 +1,7 @@
-{{-- Home > Security Solutions — 9 service cards from config/cyberlog_services.php. --}}
+{{-- Home > Security Solutions: keep the final service in navigation, outside the card grid. --}}
 @php
-    $solutions = config('cyberlog_services', []);
+    $solutions = collect(config('cyberlog_services', []))
+        ->reject(fn ($service) => $service['route'] === 'secure-web-development');
     $svcUrl = function ($service) {
         $groupRoutes = [
             'offensive' => 'offensive-security-services',

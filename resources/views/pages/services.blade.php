@@ -5,6 +5,9 @@
 @section('content')
 
 @php
+    $solutions = collect(config('cyberlog_services', []))
+        ->reject(fn ($service) => $service['route'] === 'secure-web-development');
+
     $serviceHref = function ($service) {
         $groupRoutes = [
             'offensive' => 'offensive-security-services',
@@ -38,7 +41,7 @@
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Explore Our <span class="cl-title-accent">Security Solutions</span></h2>
 
         <div class="row g-4">
-            @foreach (config('cyberlog_services', []) as $sol)
+            @foreach ($solutions as $sol)
                 <div class="col-md-6 col-lg-4">
                     <a class="cl-solution-card h-100" href="{{ $serviceHref($sol) }}">
                         <div class="cl-solution-icon"><i class="fas {{ $sol['icon'] }}"></i></div>

@@ -32,7 +32,7 @@
     <div class="container-fluid px-lg-5 px-md-4 px-3">
 
         <a class="navbar-brand p-0" href="{{ $u('public.home', 'home') }}">
-            <img src="{{ asset('assets/img/cyberlog-logo.png') }}" alt="Cyberlog" style="height:44px;width:auto;display:block;">
+            <img class="cl-brand-logo" src="{{ asset('assets/img/cyberlog-logo.png') }}" alt="Cyberlog" width="444" height="159">
         </a>
 
         <button class="navbar-toggler bg-primary text-white rounded"

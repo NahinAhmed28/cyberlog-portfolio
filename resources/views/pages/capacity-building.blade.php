@@ -129,39 +129,6 @@
     </div>
 </section>
 --}}
-<section class="page-section bg-navy-soft text-white" id="impact">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-5">
-                <p class="section-eyebrow mb-2">Measurable Impact</p>
-                <h2 class="fw-bold mb-3">Training that moves the needle</h2>
-                <p class="text-white-50 mb-0">
-                    Our capacity building program for the IT team of Bangladesh Investment Development
-                    Authority (BIDA) delivered measurable gains in cybersecurity readiness and
-                    institutional resilience.
-                </p>
-            </div>
-            <div class="col-lg-7">
-                <div class="row g-3">
-                    @foreach ([
-                        ['250%+', "Increase in employees' cybersecurity skills"],
-                        ['12', 'Security areas reviewed'],
-                        ['200+', 'Employees trained (Adcomm Limited)'],
-                        ['85%', 'Reduction in phishing click-through'],
-                    ] as $s)
-                        <div class="col-6">
-                            <div class="cl-step text-center">
-                                <div class="cl-stat-num">{{ $s[0] }}</div>
-                                <div class="text-white-50 small">{{ $s[1] }}</div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 {{-- Section 6 removed: Trusted-by client strip (per request) --}}
 
 {{-- Section 7 — Case Strategy (ref: cira.ca) --}}

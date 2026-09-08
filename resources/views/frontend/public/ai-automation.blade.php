@@ -573,8 +573,8 @@
         <div class="row g-4 cl-proof-grid">
 
             <!-- Review 1 -->
-            <div class="col-lg-4">
-                <article class="cl-proof-card h-100" data-reveal>
+            <div class="col-lg-4" data-reveal="pop">
+                <article class="cl-proof-card h-100">
 
                     <div class="cl-proof-badge" aria-hidden="true">
                         <img src="{{ asset('images/clients/gono-projatontri-bangladesh-sarkar.png') }}" alt="" loading="lazy" decoding="async">
@@ -603,8 +603,8 @@
             </div>
 
             <!-- Review 2 -->
-            <div class="col-lg-4">
-                <article class="cl-proof-card h-100" data-reveal>
+            <div class="col-lg-4" data-reveal="pop">
+                <article class="cl-proof-card h-100">
 
                     <div class="cl-proof-badge" aria-hidden="true">
                         <img src="{{ asset('images/clients/bangladesh-petroleum-institute-bpi.png') }}" alt="" loading="lazy" decoding="async">
@@ -633,8 +633,8 @@
             </div>
 
             <!-- Review 3 -->
-            <div class="col-lg-4">
-                <article class="cl-proof-card h-100" data-reveal>
+            <div class="col-lg-4" data-reveal="pop">
+                <article class="cl-proof-card h-100">
 
                     <div class="cl-proof-badge" aria-hidden="true">
                         <img src="{{ asset('images/clients/akij-venture.png') }}" alt="" loading="lazy" decoding="async">
@@ -690,6 +690,13 @@
         text-shadow: 0 0 14px rgba(255, 255, 255, .16);
     }
     .cl-ai-benefit-card p { color: rgba(247, 251, 255, .88) !important; font-size: .92rem !important; line-height: 1.6; }
+    #client-feedback .cl-proof-card { padding-top: 5rem; }
+    #client-feedback .cl-proof-card:hover { transform: translateY(-8px) scale(1.015); }
+    #client-feedback .cl-proof-badge {
+        width: 96px;
+        height: 96px;
+        top: -42px;
+    }
     #client-feedback .cl-proof-badge img {
         display: block;
         width: 100%;
@@ -697,7 +704,23 @@
         object-fit: contain;
     }
     #client-feedback .cl-proof-award { max-width: 19rem; font-size: 1.02rem; }
-    @media (prefers-reduced-motion: reduce) { .cl-ai-benefit-card { transition: none; } }
+    html.js #client-feedback [data-reveal="pop"] {
+        opacity: 0;
+        transform: translateY(36px) scale(.9);
+        transform-origin: center bottom;
+    }
+    html.js #client-feedback [data-reveal="pop"].is-in {
+        opacity: 1;
+        transform: none;
+        transition: opacity .45s ease-out, transform .65s cubic-bezier(.18, .85, .3, 1.15);
+    }
+    @media (max-width: 991.98px) {
+        #client-feedback .cl-proof-grid { row-gap: 3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .cl-ai-benefit-card { transition: none; }
+        #client-feedback .cl-proof-card:hover { transform: none; }
+    }
 </style>
 @endpush
 

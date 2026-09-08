@@ -6,7 +6,7 @@
     <meta name="description" content="@yield('meta_description', 'Cyberlog — offensive security, managed SOC, compliance, threat intelligence and vCISO for enterprises, government, financial institutions and critical infrastructure.')">
     <title>@yield('title', 'Cyberlog — Cyber Defense')</title>
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/cyberlog-logo.png') }}">
     <script src="https://use.fontawesome.com/releases/v6.5.2/js/all.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
