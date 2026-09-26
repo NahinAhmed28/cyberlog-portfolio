@@ -1,15 +1,14 @@
 <section class="process-section" id="how-we-work">
     <div class="container-fluid px-3 px-lg-4">
 
-        <p class="section-eyebrow text-center mb-2">HOW WE WORK</p>
+        <p class="section-eyebrow text-center mb-2">{{ content('home_tech_diagram', 'paragraph') }}</p>
 
         <h2 class="process-title">
-            <span class="process-title-light">OUR ENGAGEMENT</span> <span class="process-title-accent">PROCESS</span>
+            <span class="process-title-light">{{ content('home_tech_diagram', 'label') }}</span> <span class="process-title-accent">{{ content('home_tech_diagram', 'label_2') }}</span>
         </h2>
 
         <p class="process-subtitle">
-            A structured, repeatable methodology that takes you from risk discovery
-            to continuous protection.
+            {{ content('home_tech_diagram', 'paragraph_2') }}
         </p>
 
         <div class="process-diagram-wrap" data-reveal>
@@ -38,56 +37,23 @@
                 <span class="process-core-sweep"></span>
                 <span class="process-core-pulse"></span>
                 <div class="process-core-mark">
-                    <i class="fas fa-shield-alt"></i>
+                    <i class="{{ content('home_tech_diagram', 'icon') }}"></i>
                 </div>
                 <div class="process-core-copy">
-                    <span>Cyberlog</span>
-                    <strong>Security Ops</strong>
+                    <span>{{ content('home_tech_diagram', 'label_3') }}</span>
+                    <strong>{{ content('home_tech_diagram', 'label_4') }}</strong>
                 </div>
             </div>
 
             <div class="process-stage-grid">
-                <article class="process-card process-card-1">
+                @foreach (content_items('home_tech_diagram_process_stage_grid') as $contentRow)
+<article class="process-card process-card-{{ $loop->iteration }}">
                     <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step 01</div>
-                    <h3>Understanding Business &amp; Risks</h3>
-                    <p class="process-card-tag"><i class="fas fa-bullseye"></i>Scope &amp; Goals</p>
+                    <div class="process-step-meta">{{ $contentRow['div_text'] }}</div>
+                    <h3>{{ $contentRow['heading'] }}</h3>
+                    <p class="process-card-tag"><i class="{{ $contentRow['icon'] }}"></i>{{ $contentRow['paragraph'] }}</p>
                 </article>
-
-                <article class="process-card process-card-2">
-                    <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step 02</div>
-                    <h3>Security Assessment &amp; Discovery</h3>
-                    <p class="process-card-tag"><i class="fas fa-crosshairs"></i>Assets &amp; Exposure</p>
-                </article>
-
-                <article class="process-card process-card-3">
-                    <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step 03</div>
-                    <h3>Vulnerability Testing</h3>
-                    <p class="process-card-tag"><i class="fas fa-bug"></i>VAPT / App Security</p>
-                </article>
-
-                <article class="process-card process-card-4">
-                    <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step 04</div>
-                    <h3>Protection &amp; Implementation</h3>
-                    <p class="process-card-tag"><i class="fas fa-shield-halved"></i>SOC / Hardening</p>
-                </article>
-
-                <article class="process-card process-card-5">
-                    <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step 05</div>
-                    <h3>Monitoring &amp; Threat Detection</h3>
-                    <p class="process-card-tag"><i class="fas fa-satellite-dish"></i>Detect &amp; Respond</p>
-                </article>
-
-                <article class="process-card process-card-6">
-                    <span class="process-beacon"></span>
-                    <div class="process-step-meta">Step 06</div>
-                    <h3>Reporting &amp; Continuous Improvement</h3>
-                    <p class="process-card-tag"><i class="fas fa-arrow-trend-up"></i>Remediation &amp; Compliance</p>
-                </article>
+@endforeach
             </div>
         </div>
     </div>

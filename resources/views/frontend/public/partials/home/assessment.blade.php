@@ -1,71 +1,65 @@
-{{-- Home › Standardised assessment panel (ref: riskledger.com)
-     Split layout: copy on the left, an animated "assessment card" on the right whose
-     rows reveal one after another (the "conversation" reveal). Card content is an
-     illustrative ISO 27001 compliance check (fits Cyberlog's IT Audit service);
-     Compliant = blue, Not compliant = red (blue/red/white theme). --}}
+
 
 <section class="page-section" id="assessment">
     <div class="container">
         <div class="row align-items-center g-5">
 
-            {{-- Left — copy --}}
+            
             <div class="col-lg-5">
-                <p class="section-eyebrow mb-3" data-reveal>Assessment</p>
-                {{-- TODO: copy — heading + paragraph are placeholders (not supplied in brief) --}}
+                <p class="section-eyebrow mb-3" data-reveal>{{ content('home_assessment', 'paragraph') }}</p>
+                
                 <h2 class="cl-assess-h mb-3" data-reveal>
-                    One standardised assessment,<br>
-                    <span class="accent">complete compliance visibility</span>
+                    {{ content('home_assessment', 'heading') }}<br>
+                    <span class="accent">{{ content('home_assessment', 'label') }}</span>
                 </h2>
                 <p class="text-muted" data-reveal>
-                    Cyberlog evaluates each system against a standardised control set — so you can
-                    see exactly where you're compliant, where you're exposed, and which evidence is
-                    still missing, all in one place.
+                    {{ content('home_assessment', 'paragraph_2') }}
                 </p>
             </div>
 
-            {{-- Right — animated assessment card --}}
+            
             <div class="col-lg-7">
                 <div class="cl-q-card" id="clQCard">
 
-                    {{-- line 1: domain header --}}
+                    
                     <div class="cl-q-head cl-q-line">
-                        <div class="cl-q-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div class="cl-q-icon"><i class="{{ content('home_assessment', 'icon') }}"></i></div>
                         <div>
-                            <div class="cl-q-domain">Domain B</div>
-                            <div class="cl-q-title">Security Certifications</div>
+                            <div class="cl-q-domain">{{ content('home_assessment', 'div_text') }}</div>
+                            <div class="cl-q-title">{{ content('home_assessment', 'div_text_2') }}</div>
                         </div>
                     </div>
                     <hr class="cl-q-div">
 
-                    {{-- line 2: question --}}
+                    
                     <div class="cl-q-question cl-q-line">
-                        <span class="cl-q-no">3</span>
-                        <span>Is your organisation ISO 27001 certified?</span>
+                        <span class="cl-q-no">{{ content('home_assessment', 'label_2') }}</span>
+                        <span>{{ content('home_assessment', 'label_3') }}</span>
                     </div>
 
-                    {{-- line 3: compliant response --}}
+                    
                     <div class="cl-q-answer cl-q-line">
                         <div class="cl-q-answer-head">
-                            <span class="cl-q-who"><i class="fas fa-user"></i> Response</span>
-                            <span class="cl-q-status ok"><i class="fas fa-circle-check"></i> Compliant</span>
+                            <span class="cl-q-who"><i class="{{ content('home_assessment', 'icon_2') }}"></i> {{ content('home_assessment', 'label_4') }}</span>
+                            <span class="cl-q-status ok"><i class="{{ content('home_assessment', 'icon_3') }}"></i> {{ content('home_assessment', 'label_5') }}</span>
                         </div>
                         <hr class="cl-q-div">
                         <div class="cl-q-answer-body">
-                            <span class="cl-q-yn">Yes</span>
-                            <span class="cl-q-file"><i class="fas fa-paperclip"></i> ISO27001-2026.pdf</span>
+                            <span class="cl-q-yn">{{ content('home_assessment', 'label_6') }}</span>
+                            <span class="cl-q-file"><i class="{{ content('home_assessment', 'icon_4') }}"></i> {{ content('home_assessment', 'label_7') }}</span>
                         </div>
                     </div>
 
-                    {{-- line 4: non-compliant response --}}
+                    
                     <div class="cl-q-answer cl-q-line">
                         <div class="cl-q-answer-head">
-                            <span class="cl-q-who"><i class="fas fa-user"></i> Response</span>
-                            <span class="cl-q-status bad"><i class="fas fa-circle-xmark"></i> Not compliant</span>
+                            <span class="cl-q-who"><i class="{{ content('home_assessment', 'icon_5') }}"></i> {{ content('home_assessment', 'label_8') }}</span>
+                            <span class="cl-q-status bad"><i class="{{ content('home_assessment', 'icon_6') }}"></i> {{ content('home_assessment', 'label_9') }}</span>
                         </div>
                         <hr class="cl-q-div">
                         <div class="cl-q-answer-body">
-                            <span class="cl-q-yn">No</span>
-                            <span class="cl-q-file muted"><i class="fas fa-link-slash"></i> No evidence</span>
+                            <span class="cl-q-yn">{{ content('home_assessment', 'label_10') }}</span>
+                            <span class="cl-q-file muted"><i class="{{ content('home_assessment', 'icon_7') }}"></i> {{ content('home_assessment', 'label_11') }}</span>
                         </div>
                     </div>
 

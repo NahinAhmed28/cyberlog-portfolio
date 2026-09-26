@@ -84,19 +84,8 @@
 
         /* ---------- Live threat feed ---------- */
         var feed = document.getElementById('cl-feed');
-        if (feed && !reduce) {
-            var events = [
-                ['crit', 'BLOCKED', 'brute-force attempt · 203.0.113.* '],
-                ['ok', 'CLEAN', 'endpoint scan · 1,204 assets'],
-                ['warn', 'TRIAGE', 'anomalous login · finance-vlan'],
-                ['ok', 'PATCHED', 'CVE-2026-1180 · 38 hosts'],
-                ['crit', 'QUARANTINE', 'malware sample · sandbox-07'],
-                ['ok', 'VERIFIED', 'MFA challenge · success'],
-                ['warn', 'WATCH', 'data egress spike · 4.2GB'],
-                ['ok', 'CONTAINED', 'phishing url · sinkholed'],
-                ['crit', 'DENIED', 'lateral move · host-1142'],
-                ['ok', 'SYNCED', 'threat intel feed · updated']
-            ];
+        if (feed && !reduce && window.cyberlogContent?.events?.length) {
+            var events = (window.cyberlogContent?.events || []);
             function ts() {
                 var d = new Date();
                 return d.toTimeString().slice(0, 8);
@@ -105,9 +94,9 @@
                 var ev = events[Math.floor(Math.random() * events.length)];
                 var line = document.createElement('div');
                 line.className = 'cl-feed-line';
-                line.innerHTML = '<span class="ts">' + ts() + '</span>' +
-                    '<span class="' + ev[0] + '">[' + ev[1] + ']</span>' +
-                    '<span>' + ev[2] + '</span>';
+                [['ts', ts()], [ev[0], '[' + ev[1] + ']'], ['', ev[2]]].forEach(function (part) {
+                    var span = document.createElement('span'); span.className = part[0]; span.textContent = part[1]; line.appendChild(span);
+                });
                 feed.insertBefore(line, feed.firstChild);
                 while (feed.children.length > 6) feed.removeChild(feed.lastChild);
             }
@@ -117,17 +106,8 @@
 
         /* ---------- SOC live operations console ---------- */
         var socLog = document.querySelector('[data-soc-live-log]');
-        if (socLog && !reduce) {
-            var socEvents = [
-                ['VERIFIED', 'MFA challenge - success'],
-                ['WATCHED', 'unusual egress - finance-vlan'],
-                ['QUARANTINE', 'malware sample - sandbox-07'],
-                ['BLOCKED', 'brute-force - 203.0.113.*'],
-                ['DENIED', 'lateral move - host-1142'],
-                ['TRIAGED', 'identity alert - account-207'],
-                ['CONTAINED', 'phishing URL - mail-gateway'],
-                ['PATCHED', 'critical CVE - 18 hosts']
-            ];
+        if (socLog && !reduce && window.cyberlogContent?.socEvents?.length) {
+            var socEvents = (window.cyberlogContent?.socEvents || []);
             var alertStat = document.querySelector('[data-soc-stat="alerts"]');
             var blockedStat = document.querySelector('[data-soc-stat="blocked"]');
             var mttrStat = document.querySelector('[data-soc-stat="mttr"]');
@@ -140,7 +120,9 @@
                 var event = socEvents[Math.floor(Math.random() * socEvents.length)];
                 var row = document.createElement('p');
                 row.className = 'is-new';
-                row.innerHTML = socTime() + ' <span>[' + event[0] + ']</span> ' + event[1];
+                row.append(document.createTextNode(socTime() + ' '));
+                var status = document.createElement('span'); status.textContent = '[' + event[0] + ']';
+                row.append(status, document.createTextNode(' ' + event[1]));
                 socLog.insertBefore(row, socLog.firstChild);
                 while (socLog.children.length > 5) socLog.removeChild(socLog.lastChild);
 

@@ -687,8 +687,6 @@ section[id], header[id] { scroll-margin-top: 68px; }
     display: flex; width: max-content;
     animation: clMarquee 32s linear infinite;
 }
-.cl-marquee:hover .cl-marquee-track,
-.cl-marquee:focus-within .cl-marquee-track { animation-play-state: paused; }
 .cl-marquee-set {
     display: flex;
     flex: 0 0 auto;
@@ -699,6 +697,7 @@ section[id], header[id] { scroll-margin-top: 68px; }
 @keyframes clMarquee { to { transform: translateX(calc(-100% / 3)); } }
 
 .cl-client-logo {
+    position: relative;
     display: inline-flex; align-items: center; justify-content: center;
     flex: 0 0 180px;
     width: 180px; height: 120px; padding: 1rem .75rem;
@@ -706,7 +705,7 @@ section[id], header[id] { scroll-margin-top: 68px; }
     color: var(--muted); font-weight: 500; font-size: .85rem;
     text-decoration: none; white-space: nowrap;
     opacity: 1;
-    transition: opacity .25s var(--ease), transform .25s var(--ease);
+    transition: opacity .25s var(--ease);
 }
 .cl-client-logo img {
     display: block;
@@ -716,8 +715,9 @@ section[id], header[id] { scroll-margin-top: 68px; }
     filter: none;
     transition: filter .25s var(--ease), opacity .25s var(--ease), transform .25s var(--ease);
 }
-.cl-client-logo:hover { color: var(--blue-bright); opacity: 1; transform: translateY(-3px); }
-.cl-client-logo:hover img { transform: scale(1.04); }
+/* Enlarge only the image so hover keeps the scrolling track and spacing stable. */
+.cl-client-logo:hover { color: var(--blue-bright); opacity: 1; z-index: 1; }
+.cl-client-logo:hover img { transform: translateY(-3px) scale(1.18); }
 .cl-client-logo--light img { background: #f5f7fc; border-radius: 4px; padding: .5rem; }
 @media (max-width: 575.98px) {
     .cl-client-logo { flex-basis: 150px; width: 150px; height: 104px; }

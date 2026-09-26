@@ -1,17 +1,16 @@
-{{-- VAPT > Hero - SOC-style layout with the slider box removed per feedback --}}
+
 <header class="cl-hero cl-vapt-hero" id="page-top">
     <canvas class="cl-vapt-net" data-net aria-hidden="true"></canvas>
 
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <p class="section-eyebrow mb-3" data-reveal data-hero>Vulnerability Assessment &amp; Penetration Testing</p>
+                <p class="section-eyebrow mb-3" data-reveal data-hero>{{ content('vapt_hero', 'paragraph') }}</p>
                 <h1 class="cl-vapt-h mb-3" data-reveal data-hero>
-                    Find and Fix Security Risks <span>Before Attackers Do</span>
+                    {{ content('vapt_hero', 'heading') }} <span>{{ content('vapt_hero', 'label') }}</span>
                 </h1>
                 <p class="lead text-muted mb-0" data-reveal data-hero>
-                    Cyberlog identifies, validates, and prioritizes exploitable weaknesses across web
-                    applications, APIs, mobile apps, networks, cloud, and infrastructure.
+                    {{ content('vapt_hero', 'paragraph_2') }}
                 </p>
             </div>
 
@@ -19,35 +18,35 @@
                 <div class="cl-vapt-assessment" data-reveal data-hero>
                     <div class="cl-vapt-assessment-top">
                         <span></span>
-                        <strong>VAPT // Active Assessment</strong>
+                        <strong>{{ content('vapt_hero', 'label_2') }}</strong>
                     </div>
                     <div class="cl-vapt-assessment-main">
                         <div class="cl-vapt-radar" aria-hidden="true">
-                            <i class="fas fa-bug"></i>
+                            <i class="{{ content('vapt_hero', 'icon') }}"></i>
                         </div>
                         <div>
-                            <h2>From Exposure to Exploit</h2>
-                            <p>External exposure, authentication bypass, privilege escalation, and data-access impact.</p>
-                            <div class="cl-vapt-live-chart" data-vapt-live-chart aria-label="Live vulnerability activity graph">
-                                @foreach ([36, 58, 44, 72, 51, 84, 63, 46, 76, 57, 88, 68] as $height)
+                            <h2>{{ content('vapt_hero', 'heading_2') }}</h2>
+                            <p>{{ content('vapt_hero', 'paragraph_3') }}</p>
+                            <div class="cl-vapt-live-chart" data-vapt-live-chart aria-label="{{ content('vapt_hero', 'div_aria_label') }}">
+                                @foreach (content_items('vapt_hero_height_items') as $height)
                                     <span style="--h: {{ $height }}%"></span>
                                 @endforeach
                             </div>
                             <div class="cl-vapt-live-meta">
-                                <span><strong data-vapt-findings>24</strong> findings</span>
-                                <span><strong data-vapt-requests>1,842</strong> requests tested</span>
+                                <span><strong data-vapt-findings>{{ content('vapt_hero', 'label_3') }}</strong> {{ content('vapt_hero', 'label_4') }}</span>
+                                <span><strong data-vapt-requests>{{ content('vapt_hero', 'label_5') }}</strong> {{ content('vapt_hero', 'label_6') }}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="cl-vapt-steps" aria-label="VAPT assessment steps">
-                        @foreach (['Recon', 'Scan', 'Exploit', 'Report', 'Retest'] as $index => $step)
+                    <div class="cl-vapt-steps" aria-label="{{ content('vapt_hero', 'div_aria_label_2') }}">
+                        @foreach (content_items('vapt_hero_step_items') as $index => $step)
                             <div><span>{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>{{ $step }}</div>
                         @endforeach
                     </div>
-                    <div class="cl-vapt-logs" data-vapt-live-log aria-live="polite" aria-label="Live VAPT assessment log">
-                        <p><span>[VALIDATED]</span> SQL injection impact confirmed</p>
-                        <p><span>[MAPPED]</span> OWASP access control weakness</p>
-                        <p><span>[QUEUED]</span> remediation evidence review</p>
+                    <div class="cl-vapt-logs" data-vapt-live-log aria-live="polite" aria-label="{{ content('vapt_hero', 'div_aria_label_3') }}">
+                        @foreach (content_items('vapt_hero_vapt_logs') as $contentRow)
+<p><span>{{ $contentRow['label'] }}</span> {{ $contentRow['paragraph'] }}</p>
+@endforeach
                     </div>
                 </div>
             </div>
@@ -209,12 +208,8 @@
 (function () {
     var log = document.querySelector('[data-vapt-live-log]');
     if (!log || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var events = [
-        ['DISCOVERED', 'exposed admin endpoint identified'], ['TESTING', 'authentication flow under analysis'],
-        ['VALIDATED', 'broken access control impact confirmed'], ['MAPPED', 'finding mapped to OWASP Top 10'],
-        ['BLOCKED', 'rate limit engaged during safe test'], ['CAPTURED', 'evidence package securely recorded'],
-        ['RETESTED', 'remediation successfully verified'], ['QUEUED', 'business-logic test case scheduled']
-    ];
+    var events = {{ Illuminate\Support\Js::from(content_items('vapt_live_events')) }};
+    if (!events.length) return;
     var bars = document.querySelectorAll('[data-vapt-live-chart] span');
     var findingsEl = document.querySelector('[data-vapt-findings]');
     var requestsEl = document.querySelector('[data-vapt-requests]');
@@ -224,7 +219,8 @@
         var event = events[Math.floor(Math.random() * events.length)];
         var row = document.createElement('p');
         row.className = 'is-new';
-        row.innerHTML = '<span>[' + event[0] + ']</span> ' + event[1];
+        var status = document.createElement('span'); status.textContent = '[' + event[0] + ']';
+        row.append(status, document.createTextNode(' ' + event[1]));
         log.insertBefore(row, log.firstChild);
         while (log.children.length > 3) log.removeChild(log.lastChild);
         requests += Math.floor(Math.random() * 31) + 8;

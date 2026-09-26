@@ -1,33 +1,16 @@
-{{-- Reusable "Trusted Clients" section using the restored sliding logo marquee. --}}
+
 @php
     // Feedback-folder logos, ordered left-to-right by the supplied reference image.
-$clients = [
-    ['name' => 'Government of Bangladesh', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/gono-projatontri-bangladesh-sarkar.png'],
-    ['name' => 'BIDA', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/bida.png'],
-    ['name' => 'Dhaka Stock Exchange Ltd', 'sector' => 'Capital Market', 'url' => '#', 'logo' => 'images/clients/dhaka-stock-exchange-ltd.png'],
-    ['name' => 'Bangladesh Petroleum Institute (BPI)', 'sector' => 'Government Institute', 'url' => '#', 'logo' => 'images/clients/bangladesh-petroleum-institute-bpi.png'],
-    ['name' => 'National Academy for Planning and Development', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/national-academy-for-planning-and-development.png'],
-    ['name' => 'A2i', 'sector' => 'Digital Government', 'url' => '#', 'logo' => 'images/clients/a2i.png'],
-    ['name' => 'Cabinet Division', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/cabinet-division.png'],
-    ['name' => 'ICT Division', 'sector' => 'Government Organization', 'url' => '#', 'logo' => 'images/clients/ict-division.png'],
-    ['name' => 'UNDP', 'sector' => 'Development Organization', 'url' => '#', 'logo' => 'images/clients/undp.png'],
-    ['name' => 'Akij Venture', 'sector' => 'Enterprise', 'url' => '#', 'logo' => 'images/clients/akij-venture.png'],
-    ['name' => 'Aamar Taka', 'sector' => 'Financial Technology', 'url' => '#', 'logo' => 'images/clients/aamar-taka.png'],
-    ['name' => 'Adcomm', 'sector' => 'Advertisement Industry', 'url' => '#', 'logo' => 'images/clients/adcomm.png'],
-    ['name' => 'Nazimgarh', 'sector' => 'Hospitality', 'url' => '#', 'logo' => 'images/clients/nazimgarh.png'],
-    ['name' => 'Vibe Gaming', 'sector' => 'Gaming', 'url' => '#', 'logo' => 'images/clients/vibe-gaming.png'],
-    ['name' => 'Legal X', 'sector' => 'Legal Technology', 'url' => '#', 'logo' => 'images/clients/legal-x.png'],
-    ['name' => 'Purbachal', 'sector' => 'Manufacturing', 'url' => '#', 'logo' => 'images/clients/purbachal.png'],
-];
+$clients = content_items('shared_clients_clients');
     $clientAnimation = $clientAnimation ?? 'marquee';
 @endphp
 
 <section class="page-section bg-navy text-white" id="clients">
     <div class="container">
 
-        <p class="section-eyebrow text-center mb-2">We're Working With</p>
+        <p class="section-eyebrow text-center mb-2">{{ content('shared_clients', 'paragraph') }}</p>
         <h2 class="page-section-heading text-center text-uppercase text-white mb-4">
-            Our <span class="cl-title-accent">Clients</span>
+            {{ content('shared_clients', 'heading') }} <span class="cl-title-accent">{{ content('shared_clients', 'label') }}</span>
         </h2>
 
         @if ($clientAnimation === 'shuffle')
@@ -51,13 +34,13 @@ $clients = [
                 </div>
 
                 <div class="cl-client-shuffle-nav">
-                    <button class="cl-client-shuffle-arrow cl-client-shuffle-prev" type="button" aria-label="Previous client"><i class="fas fa-chevron-left"></i></button>
+                    <button class="cl-client-shuffle-arrow cl-client-shuffle-prev" type="button" aria-label="{{ content('shared_clients', 'button_aria_label') }}"><i class="{{ content('shared_clients', 'icon') }}"></i></button>
                     <div class="cl-client-shuffle-dots">
                         @foreach ($clients as $c)
-                            <button class="cl-client-shuffle-dot" type="button" aria-label="Show {{ $c['name'] }}"></button>
+                            <button class="cl-client-shuffle-dot" type="button" aria-label="{{ content('shared_clients', 'dot_aria_label') }} {{ $c['name'] }}"></button>
                         @endforeach
                     </div>
-                    <button class="cl-client-shuffle-arrow cl-client-shuffle-next" type="button" aria-label="Next client"><i class="fas fa-chevron-right"></i></button>
+                    <button class="cl-client-shuffle-arrow cl-client-shuffle-next" type="button" aria-label="{{ content('shared_clients', 'button_aria_label_2') }}"><i class="{{ content('shared_clients', 'icon_2') }}"></i></button>
                 </div>
             </div>
         @else
@@ -66,7 +49,7 @@ $clients = [
                     @for ($set = 0; $set < 3; $set++)
                         <div class="cl-marquee-set" @if ($set > 0) aria-hidden="true" @endif>
                             @foreach ($clients as $c)
-                                <span class="cl-client-logo {{ $c['name'] === 'Purbachal' ? 'cl-client-logo--light' : '' }}">
+                                <span class="cl-client-logo {{ ! empty($c['light_background']) ? 'cl-client-logo--light' : '' }}">
                                     <img src="{{ asset($c['logo']) }}"
                                          alt="{{ $set === 0 ? $c['name'] : '' }}"
                                          loading="eager"
@@ -267,9 +250,10 @@ $clients = [
                 function layout() {
                     order.forEach(function (ci, pos) {
                         var card = cards[ci];
-                        card.style.transform = 'translateY(' + (-28 * pos) + 'px) scale(' + (1 - 0.035 * pos) + ')';
-                        card.style.zIndex = String(60 - pos * 10);
-                        card.style.opacity = pos === 0 ? '1' : String(Math.max(0.28, 0.8 - 0.14 * (pos - 1)));
+                        var visiblePosition = Math.min(pos, 4);
+                        card.style.transform = 'translateY(' + (-28 * visiblePosition) + 'px) scale(' + (1 - 0.035 * visiblePosition) + ')';
+                        card.style.zIndex = String(cards.length - pos);
+                        card.style.opacity = pos > 4 ? '0' : (pos === 0 ? '1' : String(Math.max(0.28, 0.8 - 0.14 * (pos - 1))));
                         card.classList.toggle('is-front', pos === 0);
                     });
                     dots.forEach(function (dot, i) {

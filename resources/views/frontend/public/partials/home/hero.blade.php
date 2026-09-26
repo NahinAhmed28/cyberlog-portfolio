@@ -1,6 +1,4 @@
-{{-- Home hero — "dynamic design" (ref: riskledger.com)
-     Interactive particle-network background + floating parallax service chips.
-     Self-contained: markup + scoped CSS (@push styles) + JS (@push scripts). --}}
+
 
 <section class="cl-hero cl-home-hero" id="page-top">
 
@@ -9,24 +7,23 @@
     <div class="container text-center">
 
         <h1 class="cl-hero-heading mb-4" data-reveal data-hero>
-            Smarter Intelligence.<br class="d-sm-none">
-            <span class="accent">Stronger Security.</span>
+            {{ content('home_hero', 'heading') }}<br class="d-sm-none">
+            <span class="accent">{{ content('home_hero', 'label') }}</span>
         </h1>
 
-        {{-- TODO: copy — hero CTA button(s) not specified in the brief --}}
+        
 
         <p class="fs-5 cl-hero-proof mb-0" data-reveal data-hero>
-            Join our <span class="cl-copy-white">Cyber Defense eco-system</span><br class="d-sm-none"> with
-            <span class="cl-glow-word">hundreds</span> of other organizations!
+            {{ content('home_hero', 'paragraph') }} <span class="cl-copy-white">{{ content('home_hero', 'label_2') }}</span><br class="d-sm-none"> {{ content('home_hero', 'paragraph_2') }}
+            <span class="cl-glow-word">{{ content('home_hero', 'label_3') }}</span> {{ content('home_hero', 'paragraph_3') }}
         </p>
 
-        {{-- Floating service chips - clear of the copy, arranged above/below on desktop. --}}
-         <!--- CCclear of the copy, arranged above/below on desktop. --->
+        
+         
         <div class="cl-drift">
-            <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-bug"></i>Penetration Testing</span></span></div>
-            <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-desktop"></i>Security Operations Center (SOC)</span></span></div>
-            <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-clipboard-check"></i>Security Audit &amp; Training</span></span></div>
-            <div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="fas fa-robot"></i>AI Automation</span></span></div>
+            @foreach (content_items('home_hero_drift') as $contentRow)
+<div class="cl-drift-chip"><span class="cl-drift-reveal" data-reveal data-hero><span class="cl-chip"><i class="{{ $contentRow['icon'] }}"></i>{{ $contentRow['label'] }}</span></span></div>
+@endforeach
         </div>
 
     </div>

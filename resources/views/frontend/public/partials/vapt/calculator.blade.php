@@ -1,57 +1,56 @@
-{{-- VAPT › Service Calculator — Pricing (left) + Analysis Days (right) + scope table --}}
+
 <section class="page-section cl-vapt-calc-section" id="calculator">
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-5">
-                <p class="section-eyebrow mb-2" data-reveal>Service Calculator</p>
-                <h2 class="cl-vapt-section-title mb-3" data-reveal>Estimate Your <span>VAPT Scope</span></h2>
+                <p class="section-eyebrow mb-2" data-reveal>{{ content('vapt_calculator', 'paragraph') }}</p>
+                <h2 class="cl-vapt-section-title mb-3" data-reveal>{{ content('vapt_calculator', 'heading') }} <span>{{ content('vapt_calculator', 'label') }}</span></h2>
                 <p class="text-muted" data-reveal>
-                    VAPT effort depends on asset count, application complexity, user roles, testing depth,
-                    and environment type. Share your scope details to get an initial estimate from Cyberlog.
+                    {{ content('vapt_calculator', 'paragraph_2') }}
                 </p>
             </div>
 
             <div class="col-lg-7" data-reveal>
                 <div class="cl-vapt-calc">
                     <div class="cl-vapt-calc-row">
-                        <div class="cl-vapt-calc-head"><span>Web Applications</span><strong id="vaptCalcAppsVal">0</strong></div>
-                        <input class="cl-vapt-range" id="vaptCalcApps" type="range" min="0" max="20" value="0">
+                        <div class="cl-vapt-calc-head"><span>{{ content('vapt_calculator', 'label_2') }}</span><strong id="vaptCalcAppsVal">{{ content('vapt_calculator', 'label_3') }}</strong></div>
+                        <input class="cl-vapt-range" id="vaptCalcApps" type="range" min="{{ content('vapt_calculator', 'input_min') }}" max="{{ content('vapt_calculator', 'input_max') }}" value="{{ content('vapt_calculator', 'initial_value') }}">
                     </div>
                     <div class="cl-vapt-calc-row">
-                        <div class="cl-vapt-calc-head"><span>APIs</span><strong id="vaptCalcApisVal">0</strong></div>
-                        <input class="cl-vapt-range" id="vaptCalcApis" type="range" min="0" max="20" value="0">
+                        <div class="cl-vapt-calc-head"><span>{{ content('vapt_calculator', 'label_4') }}</span><strong id="vaptCalcApisVal">{{ content('vapt_calculator', 'label_5') }}</strong></div>
+                        <input class="cl-vapt-range" id="vaptCalcApis" type="range" min="{{ content('vapt_calculator', 'input_min_2') }}" max="{{ content('vapt_calculator', 'input_max_2') }}" value="{{ content('vapt_calculator', 'initial_value_2') }}">
                     </div>
                     <div class="cl-vapt-calc-row">
-                        <div class="cl-vapt-calc-head"><span>Mobile Applications</span><strong id="vaptCalcMobileVal">0</strong></div>
-                        <input class="cl-vapt-range" id="vaptCalcMobile" type="range" min="0" max="20" value="0">
+                        <div class="cl-vapt-calc-head"><span>{{ content('vapt_calculator', 'label_6') }}</span><strong id="vaptCalcMobileVal">{{ content('vapt_calculator', 'label_7') }}</strong></div>
+                        <input class="cl-vapt-range" id="vaptCalcMobile" type="range" min="{{ content('vapt_calculator', 'input_min_3') }}" max="{{ content('vapt_calculator', 'input_max_3') }}" value="{{ content('vapt_calculator', 'initial_value_3') }}">
                     </div>
                     <div class="cl-vapt-calc-row">
-                        <div class="cl-vapt-calc-head"><span>Network Assets / IPs</span><strong id="vaptCalcIpsVal">0</strong></div>
-                        <input class="cl-vapt-range" id="vaptCalcIps" type="range" min="0" max="250" value="0">
+                        <div class="cl-vapt-calc-head"><span>{{ content('vapt_calculator', 'label_8') }}</span><strong id="vaptCalcIpsVal">{{ content('vapt_calculator', 'label_9') }}</strong></div>
+                        <input class="cl-vapt-range" id="vaptCalcIps" type="range" min="{{ content('vapt_calculator', 'input_min_4') }}" max="{{ content('vapt_calculator', 'input_max_4') }}" value="{{ content('vapt_calculator', 'initial_value_4') }}">
                     </div>
                     <div class="cl-vapt-calc-row">
-                        <div class="cl-vapt-calc-head mb-2"><span>Testing approach</span></div>
+                        <div class="cl-vapt-calc-head mb-2"><span>{{ content('vapt_calculator', 'label_10') }}</span></div>
                         <div class="cl-vapt-toggle" id="vaptCalcApproach">
-                            <button type="button" data-mult="1">Black</button>
-                            <button type="button" class="active" data-mult="1.25">Grey</button>
-                            <button type="button" data-mult="1.55">White</button>
+                            <button type="button" data-mult="{{ content('vapt_calculator', 'button_data_mult') }}">{{ content('vapt_calculator', 'button_label') }}</button>
+                            <button type="button" class="active" data-mult="{{ content('vapt_calculator', 'button_data_mult_2') }}">{{ content('vapt_calculator', 'button_label_2') }}</button>
+                            <button type="button" data-mult="{{ content('vapt_calculator', 'button_data_mult_3') }}">{{ content('vapt_calculator', 'button_label_3') }}</button>
                         </div>
                     </div>
 
                     <div class="cl-vapt-calc-out">
-                        {{-- Pricing on the LEFT --}}
+                        
                         <div class="cl-vapt-price">
-                            <div class="cl-vapt-price-fig">BDT <span id="vaptCalcPrice">0</span></div>
-                            <div class="cl-vapt-out-lbl">estimated cost</div>
+                            <div class="cl-vapt-price-fig">{{ content('vapt_calculator', 'div_text') }} <span id="vaptCalcPrice">{{ content('vapt_calculator', 'label_11') }}</span></div>
+                            <div class="cl-vapt-out-lbl">{{ content('vapt_calculator', 'div_text_2') }}</div>
                         </div>
-                        {{-- Analysis Days on the RIGHT --}}
+                        
                         <div class="cl-vapt-effort">
-                            <div class="cl-vapt-effort-fig"><span id="vaptCalcDays">0</span></div>
-                            <div class="cl-vapt-out-lbl">analyst days</div>
+                            <div class="cl-vapt-effort-fig"><span id="vaptCalcDays">{{ content('vapt_calculator', 'label_12') }}</span></div>
+                            <div class="cl-vapt-out-lbl">{{ content('vapt_calculator', 'div_text_3') }}</div>
                         </div>
                     </div>
                     <div class="cl-vapt-break" id="vaptCalcBreak"></div>
-                    <a class="btn btn-alert text-white fw-bold w-100 mt-3" href="{{ route('contact') }}">Get This Quote</a>
+                    <a class="btn btn-alert text-white fw-bold w-100 mt-3" href="{{ content('vapt_calculator', 'link_url') }}">{{ content('vapt_calculator', 'link_label') }}</a>
                 </div>
             </div>
         </div>
@@ -115,13 +114,13 @@
     var price = document.getElementById('vaptCalcPrice');
     var breakdown = document.getElementById('vaptCalcBreak');
     var approach = document.getElementById('vaptCalcApproach');
-    var mult = 1.25;
-    var DAY_RATE_BDT = 12000; // indicative BDT per analyst day
+    var mult = +(approach.querySelector('button.active')?.dataset.mult || 1);
+    var DAY_RATE_BDT = {{ content('vapt_calculator', 'day_rate') }}; // indicative BDT per analyst day
 
     function compute() {
         var appCount = +apps.value, apiCount = +apis.value, mobileCount = +mobile.value, ipCount = +ips.value;
         var hasScope = appCount + apiCount + mobileCount + ipCount > 0;
-        var raw = (appCount * 3.5) + (apiCount * 2.2) + (mobileCount * 4.2) + Math.ceil(ipCount / 5);
+        var raw = (appCount * {{ content('vapt_calculator', 'web_app_days') }}) + (apiCount * {{ content('vapt_calculator', 'api_days') }}) + (mobileCount * {{ content('vapt_calculator', 'mobile_app_days') }}) + Math.ceil(ipCount / Math.max(1, {{ content('vapt_calculator', 'ips_per_day') }}));
         var total = hasScope ? Math.max(1, Math.ceil(raw * mult)) : 0;
         appsVal.textContent = appCount;
         apisVal.textContent = apiCount;
@@ -129,7 +128,7 @@
         ipsVal.textContent = ipCount;
         days.textContent = total;
         price.textContent = (total * DAY_RATE_BDT).toLocaleString('en-US');
-        breakdown.textContent = appCount + ' web apps + ' + apiCount + ' APIs + ' + mobileCount + ' mobile apps + ' + ipCount + ' IPs x ' + mult + ' approach multiplier';
+        breakdown.textContent = {{ Illuminate\Support\Js::from(content('vapt_calculator', 'breakdown_template')) }}.replaceAll('{apps}', appCount).replaceAll('{apis}', apiCount).replaceAll('{mobile}', mobileCount).replaceAll('{ips}', ipCount).replaceAll('{multiplier}', mult);
     }
     [apps, apis, mobile, ips].forEach(function (i) { i.addEventListener('input', compute); });
     approach.querySelectorAll('button').forEach(function (b) {

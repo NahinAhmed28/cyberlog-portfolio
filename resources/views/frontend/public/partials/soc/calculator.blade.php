@@ -1,43 +1,41 @@
-{{-- SOC › Interactive cost calculator (ref: underdefense.com) — stub formula, easy to tune --}}
+
 <section class="page-section bg-light" id="calculator">
     <div class="container">
         <div class="row g-5 align-items-center">
 
             <div class="col-lg-5">
-                <p class="section-eyebrow mb-2" data-reveal>SOC as a Service</p>
-                <h2 class="cl-soc-h2 mb-3" data-reveal>Estimate Your <span class="grad-text">SOC Cost</span></h2>
+                <p class="section-eyebrow mb-2" data-reveal>{{ content('soc_calculator', 'paragraph') }}</p>
+                <h2 class="cl-soc-h2 mb-3" data-reveal>{{ content('soc_calculator', 'heading') }} <span class="grad-text">{{ content('soc_calculator', 'label') }}</span></h2>
                 <p class="text-muted" data-reveal>
-                    Managed SOC pricing scales with your environment — endpoints, log volume, and
-                    coverage level. Move the sliders for an indicative monthly figure, then request a
-                    tailored quote for your exact scope.
+                    {{ content('soc_calculator', 'paragraph_2') }}
                 </p>
             </div>
 
             <div class="col-lg-7" data-reveal>
                 <div class="cl-calc">
                     <div class="cl-calc-row">
-                        <div class="cl-calc-head"><span>Endpoints / devices</span><span class="cl-calc-val" id="calcEpVal">1</span></div>
-                        <input type="range" id="calcEp" min="1" max="1000" step="1" value="1" class="cl-range">
+                        <div class="cl-calc-head"><span>{{ content('soc_calculator', 'label_2') }}</span><span class="cl-calc-val" id="calcEpVal">{{ content('soc_calculator', 'label_3') }}</span></div>
+                        <input type="range" id="calcEp" min="{{ content('soc_calculator', 'input_min') }}" max="{{ content('soc_calculator', 'input_max') }}" step="{{ content('soc_calculator', 'input_step') }}" value="{{ content('soc_calculator', 'initial_value') }}" class="cl-range">
                     </div>
 
                     <div class="cl-calc-row">
-                        <div class="cl-calc-head"><span>Log volume <small class="text-muted">(GB / day)</small></span><span class="cl-calc-val" id="calcLogVal">1</span></div>
-                        <input type="range" id="calcLog" min="1" max="1000" step="1" value="1" class="cl-range">
+                        <div class="cl-calc-head"><span>{{ content('soc_calculator', 'label_4') }} <small class="text-muted">{{ content('soc_calculator', 'small_text') }}</small></span><span class="cl-calc-val" id="calcLogVal">{{ content('soc_calculator', 'label_5') }}</span></div>
+                        <input type="range" id="calcLog" min="{{ content('soc_calculator', 'input_min_2') }}" max="{{ content('soc_calculator', 'input_max_2') }}" step="{{ content('soc_calculator', 'input_step_2') }}" value="{{ content('soc_calculator', 'initial_value_2') }}" class="cl-range">
                     </div>
 
                     <div class="cl-calc-row">
-                        <div class="cl-calc-head mb-2"><span>Coverage</span></div>
+                        <div class="cl-calc-head mb-2"><span>{{ content('soc_calculator', 'label_6') }}</span></div>
                         <div class="cl-calc-toggle" id="calcCov">
-                            <button type="button" class="active" data-mult="1">24 / 7</button>
-                            <button type="button" data-mult="0.62">Business hours</button>
+                            <button type="button" class="active" data-mult="{{ content('soc_calculator', 'button_data_mult') }}">{{ content('soc_calculator', 'button_label') }}</button>
+                            <button type="button" data-mult="{{ content('soc_calculator', 'button_data_mult_2') }}">{{ content('soc_calculator', 'button_label_2') }}</button>
                         </div>
                     </div>
 
                     <div class="cl-calc-out">
                         <div>
-                            <div class="cl-calc-cost">$<span id="calcCost">0</span><small>/mo</small></div>
+                            <div class="cl-calc-cost">{{ content('soc_calculator', 'div_text') }}<span id="calcCost">{{ content('soc_calculator', 'label_7') }}</span><small>{{ content('soc_calculator', 'small_text_2') }}</small></div>
                         </div>
-                        <a class="btn btn-primary text-white fw-bold" href="{{ Route::has('public.contact') ? route('public.contact') : (Route::has('contact') ? route('contact') : '#') }}">Get a Tailored Quote</a>
+                        <a class="btn btn-primary text-white fw-bold" href="{{ content('soc_calculator', 'destination') }}">{{ content('soc_calculator', 'link_label') }}</a>
                     </div>
                 </div>
             </div>
@@ -87,14 +85,14 @@
     var epVal = document.getElementById('calcEpVal');
     var logVal = document.getElementById('calcLogVal');
     var costEl = document.getElementById('calcCost');
-    var mult = 1;
+    var mult = +(cov.querySelector('button.active')?.dataset.mult || 1);
 
-    var BASE = 1500, PER_EP = 4, PER_GB = 35;
+    var BASE = {{ content('soc_calculator', 'base_cost') }}, PER_EP = {{ content('soc_calculator', 'per_endpoint') }}, PER_GB = {{ content('soc_calculator', 'per_gb') }}, ROUNDING = Math.max(1, {{ content('soc_calculator', 'rounding_increment') }});
 
     function compute() {
         var e = +ep.value, l = +log.value;
         var epCost = e * PER_EP, logCost = l * PER_GB;
-        var total = Math.round(((BASE + epCost + logCost) * mult) / 50) * 50;
+        var total = Math.round(((BASE + epCost + logCost) * mult) / ROUNDING) * ROUNDING;
         epVal.textContent = e.toLocaleString('en-US');
         logVal.textContent = l;
         costEl.textContent = Math.round(total).toLocaleString('en-US');

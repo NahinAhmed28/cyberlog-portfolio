@@ -46,7 +46,7 @@
                         <strong>{{ $service['lead'] }}</strong>
                         <ul>
                             @foreach ($service['points'] as $point)
-                                <li><i class="fas fa-circle-plus"></i>{{ $point }}</li>
+                                <li><i class="{{ content('shared_security_service_group', 'icon') }}"></i>{{ $point }}</li>
                             @endforeach
                         </ul>
                     </div>

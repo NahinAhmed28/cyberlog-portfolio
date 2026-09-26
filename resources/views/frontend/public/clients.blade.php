@@ -1,28 +1,27 @@
 @extends('frontend.public.layouts.public')
 
-@section('title', 'Clients — Cyberlog')
+@section('title', content('page_clients', 'title'))
 
 @section('content')
 
-{{-- Page header --}}
+
 <header class="cl-hero" id="clients-top">
     <div class="container text-center">
-        <p class="cl-hero-eyebrow mb-3" data-reveal data-hero>CLIENTS</p>
+        <p class="cl-hero-eyebrow mb-3" data-reveal data-hero>{{ content('page_clients', 'paragraph') }}</p>
         <h1 class="cl-hero-heading mb-3" data-reveal data-hero>
-            Trusted Across <span class="accent">Critical Sectors</span>
+            {{ content('page_clients', 'heading') }} <span class="accent">{{ content('page_clients', 'label') }}</span>
         </h1>
-        {{-- TODO: copy — intro paragraph placeholder (not supplied in brief) --}}
+        
         <p class="lead text-muted lead-narrow mb-0" data-reveal data-hero>
-            Government, finance, education, and enterprise organizations rely on Cyberlog to
-            defend their most critical systems.
+            {{ content('page_clients', 'paragraph_2') }}
         </p>
     </div>
 </header>
 
-{{-- Our Clients section moved from /services --}}
+
 @include('partials.clients')
 
-{{-- Website screenshot shuffle deck --}}
+
 @include('frontend.public.partials.clients.deck')
 
 @endsection

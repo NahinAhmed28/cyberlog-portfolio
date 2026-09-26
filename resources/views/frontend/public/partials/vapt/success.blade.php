@@ -2,40 +2,32 @@
     <div class="container">
         <div class="cl-vapt-success-card" data-reveal>
             <div class="cl-vapt-success-copy">
-                <p class="section-eyebrow mb-2">System Success Story</p>
-                <h2>Bangladesh Finance Strengthened Its Digital Risk Visibility</h2>
+                <p class="section-eyebrow mb-2">{{ content('vapt_success', 'paragraph') }}</p>
+                <h2>{{ content('vapt_success', 'heading') }}</h2>
                 <p class="text-muted">
-                    Cyberlog conducted VAPT for Bangladesh Finance to identify, validate, and
-                    prioritize exploitable risks across its digital environment. The engagement gave
-                    technical teams a clear remediation path and leadership a practical view of risk.
+                    {{ content('vapt_success', 'paragraph_2') }}
                 </p>
-                <a class="btn btn-alert text-white fw-bold" href="{{ route('contact') }}">Discuss a Similar Assessment</a>
+                <a class="btn btn-alert text-white fw-bold" href="{{ content('vapt_success', 'link_url') }}">{{ content('vapt_success', 'link_label') }}</a>
             </div>
 
             <div class="cl-vapt-success-panel">
                 <div class="cl-vapt-success-top">
-                    <span>Financial Institute</span>
-                    <strong>VAPT Engagement</strong>
+                    <span>{{ content('vapt_success', 'label') }}</span>
+                    <strong>{{ content('vapt_success', 'label_2') }}</strong>
                 </div>
                 <div class="cl-vapt-success-stats">
-                    <div>
-                        <strong>360</strong>
-                        <span>Security risk review</span>
+                    @foreach (content_items('vapt_success_vapt_success_stats') as $contentRow)
+<div>
+                        <strong>{{ $contentRow['label'] }}</strong>
+                        <span>{{ $contentRow['label_2'] }}</span>
                     </div>
-                    <div>
-                        <strong>10+</strong>
-                        <span>High-priority risks validated</span>
-                    </div>
-                    <div>
-                        <strong>100%</strong>
-                        <span>Actionable remediation plan</span>
-                    </div>
+@endforeach
                 </div>
                 <div class="cl-vapt-success-flow">
-                    <b>Scope</b>
-                    <b>Validate</b>
-                    <b>Prioritize</b>
-                    <b>Retest</b>
+                    <b>{{ content('vapt_success', 'b_text') }}</b>
+                    <b>{{ content('vapt_success', 'b_text_2') }}</b>
+                    <b>{{ content('vapt_success', 'b_text_3') }}</b>
+                    <b>{{ content('vapt_success', 'b_text_4') }}</b>
                 </div>
             </div>
         </div>

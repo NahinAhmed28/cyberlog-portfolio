@@ -1,18 +1,12 @@
-<section class="cl-vapt-numbers" aria-label="VAPT delivery metrics">
+<section class="cl-vapt-numbers" aria-label="{{ content('vapt_numbers', 'section_aria_label') }}">
     <div class="container">
         <div class="cl-vapt-number-grid" data-reveal>
-            <div>
-                <strong>160+</strong>
-                <span>Tests annually</span>
+            @foreach (content_items('vapt_numbers_vapt_number_grid') as $contentRow)
+<div>
+                <strong>{{ $contentRow['label'] }}</strong>
+                <span>{{ $contentRow['label_2'] }}</span>
             </div>
-            <div>
-                <strong>1,440+</strong>
-                <span>Vulnerabilities detected per year</span>
-            </div>
-            <div>
-                <strong>2–4</strong>
-                <span>Weeks an average penetration test lasts</span>
-            </div>
+@endforeach
         </div>
     </div>
 </section>

@@ -1,33 +1,14 @@
 @php
-    $boxes = [
-        [
-            'class' => 'black',
-            'title' => 'Black Box',
-            'conditions' => 'Testing with minimal or no internal information.',
-            'value' => 'Best for validating external exposure and real attacker behavior.',
-        ],
-        [
-            'class' => 'grey',
-            'title' => 'Grey Box',
-            'conditions' => 'Testing with limited access, selected credentials, or partial system context.',
-            'value' => 'Best for balanced security validation with better speed and accuracy.',
-        ],
-        [
-            'class' => 'white',
-            'title' => 'White Box',
-            'conditions' => 'Testing with full access to architecture, credentials, source details, or internal documentation.',
-            'value' => 'Best for deep security review, logic flaws, and code-level risk validation.',
-        ],
-    ];
+    $boxes = content_items('vapt_boxes_boxes');
 @endphp
 
 <section class="page-section cl-vapt-box-section" id="box-types">
     <div class="container">
         <div class="text-center mb-5">
-            <p class="section-eyebrow text-center mb-2" data-reveal>Testing Approaches</p>
-            <h2 class="page-section-heading text-secondary mb-3" data-reveal>Black Box, Grey Box &amp; White Box Testing</h2>
+            <p class="section-eyebrow text-center mb-2" data-reveal>{{ content('vapt_boxes', 'paragraph') }}</p>
+            <h2 class="page-section-heading text-secondary mb-3" data-reveal>{{ content('vapt_boxes', 'heading') }}</h2>
             <p class="text-muted lead-narrow mb-0" data-reveal>
-                Choose the testing approach based on available access, project goal, and required assessment depth.
+                {{ content('vapt_boxes', 'paragraph_2') }}
             </p>
         </div>
 
@@ -39,8 +20,8 @@
                             <span></span><span></span><span></span>
                         </div>
                         <h3>{{ $box['title'] }}</h3>
-                        <p><strong>Conditions:</strong> {{ $box['conditions'] }}</p>
-                        <p class="mb-0"><strong>Value:</strong> {{ $box['value'] }}</p>
+                        <p><strong>{{ content('vapt_boxes', 'label') }}</strong> {{ $box['conditions'] }}</p>
+                        <p class="mb-0"><strong>{{ content('vapt_boxes', 'label_2') }}</strong> {{ $box['value'] }}</p>
                     </article>
                 </div>
             @endforeach

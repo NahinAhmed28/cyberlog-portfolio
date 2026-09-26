@@ -1,49 +1,12 @@
-{{-- Client website screenshot shuffle. No client logos in the cards, per feedback. --}}
+
 @php
-    $screens = [
-        [
-            'cat' => 'Government Organization',
-            'name' => 'Dhaka Stock Exchange (DSE)',
-            'shot' => 'dse.png',
-            'url' => 'https://www.dsebd.org/',
-            'desc' => "Cyberlog delivered SOC support for Dhaka Stock Exchange, Bangladesh's most critical capital market infrastructure and one of the country's highest-value financial technology environments.",
-            'stats' => [['24/7', 'SOC Monitoring'], ['99.99%', 'Uptime For Capital Market Cyber Defense']],
-            'accent' => '#0a57db',
-        ],
-        [
-            'cat' => 'Financial Institute',
-            'name' => 'Bangladesh Finance',
-            'shot' => 'bdfinance.png',
-            'url' => 'https://bd.finance/',
-            'desc' => 'Cyberlog conducted VAPT for Bangladesh Finance to identify, validate, and prioritize exploitable security risks across its digital environment.',
-            'stats' => [['360°', 'Security Risk Review'], ['10+', 'High-Priority Risks Validated']],
-            'accent' => '#f01843',
-        ],
-        [
-            'cat' => 'Government Organization',
-            'name' => 'Bangladesh Investment Development Authority (BIDA)',
-            'shot' => 'bida.png',
-            'url' => 'https://bida.gov.bd/',
-            'desc' => 'Cyberlog conducted cybersecurity capacity building for the IT team of Bangladesh Investment Development Authority and supported the organization with a cybersecurity assessment to improve technical readiness, risk visibility, and institutional cyber resilience.',
-            'stats' => [['250%+', "Increase In Employees' Cybersecurity Skills"], ['12', 'Security Areas Reviewed']],
-            'accent' => '#1f9f72',
-        ],
-        [
-            'cat' => 'Advertisement Industry',
-            'name' => 'Adcomm Limited',
-            'shot' => 'adcomm.png',
-            'url' => 'https://adcomm.com.bd/',
-            'desc' => 'Cyberlog supported Adcomm Limited with ISO 27001 implementation and employee cybersecurity capacity building to strengthen compliance readiness and workforce security awareness.',
-            'stats' => [['93', 'ISO Controls Mapped'], ['200+', 'Employees Trained']],
-            'accent' => '#ff8a00',
-        ],
-    ];
+    $screens = content_items('clients_deck_screens');
 @endphp
 
 <section class="page-section cl-client-screens" id="client-websites">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">Client Websites</p>
-        <h2 class="page-section-heading text-center text-secondary mb-0"><span class="cl-trusted">Trusted by</span> <span class="cl-title-accent">Government &amp; Enterprise.</span></h2>
+        <p class="section-eyebrow text-center mb-2">{{ content('clients_deck', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-center text-secondary mb-0"><span class="cl-trusted">{{ content('clients_deck', 'label') }}</span> <span class="cl-title-accent">{{ content('clients_deck', 'label_2') }}</span></h2>
 
         <div class="cl-deck-wrap">
             <div class="cl-deck" id="clDeck">
@@ -63,14 +26,14 @@
                                     @endforeach
                                 </div>
                                 <a class="cl-deck-btn" href="{{ $screen['url'] }}" target="_blank" rel="noopener">
-                                    View Details <i class="fas fa-arrow-right"></i>
+                                    {{ content('clients_deck', 'link_label') }} <i class="{{ content('clients_deck', 'icon') }}"></i>
                                 </a>
                             </div>
                             <div class="cl-deck-preview">
                                 <div class="cl-browser">
                                     <div class="cl-browser-bar"><span></span><span></span><span></span></div>
                                     <a class="cl-browser-body" href="{{ $screen['url'] }}" target="_blank" rel="noopener" aria-label="{{ $screen['name'] }} website">
-                                        <img src="{{ asset('assets/img/clients/shots/' . $screen['shot']) }}"
+                                        <img src="{{ asset($screen['shot']) }}"
                                              alt="{{ $screen['name'] }} homepage screenshot"
                                              loading="eager"
                                              decoding="async"
@@ -84,13 +47,13 @@
             </div>
 
             <div class="cl-deck-nav">
-                <button class="cl-deck-arrow cl-deck-prev" type="button" aria-label="Previous client"><i class="fas fa-chevron-left"></i></button>
+                <button class="cl-deck-arrow cl-deck-prev" type="button" aria-label="{{ content('clients_deck', 'button_aria_label') }}"><i class="{{ content('clients_deck', 'icon_2') }}"></i></button>
                 <div class="cl-deck-dots">
                     @foreach ($screens as $screen)
-                        <button class="cl-deck-dot" type="button" aria-label="Show {{ $screen['name'] }}"></button>
+                        <button class="cl-deck-dot" type="button" aria-label="{{ content('clients_deck', 'dot_aria_label') }} {{ $screen['name'] }}"></button>
                     @endforeach
                 </div>
-                <button class="cl-deck-arrow cl-deck-next" type="button" aria-label="Next client"><i class="fas fa-chevron-right"></i></button>
+                <button class="cl-deck-arrow cl-deck-next" type="button" aria-label="{{ content('clients_deck', 'button_aria_label_2') }}"><i class="{{ content('clients_deck', 'icon_3') }}"></i></button>
             </div>
         </div>
     </div>
@@ -288,6 +251,7 @@
     var deck = document.getElementById('clDeck');
     if (!deck) return;
     var cards = [].slice.call(deck.querySelectorAll('.cl-deck-card'));
+    if (!cards.length) return;
     var wrap = deck.closest('.cl-deck-wrap');
     var dots = [].slice.call(wrap.querySelectorAll('.cl-deck-dot'));
     var order = cards.map(function (_, i) { return i; });
@@ -297,9 +261,12 @@
     function layout() {
         order.forEach(function (ci, pos) {
             var card = cards[ci];
-            card.style.transform = 'translateY(' + (-30 * pos) + 'px) scale(' + (1 - 0.032 * pos) + ')';
-            card.style.zIndex = String(60 - pos * 10);
-            card.style.opacity = pos === 0 ? '1' : String(Math.max(0.28, 0.8 - 0.14 * (pos - 1)));
+            var visiblePosition = Math.min(pos, 4);
+            card.style.transform = 'translateY(' + (-30 * visiblePosition) + 'px) scale(' + (1 - 0.032 * visiblePosition) + ')';
+            card.style.zIndex = String(cards.length - pos);
+            card.style.opacity = pos > 4 ? '0' : (pos === 0 ? '1' : String(Math.max(0.28, 0.8 - 0.14 * (pos - 1))));
+            card.style.pointerEvents = pos > 4 ? 'none' : '';
+            card.inert = pos > 4;
             card.classList.toggle('is-front', pos === 0);
         });
         dots.forEach(function (d, i) { d.classList.toggle('active', i === order[0]); });
@@ -318,7 +285,7 @@
         startAuto();
     }
     function startAuto() {
-        if (reduce || autoTimer) return;
+        if (reduce || autoTimer || cards.length < 2) return;
         autoTimer = window.setInterval(next, 3200);
     }
     function stopAuto() {

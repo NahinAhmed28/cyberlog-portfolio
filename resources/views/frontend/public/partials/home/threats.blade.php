@@ -1,50 +1,47 @@
-{{-- Home › Emerging threats / continuous risk signals (ref: riskledger.com)
-     Living particle network, an "emerging threat" intel card whose rows reveal one
-     after another, and floating status chips. Fits Cyberlog's Threat Intelligence
-     service. blue/red/white. --}}
+
 
 <section class="page-section cl-th-section" id="risk-signals">
 
     <canvas class="cl-th-bg" data-net aria-hidden="true"></canvas>
 
-    {{-- floating status chips (desktop, decorative) --}}
+    
     <div class="cl-th-floats" aria-hidden="true">
-        <span class="cl-th-chip"><i class="fas fa-screwdriver-wrench"></i> Client is remediating</span>
-        <span class="cl-th-chip"><i class="fas fa-magnifying-glass"></i> Client is investigating</span>
+        @foreach (content_items('home_threats_th_floats') as $contentRow)
+<span class="cl-th-chip"><i class="{{ $contentRow['icon'] }}"></i> {{ $contentRow['label'] }}</span>
+@endforeach
     </div>
 
     <div class="container">
         <div class="row align-items-center g-5">
 
-            {{-- Left — copy --}}
+            
             <div class="col-lg-5">
-                <p class="section-eyebrow mb-3" data-reveal>Threat Intelligence</p>
-                {{-- TODO: copy — heading + paragraph are placeholders (not supplied in brief) --}}
+                <p class="section-eyebrow mb-3" data-reveal>{{ content('home_threats', 'paragraph') }}</p>
+                
                 <h2 class="cl-assess-h mb-3" data-reveal>
-                    Stay ahead of emerging threats<br>
-                    <span class="accent">with continuous risk signals</span>
+                    {{ content('home_threats', 'heading') }}<br>
+                    <span class="accent">{{ content('home_threats', 'label_3') }}</span>
                 </h2>
                 <p class="text-muted" data-reveal>
-                    Stay on top of the latest emerging threats, their blast radius, available
-                    patches, and the exact steps to take if one of your systems has been breached.
+                    {{ content('home_threats', 'paragraph_2') }}
                 </p>
             </div>
 
-            {{-- Right — emerging-threat intel card --}}
+            
             <div class="col-lg-7">
                 <div class="cl-th-card" id="clThCard">
 
-                    <div class="cl-th-eyebrow cl-th-line"><i class="fas fa-triangle-exclamation"></i> Emerging threat</div>
-                    <h3 class="cl-th-title cl-th-line">React2Shell</h3>
-                    <p class="cl-th-desc cl-th-line">A critical vulnerability has been identified in the JavaScript library React.</p>
+                    <div class="cl-th-eyebrow cl-th-line"><i class="{{ content('home_threats', 'icon_3') }}"></i> {{ content('home_threats', 'div_text') }}</div>
+                    <h3 class="cl-th-title cl-th-line">{{ content('home_threats', 'heading_2') }}</h3>
+                    <p class="cl-th-desc cl-th-line">{{ content('home_threats', 'paragraph_3') }}</p>
 
                     <hr class="cl-th-div">
 
                     <div class="cl-th-grid">
-                        <span class="cl-th-pill blue cl-th-line"><i class="fas fa-magnifying-glass"></i> 12 investigating</span>
-                        <span class="cl-th-pill red cl-th-line"><i class="fas fa-screwdriver-wrench"></i> 4 remediating</span>
-                        <span class="cl-th-pill done cl-th-line"><i class="fas fa-circle-check"></i> 5 resolved</span>
-                        <span class="cl-th-pill mut cl-th-line"><i class="fas fa-shield-halved"></i> 6 unaffected</span>
+                        <span class="cl-th-pill blue cl-th-line"><i class="{{ content('home_threats', 'icon_4') }}"></i> {{ content('home_threats', 'label_4') }}</span>
+                        <span class="cl-th-pill red cl-th-line"><i class="{{ content('home_threats', 'icon_5') }}"></i> {{ content('home_threats', 'label_5') }}</span>
+                        <span class="cl-th-pill done cl-th-line"><i class="{{ content('home_threats', 'icon_6') }}"></i> {{ content('home_threats', 'label_6') }}</span>
+                        <span class="cl-th-pill mut cl-th-line"><i class="{{ content('home_threats', 'icon_7') }}"></i> {{ content('home_threats', 'label_7') }}</span>
                     </div>
 
                 </div>

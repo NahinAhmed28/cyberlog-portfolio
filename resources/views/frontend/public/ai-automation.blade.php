@@ -1,6 +1,6 @@
 @extends('frontend.public.layouts.public')
 
-@section('title', 'Cyberlog - AI & Automation')
+@section('title', content('page_ai_automation', 'title'))
 
 @section('content')
 
@@ -13,33 +13,25 @@
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <p class="section-eyebrow mb-3" data-reveal data-hero>AI & Automation</p>
-                <h1 class="cl-soc-h mb-3" data-reveal data-hero>AI & <span class="grad-text">Automation</span></h1>
+                <p class="section-eyebrow mb-3" data-reveal data-hero>{{ content('page_ai_automation', 'paragraph') }}</p>
+                <h1 class="cl-soc-h mb-3" data-reveal data-hero>{{ content('page_ai_automation', 'heading') }} <span class="grad-text">{{ content('page_ai_automation', 'label') }}</span></h1>
                 <p class="lead text-muted mb-4" data-reveal data-hero>
-                    Cyberlog designs and builds intelligent automation systems for government, enterprise, and public service delivery, from smart city platforms and city corporation automation to workflow and workshop management systems. We turn manual, disconnected processes into smart, connected, and self-managing operations.
+                    {{ content('page_ai_automation', 'paragraph_2') }}
                 </p>
 
-                {{--<div class="d-flex flex-wrap gap-2 mb-4" data-reveal data-hero>
-                    <span class="cl-soc-chip"><i class="fas fa-wave-square"></i>Threat Detection</span>
-                    <span class="cl-soc-chip"><i class="fas fa-hand-fist"></i>Incident Response</span>
-                    <span class="cl-soc-chip"><i class="fas fa-desktop"></i>SIEM Monitoring</span>
-                    <span class="cl-soc-chip"><i class="fas fa-crosshairs"></i>Threat Hunting</span>
-                    <span class="cl-soc-chip"><i class="fas fa-fingerprint"></i>Digital Forensics</span>
-                    <span class="cl-soc-chip"><i class="fas fa-network-wired"></i>Network Forensics</span>
-                </div>--}}
+                
 
                 <div class="d-flex flex-wrap gap-3" data-reveal data-hero>
-                    <a class="btn btn-xl text-white fw-bold btn cl-nav-cta" href="{{ $contact }}">Talk to an Expert</a>
+                    <a class="btn btn-xl text-white fw-bold btn cl-nav-cta" href="{{ content('page_ai_automation', 'destination') }}">{{ content('page_ai_automation', 'link_label') }}</a>
                 </div>
             </div>
 
             <div class="col-lg-6">
                 <figure class="cl-ai-hero-visual mb-0" data-reveal data-hero>
-                    <!-- <img src="{{ asset('assets/img/services/ai-automation-flow.svg') }}"
-                         alt="Animated AI automation workflow connecting data, intelligence, and business actions"> -->
+                    
     <video width="100%" height="auto" autoplay muted loop playsinline>
-    <source src="{{ asset('assets/img/services/AI-and-Automation.mp4') }}" type="video/mp4">
-    Your browser does not support the video tag.
+    <source src="{{ asset(content('page_ai_automation', 'source_media')) }}" type="video/mp4">
+    {{ content('page_ai_automation', 'video_text') }}
 </video>
                 </figure>
             </div>
@@ -314,89 +306,50 @@
 </style>
 @endpush
 
-<!-- Evolution Section -->
+
 <section class="page-section bg-navy text-white" id="evolution">
     <div class="container">
 
         <p class="section-eyebrow text-center mb-2">
-            The Evolution
+            {{ content('page_ai_automation', 'paragraph_3') }}
         </p>
 
         <h2 class="page-section-heading text-center text-uppercase text-white mb-3">
-            From Manual Operations to
-            <span class="cl-title-accent">Intelligent Automation</span>
+            {{ content('page_ai_automation', 'heading_2') }}
+            <span class="cl-title-accent">{{ content('page_ai_automation', 'label_2') }}</span>
         </h2>
 
         <p class="text-center text-muted mx-auto mb-5"
            style="max-width:760px;">
-            How institutions and industries have moved from disconnected,
-            paper-based processes toward smart, self-operating systems.
+            {{ content('page_ai_automation', 'paragraph_4') }}
         </p>
 
         <div class="evolution-card">
 
             <div class="evolution-header">
                 <span class="pulse-dot"></span>
-                Evolution // 2015 – 2026
+                {{ content('page_ai_automation', 'div_text') }}
             </div>
 
             <div class="timeline">
 
                 <div class="timeline-line"></div>
 
-                <div class="timeline-item">
+                @foreach (content_items('page_ai_automation_timeline') as $contentRow)
+<div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-year">2015</div>
+                    <div class="timeline-year">{{ $contentRow['div_text'] }}</div>
                     <div class="timeline-text">
-                        Manual, paper-based processes and disconnected departments
+                        {{ $contentRow['div_text_2'] }}
                     </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">2017</div>
-                    <div class="timeline-text">
-                        Early digitization of records and internal workflows
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">2019</div>
-                    <div class="timeline-text">
-                        Web and mobile platforms replace manual service delivery
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">2021</div>
-                    <div class="timeline-text">
-                        Integrated systems connect departments and data
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">2023</div>
-                    <div class="timeline-text">
-                        Automation reduces repetitive manual work
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">2025</div>
-                    <div class="timeline-text">
-                        AI-assisted tools support daily decision-making
-                    </div>
-                </div>
+@endforeach
 
                 <div class="timeline-item active">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-year">2026</div>
+                    <div class="timeline-year">{{ content('page_ai_automation', 'div_text_14') }}</div>
                     <div class="timeline-text">
-                        Smart, self-operating systems become industry standard
+                        {{ content('page_ai_automation', 'div_text_15') }}
                     </div>
                 </div>
 
@@ -411,142 +364,40 @@
     <div class="container">
 
         <p class="section-eyebrow text-center mb-2">
-            WHY CYBERLOG AI & AUTOMATION
+            {{ content('page_ai_automation', 'paragraph_5') }}
         </p>
 
         <h2 class="page-section-heading text-center text-uppercase text-white mb-3">
-            AI & Automation
-            <span class="cl-title-accent">Benefits</span>
+            {{ content('page_ai_automation', 'heading_3') }}
+            <span class="cl-title-accent">{{ content('page_ai_automation', 'label_3') }}</span>
         </h2>
 
         <p class="text-center text-muted mx-auto mb-5" style="max-width:760px;">
-            Our AI-powered solutions help organizations automate operations,
-            improve efficiency, reduce costs, and make smarter decisions through
-            connected digital systems.
+            {{ content('page_ai_automation', 'paragraph_6') }}
         </p>
 
         <div class="row g-4 cl-ai-benefit-grid">
 
-            <!-- 1 -->
-            <div class="col-md-6 col-lg-4">
+            
+            @foreach (content_items('page_ai_automation_cards_2') as $contentRow)
+<div class="col-md-6 col-lg-4">
                 <div class="cl-ai-benefit-card h-100">
 
                     <div class="cl-solution-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="{{ $contentRow['icon'] }}"></i>
                     </div>
 
                     <h5 class="fw-bold mb-3">
-                        Faster Service Delivery
+                        {{ $contentRow['h5_text'] }}
                     </h5>
 
                     <p class="text-muted small mb-0">
-                        Automated workflows dramatically reduce processing time by
-                        replacing slow manual tasks with intelligent, instant
-                        execution.
+                        {{ $contentRow['paragraph'] }}
                     </p>
 
                 </div>
             </div>
-
-            <!-- 2 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="cl-ai-benefit-card h-100">
-
-                    <div class="cl-solution-icon">
-                        <i class="fas fa-sitemap"></i>
-                    </div>
-
-                    <h5 class="fw-bold mb-3">
-                        Centralized Management
-                    </h5>
-
-                    <p class="text-muted small mb-0">
-                        Connect departments, services, and locations through one
-                        unified platform instead of disconnected systems.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- 3 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="cl-ai-benefit-card h-100">
-
-                    <div class="cl-solution-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-
-                    <h5 class="fw-bold mb-3">
-                        Reduced Manual Errors
-                    </h5>
-
-                    <p class="text-muted small mb-0">
-                        Automation eliminates repetitive data entry and minimizes
-                        costly human errors throughout daily operations.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- 4 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="cl-ai-benefit-card h-100">
-
-                    <div class="cl-solution-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-
-                    <h5 class="fw-bold mb-3">
-                        Real-Time Monitoring
-                    </h5>
-
-                    <p class="text-muted small mb-0">
-                        Live dashboards provide instant visibility into operations,
-                        helping leaders make faster, data-driven decisions.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- 5 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="cl-ai-benefit-card h-100">
-
-                    <div class="cl-solution-icon">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </div>
-
-                    <h5 class="fw-bold mb-3">
-                        Scalable Smart Systems
-                    </h5>
-
-                    <p class="text-muted small mb-0">
-                        Grow from a single department to enterprise-wide deployment
-                        without rebuilding your digital infrastructure.
-                    </p>
-
-                </div>
-            </div>
-
-            <!-- 6 -->
-            <div class="col-md-6 col-lg-4">
-                <div class="cl-ai-benefit-card h-100">
-
-                    <div class="cl-solution-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-
-                    <h5 class="fw-bold mb-3">
-                        Cost & Resource Efficiency
-                    </h5>
-
-                    <p class="text-muted small mb-0">
-                        Reduce operational costs while allowing teams to focus on
-                        strategic, high-value work instead of repetitive tasks.
-                    </p>
-
-                </div>
-            </div>
+@endforeach
 
         </div>
 
@@ -557,107 +408,74 @@
     <div class="container">
 
         <p class="section-eyebrow text-center mb-2">
-            CLIENT FEEDBACK
+            {{ content('page_ai_automation', 'paragraph_13') }}
         </p>
 
         <h2 class="page-section-heading cl-proof-title text-center mb-3">
-            Our Clients
-            <span class="cl-title-accent">Say It Best</span>
+            {{ content('page_ai_automation', 'heading_4') }}
+            <span class="cl-title-accent">{{ content('page_ai_automation', 'label_4') }}</span>
         </h2>
 
         <p class="text-center text-muted mx-auto mb-5" style="max-width:760px;">
-            Cyberlog's AI and automation solutions help organizations modernize
-            operations, reduce manual work, and deliver faster, smarter services.
+            {{ content('page_ai_automation', 'paragraph_14') }}
         </p>
 
         <div class="row g-4 cl-proof-grid">
 
-            <!-- Review 1 -->
-            <div class="col-lg-4" data-reveal="pop">
+            
+            @foreach (content_items('page_ai_automation_cards') as $contentRow)
+<div class="col-lg-4" data-reveal="pop">
                 <article class="cl-proof-card h-100">
 
                     <div class="cl-proof-badge" aria-hidden="true">
-                        <img src="{{ asset('images/clients/gono-projatontri-bangladesh-sarkar.png') }}" alt="" loading="lazy" decoding="async">
+                        <img src="{{ asset($contentRow['img_media']) }}" alt="" loading="lazy" decoding="async">
                     </div>
 
                     <h3 class="cl-proof-award">
-                        Smart City Chuadanga
+                        {{ $contentRow['heading'] }}
                     </h3>
 
-                    <div class="cl-proof-rating" aria-label="5.0 out of 5 stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span class="ms-2 fw-semibold">5.0</span>
+                    <div class="cl-proof-rating" aria-label="{{ $contentRow['div_aria_label'] }}">
+                        <i class="{{ $contentRow['icon'] }}"></i>
+                        <i class="{{ $contentRow['icon_2'] }}"></i>
+                        <i class="{{ $contentRow['icon_3'] }}"></i>
+                        <i class="{{ $contentRow['icon_4'] }}"></i>
+                        <i class="{{ $contentRow['icon_5'] }}"></i>
+                        <span class="ms-2 fw-semibold">{{ $contentRow['label'] }}</span>
                     </div>
 
                     <p class="cl-proof-quote">
-                        “Cyberlog helped us digitize and automate our city service
-                        workflows. What once took days now happens in real time,
-                        giving our team a single platform to manage everything.”
+                        {{ $contentRow['paragraph'] }}
                     </p>
 
                 </article>
             </div>
+@endforeach
 
-            <!-- Review 2 -->
+            
             <div class="col-lg-4" data-reveal="pop">
                 <article class="cl-proof-card h-100">
 
                     <div class="cl-proof-badge" aria-hidden="true">
-                        <img src="{{ asset('images/clients/bangladesh-petroleum-institute-bpi.png') }}" alt="" loading="lazy" decoding="async">
+                        
+                        <img src="{{ asset(content('page_ai_automation', 'img_media_3')) }}" alt="" width="272" height="94" loading="lazy" decoding="async">
                     </div>
 
                     <h3 class="cl-proof-award">
-                        Bangladesh Petroleum Institute
+                        {{ content('page_ai_automation', 'heading_7') }}
                     </h3>
 
-                    <div class="cl-proof-rating" aria-label="5.0 out of 5 stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span class="ms-2 fw-semibold">5.0</span>
+                    <div class="cl-proof-rating" aria-label="{{ content('page_ai_automation', 'div_aria_label_3') }}">
+                        <i class="{{ content('page_ai_automation', 'icon_17') }}"></i>
+                        <i class="{{ content('page_ai_automation', 'icon_18') }}"></i>
+                        <i class="{{ content('page_ai_automation', 'icon_19') }}"></i>
+                        <i class="{{ content('page_ai_automation', 'icon_20') }}"></i>
+                        <i class="{{ content('page_ai_automation', 'icon_21') }}"></i>
+                        <span class="ms-2 fw-semibold">{{ content('page_ai_automation', 'label_7') }}</span>
                     </div>
 
                     <p class="cl-proof-quote">
-                        “Cyberlog automated our reporting and internal processes,
-                        improving visibility across operations while significantly
-                        reducing repetitive manual work.”
-                    </p>
-
-                </article>
-            </div>
-
-            <!-- Review 3 -->
-            <div class="col-lg-4" data-reveal="pop">
-                <article class="cl-proof-card h-100">
-
-                    <div class="cl-proof-badge" aria-hidden="true">
-                        {{-- Original color logo: https://www.akijventure.com/ og:image, https://i.ibb.co/DrTy6Tm/AVL-logo-Color.png --}}
-                        <img src="{{ asset('images/clients/akij-venture-official.png') }}" alt="" width="272" height="94" loading="lazy" decoding="async">
-                    </div>
-
-                    <h3 class="cl-proof-award">
-                        Akij Venture Ltd.
-                    </h3>
-
-                    <div class="cl-proof-rating" aria-label="5.0 out of 5 stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span class="ms-2 fw-semibold">5.0</span>
-                    </div>
-
-                    <p class="cl-proof-quote">
-                        “Cyberlog delivered an automation platform that perfectly
-                        matched our workflow. The solution streamlined operations
-                        and improved efficiency across the organization.”
+                        {{ content('page_ai_automation', 'paragraph_17') }}
                     </p>
 
                 </article>
@@ -669,8 +487,8 @@
 </section>
 
 @include('partials.talk-to-expert', [
-    'title' => 'Ready to put AI to work?',
-    'text' => 'Talk with our experts about a practical automation roadmap built around your existing workflows.'
+    'title' => content('page_ai_automation', 'title_2'),
+    'text' => content('page_ai_automation', 'text')
 ])
 
 @push('styles')

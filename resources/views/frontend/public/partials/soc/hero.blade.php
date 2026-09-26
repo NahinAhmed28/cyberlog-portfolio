@@ -1,4 +1,4 @@
-{{-- SOC › Hero — heading + particle picture (box removed per feedback) --}}
+
 @php
     $contact = Route::has('public.contact') ? route('public.contact') : (Route::has('contact') ? route('contact') : '#');
 @endphp
@@ -8,24 +8,17 @@
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
-                <p class="section-eyebrow mb-3" data-reveal data-hero>Security Operations Center</p>
-                <h1 class="cl-soc-h mb-3" data-reveal data-hero>24/7 <span class="grad-text">SOC</span></h1>
+                <p class="section-eyebrow mb-3" data-reveal data-hero>{{ content('soc_hero', 'paragraph') }}</p>
+                <h1 class="cl-soc-h mb-3" data-reveal data-hero>{{ content('soc_hero', 'heading') }} <span class="grad-text">{{ content('soc_hero', 'label') }}</span></h1>
                 <p class="lead text-muted mb-4" data-reveal data-hero>
-                    Cyberlog provides fully managed and co-managed SOC support, SOC solution to monitor security events, detect threats, reduce alert noise, and support faster incident response.
+                    {{ content('soc_hero', 'paragraph_2') }}
                 </p>
 
-                {{--<div class="d-flex flex-wrap gap-2 mb-4" data-reveal data-hero>
-                    <span class="cl-soc-chip"><i class="fas fa-wave-square"></i>Threat Detection</span>
-                    <span class="cl-soc-chip"><i class="fas fa-hand-fist"></i>Incident Response</span>
-                    <span class="cl-soc-chip"><i class="fas fa-desktop"></i>SIEM Monitoring</span>
-                    <span class="cl-soc-chip"><i class="fas fa-crosshairs"></i>Threat Hunting</span>
-                    <span class="cl-soc-chip"><i class="fas fa-fingerprint"></i>Digital Forensics</span>
-                    <span class="cl-soc-chip"><i class="fas fa-network-wired"></i>Network Forensics</span>
-                </div>--}}
+                
 
                 <div class="d-flex flex-wrap gap-3" data-reveal data-hero>
-                    <a class="btn btn-xl text-white fw-bold btn cl-nav-cta" href="{{ $contact }}">Talk to an Expert</a>
-                    <a class="btn btn-outline-light btn-xl" href="#calculator"><i class="fas fa-calculator me-1"></i> SOC Cost Calculator</a>
+                    <a class="btn btn-xl text-white fw-bold btn cl-nav-cta" href="{{ content('soc_hero', 'destination') }}">{{ content('soc_hero', 'link_label') }}</a>
+                    <a class="btn btn-outline-light btn-xl" href="{{ content('soc_hero', 'a_href') }}"><i class="{{ content('soc_hero', 'icon') }}"></i> {{ content('soc_hero', 'link_label_2') }}</a>
                 </div>
             </div>
 
@@ -33,24 +26,22 @@
                 <div class="cl-soc-live" data-reveal data-hero>
                     <div class="cl-soc-live-top">
                         <span></span>
-                        <strong>SOC // Live Operations</strong>
+                        <strong>{{ content('soc_hero', 'label_2') }}</strong>
                     </div>
                     <div class="cl-soc-live-stats">
-                        <div><strong data-soc-stat="alerts">1204</strong><span>Alerts Triaged</span></div>
-                        <div><strong data-soc-stat="mttr">0.5h</strong><span>Mean MTTR</span></div>
-                        <div><strong data-soc-stat="blocked">38</strong><span>Threats Blocked</span></div>
+                        <div><strong data-soc-stat="alerts">{{ content('soc_hero', 'label_3') }}</strong><span>{{ content('soc_hero', 'label_4') }}</span></div>
+                        <div><strong data-soc-stat="mttr">{{ content('soc_hero', 'label_5') }}</strong><span>{{ content('soc_hero', 'label_6') }}</span></div>
+                        <div><strong data-soc-stat="blocked">{{ content('soc_hero', 'label_7') }}</strong><span>{{ content('soc_hero', 'label_8') }}</span></div>
                     </div>
                     <div class="cl-soc-bars" aria-hidden="true">
-                        @foreach ([24, 46, 34, 22, 38, 44, 31, 58, 36, 52, 61, 68, 35, 28, 42] as $height)
+                        @foreach (content_items('soc_hero_height_items') as $height)
                             <span style="--h: {{ $height }}%;"></span>
                         @endforeach
                     </div>
-                    <div class="cl-soc-log" data-soc-live-log aria-live="polite" aria-label="Live security event log">
-                        <p>13:15:50 <span>[VERIFIED]</span> MFA challenge - success</p>
-                        <p>13:15:48 <span>[WATCHED]</span> CVE-2026-1100 - 36 hosts</p>
-                        <p>13:15:46 <span>[QUARANTINE]</span> malware sample - sandbox-07</p>
-                        <p>13:15:44 <span>[BLOCKED]</span> brute-force - 203.0.113.*</p>
-                        <p>13:15:42 <span>[DENIED]</span> lateral move - host-1142</p>
+                    <div class="cl-soc-log" data-soc-live-log aria-live="polite" aria-label="{{ content('soc_hero', 'div_aria_label') }}">
+                        @foreach (content_items('soc_hero_soc_log') as $contentRow)
+<p>{{ $contentRow['paragraph'] }} <span>{{ $contentRow['label'] }}</span> {{ $contentRow['paragraph_2'] }}</p>
+@endforeach
                     </div>
                 </div>
             </div>

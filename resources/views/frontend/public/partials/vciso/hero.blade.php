@@ -1,18 +1,8 @@
 @php
     // Left side — Defensive (Blue Team); Right side — Offensive & Assessment (Red Team)
-    $leftNodes = [
-        ['icon' => 'fa-desktop', 'label' => 'Security Operations Center (SOC)', 'x' => 16, 'y' => 18],
-        ['icon' => 'fa-bolt', 'label' => 'Incident Response', 'x' => 9, 'y' => 41],
-        ['icon' => 'fa-shield-virus', 'label' => 'Firewall Management', 'x' => 14, 'y' => 66],
-        ['icon' => 'fa-database', 'label' => 'Data Protection & Backup', 'x' => 27, 'y' => 84],
-    ];
+    $leftNodes = content_items('vciso_hero_left_nodes');
 
-    $rightNodes = [
-        ['icon' => 'fa-bug', 'label' => 'VAPT (Vulnerability Assessment & Penetration Testing)', 'x' => 84, 'y' => 18],
-        ['icon' => 'fa-satellite-dish', 'label' => 'Threat Intelligence', 'x' => 91, 'y' => 41],
-        ['icon' => 'fa-triangle-exclamation', 'label' => 'Risk Assessment', 'x' => 86, 'y' => 66],
-        ['icon' => 'fa-graduation-cap', 'label' => 'Capacity Building (Training)', 'x' => 73, 'y' => 84],
-    ];
+    $rightNodes = content_items('vciso_hero_right_nodes');
 @endphp
 
 <header class="cl-vciso-hero" id="hero">
@@ -21,8 +11,8 @@
             <div class="col-12">
                 <div class="cl-vciso-intro">
                 <h1 class="cl-vciso-title mb-4" data-reveal data-hero>
-                    Bangladesh's First Unified Cybersecurity Solution:
-                    <span>Prohoree 365</span>
+                    {{ content('vciso_hero', 'heading') }}
+                    <span>{{ content('vciso_hero', 'label') }}</span>
                 </h1>
                 </div>
             </div>
@@ -33,14 +23,14 @@
         <div class="cl-vciso-dashboard-row" data-reveal data-hero>
             <figure class="cl-vciso-dashboard">
               <video autoplay muted loop playsinline>
-    <source src="{{ asset('assets/video/Vciso_Dashboard.mp4') }}" type="video/mp4">
-    Your browser does not support the video tag.
+    <source src="{{ asset(content('vciso_hero', 'source_media')) }}" type="video/mp4">
+    {{ content('vciso_hero', 'video_text') }}
 </video>
             </figure>
         </div>
 
         <div class="cl-vciso-diagram-row" data-reveal>
-            <div class="cl-vciso-diagram" aria-label="vCISO service coverage diagram">
+            <div class="cl-vciso-diagram" aria-label="{{ content('vciso_hero', 'div_aria_label') }}">
                 <svg class="cl-vciso-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <path d="M50 50 C36 48 30 20 16 18" />
                     <path d="M50 50 C34 50 25 41 9 41" />
@@ -52,11 +42,11 @@
                     <path d="M50 50 C59 64 62 82 73 84" />
                 </svg>
 
-                <div class="cl-vciso-core" aria-label="Prohoree 365 core">
+                <div class="cl-vciso-core" aria-label="{{ content('vciso_hero', 'div_aria_label_2') }}">
                     <span class="cl-vciso-ring"></span>
                     <span class="cl-vciso-ring cl-vciso-ring-two"></span>
                     <div class="cl-vciso-core-badge">
-                        <strong>Prohoree<br>365</strong>
+                        <strong>{{ content('vciso_hero', 'label_2') }}<br>{{ content('vciso_hero', 'label_3') }}</strong>
                     </div>
                 </div>
 

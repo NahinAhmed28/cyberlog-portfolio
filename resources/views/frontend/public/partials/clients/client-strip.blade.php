@@ -1,32 +1,13 @@
-{{-- Home › Client logo strip (ref: buguard.io)
-     Logos are WHITE by default → reveal original color on hover → click opens the
-     client's website. Placeholder SVGs live at public/assets/img/clients/{slug}.svg;
-     drop real client logos at the same paths — the white→color CSS works with any
-     colored SVG/PNG. --}}
+
 @php
-    $clients = [
-        ['slug' => 'a2i',                'name' => 'Aspire to Innovate (a2i)',       'url' => 'https://a2i.gov.bd'],
-        ['slug' => 'aamar-taka',         'name' => 'Aamar Taka',                     'url' => '#'],
-        ['slug' => 'adcomm',             'name' => 'Adcomm Limited',                 'url' => '#'],
-        ['slug' => 'bangladesh-finance', 'name' => 'Bangladesh Finance',             'url' => '#'],
-        ['slug' => 'bida',               'name' => 'BIDA',                           'url' => 'https://bida.gov.bd'],
-        ['slug' => 'bpi',                'name' => 'Bangladesh Petroleum Institute', 'url' => '#'],
-        ['slug' => 'bangladesh-police',  'name' => 'Bangladesh Police',              'url' => 'https://police.gov.bd'],
-        ['slug' => 'bubt',               'name' => 'BUBT',                           'url' => 'https://www.bubt.edu.bd'],
-        ['slug' => 'dse',                'name' => 'Dhaka Stock Exchange (DSE)',      'url' => 'https://www.dsebd.org'],
-        ['slug' => 'legalx',             'name' => 'LegalX',                         'url' => '#'],
-        ['slug' => 'napd',               'name' => 'NAPD',                           'url' => 'https://napd.gov.bd'],
-        ['slug' => 'nazimgarh',          'name' => 'Nazimgarh Resort',               'url' => '#'],
-        ['slug' => 'reachsavvy',         'name' => 'ReachSavvy',                     'url' => '#'],
-        ['slug' => 'vibe-gaming',        'name' => 'Vibe Gaming',                    'url' => '#'],
-    ];
+    $clients = content_items('clients_client_strip_clients');
 @endphp
 
 <section class="page-section" id="clients">
     <div class="container">
 
-        <p class="section-eyebrow text-center mb-2">Clients</p>
-        {{-- TODO: copy — client section heading / tagline (none provided in brief) --}}
+        <p class="section-eyebrow text-center mb-2">{{ content('clients_client_strip', 'paragraph') }}</p>
+        
 
         <div class="cl-logo-panel" data-reveal>
             <div class="cl-logo-grid">
@@ -34,13 +15,13 @@
                     <a class="cl-logo-link" href="{{ $c['url'] }}"
                        @if ($c['url'] !== '#') target="_blank" rel="noopener" @endif
                        title="{{ $c['name'] }}" aria-label="{{ $c['name'] }}">
-                        <img class="cl-logo" src="{{ asset('assets/img/clients/' . $c['slug'] . '.svg') }}"
+                        <img class="cl-logo" src="{{ asset($c['logo']) }}"
                              alt="{{ $c['name'] }}" width="200" height="56" loading="lazy">
                     </a>
                 @endforeach
             </div>
         </div>
-        {{-- TODO: confirm/supply official website URLs for clients currently set to "#" --}}
+        
 
     </div>
 </section>

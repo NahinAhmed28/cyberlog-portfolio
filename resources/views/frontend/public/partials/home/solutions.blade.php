@@ -1,12 +1,10 @@
-{{-- Home > Security Solutions: keep the final service in navigation, outside the card grid. --}}
+
 @php
-    $solutions = collect(config('cyberlog_services', []))
+    $solutions = collect(content_items('services'))
         ->reject(fn ($service) => $service['route'] === 'secure-web-development');
     $svcUrl = function ($service) {
-        $groupRoutes = [
-            'offensive' => 'offensive-security-services',
-            'defensive' => 'defensive-security-services',
-        ];
+        if (!empty($service['url'])) return content_service_url($service);
+        $groupRoutes = content('home_solutions', 'group_routes');
 
         $group = $service['group'] ?? null;
         if (isset($groupRoutes[$group]) && Route::has($groupRoutes[$group])) {
@@ -17,7 +15,7 @@
             return route($service['route']);
         }
 
-        return '#';
+        return content_service_url($service);
     };
 @endphp
 
@@ -25,8 +23,8 @@
     <div class="container">
         <div class="cl-solutions-head">
             <div>
-                <p class="section-eyebrow mb-2" data-reveal>Security Solutions</p>
-                <h2 class="page-section-heading text-secondary mb-0" data-reveal>Explore Our <span class="cl-title-accent">Security Solutions</span></h2>
+                <p class="section-eyebrow mb-2" data-reveal>{{ content('home_solutions', 'paragraph') }}</p>
+                <h2 class="page-section-heading text-secondary mb-0" data-reveal>{{ content('home_solutions', 'heading') }} <span class="cl-title-accent">{{ content('home_solutions', 'label') }}</span></h2>
             </div>
         </div>
 
@@ -44,7 +42,7 @@
                             <span>{{ $feature }}</span>
                         @endforeach
                     </div>
-                    <span class="cl-solution-link">Learn More <i class="fas fa-arrow-right"></i></span>
+                    <span class="cl-solution-link">{{ content('home_solutions', 'label_2') }} <i class="{{ content('home_solutions', 'icon') }}"></i></span>
                 </a>
             @endforeach
         </div>

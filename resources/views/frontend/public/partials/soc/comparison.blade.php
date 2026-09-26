@@ -1,29 +1,23 @@
-{{-- SOC › Comparison — which SOC model delivers real value (ref: underdefense.com) --}}
+
 @php
-$rows = [
-    ['model' => 'In-House SOC',              'cost' => '$750,000', 'setup' => '9 months', 'mttr' => '4.5', 'stopped' => '75%', 'sla' => '70%',    'hl' => false],
-    ['model' => 'Hybrid SOC (Co-Managed)',   'cost' => '$400,000', 'setup' => '5 months', 'mttr' => '2.5', 'stopped' => '85%', 'sla' => '85%',    'hl' => false],
-    ['model' => 'Fully Outsourced SOC',      'cost' => '$280,000', 'setup' => '2 months', 'mttr' => '1.0', 'stopped' => '90%', 'sla' => '88%',    'hl' => false],
-    ['model' => 'UnderDefense SOCaaS',       'cost' => '$192,000', 'setup' => '1 month',  'mttr' => '0.5', 'stopped' => '96%', 'sla' => '99.9%',  'hl' => false],
-    ['model' => 'Cyberlog SOC',              'cost' => '$150,000', 'setup' => '2 weeks',  'mttr' => '0.4', 'stopped' => '97%', 'sla' => '99.95%','hl' => true],
-];
+$rows = content_items('soc_comparison_rows');
 @endphp
 
 <section class="page-section" id="comparison">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2" data-reveal>Comparison</p>
-        <h2 class="page-section-heading text-center text-secondary mb-2" data-reveal>Which SOC Model Delivers Real Value?</h2>
+        <p class="section-eyebrow text-center mb-2" data-reveal>{{ content('soc_comparison', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-center text-secondary mb-2" data-reveal>{{ content('soc_comparison', 'heading') }}</h2>
         <div class="cl-cmp-wrap mt-5" data-reveal>
             <div class="table-responsive">
                 <table class="table align-middle cl-compare cl-cmp mb-0">
                     <thead>
                         <tr>
-                            <th>SOC Model</th>
-                         {{--   <th>Yearly Cost</th> --}}
-                            <th>Setup Time</th>
-                            <th>MTTR (hrs)</th>
-                            <th>Threats Stopped</th>
-                            <th>SLA / KPI</th>
+                            <th>{{ content('soc_comparison', 'th_text') }}</th>
+                         
+                            <th>{{ content('soc_comparison', 'th_text_2') }}</th>
+                            <th>{{ content('soc_comparison', 'th_text_3') }}</th>
+                            <th>{{ content('soc_comparison', 'th_text_4') }}</th>
+                            <th>{{ content('soc_comparison', 'th_text_5') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,7 +26,7 @@ $rows = [
                                 <td class="fw-semibold">
                                     @if ($r['hl'])</i>@endif{{ $r['model'] }}
                                 </td>
-                              {{--  <td>{{ $r['cost'] }}</td> --}}
+                              
                                 <td>{{ $r['setup'] }}</td>
                                 <td>{{ $r['mttr'] }}</td>
                                 <td>{{ $r['stopped'] }}</td>

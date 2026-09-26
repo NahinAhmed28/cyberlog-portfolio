@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('cms_vciso_hero_right_nodes', function (Blueprint $table) {
+            $table->id();
+            $table->string('seed_key')->unique('cms_6f72d33b5bc7_seed');
+            $table->unsignedInteger('sort_order')->default(0)->index('cms_6f72d33b5bc7_order');
+            $table->boolean('is_visible')->default(true);
+            $table->longText('content_icon')->nullable();
+            $table->longText('content_label')->nullable();
+            $table->double('content_x')->nullable();
+            $table->double('content_y')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('cms_vciso_hero_right_nodes');
+    }
+};

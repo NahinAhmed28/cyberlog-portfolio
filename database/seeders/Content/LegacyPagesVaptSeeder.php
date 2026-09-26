@@ -1,0 +1,81 @@
+<?php
+
+namespace Database\Seeders\Content;
+
+use Database\Seeders\ContentSeeder;
+
+class LegacyPagesVaptSeeder extends ContentSeeder
+{
+    public function run(): void
+    {
+        $this->seedFeature('legacy_pages_vapt', [
+            [
+                'title' => 'VAPT & Penetration Testing — Cyberlog',
+                'eyebrow' => 'Vulnerability Assessment & Penetration Testing',
+                'heading' => 'Find &amp; Fix Risks <span class="text-teal">Before Attackers Do</span>',
+                'subheading' => 'Cyberlog conducts VAPT to identify, validate, and prioritize exploitable security risks across your applications, networks, cloud, and infrastructure — with clear, actionable remediation.',
+                'label' => 'Get a Quote',
+                'url' => '#calculator',
+                'hero_icon' => 'fas fa-bug',
+                'hero_caption' => 'Offensive security testing',
+                'paragraph' => 'Methodology',
+                'heading_2' => 'Our Security Posture Assessment',
+                'paragraph_2' => 'A 360° review of your attack surface, mapped to industry standards (OWASP, PTES, NIST).',
+                'paragraph_3' => 'Pen Test Scoping',
+                'heading_3' => 'Calculate Your VAPT Cost',
+                'paragraph_4' => 'Pen test pricing depends on scope — number of applications, IPs, APIs, and the depth of testing required. Tell us about your environment and we\'ll return a tailored scope and quote.',
+                'h5_text' => 'Scope your assessment',
+                'label_text' => 'Test type',
+                'option_text' => 'Web Application',
+                'option_text_2' => 'Network / Infrastructure',
+                'option_text_3' => 'Mobile App',
+                'option_text_4' => 'API',
+                'option_text_5' => 'Cloud',
+                'label_text_2' => 'Testing approach',
+                'option_text_6' => 'Black Box',
+                'option_text_7' => 'Grey Box',
+                'option_text_8' => 'White Box',
+                'label_text_3' => 'Number of targets / assets',
+                'input_placeholder' => 'e.g. 5',
+                'label_text_4' => 'Business email',
+                'input_placeholder_2' => 'you@company.com',
+                'button_label' => 'Get a Custom Quote',
+                'paragraph_5' => 'Coverage Matrix',
+                'heading_4' => 'What Each Engagement Covers',
+                'th_text' => 'Coverage',
+                'th_text_2' => 'Standard',
+                'th_text_3' => 'Advanced',
+                'th_text_4' => 'Red Team',
+                'icon' => 'fas fa-check text-teal',
+                'icon_2' => 'fas fa-minus text-muted',
+                'paragraph_6' => 'Testing Approaches',
+                'heading_5' => 'Black, Grey & White Box',
+                'icon_3' => 'fas fa-cube',
+                'h4_text' => 'Black Box',
+                'label_2' => 'Conditions:',
+                'paragraph_7' => 'We try to penetrate the system and identify ways to harm your business, having minimum information about your company.',
+                'label_3' => 'Value:',
+                'paragraph_8' => 'Simulates a real-world external attacker and identifies technical and human-related security issues.',
+                'icon_4' => 'fas fa-cube',
+                'h4_text_2' => 'Grey Box',
+                'label_4' => 'Conditions:',
+                'paragraph_9' => 'We attack your business with general information about your infrastructure and system, including limited logins and access.',
+                'label_5' => 'Value:',
+                'paragraph_10' => 'The golden mean between quality and price — cheaper and faster than a full black-box approach.',
+                'icon_5' => 'fas fa-cube',
+                'h4_text_3' => 'White Box',
+                'label_6' => 'Conditions:',
+                'paragraph_11' => 'We try to hack your organization with full knowledge of logins, passwords, application source, and architecture.',
+                'label_7' => 'Value:',
+                'paragraph_12' => 'Uncovers hidden vulnerabilities that may go unnoticed in other types of pen tests.',
+                'paragraph_13' => 'Why Cyberlog VAPT',
+                'heading_6' => 'Benefits',
+                'label_8' => 'Financial Institute',
+                'heading_7' => 'Bangladesh Finance',
+                'paragraph_14' => 'Cyberlog conducted VAPT for Bangladesh Finance to identify, validate, and prioritize exploitable security risks across its digital environment.',
+                'title_2' => 'Ready to test your defenses?',
+                'text' => 'Book a scoping call and get a tailored VAPT quote.',
+            ],
+        ]);
+    }
+}

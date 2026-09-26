@@ -1,55 +1,14 @@
 @extends('layouts.portfolio')
 
-@section('title', 'Offensive Security Services - Cyberlog')
+@section('title', content('page_offensive_security_services', 'title'))
 
 @section('content')
 
 @php
-    $catalogue = collect(config('cyberlog_services', []))->keyBy('route');
-    $items = [
-        [
-            'route' => 'red-team',
-            'image' => 'assets/img/services/offensive/red-team-assessment.png',
-            'imageAlt' => 'Red team assessment attack simulation visual',
-            'lead' => 'Simulate realistic attack behavior before real attackers do.',
-            'points' => [
-                'Authorized adversary emulation across people, process, and technology',
-                'Social engineering, exploitation, privilege escalation, and lateral movement scenarios',
-                'Detection and response gap reporting with practical remediation priorities',
-            ],
-        ],
-        [
-            'route' => 'app-security-testing',
-            'image' => 'assets/img/services/offensive/web-api-mobile-application-security-testing.png',
-            'imageAlt' => 'Application security testing visual for web API and mobile platforms',
-            'lead' => 'Validate exploitable weaknesses across digital products.',
-            'points' => [
-                'Web, API, Android, and iOS security testing aligned with OWASP risk areas',
-                'Authentication, authorization, session, input, and data exposure validation',
-                'Developer-ready findings with proof, business impact, and retest guidance',
-            ],
-        ],
-        [
-            'route' => 'network-security',
-            'image' => 'assets/img/services/offensive/network-security-assessment.png',
-            'imageAlt' => 'Network security assessment visual with firewall and infrastructure nodes',
-            'lead' => 'Map infrastructure exposure and reduce attack paths.',
-            'points' => [
-                'Internal and external network assessment across services, servers, and access layers',
-                'Firewall, wireless, segmentation, and configuration review',
-                'Prioritized remediation for exposed services and reachable attack paths',
-            ],
-        ],
-        [
-            'route' => 'secure-code-review',
-            'image' => 'assets/img/services/offensive/source-code-security-audit.png',
-            'imageAlt' => 'Source code security audit visual with code analysis and security testing',
-            'lead' => 'Find and fix security weaknesses in your codebase.',
-            'points' => $catalogue->get('secure-code-review')['detail']['points'],
-        ],
-    ];
+    $catalogue = collect(content_items('services'))->keyBy('route');
+    $items = content_items('page_offensive_security_services_items');
 
-    $services = collect($items)->map(function ($item) use ($catalogue) {
+    $services = collect($items)->filter(fn ($item) => $catalogue->has($item['route']))->map(function ($item) use ($catalogue) {
         $cfg = $catalogue->get($item['route'], []);
         return array_merge($cfg, [
             'image' => $item['image'],
@@ -62,17 +21,17 @@
 
 @include('pages.partials.security-service-group', [
     'theme' => 'offensive',
-    'eyebrow' => 'Offensive Security',
-    'title' => 'Offensive Security Services',
-    'summary' => 'Purpose-built testing services that identify exploitable weaknesses, validate real attack paths, and help teams fix risk with evidence-backed reporting.',
-    'heroIcon' => 'fa-user-secret',
-    'heroImage' => 'assets/img/services/offensive-security-services-hero.png',
-    'heroImageAlt' => 'Offensive security red team command environment with exploit paths and attack simulation dashboards',
+    'eyebrow' => content('page_offensive_security_services', 'eyebrow'),
+    'title' => content('page_offensive_security_services', 'title_2'),
+    'summary' => content('page_offensive_security_services', 'summary'),
+    'heroIcon' => content('page_offensive_security_services', 'hero_icon'),
+    'heroImage' => content('page_offensive_security_services', 'hero_image'),
+    'heroImageAlt' => content('page_offensive_security_services', 'hero_image_alt'),
     'services' => $services,
     'switchHref' => null,
     'switchLabel' => null,
-    'ctaTitle' => 'Ready to test your exposure?',
-    'ctaText' => 'Cyberlog can scope a practical offensive security engagement for your applications, infrastructure, and team readiness.',
+    'ctaTitle' => content('page_offensive_security_services', 'cta_title'),
+    'ctaText' => content('page_offensive_security_services', 'cta_text'),
 ])
 
 @endsection

@@ -1,12 +1,8 @@
-{{-- Public marketing footer — viserx.com style: multi-column links, social icons,
-     and a large glowing "Cyberlog" wordmark at the bottom. --}}
+
 @php
     $u = fn ($pub, $legacy) => Route::has($pub) ? route($pub) : (Route::has($legacy) ? route($legacy) : '#');
     $svcUrl = function ($service) {
-        $groupRoutes = [
-            'offensive' => 'offensive-security-services',
-            'defensive' => 'defensive-security-services',
-        ];
+        $groupRoutes = content('footer', 'group_routes');
 
         $group = $service['group'] ?? null;
         if (isset($groupRoutes[$group]) && Route::has($groupRoutes[$group])) {
@@ -25,51 +21,39 @@
     <div class="container">
 
         <div class="row gy-4">
-            {{-- Services — the 9-service catalogue (config/cyberlog_services.php) --}}
-            <div class="col-12 col-xl-4">
-                <div class="cl-foot-head">Major Services</div>
-                    <a class="cl-foot-link" href="{{ route('soc') }}">Security Operations Center (SOC)</a>
-                    <a class="cl-foot-link" href="{{ route('vapt') }}">Vulnerability Assessment & Penetration Testing (VAPT)</a>
-                    <a class="cl-foot-link" href="{{ route('it-audit') }}">IT Security Audit & ISO/IEC 27001</a>
-                    <a class="cl-foot-link" href="{{ route('capacity-building') }}">Awareness & Security Training</a>
-                    <a class="cl-foot-link" href="{{ route('ai-automation') }}">AI & Automation</a>
-                {{--<div class="cl-foot-services">
-                    @foreach (config('cyberlog_services', []) as $svc)
-                        <a class="cl-foot-link" href="{{ $svcUrl($svc) }}">{{ $svc['title'] }}</a>
-                    @endforeach
-                </div>--}}
-            </div>
-
-            {{-- Specialized Services --}}
-            <div class="col-6 col-xl-2">
-                <div class="cl-foot-head">Specialized Services </div>
-                <a class="cl-foot-link" href="{{ $u('public.offensive-security-services', 'offensive-security-services') }}">Offensive Security Services</a>
-                <a class="cl-foot-link" href="{{ $u('public.defensive-security-services', 'defensive-security-services') }}">Defensive Security Services</a>
-            </div>
             
-            {{-- Company --}}
-            <div class="col-6 col-xl-2">
-                <div class="cl-foot-head">Company</div>
-                <a class="cl-foot-link" href="{{ $u('public.about', 'about') }}">About Us</a>
-                <a class="cl-foot-link" href="{{ route('our-team') }}">Our Team</a>
-                <a class="cl-foot-link" href="{{ $u('public.career', 'career') }}">Career</a>
-                <a class="cl-foot-link" href="{{ $u('public.contact', 'contact') }}">Contact</a>
+            <div class="col-12 col-xl-4">
+                <div class="cl-foot-head">{{ content('footer', 'div_text') }}</div>
+                    @foreach (content_items('footer_col_12') as $contentRow)
+<a class="cl-foot-link" href="{{ $contentRow['link_url'] }}">{{ $contentRow['link_label'] }}</a>
+@endforeach
+                
             </div>
 
-            {{-- Contact --}}
+            
+            <div class="col-6 col-xl-2">
+                <div class="cl-foot-head">{{ content('footer', 'div_text_2') }} </div>
+@foreach(content_items('footer_specialized_links') as $link)<a class="cl-foot-link" href="{{ $link['url'] }}">{{ $link['label'] }}</a>@endforeach
+</div>
+            
+            
+            <div class="col-6 col-xl-2">
+                <div class="cl-foot-head">{{ content('footer', 'div_text_3') }}</div>
+@foreach(content_items('footer_company_links') as $link)<a class="cl-foot-link" href="{{ $link['url'] }}">{{ $link['label'] }}</a>@endforeach
+</div>
+
+            
             <div class="col-6 col-xl-3">
-                <div class="cl-foot-head">Contact</div>
-                <p class="text-muted mb-2"><i class="fas fa-location-dot text-primary me-2"></i>374 Tejgaon Industrial Area, 3rd Floor, Dhaka 1208, Bangladesh</p>
-                <p class="text-muted mb-2"><i class="fas fa-envelope text-primary me-2"></i><a class="link-light text-decoration-none" href="mailto:info@cyberlog.bd">info@cyberlog.bd</a></p>
-                <p class="text-muted mb-2"><i class="fas fa-phone text-primary me-2"></i>+880 1576-990884</p>
-                <p class="text-muted mb-3"><i class="fa-solid fa-earth-americas text-primary me-2"></i><a href="https://www.cyberlog.bd" target="_blank">https://www.cyberlog.bd</a></p>
-                <p class="text-muted mb-3">TRAD/DNCC/030973/2025</p>
+                <div class="cl-foot-head">{{ content('footer', 'div_text_4') }}</div>
+                <p class="text-muted mb-2"><i class="{{ content('footer', 'icon') }}"></i>{{ content('footer', 'paragraph') }}</p>
+                <p class="text-muted mb-2"><i class="{{ content('footer', 'icon_2') }}"></i><a class="link-light text-decoration-none" href="{{ content('footer', 'a_href') }}">{{ content('footer', 'link_label_12') }}</a></p>
+                <p class="text-muted mb-2"><i class="{{ content('footer', 'icon_3') }}"></i>{{ content('footer', 'paragraph_2') }}</p>
+                <p class="text-muted mb-3"><i class="{{ content('footer', 'icon_4') }}"></i><a href="{{ content('footer', 'a_href_2') }}" target="_blank">{{ content('footer', 'link_label_13') }}</a></p>
+                <p class="text-muted mb-3">{{ content('footer', 'paragraph_3') }}</p>
                 <div class="d-flex gap-2">
-                    <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-fw fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/company/cyberlogbd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/cyberlog_bd/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-fw fa-instagram"></i></a>
-                    {{-- TODO: confirm the real X/Twitter profile URL --}}
-                    <a class="btn btn-outline-light btn-social" href="https://x.com/cyberlogbd" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-fw fa-x-twitter"></i></a>
+                    @foreach (content_items('footer_cards') as $contentRow)
+<a class="btn btn-outline-light btn-social" href="{{ $contentRow['a_href'] }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $contentRow['a_aria_label'] }}"><i class="{{ $contentRow['icon'] }}"></i></a>
+@endforeach
                 </div>
             </div>
 
@@ -78,16 +62,18 @@
         <hr class="border-0 my-4">
 
 
-        {{-- Big glowing wordmark --}}
+        
         <div class="cl-wordmark-wrap">
             <div class="cl-wordmark-lockup">
                 <div class="d-flex align-items-center mb-5 justify-content-md-between pe-4 ps-3 justify-content-center flex-wrap" style="gap: 0 1.5rem !important;">
                     <div class="cl-footer-meta text-muted small">
-                        <div>&copy; {{ date('Y') }} Cyberlog. All rights reserved.</div>
+                        <div>{{ content('footer', 'div_text_5') }} {{ date('Y') }} {{ content('footer', 'div_text_6') }}</div>
                     </div>
-                    <div class="mono cl-footer-tagline text-muted small position-relative m-0">CYBER SAFE UNIVERSE</div>
+                    <div class="mono cl-footer-tagline text-muted small position-relative m-0">{{ content('footer', 'div_text_7') }}</div>
                 </div>
-                <div class="cl-wordmark" aria-hidden="true"><span>CYBERL</span><span>OG</span></div>
+                <div class="cl-wordmark" aria-hidden="true">@foreach (content_items('footer_wordmark') as $contentRow)
+<span>{{ $contentRow['label'] }}</span>
+@endforeach</div>
             </div>
         </div>
 

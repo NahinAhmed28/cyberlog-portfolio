@@ -1,14 +1,14 @@
 @php
     $slug = $slug ?? request()->route('service');
     // Standalone catalogue detail pages (config/cyberlog_services.php).
-    $cfg = collect(config('cyberlog_services', []))->firstWhere('route', $slug);
-    if ($cfg && ! empty($cfg['detail'])) {
+    $cfg = collect(content_items('services'))->firstWhere('route', $slug);
+    if ($cfg) {
         $service = [
             'title'   => $cfg['title'],
-            'eyebrow' => $cfg['detail']['eyebrow'],
+            'eyebrow' => $cfg['detail']['eyebrow'] ?? $cfg['kicker'],
             'icon'    => $cfg['icon'],
             'summary' => $cfg['desc'],
-            'points'  => $cfg['detail']['points'],
+            'points'  => $cfg['detail']['points'] ?? $cfg['tags'],
         ];
     } else {
         abort(404);
@@ -17,7 +17,7 @@
 
 @extends('frontend.public.layouts.public')
 
-@section('title', $service['title'] . ' - Cyberlog')
+@section('title', $service['title'] . ' ' . content('page_service_detail', 'page_title_suffix'))
 @section('meta_description', $service['summary'])
 
 @section('content')
@@ -32,8 +32,8 @@
                     {{ $service['title'] }}
                 </h1>
                 <p class="lead text-muted mb-4" data-reveal data-hero>{{ $service['summary'] }}</p>
-                <a class="btn btn-alert btn-xl text-white fw-bold" href="{{ route('contact') }}" data-reveal data-hero>
-                    Talk to an Expert
+                <a class="btn btn-alert btn-xl text-white fw-bold" href="{{ content('page_service_detail', 'link_url') }}" data-reveal data-hero>
+                    {{ content('page_service_detail', 'link_label') }}
                 </a>
             </div>
             <div class="col-lg-5" data-reveal data-hero>
@@ -47,13 +47,13 @@
 
 <section class="page-section cl-service-detail-section">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2" data-reveal>What We Deliver</p>
-        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>Dedicated {{ $service['title'] }} Support</h2>
+        <p class="section-eyebrow text-center mb-2" data-reveal>{{ content('page_service_detail', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>{{ content('page_service_detail', 'heading') }} {{ $service['title'] }} {{ content('page_service_detail', 'heading_2') }}</h2>
         <div class="row g-4">
             @foreach ($service['points'] as $point)
                 <div class="col-md-6 col-lg-3">
                     <div class="cl-service-detail-card h-100" data-reveal>
-                        <i class="fas fa-circle-check"></i>
+                        <i class="{{ content('page_service_detail', 'icon') }}"></i>
                         <p>{{ $point }}</p>
                     </div>
                 </div>
@@ -63,8 +63,8 @@
 </section>
 
 @include('partials.talk-to-expert', [
-    'title' => 'Need help with ' . $service['title'] . '?',
-    'text' => 'Cyberlog can scope a practical plan for your environment and risk profile.'
+    'title' => rtrim(content('page_service_detail', 'title')) . ' ' . $service['title'] . '?',
+    'text' => content('page_service_detail', 'text')
 ])
 
 @endsection

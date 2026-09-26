@@ -1,0 +1,217 @@
+<?php
+
+namespace Database\Seeders\Content;
+
+use Database\Seeders\ContentSeeder;
+
+class ServicesSeeder extends ContentSeeder
+{
+    public function run(): void
+    {
+        $this->seedFeature('services', [
+            [
+                'title' => 'Security Operations Center (SOC)',
+                'icon' => 'fa-desktop',
+                'route' => 'soc',
+                'group' => 'primary',
+                'kicker' => 'THREAT DETECTION',
+                'desc' => '24/7 threat monitoring, detection, and incident response to keep your environment under constant watch.',
+                'tags' => [
+                    'SOC',
+                    'SIEM',
+                    'Incident Monitoring',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'Vulnerability Assessment & Penetration Testing (VAPT)',
+                'icon' => 'fa-bug',
+                'route' => 'vapt',
+                'group' => 'primary',
+                'kicker' => 'REAL WORLD SECURITY TESTING',
+                'desc' => 'Identify and exploit security weaknesses before attackers do, with clear, actionable remediation guidance.',
+                'tags' => [
+                    'VAPT',
+                    'Web Testing',
+                    'Network Testing',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'IT Security Audit & ISO/IEC 27001',
+                'icon' => 'fa-clipboard-check',
+                'route' => 'it-audit',
+                'group' => 'primary',
+                'kicker' => 'COMPLIANCE READINESS',
+                'desc' => 'Independent audits and end-to-end ISMS implementation support to align your organization with international security standards.',
+                'tags' => [
+                    'IT Audit',
+                    'ISO 27001',
+                    'Control Review',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'Awareness & Security Training',
+                'icon' => 'fa-graduation-cap',
+                'route' => 'capacity-building',
+                'group' => 'primary',
+                'kicker' => 'HUMAN DEFENSE',
+                'desc' => 'Role-based training programs that turn your employees into your first line of defense against cyber threats.',
+                'tags' => [
+                    'Awareness Training',
+                    'Phishing Readiness',
+                    'Staff Training',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'AI & Automation',
+                'icon' => 'fa-solid fa-robot',
+                'route' => 'ai-automation',
+                'group' => 'primary',
+                'kicker' => 'Artificial Intelligence & Automation',
+                'desc' => 'Practical AI and automation programs that transform your workforce into confident adopters of intelligent technologies.',
+                'tags' => [
+                    'AI Fundamentals',
+                    'Workflow Automation',
+                    'Productivity Boost',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'Red Team Assessment',
+                'icon' => 'fa-user-secret',
+                'route' => 'red-team',
+                'group' => 'offensive',
+                'kicker' => 'ATTACK SIMULATION',
+                'desc' => 'Real-world, authorized attack simulations that test your people, processes, and technology against advanced adversary techniques.',
+                'tags' => [
+                    'Attack Simulation',
+                    'Defense Testing',
+                    'Security Readiness',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'Web, API & Mobile Application Security Testing',
+                'icon' => 'fa-mobile-screen-button',
+                'route' => 'app-security-testing',
+                'group' => 'offensive',
+                'kicker' => 'APPLICATION SECURITY',
+                'desc' => 'In-depth security testing across web, API, and mobile platforms, mapped to the OWASP Top 10 and industry best practices.',
+                'tags' => [
+                    'OWASP Top 10',
+                    'API Security',
+                    'Mobile Security',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'Network Security Assessment',
+                'icon' => 'fa-network-wired',
+                'route' => 'network-security',
+                'group' => 'offensive',
+                'kicker' => 'INFRASTRUCTURE SECURITY',
+                'desc' => 'Comprehensive evaluation of your internal and external network to uncover misconfigurations, weak access controls, and exposed attack paths.',
+                'tags' => [
+                    'Firewall Review',
+                    'Network Exposure',
+                    'Segmentation',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'Source Code Security Audit',
+                'icon' => 'fa-code',
+                'route' => 'secure-code-review',
+                'group' => 'primary',
+                'kicker' => 'SECURE CODE REVIEW',
+                'desc' => 'Static and dynamic application security testing (SAST/DAST) to catch vulnerabilities in your codebase before they reach production.',
+                'tags' => [
+                    'SAST',
+                    'DAST',
+                    'Secure Coding',
+                ],
+                'detail' => [
+                    'eyebrow' => 'Secure Code Review',
+                    'points' => [
+                        'Review application source code for security weaknesses and unsafe implementation patterns.',
+                        'Combine SAST and DAST findings to validate risk across code and runtime behavior.',
+                        'Assess dependencies, secrets handling, authentication, authorization, and input validation.',
+                        'Deliver developer-ready remediation guidance that supports secure coding practices.',
+                    ],
+                ],
+                'url' => '',
+            ],
+            [
+                'title' => 'Threat Intelligence',
+                'icon' => 'fa-satellite-dish',
+                'route' => 'threat-intelligence',
+                'group' => 'defensive',
+                'kicker' => 'EARLY WARNING',
+                'desc' => 'Continuous monitoring of emerging threats, leaked credentials, and attacker activity to keep you a step ahead.',
+                'tags' => [
+                    'Threat Monitoring',
+                    'Leaked Credentials',
+                    'Risk Insights',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'Cybersecurity Consultancy',
+                'icon' => 'fa-briefcase',
+                'route' => 'security-consultancy',
+                'group' => 'defensive',
+                'kicker' => 'SECURITY ADVISORY',
+                'desc' => 'Strategic security advisory to help you build a resilient, business-aligned security roadmap.',
+                'tags' => [
+                    'Security Roadmap',
+                    'Risk Advisory',
+                    'Policy Support',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'Secure Backup & Recovery Solutions',
+                'icon' => 'fa-server',
+                'route' => 'backup-recovery',
+                'group' => 'defensive',
+                'kicker' => 'OPERATIONAL RESILIENCE',
+                'desc' => 'Reliable backup and disaster recovery support to keep your business running through any disruption.',
+                'tags' => [
+                    'Secure Backup',
+                    'Recovery Planning',
+                    'Data Protection',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+            [
+                'title' => 'Secure Web Application Development',
+                'icon' => 'fa-code',
+                'route' => 'secure-web-development',
+                'group' => 'defensive',
+                'kicker' => 'SECURE BY DESIGN',
+                'desc' => 'Security-by-design application development with built-in protections, including DDoS mitigation, from the ground up.',
+                'tags' => [
+                    'Secure SDLC',
+                    'DDoS Mitigation',
+                    'Application Hardening',
+                ],
+                'detail' => null,
+                'url' => '',
+            ],
+        ]);
+    }
+}

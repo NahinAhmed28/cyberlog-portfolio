@@ -1,24 +1,15 @@
-{{-- SOC › Capability matrix (ref: underdefense.com) --}}
+
 @php
-    $caps = [
-        ['24/7 Monitoring & Triage', 1, 1, 1],
-        ['SIEM Management', 1, 1, 1],
-        ['Compliance Reporting', 1, 1, 1],
-        ['Threat Intelligence Feeds', 0, 1, 1],
-        ['Managed Detection & Response (MDR)', 0, 1, 1],
-        ['Proactive Threat Hunting', 0, 0, 1],
-        ['Incident Response Retainer', 0, 0, 1],
-        ['Dedicated SOC Analyst', 0, 0, 1],
-    ];
-    $tiers = ['Essential', 'Advanced', 'Enterprise'];
+    $caps = content_items('soc_matrix_caps');
+    $tiers = content_items('soc_matrix_tiers');
 @endphp
 
 <section class="page-section cl-soc-proof cl-soc-matrix-section" id="matrix">
     <div class="container">
         <div class="cl-soc-proof-heading text-center" data-reveal>
-            <p class="section-eyebrow text-center mb-2"><span></span>Managed SOC Coverage<span></span></p>
-            <h2 class="page-section-heading text-white mb-2">What's Included in Each Tier</h2>
-            <p class="cl-soc-proof-copy mb-0">Choose the level of monitoring, response, and analyst support your environment requires.</p>
+            <p class="section-eyebrow text-center mb-2"><span></span>{{ content('soc_matrix', 'paragraph') }}<span></span></p>
+            <h2 class="page-section-heading text-white mb-2">{{ content('soc_matrix', 'heading') }}</h2>
+            <p class="cl-soc-proof-copy mb-0">{{ content('soc_matrix', 'paragraph_2') }}</p>
         </div>
 
         <div class="cl-cmp-wrap" data-reveal>
@@ -26,7 +17,7 @@
                 <table class="table align-middle text-center cl-compare cl-cmp mb-0">
                     <thead>
                         <tr>
-                            <th class="text-start">Capability</th>
+                            <th class="text-start">{{ content('soc_matrix', 'th_text') }}</th>
                             @foreach ($tiers as $t)<th>{{ $t }}</th>@endforeach
                         </tr>
                     </thead>
@@ -37,9 +28,9 @@
                                 @for ($i = 1; $i <= 3; $i++)
                                     <td>
                                         @if ($cap[$i])
-                                            <span class="cl-tier-check" aria-label="Included"><i class="fas fa-check"></i></span>
+                                            <span class="cl-tier-check" aria-label="{{ content('soc_matrix', 'span_aria_label') }}"><i class="{{ content('soc_matrix', 'icon') }}"></i></span>
                                         @else
-                                            <span class="cl-tier-minus" aria-label="Not included">—</span>
+                                            <span class="cl-tier-minus" aria-label="{{ content('soc_matrix', 'span_aria_label_2') }}">—</span>
                                         @endif
                                     </td>
                                 @endfor

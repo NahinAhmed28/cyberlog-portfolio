@@ -1,52 +1,20 @@
 @extends('layouts.portfolio')
 
-@section('title', 'Offensive & Defensive Security Services - Cyberlog')
+@section('title', content('legacy_pages_defense_services', 'title'))
 
 @section('content')
 
 @php
-    $offensive = [
-        [
-            'title'   => 'Red Team Assessment',
-            'icon'    => 'fa-user-secret',
-            'points'  => ['Authorized, controlled attack simulations', 'Tests people, processes, and technology', 'Validates real-world defense readiness'],
-            'related' => ['Ethical Hacking', 'Social Engineering', 'Vulnerability Exploitation'],
-        ],
-        [
-            'title'   => 'Web, API & Mobile Application Security Testing',
-            'icon'    => 'fa-mobile-screen-button',
-            'points'  => ['Full-stack testing across web, API, and mobile', 'Mapped to the OWASP Top 10', 'Manual and automated assessment'],
-            'related' => ['Web App Scanning', 'API Testing', 'Mobile Application Testing'],
-        ],
-        [
-            'title'   => 'Network Security Assessment',
-            'icon'    => 'fa-network-wired',
-            'points'  => ['Internal and external network testing', 'Identifies misconfigurations and exposed services', 'Hands-on exploitation, not just scanning'],
-            'related' => ['Server-Side Testing', 'Penetration Testing'],
-        ],
-    ];
+    $offensive = content_items('legacy_pages_defense_services_offensive');
 
-    $defensive = [
-        [
-            'title'   => 'Threat Intelligence',
-            'icon'    => 'fa-satellite-dish',
-            'points'  => ['Continuous monitoring of emerging threats', 'Detects leaked credentials and exposed assets', 'Early warning for proactive defense'],
-            'related' => ['Threat Hunting', 'SIEM Solution'],
-        ],
-        [
-            'title'   => 'Digital Forensics & Incident Response',
-            'icon'    => 'fa-fingerprint',
-            'points'  => ['Investigates cyber incidents and evidence', 'Supports containment and root-cause analysis', 'Guides recovery and prevention actions'],
-            'related' => ['Incident Response', 'Evidence Analysis', 'Containment Support'],
-        ],
-    ];
+    $defensive = content_items('legacy_pages_defense_services_defensive');
 @endphp
 
-{{-- No hero per feedback - CrowdStrike-style alternating service blocks. --}}
+
 <section class="page-section cl-ds-first" id="offensive">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">What We Test</p>
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Offensive <span class="cl-title-accent">Security Services</span></h2>
+        <p class="section-eyebrow text-center mb-2">{{ content('legacy_pages_defense_services', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ content('legacy_pages_defense_services', 'heading') }} <span class="cl-title-accent">{{ content('legacy_pages_defense_services', 'label') }}</span></h2>
 
         @foreach ($offensive as $block)
             <div class="row g-4 g-lg-5 align-items-center cl-ds-row">
@@ -54,13 +22,13 @@
                     <h3 class="cl-ds-title">{{ $block['title'] }}</h3>
                     <ul class="cl-ds-points list-unstyled">
                         @foreach ($block['points'] as $p)
-                            <li><i class="fas fa-circle-plus"></i>{{ $p }}</li>
+                            <li><i class="{{ content('legacy_pages_defense_services', 'icon') }}"></i>{{ $p }}</li>
                         @endforeach
                     </ul>
                     <div class="cl-ds-related">
-                        <span class="cl-ds-rel-label">Related:</span>
+                        <span class="cl-ds-rel-label">{{ content('legacy_pages_defense_services', 'label_2') }}</span>
                         @foreach ($block['related'] as $rel)
-                            <span class="cl-ds-rel">{{ $rel }}</span>@if (! $loop->last)<span class="cl-ds-dot">&middot;</span>@endif
+                            <span class="cl-ds-rel">{{ $rel }}</span>@if (! $loop->last)<span class="cl-ds-dot">{{ content('legacy_pages_defense_services', 'label_3') }}</span>@endif
                         @endforeach
                     </div>
                 </div>
@@ -76,8 +44,8 @@
 
 <section class="page-section bg-light" id="defensive">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">What We Defend</p>
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Defensive <span class="cl-title-accent">Security Services</span></h2>
+        <p class="section-eyebrow text-center mb-2">{{ content('legacy_pages_defense_services', 'paragraph_2') }}</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ content('legacy_pages_defense_services', 'heading_2') }} <span class="cl-title-accent">{{ content('legacy_pages_defense_services', 'label_4') }}</span></h2>
 
         @foreach ($defensive as $block)
             <div class="row g-4 g-lg-5 align-items-center cl-ds-row">
@@ -85,13 +53,13 @@
                     <h3 class="cl-ds-title">{{ $block['title'] }}</h3>
                     <ul class="cl-ds-points list-unstyled">
                         @foreach ($block['points'] as $p)
-                            <li><i class="fas fa-circle-plus blue"></i>{{ $p }}</li>
+                            <li><i class="{{ content('legacy_pages_defense_services', 'icon_2') }}"></i>{{ $p }}</li>
                         @endforeach
                     </ul>
                     <div class="cl-ds-related">
-                        <span class="cl-ds-rel-label">Related:</span>
+                        <span class="cl-ds-rel-label">{{ content('legacy_pages_defense_services', 'label_5') }}</span>
                         @foreach ($block['related'] as $rel)
-                            <span class="cl-ds-rel">{{ $rel }}</span>@if (! $loop->last)<span class="cl-ds-dot">&middot;</span>@endif
+                            <span class="cl-ds-rel">{{ $rel }}</span>@if (! $loop->last)<span class="cl-ds-dot">{{ content('legacy_pages_defense_services', 'label_6') }}</span>@endif
                         @endforeach
                     </div>
                 </div>
@@ -105,7 +73,7 @@
     </div>
 </section>
 
-@include('partials.talk-to-expert', ['title' => 'Under attack or want to be ready?', 'text' => 'Our security team can help you test exposure, strengthen monitoring, and respond faster.'])
+@include('partials.talk-to-expert', ['title' => content('legacy_pages_defense_services', 'title_2'), 'text' => content('legacy_pages_defense_services', 'text')])
 
 @endsection
 

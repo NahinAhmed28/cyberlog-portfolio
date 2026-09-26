@@ -1,30 +1,26 @@
 @extends('layouts.portfolio')
 
-@section('title', 'Career — Cyberlog')
+@section('title', content('page_career', 'title'))
 
 @section('content')
 
 @include('partials.page-hero', [
-    'eyebrow' => 'Careers',
-    'heading' => 'Build a Career in <span class="text-teal">Cyber Defense</span>',
-    'subheading' => 'Join a team that defends the organizations that matter most. We are always looking for talented people who want to make a real impact in cybersecurity.',
-    'primaryCta' => ['label' => 'View Open Roles', 'url' => '#openings'],
-    'heroIcon' => 'fa-solid fa-circle-play',
-    'heroCaption' => 'Play Video',
+    'eyebrow' => content('page_career', 'eyebrow'),
+    'heading' => content('page_career', 'heading'),
+    'subheading' => content('page_career', 'subheading'),
+    'primaryCta' => ['label' => content('page_career', 'label'), 'url' => content('page_career', 'url')],
+    'heroIcon' => content('page_career', 'hero_icon'),
+    'heroCaption' => content('page_career', 'hero_caption'),
     'noCenteredHeading' => true
 ])
 
-{{-- Why join us --}}
+
 <section class="page-section" id="why-join">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">Our Values</p>
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Our Values</h2>
+        <p class="section-eyebrow text-center mb-2">{{ content('page_career', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ content('page_career', 'heading_2') }}</h2>
         <div class="row g-4">
-            @foreach ([
-                ['fa-solid fa-magnifying-glass', 'Transparency', ''],
-                ['fa-solid fa-bullseye', 'Precision', ''],
-                ['fa-solid fa-ribbon', 'Excellence', ''],
-            ] as $w)
+            @foreach (content_items('page_career_w_items') as $w)
                 <div class="col-md-4">
                     <div class="cl-benefit h-100 text-center">
                         <i class="fas {{ $w[0] }} mb-3" style="font-size:2rem;"></i>
@@ -37,17 +33,13 @@
     </div>
 </section>
 
-{{-- Why join us --}}
+
 <section class="page-section" id="why-join">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">Why Cyberlog</p>
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Love From Here, Work That Matters</h2>
+        <p class="section-eyebrow text-center mb-2">{{ content('page_career', 'paragraph_2') }}</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ content('page_career', 'heading_3') }}</h2>
         <div class="row g-4">
-            @foreach ([
-                ['fa-graduation-cap', 'Continuous learning', 'Certifications, labs, and mentorship to keep your skills sharp.'],
-                ['fa-people-group', 'Real impact', 'Defend national infrastructure, finance, and government organizations.'],
-                ['fa-scale-balanced', 'Balance &amp; growth', 'A supportive culture with room to grow into leadership.'],
-            ] as $w)
+            @foreach (content_items('page_career_w_items_2') as $w)
                 <div class="col-md-4">
                     <div class="cl-benefit h-100 text-center">
                         <i class="fas {{ $w[0] }} mb-3" style="font-size:2rem;"></i>
@@ -60,33 +52,27 @@
     </div>
 </section>
 
-{{-- Open roles (ref: undp.org/bangladesh/careers) --}}
+
 <section class="page-section bg-light" id="openings">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">Open Roles</p>
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Current Openings</h2>
+        <p class="section-eyebrow text-center mb-2">{{ content('page_career', 'paragraph_3') }}</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ content('page_career', 'heading_4') }}</h2>
         <div class="row g-3 justify-content-center">
-            @foreach ([
-                ['SOC Analyst (L1/L2)', 'Dhaka · Full-time', 'Security Operations'],
-                ['Penetration Tester', 'Dhaka · Full-time', 'Offensive Security'],
-                ['GRC / ISO 27001 Consultant', 'Dhaka · Full-time', 'Compliance'],
-                ['Incident Response Engineer', 'Dhaka · Full-time', 'Defense Services'],
-                ['Security Awareness Trainer', 'Dhaka · Contract', 'Capacity Building'],
-            ] as $job)
+            @foreach (content_items('page_career_job_items') as $job)
                 <div class="col-lg-9">
                     <div class="cl-client-card justify-content-between p-4">
                         <div>
                             <h5 class="fw-bold mb-1 text-secondary">{{ $job[0] }}</h5>
-                            <span class="text-muted small me-3"><i class="fas fa-location-dot text-teal me-1"></i>{{ $job[1] }}</span>
+                            <span class="text-muted small me-3"><i class="{{ content('page_career', 'icon') }}"></i>{{ $job[1] }}</span>
                             <span class="badge bg-light text-secondary border">{{ $job[2] }}</span>
                         </div>
-                        <a class="btn btn-primary text-white fw-bold" href="{{ route('contact') }}">Apply</a>
+                        <a class="btn btn-primary text-white fw-bold" href="{{ content('page_career', 'link_url') }}">{{ content('page_career', 'link_label') }}</a>
                     </div>
                 </div>
             @endforeach
         </div>
         <p class="text-center text-muted mt-4 mb-0">
-            Don't see a role that fits? <a class="text-teal fw-semibold" href="{{ route('contact') }}">Send us your CV</a>.
+            {{ content('page_career', 'paragraph_4') }} <a class="text-teal fw-semibold" href="{{ content('page_career', 'link_url_2') }}">{{ content('page_career', 'link_label_2') }}</a>.
         </p>
     </div>
 </section>

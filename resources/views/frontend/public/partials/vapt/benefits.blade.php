@@ -1,19 +1,12 @@
-{{-- VAPT › Benefits — borderless panel (same pattern as SOC), content per feedback --}}
+
 @php
-    $benefits = [
-        ['fa-bug', 'Real-World Risk Validation', 'We validate vulnerabilities manually to confirm real exploitability and business impact.'],
-        ['fa-filter-circle-xmark', 'Reduced False Positives', 'Findings are verified and prioritized before they reach your technical team.'],
-        ['fa-screwdriver-wrench', 'Clear Remediation Guidance', 'Reports include practical fix recommendations for developers, IT teams, and management.'],
-        ['fa-rotate', 'Retesting After Fixes', 'We retest resolved findings to confirm that security gaps are properly closed.'],
-        ['fa-scale-balanced', 'Standards-Aligned Reporting', 'Findings are mapped with CVSS, OWASP Top 10, and recognized security practices.'],
-        ['fa-chart-line', 'Improved Security Posture', 'Each assessment helps reduce risk across applications, networks, cloud, and infrastructure.'],
-    ];
+    $benefits = content_items('vapt_benefits_benefits');
 @endphp
 
 <section class="page-section cl-vapt-benefits" id="benefits">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2" data-reveal>Why Cyberlog VAPT</p>
-        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>Benefits</h2>
+        <p class="section-eyebrow text-center mb-2" data-reveal>{{ content('vapt_benefits', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>{{ content('vapt_benefits', 'heading') }}</h2>
 
         <div class="cl-vben-panel" data-reveal>
             @foreach ($benefits as $b)

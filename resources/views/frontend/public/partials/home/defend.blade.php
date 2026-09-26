@@ -1,7 +1,4 @@
-{{-- Home › Defend-as-One / shared intelligence network (ref: riskledger.com)
-     Living particle network + a "connected to industry network" card whose rows reveal
-     one after another (stats count up). Fits Cyberlog's collective-defense / shared
-     threat-intel positioning. blue/red/white (reference's teal → blue gradient). --}}
+
 
 <section class="page-section cl-dao-section" id="defend-as-one">
 
@@ -9,62 +6,60 @@
 
     <div class="cl-dao-floats" aria-hidden="true">
         <div class="cl-dao-bubble cl-dao-bubble-1">
-            <div><i class="fas fa-user"></i><strong>Mark Smith</strong></div>
-            <p>What policies do you have regarding AI?</p>
+            <div><i class="{{ content('home_defend', 'icon') }}"></i><strong>{{ content('home_defend', 'label') }}</strong></div>
+            <p>{{ content('home_defend', 'paragraph') }}</p>
         </div>
         <div class="cl-dao-bubble cl-dao-bubble-2">
-            <div><i class="fas fa-user"></i><strong>Laura Alman</strong></div>
-            <p>Have you found any risks on this supplier?</p>
+            <div><i class="{{ content('home_defend', 'icon_2') }}"></i><strong>{{ content('home_defend', 'label_2') }}</strong></div>
+            <p>{{ content('home_defend', 'paragraph_2') }}</p>
         </div>
         <div class="cl-dao-bubble cl-dao-bubble-3">
-            <div><i class="fas fa-user"></i><strong>Amin Rahman</strong></div>
-            <p>Can anyone confirm this phishing indicator?</p>
+            <div><i class="{{ content('home_defend', 'icon_3') }}"></i><strong>{{ content('home_defend', 'label_3') }}</strong></div>
+            <p>{{ content('home_defend', 'paragraph_3') }}</p>
         </div>
         <div class="cl-dao-bubble cl-dao-bubble-4">
-            <div><i class="fas fa-user"></i><strong>Sarah Khan</strong></div>
-            <p>Is this vendor exposed to the same CVE?</p>
+            <div><i class="{{ content('home_defend', 'icon_4') }}"></i><strong>{{ content('home_defend', 'label_4') }}</strong></div>
+            <p>{{ content('home_defend', 'paragraph_4') }}</p>
         </div>
         <div class="cl-dao-bubble cl-dao-bubble-5">
-            <div><i class="fas fa-user"></i><strong>David Lee</strong></div>
-            <p>Sharing fresh IOC matches from our SOC.</p>
+            <div><i class="{{ content('home_defend', 'icon_5') }}"></i><strong>{{ content('home_defend', 'label_5') }}</strong></div>
+            <p>{{ content('home_defend', 'paragraph_5') }}</p>
         </div>
     </div>
 
     <div class="container">
         <div class="row align-items-center g-5">
 
-            {{-- Left — copy --}}
+            
             <div class="col-lg-5">
-                <p class="section-eyebrow mb-3" data-reveal>Collective Defense</p>
-                {{-- TODO: copy — heading + paragraph are placeholders (not supplied in brief) --}}
+                <p class="section-eyebrow mb-3" data-reveal>{{ content('home_defend', 'paragraph_6') }}</p>
+                
                 <h2 class="cl-assess-h mb-3" data-reveal>
-                    Share intelligence with your<br>
-                    network and <span class="accent">Defend-as-One</span>
+                    {{ content('home_defend', 'heading') }}<br>
+                    {{ content('home_defend', 'heading_2') }} <span class="accent">{{ content('home_defend', 'label_6') }}</span>
                 </h2>
                 <p class="text-muted" data-reveal>
-                    By working together, you collectively optimise resources, remove roadblocks to
-                    mitigation, and enhance security for every link in the chain.
+                    {{ content('home_defend', 'paragraph_7') }}
                 </p>
             </div>
 
-            {{-- Right — industry-network card --}}
+            
             <div class="col-lg-7">
                 <div class="cl-dao-card" id="clDaoCard">
 
-                    <div class="cl-dao-conn cl-dao-line"><i class="fas fa-share-nodes"></i> Connected to</div>
+                    <div class="cl-dao-conn cl-dao-line"><i class="{{ content('home_defend', 'icon_6') }}"></i> {{ content('home_defend', 'div_text') }}</div>
 
                     <div class="cl-dao-titlerow cl-dao-line">
-                        <h3 class="cl-dao-title">Industry network</h3>
-                        <span class="cl-dao-peers"><i class="fas fa-user"></i> 13 Peers</span>
+                        <h3 class="cl-dao-title">{{ content('home_defend', 'heading_3') }}</h3>
+                        <span class="cl-dao-peers"><i class="{{ content('home_defend', 'icon_7') }}"></i> {{ content('home_defend', 'label_7') }}</span>
                     </div>
 
                     <hr class="cl-dao-div">
 
                     <div class="cl-dao-stats">
-                        <div class="cl-dao-stat cl-dao-line"><div class="cl-dao-num" data-count="45">45</div><div class="cl-dao-lbl">3rd-party</div></div>
-                        <div class="cl-dao-stat cl-dao-line"><div class="cl-dao-num" data-count="56">56</div><div class="cl-dao-lbl">4th-party</div></div>
-                        <div class="cl-dao-stat cl-dao-line"><div class="cl-dao-num" data-count="90">90</div><div class="cl-dao-lbl">5th-party</div></div>
-                        <div class="cl-dao-stat cl-dao-line"><div class="cl-dao-num" data-count="102">102</div><div class="cl-dao-lbl">6th-party</div></div>
+                        @foreach (content_items('home_defend_dao_stats') as $contentRow)
+<div class="cl-dao-stat cl-dao-line"><div class="cl-dao-num" data-count="{{ $contentRow['div_data_count'] }}">{{ $contentRow['div_text'] }}</div><div class="cl-dao-lbl">{{ $contentRow['div_text_2'] }}</div></div>
+@endforeach
                     </div>
 
                 </div>

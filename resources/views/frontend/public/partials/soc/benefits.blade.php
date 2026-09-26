@@ -1,19 +1,12 @@
-{{-- SOC › Benefits — borderless cards per feedback (ref: underdefense.com) --}}
+
 @php
-    $benefits = [
-        ['fa-bolt', 'Real-Time Threat Detection', 'Monitor logs, alerts, and security events to detect threats before they cause serious impact.'],
-        ['fa-layer-group', 'Centralized Security Visibility', 'Bring logs from servers, networks, endpoints, and applications into one monitoring environment.'],
-        ['fa-volume-xmark', 'Reduced Alert Noise', 'Use customized alert rules to reduce false positives and help teams focus on real threats.'],
-        ['fa-hand-fist', 'Faster Incident Response', 'Support alert triage, investigation, containment, and response when suspicious activity is detected.'],
-        ['fa-crosshairs', 'Proactive Threat Hunting', 'Look beyond routine alerts to identify hidden threats, unusual behavior, and attack patterns.'],
-        ['fa-fingerprint', 'Forensics Support', 'Support digital and network forensics to investigate incidents and understand root cause.'],
-    ];
+    $benefits = content_items('soc_benefits_benefits');
 @endphp
 
 <section class="page-section" id="benefits">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2" data-reveal>Why Cyberlog SOC</p>
-        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>SOC Benefits</h2>
+        <p class="section-eyebrow text-center mb-2" data-reveal>{{ content('soc_benefits', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>{{ content('soc_benefits', 'heading') }}</h2>
 
         <div class="cl-socben-panel" data-reveal>
             @foreach ($benefits as $b)

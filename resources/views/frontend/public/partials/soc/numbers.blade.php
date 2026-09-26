@@ -1,44 +1,22 @@
-{{-- SOC › Managed Services by the Numbers — compact, theme-aware stats strip --}}
+
 <section class="page-section cl-soc-proof cl-soc-numbers">
     <div class="container">
         <div class="cl-soc-proof-heading text-center" data-reveal>
-            <p class="section-eyebrow text-center mb-2"><span></span>Operational Impact<span></span></p>
-            <h2 class="page-section-heading text-white mb-2">Cyberlog SOC</h2>
-            <p class="cl-soc-numbers-subtitle mb-0">Managed Services by the Numbers</p>
+            <p class="section-eyebrow text-center mb-2"><span></span>{{ content('soc_numbers', 'paragraph') }}<span></span></p>
+            <h2 class="page-section-heading text-white mb-2">{{ content('soc_numbers', 'heading') }}</h2>
+            <p class="cl-soc-numbers-subtitle mb-0">{{ content('soc_numbers', 'paragraph_2') }}</p>
         </div>
 
         <div class="row g-3 g-lg-4 align-items-stretch cl-stat-grid" data-reveal>
-            <div class="col-12 col-md-3">
+            @foreach (content_items('soc_numbers_cards') as $contentRow)
+<div class="col-12 col-md-3">
                 <div class="stat-card text-center">
-                    <div class="stat-index">01</div>
-                    <div class="stat-value">#1</div>
-                    <div class="stat-label">SOC provider in Bangladesh for government &amp; enterprise-grade threat response</div>
+                    <div class="stat-index">{{ $contentRow['div_text'] }}</div>
+                    <div class="stat-value">{{ $contentRow['div_text_2'] }}</div>
+                    <div class="stat-label">{{ $contentRow['div_text_3'] }}</div>
                 </div>
             </div>
-
-            <div class="col-12 col-md-3">
-                <div class="stat-card text-center">
-                    <div class="stat-index">02</div>
-                    <div class="stat-value">510%</div>
-                    <div class="stat-label">Return on investment over 3 years vs. building an in-house SOC</div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-3">
-                <div class="stat-card text-center">
-                    <div class="stat-index">03</div>
-                    <div class="stat-value">3 min</div>
-                    <div class="stat-label">Average mean time to respond (MTTR) from alert to analyst action</div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-3">
-                <div class="stat-card text-center">
-                    <div class="stat-index">04</div>
-                    <div class="stat-value">97%</div>
-                    <div class="stat-label">Accurate detection rate — filtering noise so your team only sees real threats</div>
-                </div>
-            </div>
+@endforeach
         </div>
 
     </div>

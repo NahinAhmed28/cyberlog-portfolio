@@ -1,41 +1,16 @@
 @extends('layouts.portfolio')
 
-@section('title', 'Our Team — Cyberlog')
+@section('title', content('page_our_team', 'title'))
 
 @section('content')
 
 <section class="page-section" id="team">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2">Leadership</p>
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">Meet the <span class="cl-title-accent">Leadership</span></h2>
+        <p class="section-eyebrow text-center mb-2">{{ content('page_our_team', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ content('page_our_team', 'heading') }} <span class="cl-title-accent">{{ content('page_our_team', 'label') }}</span></h2>
 
         @php
-            $team = [
-                [
-                    'name'  => 'Nazim Farhan Choudhury',
-                    'role'  => 'Chairman',
-                    'photo' => 'assets/img/team/nazim-farhan-choudhury.png',
-                    'width' => 1254,
-                    'height' => 1254,
-                    'bio'   => 'Guides Cyberlog leadership vision, governance, and long-term organizational growth.',
-                    'social'=> [
-                        'facebook' => 'https://www.facebook.com/nazimfarhanc',
-                        'linkedin' => 'https://www.linkedin.com/in/nazim-farhan-choudhury-661786/',
-                    ],
-                ],
-                [
-                    'name'  => 'Hridoy Mustofa',
-                    'role'  => 'Managing Director',
-                    'photo' => 'assets/img/team/hridoy-mustofa.jpeg',
-                    'width' => 953,
-                    'height' => 960,
-                    'bio'   => 'Leads Cyberlog technology direction, cyber defense delivery, and security innovation.',
-                    'social'=> [
-                        'facebook' => 'https://www.facebook.com/hridoy.mustofa',
-                        'linkedin' => 'https://www.linkedin.com/in/hridoymustofa/',
-                    ],
-                ],
-            ];
+            $team = content_items('page_our_team_team');
         @endphp
 
         <div class="row g-4 justify-content-center">
@@ -46,7 +21,7 @@
                             @if ($member['photo'])
                                 <img src="{{ asset($member['photo']) }}" alt="{{ $member['name'] }}" width="{{ $member['width'] }}" height="{{ $member['height'] }}" loading="eager" decoding="async">
                             @else
-                                <i class="fas fa-user"></i>
+                                <i class="{{ content('page_our_team', 'icon') }}"></i>
                             @endif
                         </div>
                         <div class="cl-team-body">
@@ -70,9 +45,7 @@
 
 
 
-{{-- ======================================================
-    OUR TEAMS
-====================================================== --}}
+
 
 
 <section class="page-section bg-navy-soft" id="teams">
@@ -81,15 +54,15 @@
 
 
 <p class="section-eyebrow text-center mb-2">
-Our Teams
+{{ content('page_our_team', 'paragraph_2') }}
 </p>
 
 
 <h2 class="page-section-heading text-center text-uppercase text-white mb-3">
 
-Built to 
+{{ content('page_our_team', 'heading_2') }} 
 <span class="cl-title-accent">
-Attack, Defend & Innovate
+{{ content('page_our_team', 'label_2') }}
 </span>
 
 </h2>
@@ -99,196 +72,22 @@ Attack, Defend & Innovate
 <p class="text-center text-muted mx-auto mb-5"
 style="max-width:760px">
 
-Our specialists work across offensive security,
-defensive operations, data intelligence, and AI automation
-to deliver complete cybersecurity solutions.
+{{ content('page_our_team', 'paragraph_3') }}
 
 </p>
 
 
 
 <div class="row g-4">
-
-
-{{-- Offensive --}}
-
-<div class="col-md-6 col-lg-3">
-
-<div class="cl-solution-card cl-team-unit cl-team-unit--red h-100">
-
-
-<div class="cl-solution-icon">
-
-<i class="fas fa-crosshairs"></i>
-
+@foreach (content_items('team_units') as $unit)
+    <div class="col-md-6 col-lg-3"><div class="cl-solution-card cl-team-unit cl-team-unit--{{ $unit['color'] }} h-100">
+        <div class="cl-solution-icon"><i class="{{ $unit['icon'] }}"></i></div>
+        <h5 class="fw-bold">{{ $unit['title'] }}</h5><div class="small {{ ['red' => 'text-danger', 'purple' => 'text-primary', 'blue' => 'text-info', 'innovation' => 'text-warning'][$unit['color']] ?? '' }} text-uppercase mb-3">{{ $unit['subtitle'] }}</div>
+        <ul class="small text-muted ps-3 mb-0">@foreach ($unit['points'] as $point)<li>{{ $point }}</li>@endforeach</ul>
+    </div></div>
+@endforeach
 </div>
-
-
-<h5 class="fw-bold">
-Offensive Team
-</h5>
-
-
-<div class="small text-danger text-uppercase mb-3">
-Red Team
 </div>
-
-
-
-<ul class="small text-muted ps-3 mb-0">
-
-<li>Penetration Testing</li>
-<li>White & Gray Box Testing</li>
-<li>API & Mobile Testing</li>
-<li>Social Engineering</li>
-<li>Ethical Hacking</li>
-<li>Vulnerability Exploitation</li>
-
-</ul>
-
-
-</div>
-
-</div>
-
-
-
-
-
-{{-- Data --}}
-
-<div class="col-md-6 col-lg-3">
-
-<div class="cl-solution-card cl-team-unit cl-team-unit--purple h-100">
-
-
-<div class="cl-solution-icon">
-
-<i class="fas fa-database"></i>
-
-</div>
-
-
-<h5 class="fw-bold">
-Data Management Team
-</h5>
-
-
-<div class="small text-primary text-uppercase mb-3">
-Purple Team
-</div>
-
-
-<ul class="small text-muted ps-3 mb-0">
-
-<li>Data Analysis</li>
-<li>Gap Analysis</li>
-<li>Security Assessment</li>
-<li>Managed Security</li>
-<li>System Improvement</li>
-
-</ul>
-
-
-</div>
-
-</div>
-
-
-
-
-
-{{-- Defensive --}}
-
-<div class="col-md-6 col-lg-3">
-
-<div class="cl-solution-card cl-team-unit cl-team-unit--blue h-100">
-
-
-<div class="cl-solution-icon">
-
-<i class="fas fa-shield-halved"></i>
-
-</div>
-
-
-<h5 class="fw-bold">
-Defensive Team
-</h5>
-
-
-<div class="small text-info text-uppercase mb-3">
-Blue Team
-</div>
-
-
-<ul class="small text-muted ps-3 mb-0">
-
-<li>SOC Support</li>
-<li>Incident Response</li>
-<li>Threat Hunting</li>
-<li>Digital Forensics</li>
-<li>Firewall Protection</li>
-<li>SIEM Solutions</li>
-
-</ul>
-
-
-</div>
-
-</div>
-
-
-
-
-
-{{-- AI --}}
-
-<div class="col-md-6 col-lg-3">
-
-<div class="cl-solution-card cl-team-unit cl-team-unit--innovation h-100">
-
-
-<div class="cl-solution-icon">
-
-<i class="fas fa-robot"></i>
-
-</div>
-
-
-<h5 class="fw-bold">
-AI & Automation Team
-</h5>
-
-
-<div class="small text-warning text-uppercase mb-3">
-Innovation Unit
-</div>
-
-
-<ul class="small text-muted ps-3 mb-0">
-
-<li>AI Threat Detection</li>
-<li>Automated Scanning</li>
-<li>Security Orchestration</li>
-<li>Alert Intelligence</li>
-<li>Predictive Risk Analysis</li>
-<li>Custom Security Tools</li>
-
-</ul>
-
-
-</div>
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
 </section>
 
 

@@ -1,8 +1,4 @@
-{{-- Generic hero for inner/service pages.
-     Vars: $eyebrow, $heading, $subheading, $badges (array, optional),
-           $primaryCta ['label','url'] (optional), $secondaryCta (optional),
-           $centered (bool, optional — single centered column, no side box),
-           $heroIcon, $heroCaption (only used when not centered) --}}
+
 @php $isCentered = ! empty($centered); @endphp
 @php $noCenteredHeading = ! empty($noCenteredHeading); @endphp
 <style>
@@ -24,7 +20,7 @@
                 @isset($badges)
                     <div class="d-flex flex-wrap gap-2 mb-4 {{ $isCentered ? 'justify-content-center' : '' }}">
                         @foreach ($badges as $b)
-                            <span class="cl-float-chip"><i class="fas fa-shield-halved"></i>{{ $b }}</span>
+                            <span class="cl-float-chip"><i class="{{ content('shared_page_hero', 'icon') }}"></i>{{ $b }}</span>
                         @endforeach
                     </div>
                 @endisset
@@ -32,7 +28,7 @@
                 <div class="d-flex flex-wrap gap-3 {{ $isCentered ? 'justify-content-center' : '' }}">
                     <a class="btn btn-xl text-white fw-bold btn cl-nav-cta"
                        href="{{ $primaryCta['url'] ?? route('contact') }}">
-                        {{ $primaryCta['label'] ?? 'Talk to an Expert' }}
+                        {{ $primaryCta['label'] ?? content('shared_page_hero', 'default_text') }}
                     </a>
                     @isset($secondaryCta)
                         <a class="btn btn-outline-light btn-xl" href="{{ $secondaryCta['url'] }}">
@@ -45,8 +41,8 @@
             @unless($isCentered)
                 <div class="col-lg-5 d-none d-lg-block">
                     <div class="cl-step text-center py-5">
-                        <i class="{{ $heroIcon ?? 'fas fa-shield-halved' }} text-teal" style="font-size:6rem;"></i>
-                        <p class="mt-3 mb-0 text-white-50">{{ $heroCaption ?? 'Enterprise-grade cyber defense' }}</p>
+                        <i class="{{ $heroIcon ?? content('shared_page_hero', 'default_hero_icon') }} text-teal" style="font-size:6rem;"></i>
+                        <p class="mt-3 mb-0 text-white-50">{{ $heroCaption ?? content('shared_page_hero', 'default_text_2') }}</p>
                     </div>
                 </div>
             @endunless

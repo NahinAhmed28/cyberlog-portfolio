@@ -1,27 +1,24 @@
-{{-- Home › Closing CTA banner (ref: riskledger.com "Active … need Active … Security")
-     Centered headline + subtext + two buttons over the living particle network, with
-     each line revealing one after another. blue/red/white (reference teal → gradient). --}}
+
 
 <section class="page-section cl-cta2-section" id="get-started">
 
     <canvas class="cl-cta2-bg" data-net aria-hidden="true"></canvas>
 
     <div class="container text-center" id="clCta2">
-        {{-- TODO: copy — heading + subtext are placeholders (adapted from reference) --}}
+        
         <h2 class="cl-cta2-h">
-            <span class="cl-cta2-line d-block">Active threats demand</span>
-            <span class="cl-cta2-line d-block grad-text">Active Cyber Defense</span>
+            <span class="cl-cta2-line d-block">{{ content('home_cta_banner', 'label') }}</span>
+            <span class="cl-cta2-line d-block grad-text">{{ content('home_cta_banner', 'label_2') }}</span>
         </h2>
 
-        <p class="cl-cta2-line cl-cta2-sub">Our team is ready to help</p>
+        <p class="cl-cta2-line cl-cta2-sub">{{ content('home_cta_banner', 'paragraph') }}</p>
 
         <div class="cl-cta2-line cl-cta2-btns">
-            <a class="cl-cta2-btn" href="{{ Route::has('public.contact') ? route('public.contact') : (Route::has('contact') ? route('contact') : '#') }}">
-                <i class="fas fa-calendar-check"></i> Book a Demo
+            @foreach (content_items('home_cta_banner_cta2_line') as $contentRow)
+<a class="cl-cta2-btn" href="{{ content('home_cta_banner', 'destination') }}">
+                <i class="{{ $contentRow['icon'] }}"></i> {{ $contentRow['link_label'] }}
             </a>
-            <a class="cl-cta2-btn" href="{{ Route::has('public.contact') ? route('public.contact') : (Route::has('contact') ? route('contact') : '#') }}">
-                <i class="fas fa-headset"></i> Talk to an Expert
-            </a>
+@endforeach
         </div>
     </div>
 </section>

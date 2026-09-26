@@ -1,33 +1,16 @@
 @php
     $u = fn ($pub, $legacy) => Route::has($pub) ? route($pub) : (Route::has($legacy) ? route($legacy) : '#');
 
-    $serviceLinks = [
-        ['label' => 'All Services', 'pub' => 'public.services', 'legacy' => 'services'],
-        ['label' => 'Managed Security Services', 'pub' => 'public.soc', 'legacy' => 'soc'],
-        ['label' => 'VAPT / Pen Testing', 'pub' => 'public.vapt', 'legacy' => 'vapt'],
-        ['label' => 'Security Audits & ISO 27001', 'pub' => 'public.it-audit', 'legacy' => 'it-audit'],
-        ['label' => 'Security Awareness Training', 'pub' => 'public.capacity-building', 'legacy' => 'capacity-building'],
-        ['label' => 'Offensive Security Services', 'pub' => 'public.offensive-security-services', 'legacy' => 'offensive-security-services'],
-        ['label' => 'Defensive Security Services', 'pub' => 'public.defensive-security-services', 'legacy' => 'defensive-security-services'],
-    ];
+    $serviceLinks = content_items('shared_navbar_service_links');
 
-    $serviceRouteNames = [
-        'public.services', 'services',
-        'public.soc', 'soc',
-        'public.vapt', 'vapt',
-        'public.it-audit', 'it-audit',
-        'public.capacity-building', 'capacity-building',
-        'public.offensive-security-services', 'offensive-security-services',
-        'public.defensive-security-services', 'defensive-security-services',
-        'public.defense-services', 'defense-services',
-    ];
+    $serviceRouteNames = content_items('shared_navbar_service_route_names');
 @endphp
 
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="{{ route('home') }}">
-            <i class="fas fa-shield-halved text-primary me-1"></i>Cyber<span class="text-primary">log</span>
+        <a class="navbar-brand fw-bold" href="{{ content('shared_navbar', 'link_url') }}">
+            <i class="{{ content('shared_navbar', 'icon') }}"></i>{{ content('shared_navbar', 'link_label') }}<span class="text-primary">{{ content('shared_navbar', 'label') }}</span>
         </a>
 
         <button
@@ -36,8 +19,8 @@
             data-bs-toggle="collapse"
             data-bs-target="#navbarResponsive"
         >
-            Menu
-            <i class="fas fa-bars"></i>
+            {{ content('shared_navbar', 'button_label') }}
+            <i class="{{ content('shared_navbar', 'icon_2') }}"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -45,19 +28,19 @@
 
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-2 px-0 px-lg-3 rounded {{ request()->routeIs('home') ? 'active' : '' }}"
-                       href="{{ route('home') }}">
-                        Home
+                       href="{{ content('shared_navbar', 'link_url_2') }}">
+                        {{ content('shared_navbar', 'link_label_2') }}
                     </a>
                 </li>
 
                 <li class="nav-item dropdown mx-0 mx-lg-1">
                     <a class="nav-link dropdown-toggle py-2 px-0 px-lg-3 rounded {{ request()->routeIs(...$serviceRouteNames) ? 'active' : '' }}"
-                       href="#"
+                       href="{{ content('shared_navbar', 'a_href') }}"
                        id="legacyServicesDropdown"
                        role="button"
                        data-bs-toggle="dropdown"
                        aria-expanded="false">
-                        Services
+                        {{ content('shared_navbar', 'link_label_3') }}
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="legacyServicesDropdown">
@@ -77,15 +60,15 @@
 
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-2 px-0 px-lg-3 rounded {{ request()->routeIs('public.vciso', 'vciso') ? 'active' : '' }}"
-                       href="{{ $u('public.vciso', 'vciso') }}">
-                        Prohoree 365
+                       href="{{ content('shared_navbar', 'destination') }}">
+                        {{ content('shared_navbar', 'link_label_4') }}
                     </a>
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-2 px-0 px-lg-3 rounded {{ request()->routeIs('public.about', 'about') ? 'active' : '' }}"
-                       href="{{ $u('public.about', 'about') }}">
-                        About Us
+                       href="{{ content('shared_navbar', 'destination_2') }}">
+                        {{ content('shared_navbar', 'link_label_5') }}
                     </a>
                 </li>
 
@@ -93,12 +76,12 @@
                     @if (request()->routeIs('public.vciso', 'vciso'))
                         <a class="btn btn-primary btn-talk text-white fw-bold"
                            href="{{ Route::has('client.login') ? route('client.login') : url('/client/login') }}">
-                            <i class="fas fa-lock me-1"></i>Client Login
+                            <i class="{{ content('shared_navbar', 'icon_3') }}"></i>{{ content('shared_navbar', 'link_label_6') }}
                         </a>
                     @else
                         <a class="btn btn-primary btn-talk text-white fw-bold"
-                           href="{{ $u('public.contact', 'contact') }}">
-                            Talk to an Expert
+                           href="{{ content('shared_navbar', 'destination_3') }}">
+                            {{ content('shared_navbar', 'link_label_7') }}
                         </a>
                     @endif
                 </li>

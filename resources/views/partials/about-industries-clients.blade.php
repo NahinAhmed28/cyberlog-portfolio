@@ -1,36 +1,13 @@
 @php
-    $aboutIndustries = [
-        ['fa-landmark', '15+', 'Government & Public Sector'],
-        ['fa-globe', '3+', 'International Organizations'],
-        ['fa-link', '5+', 'Financial Services'],
-        ['fa-briefcase', '8+', 'Corporate & Enterprise'],
-        ['fa-shield-halved', '4+', 'Law Enforcement & Defense'],
-        ['fa-graduation-cap', '5+', 'Media & Education'],
-    ];
+    $aboutIndustries = content_items('shared_about_industries_clients_about_industries');
 
-    $aboutClients = [
-        ['Government of Bangladesh', 'GB', 'images/clients/gono-projatontri-bangladesh-sarkar.png', 'https://bangladesh.gov.bd/'],
-        ['Cabinet Division', 'CD', 'images/clients/cabinet-division.png', 'https://cabinet.gov.bd/'],
-        ['ICT Division', 'ICT', 'images/clients/ict-division.png', 'https://ictd.gov.bd/'],
-        ['Bangladesh Petroleum Institute', 'BPI', 'images/clients/bangladesh-petroleum-institute-bpi.png', 'https://bpi.gov.bd/'],
-        ['National Academy for Planning & Development', 'NAPD', 'images/clients/national-academy-for-planning-and-development.png', 'https://napd.gov.bd/'],
-        ['Dhaka Stock Exchange', 'DSE', 'images/clients/dhaka-stock-exchange-ltd.png', 'https://www.dsebd.org/'],
-        ['Aamar Taka', 'AT', 'images/clients/aamar-taka.png', 'https://aamartaka.com/'],
-        ['a2i Programme', 'a2i', 'images/clients/a2i.png', 'https://a2i.gov.bd/'],
-        ['UNDP', 'UNDP', 'images/clients/undp.png', 'https://www.undp.org/bangladesh'],
-        ['Akij Venture', 'AV', 'images/clients/akij-venture.png', 'https://www.akijventure.com/'],
-        ['Adcomm Ltd.', 'AC', 'images/clients/adcomm.png', '#'],
-        ['Nazimgarh Resorts', 'NR', 'images/clients/nazimgarh.png', '#'],
-        ['LegalX', 'LX', 'images/clients/legal-x.png', '#'],
-        ['Purbachal Apparel', 'PA', 'images/clients/purbachal.png', '#'],
-        ['Vibe Gaming', 'VG', 'images/clients/vibe-gaming.png', '#'],
-    ];
+    $aboutClients = content_items('shared_about_industries_clients_about_clients');
 @endphp
 
 <section class="page-section cl-about-industries" id="industries">
     <div class="container">
-        <p class="section-eyebrow mb-2" data-reveal>Our Reach</p>
-        <h2 class="page-section-heading text-white mb-4" data-reveal>Industries We Protect</h2>
+        <p class="section-eyebrow mb-2" data-reveal>{{ content('shared_about_industries_clients', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-white mb-4" data-reveal>{{ content('shared_about_industries_clients', 'heading') }}</h2>
 
         <div class="row g-3">
             @foreach ($aboutIndustries as $industry)
@@ -50,15 +27,15 @@
 
 <section class="page-section cl-about-trusted" id="trusted-by">
     <div class="container">
-        <p class="section-eyebrow mb-2" data-reveal>Organizations</p>
-        <h2 class="page-section-heading text-white mb-4" data-reveal>Trusted By</h2>
+        <p class="section-eyebrow mb-2" data-reveal>{{ content('shared_about_industries_clients', 'paragraph_2') }}</p>
+        <h2 class="page-section-heading text-white mb-4" data-reveal>{{ content('shared_about_industries_clients', 'heading_2') }}</h2>
 
         <div class="cl-trusted-grid">
             @foreach ($aboutClients as $client)
                 <a class="cl-trusted-client"
                    href="{{ $client[3] }}"
                    @if ($client[3] !== '#') target="_blank" rel="noopener noreferrer" @endif
-                   aria-label="Visit {{ $client[0] }}">
+                   aria-label="{{ content('shared_about_industries_clients', 'client_link_aria_label') }} {{ $client[0] }}">
                     <span class="cl-trusted-logo">
                         <img src="{{ asset($client[2]) }}" alt="" loading="lazy" decoding="async">
                         <b aria-hidden="true">{{ $client[1] }}</b>

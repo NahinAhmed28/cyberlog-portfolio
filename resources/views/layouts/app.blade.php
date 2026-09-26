@@ -1,0 +1,2 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="csrf-token" content="{{ csrf_token() }}"><title>Cyberlog — Administrator access</title><link rel="stylesheet" href="{{ asset('vendor/bootstrap/bootstrap.min.css') }}"><link rel="stylesheet" href="{{ asset('css/admin.css') }}"><script src="{{ asset('vendor/bootstrap/bootstrap.bundle.min.js') }}" defer></script></head><body><main class="admin-login">@yield('content')</main></body></html>

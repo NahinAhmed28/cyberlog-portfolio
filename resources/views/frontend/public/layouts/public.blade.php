@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@yield('meta_description', 'Cyberlog — offensive security, managed SOC, compliance, threat intelligence and vCISO for enterprises, government, financial institutions and critical infrastructure.')">
-    <title>@yield('title', 'Cyberlog — Cyber Defense')</title>
+    <meta name="description" content="@yield('meta_description', content('site_public', 'default_meta_description'))">
+    <title>@yield('title', content('site_public', 'default_title'))</title>
 
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/cyberlog-logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset(content('site_public', 'link_media')) }}">
     <script src="https://use.fontawesome.com/releases/v6.5.2/js/all.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    {{-- Bootstrap (Freelancer base) + Cyberlog "Threat Console" design system --}}
+    
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/cyberlog.css') }}" rel="stylesheet">
 
@@ -62,6 +62,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
+    <script>window.cyberlogContent = {{ Illuminate\Support\Js::from(['events' => content_items('threat_feed_events'), 'socEvents' => content_items('soc_live_events')]) }};</script>
     <script src="{{ asset('js/cyberlog.js') }}"></script>
     <script>
 window.addEventListener('load', function () {

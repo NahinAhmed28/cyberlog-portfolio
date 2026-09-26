@@ -49,3 +49,10 @@ Route::view('/about', 'pages.about')->name('about');
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::view('/career', 'pages.career')->name('career');
 Route::view('/our-team', 'pages.our-team')->name('our-team');
+
+Route::view('/services/catalogue/{service}', 'frontend.public.service-detail')->name('service.show');
+
+Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
+
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
+require __DIR__.'/admin.php';

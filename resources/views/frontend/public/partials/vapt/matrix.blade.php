@@ -1,30 +1,21 @@
-{{-- VAPT › Matrix — Basic VAPT vs Cyberlog VAPT (content per feedback) --}}
+
 @php
-    $rows = [
-        ['Testing Coverage', 'Limited asset testing', 'Web, API, mobile, network, cloud, and infrastructure testing'],
-        ['Testing Method', 'Mostly automated scanning', 'Manual testing with automated validation'],
-        ['Risk Validation', 'Lists vulnerabilities', 'Validates real exploitability and business impact'],
-        ['Standards Alignment', 'Generic severity rating', 'CVSS, OWASP Top 10, and MITRE ATT&CK aligned'],
-        ['Reporting', 'Technical findings only', 'Executive summary, technical details, proof of concept, and remediation'],
-        ['Remediation Support', 'Limited guidance', 'Clear fix recommendations with priority'],
-        ['Retesting', 'Not always included', 'Retesting support to confirm closure'],
-        ['Outcome', 'Vulnerability list', 'Actionable risk reduction plan'],
-    ];
+    $rows = content_items('vapt_matrix_rows');
 @endphp
 
 <section class="page-section cl-vapt-matrix-section" id="matrix">
     <div class="container">
-        <p class="section-eyebrow text-center mb-2" data-reveal>Why Cyberlog VAPT</p>
-        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>Basic VAPT vs Cyberlog VAPT</h2>
+        <p class="section-eyebrow text-center mb-2" data-reveal>{{ content('vapt_matrix', 'paragraph') }}</p>
+        <h2 class="page-section-heading text-center text-secondary mb-5" data-reveal>{{ content('vapt_matrix', 'heading') }}</h2>
 
         <div class="cl-vapt-matrix-wrap" data-reveal>
             <div class="table-responsive">
                 <table class="table align-middle cl-vapt-matrix mb-0">
                     <thead>
                         <tr>
-                            <th class="text-start">Area</th>
-                            <th>Basic VAPT</th>
-                            <th>Cyberlog VAPT</th>
+                            <th class="text-start">{{ content('vapt_matrix', 'th_text') }}</th>
+                            <th>{{ content('vapt_matrix', 'th_text_2') }}</th>
+                            <th>{{ content('vapt_matrix', 'th_text_3') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,7 +23,7 @@
                             <tr>
                                 <td class="text-start fw-semibold">{{ $row[0] }}</td>
                                 <td class="cl-vapt-basic">{{ $row[1] }}</td>
-                                <td class="cl-vapt-us"><i class="fas fa-circle-check me-2"></i>{{ $row[2] }}</td>
+                                <td class="cl-vapt-us"><i class="{{ content('vapt_matrix', 'icon') }}"></i>{{ $row[2] }}</td>
                             </tr>
                         @endforeach
                     </tbody>

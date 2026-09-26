@@ -1,0 +1,7 @@
+@extends('admin.layout')
+@section('title', 'Inquiry from '.$inquiry->name)
+@section('content')
+<a href="{{ route('admin.inquiries.index') }}">← All inquiries</a><h1 class="mt-4">{{ $inquiry->name }}</h1><p class="text-muted">{{ $inquiry->created_at }}</p>
+<div class="row g-4"><div class="col-lg-7"><div class="card card-body"><dl class="row"><dt class="col-sm-3">Email</dt><dd class="col-sm-9">{{ $inquiry->email }}</dd><dt class="col-sm-3">Company</dt><dd class="col-sm-9">{{ $inquiry->company }}</dd><dt class="col-sm-3">Phone</dt><dd class="col-sm-9">{{ $inquiry->phone }}</dd><dt class="col-sm-3">Service</dt><dd class="col-sm-9">{{ $inquiry->service }}</dd></dl><hr><p class="mb-0" style="white-space:pre-wrap">{{ $inquiry->message }}</p></div></div>
+<div class="col-lg-5"><form class="card card-body" action="{{ route('admin.inquiries.update', $inquiry->id) }}" method="post">@csrf @method('PUT')<label for="status" class="form-label">Status</label><select id="status" name="status" class="form-select mb-3">@foreach(['new','read','replied','archived'] as $status)<option @selected(old('status', $inquiry->status) === $status)>{{ $status }}</option>@endforeach</select><label class="form-label" for="notes">Internal notes</label><textarea id="notes" name="admin_notes" rows="6" class="form-control mb-3">{{ old('admin_notes', $inquiry->admin_notes) }}</textarea><button class="btn btn-primary">Save status</button></form></div></div>
+@endsection

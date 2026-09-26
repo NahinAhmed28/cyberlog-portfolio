@@ -1,62 +1,52 @@
-{{-- Home › Network / attack-surface panel (ref: riskledger.com "as connections grow")
-     Living particle-network background, floating red risk chips, and a posture card
-     (4 stats → two status rows) whose rows reveal one after another. Content adapted
-     to Cyberlog's attack-surface theme; blue/red/white. --}}
+
 
 <section class="page-section cl-net-section" id="network">
 
     <canvas class="cl-net-bg" data-net aria-hidden="true"></canvas>
 
-    {{-- floating risk chips (desktop, decorative) --}}
+    
     <div class="cl-net-floats" aria-hidden="true">
-        <span class="cl-net-chip"><i class="fas fa-circle-xmark"></i> Critical risk found</span>
-        <span class="cl-net-chip"><i class="fas fa-circle-xmark"></i> Critical risk found</span>
-        <span class="cl-net-chip"><i class="fas fa-circle-xmark"></i> Critical risk found</span>
+        @foreach (content_items('home_network_net_floats') as $contentRow)
+<span class="cl-net-chip"><i class="{{ $contentRow['icon'] }}"></i> {{ $contentRow['label'] }}</span>
+@endforeach
     </div>
 
     <div class="container">
         <div class="row align-items-center g-5">
 
-            {{-- Left — copy --}}
+            
             <div class="col-lg-5">
-                <p class="section-eyebrow mb-3" data-reveal>Attack Surface</p>
-                {{-- TODO: copy — heading + paragraph are placeholders (not supplied in brief) --}}
+                <p class="section-eyebrow mb-3" data-reveal>{{ content('home_network', 'paragraph') }}</p>
+                
                 <h2 class="cl-assess-h mb-3" data-reveal>
-                    As your environment grows,<br>
-                    <span class="accent">the risks reveal themselves</span>
+                    {{ content('home_network', 'heading') }}<br>
+                    <span class="accent">{{ content('home_network', 'label_4') }}</span>
                 </h2>
                 <p class="text-muted" data-reveal>
-                    See your full attack surface as it truly exists — every endpoint, server,
-                    application, and cloud asset mapped onto one living model. Identify where risk
-                    concentrates before attackers do.
+                    {{ content('home_network', 'paragraph_2') }}
                 </p>
             </div>
 
-            {{-- Right — posture card --}}
+            
             <div class="col-lg-7">
                 <div class="cl-net-card" id="clNetCard">
 
-                    {{-- line 1: stats --}}
+                    
                     <div class="cl-net-stats cl-net-line">
-                        <div><div class="cl-net-num" data-count="45">45</div><div class="cl-net-lbl">Endpoints</div></div>
-                        <div><div class="cl-net-num" data-count="56">56</div><div class="cl-net-lbl">Servers</div></div>
-                        <div><div class="cl-net-num" data-count="90">90</div><div class="cl-net-lbl">Applications</div></div>
-                        <div><div class="cl-net-num" data-count="102">102</div><div class="cl-net-lbl">Cloud Assets</div></div>
+                        @foreach (content_items('home_network_net_stats') as $contentRow)
+<div><div class="cl-net-num" data-count="{{ $contentRow['div_data_count'] }}">{{ $contentRow['div_text'] }}</div><div class="cl-net-lbl">{{ $contentRow['div_text_2'] }}</div></div>
+@endforeach
                     </div>
 
                     <hr class="cl-net-divln">
 
-                    {{-- line 2 --}}
-                    <div class="cl-net-row cl-net-line">
-                        <i class="fas fa-shield-halved"></i>
-                        <span><strong>6</strong> potential concentration risks found</span>
+                    
+                    @foreach (content_items('home_network_clnetcard') as $contentRow)
+<div class="cl-net-row cl-net-line">
+                        <i class="{{ $contentRow['icon'] }}"></i>
+                        <span><strong>{{ $contentRow['label'] }}</strong> {{ $contentRow['label_2'] }}</span>
                     </div>
-
-                    {{-- line 3 --}}
-                    <div class="cl-net-row cl-net-line">
-                        <i class="fas fa-chart-pie"></i>
-                        <span><strong>9</strong> assets have under 80% compliance</span>
-                    </div>
+@endforeach
 
                 </div>
             </div>
