@@ -19,10 +19,7 @@
             <a class="admin-nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Overview</a>
             <a class="admin-nav-link {{ request()->routeIs('admin.media.*') ? 'active' : '' }}" href="{{ route('admin.media.index') }}">Media library</a>
             <a class="admin-nav-link {{ request()->routeIs('admin.inquiries.*') ? 'active' : '' }}" href="{{ route('admin.inquiries.index') }}">Inquiries</a>
-            <div class="admin-nav-heading">Public pages</div>
-            @foreach(\App\Models\Page::where('kind', 'page')->orderBy('sort_order')->get() as $navPage)
-                <a class="admin-nav-link {{ (request()->route('page')?->slug ?? request('page')) === $navPage->slug ? 'active' : '' }}" data-page-link href="{{ route('admin.pages.show', $navPage) }}">{{ $navPage->title }}</a>
-            @endforeach
+            @include('admin.sidebar-pages')
             <div class="admin-nav-heading">Website</div>
             <a class="admin-nav-link {{ request()->routeIs('admin.navigation.*') ? 'active' : '' }}" href="{{ route('admin.navigation.index') }}">Navigation</a>
             <a class="admin-nav-link" href="{{ route('admin.pages.show', 'footer') }}">Footer</a>

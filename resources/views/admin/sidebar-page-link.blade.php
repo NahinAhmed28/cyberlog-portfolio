@@ -1,0 +1,1 @@
+<a class="admin-nav-link {{ $item['active'] ? 'active' : '' }}" @if($item['page']) data-page-link @else title="Edit this navigation link" @endif @if($item['active']) aria-current="page" @endif href="{{ $item['url'] }}">{{ $item['label'] }}</a>

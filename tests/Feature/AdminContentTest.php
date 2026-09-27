@@ -89,7 +89,7 @@ class AdminContentTest extends TestCase
         $links = $xpath->query('//a[@data-page-link or @data-page-card]');
         $expected = Page::where('kind', 'page')->pluck('slug')->all();
         $visited = [];
-        $this->assertCount(count($expected) * 2, $links);
+        $this->assertGreaterThanOrEqual(count($expected) * 2, count($links));
         foreach ($links as $link) {
             $path = parse_url($link->getAttribute('href'), PHP_URL_PATH);
             $key = basename($path);

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Content\PortfolioConfiguration;
 use App\Models\Page;
 use App\Models\PageSection;
 use Illuminate\Database\Seeder;
@@ -10,6 +11,7 @@ class PageSeeder extends Seeder
 {
     public function run(): void
     {
+        PortfolioConfiguration::validate();
         foreach (config('content_modules') as $key => $definition) {
             PageSection::firstOrCreate(['key' => $key], ['title' => $definition['title'], 'is_archived' => $definition['group'] === 'Archived layouts']);
         }
