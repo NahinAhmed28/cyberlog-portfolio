@@ -14,20 +14,20 @@
 <div class="admin-shell">
     <aside class="admin-sidebar">
         <a class="admin-brand" href="{{ route('admin.dashboard') }}">CYBERLOG<span>Content studio</span></a>
-        <nav aria-label="Administration">
+        <button class="btn btn-sm btn-outline-light d-md-none mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#admin-navigation" aria-controls="admin-navigation" aria-expanded="false">Pages & website menus</button>
+        <nav id="admin-navigation" class="collapse d-md-block" aria-label="Administration">
             <a class="admin-nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Overview</a>
             <a class="admin-nav-link {{ request()->routeIs('admin.media.*') ? 'active' : '' }}" href="{{ route('admin.media.index') }}">Media library</a>
             <a class="admin-nav-link {{ request()->routeIs('admin.inquiries.*') ? 'active' : '' }}" href="{{ route('admin.inquiries.index') }}">Inquiries</a>
-            <label class="visually-hidden" for="section-search">Find a section</label>
-            <input id="section-search" class="form-control form-control-sm my-3" placeholder="Find a section…" data-nav-search>
-            @foreach (collect(app(\App\Content\ContentRegistry::class)->all())->groupBy('group') as $group => $definitions)
-                <details class="admin-nav-group" @if ($definitions->has(request()->route('module'))) open @endif>
-                    <summary>{{ $group }}</summary>
-                    @foreach ($definitions as $key => $definition)
-                        <a class="admin-nav-link {{ request()->route('module') === $key ? 'active' : '' }}" data-nav-item href="{{ route('admin.content.index', $key) }}">{{ $definition['title'] }}</a>
-                    @endforeach
-                </details>
+            <div class="admin-nav-heading">Public pages</div>
+            @foreach(\App\Models\Page::where('kind', 'page')->orderBy('sort_order')->get() as $navPage)
+                <a class="admin-nav-link {{ (request()->route('page')?->slug ?? request('page')) === $navPage->slug ? 'active' : '' }}" data-page-link href="{{ route('admin.pages.show', $navPage) }}">{{ $navPage->title }}</a>
             @endforeach
+            <div class="admin-nav-heading">Website</div>
+            <a class="admin-nav-link {{ request()->routeIs('admin.navigation.*') ? 'active' : '' }}" href="{{ route('admin.navigation.index') }}">Navigation</a>
+            <a class="admin-nav-link" href="{{ route('admin.pages.show', 'footer') }}">Footer</a>
+            <a class="admin-nav-link" href="{{ route('admin.pages.show', 'site-settings') }}">Site settings</a>
+            <a class="admin-nav-link {{ request()->routeIs('admin.help') ? 'active' : '' }}" href="{{ route('admin.help') }}">How to edit your website</a>
         </nav>
     </aside>
     <div class="admin-workspace">
@@ -48,5 +48,6 @@
         </main>
     </div>
 </div>
+@if(isset($media)) @include('admin.content.media-picker') @endif
 </body>
 </html>

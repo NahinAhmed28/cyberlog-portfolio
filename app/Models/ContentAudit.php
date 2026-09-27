@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class ContentAudit extends Model
 {
@@ -13,7 +15,12 @@ class ContentAudit extends Model
         return ['before' => 'array', 'after' => 'array'];
     }
 
-    public function user()
+    public function content(): MorphTo
+    {
+        return $this->morphTo(__FUNCTION__, 'module', 'entry_id');
+    }
+
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

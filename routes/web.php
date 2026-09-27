@@ -1,18 +1,14 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | Public marketing site (guests) — views under resources/views/frontend/public
 |--------------------------------------------------------------------------
-| "/" serves the public landing page. It is named 'home' so existing partials
-| that call route('home') keep resolving. This build has no auth/portal; the
-| brief's logged-in -> dashboard redirect belongs to the vciso-service-integrator
-| portal project, not here.
-|
-| Additional public pages are added to the public.* group below, one section at
-| a time, as the brief is built out (public.services, public.soc, public.vapt …).
+| The home route remains public. Laravel UI authenticates administrators
+| at /login and the protected portfolio CMS is served at /admin.
 */
 Route::view('/', 'frontend.public.home')->name('home');
 
@@ -54,5 +50,5 @@ Route::view('/services/catalogue/{service}', 'frontend.public.service-detail')->
 
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 
-Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
+Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
 require __DIR__.'/admin.php';

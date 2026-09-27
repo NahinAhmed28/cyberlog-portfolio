@@ -4,29 +4,25 @@ namespace App\Models;
 
 use App\Content\ContentRegistry;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ContentEntry extends Model
+abstract class ContentEntry extends Model
 {
     use SoftDeletes;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['*'];
+
+    public function audits(): MorphMany
+    {
+        return $this->morphMany(ContentAudit::class, 'content', 'module', 'entry_id');
+    }
 
     public static function forModule(string $module): static
     {
         $definition = app(ContentRegistry::class)->get($module);
-        $model = new static;
-        $model->setTable($definition['table']);
-        $casts = ['is_visible' => 'boolean', 'sort_order' => 'integer'];
-        foreach ($definition['fields'] as $name => $field) {
-            $casts['content_'.$name] = match ($field['type']) {
-                'number' => 'float',
-                'boolean' => 'boolean',
-                'list', 'object' => 'array',
-                default => 'string',
-            };
-        }
-        $model->mergeCasts($casts);
+        $model = new PageContent;
+        $model->page_section_id = PageSection::where('key', $module)->firstOrFail()->id;
 
         return $model;
     }

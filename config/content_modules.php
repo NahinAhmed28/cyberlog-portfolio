@@ -1,11 +1,12 @@
 <?php
 
-// Dedicated feature schemas. Default content lives only in database/seeders/Content.
+// Section field schemas. Defaults live in database/seeders/Pages.
 return [
     'page_ai_automation' => [
         'title' => 'Page AI Automation',
         'group' => 'AI Automation',
-        'table' => 'cms_page_ai_automation',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/ai-automation.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -160,7 +161,8 @@ return [
     'page_clients' => [
         'title' => 'Page Clients',
         'group' => 'Clients',
-        'table' => 'cms_page_clients',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/clients.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -191,7 +193,8 @@ return [
     'page_home' => [
         'title' => 'Page Home',
         'group' => 'Home',
-        'table' => 'cms_page_home',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/home.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -206,7 +209,8 @@ return [
     'site_public' => [
         'title' => 'Site Public',
         'group' => 'Shared content',
-        'table' => 'cms_site_public',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/layouts/public.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -229,7 +233,8 @@ return [
     'clients_client_strip' => [
         'title' => 'Clients Client Strip',
         'group' => 'Archived layouts',
-        'table' => 'cms_clients_client_strip',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/clients/client-strip.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -244,7 +249,8 @@ return [
     'clients_client_strip_clients' => [
         'title' => 'Clients',
         'group' => 'Archived layouts',
-        'table' => 'cms_clients_client_strip_clients',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/clients/client-strip.blade.php',
         'parent' => 'clients_client_strip',
         'repeatable' => true,
@@ -271,7 +277,8 @@ return [
     'clients_deck' => [
         'title' => 'Client stories heading',
         'group' => 'Clients',
-        'table' => 'cms_clients_deck',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/clients/deck.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -322,7 +329,8 @@ return [
     'clients_deck_screens' => [
         'title' => 'Client stories & screenshots',
         'group' => 'Clients',
-        'table' => 'cms_clients_deck_screens',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/clients/deck.blade.php',
         'parent' => 'clients_deck',
         'repeatable' => true,
@@ -354,11 +362,11 @@ return [
                     'type' => 'object',
                     'label' => 'Statistic',
                     'fields' => [
-                        '0' => [
+                        0 => [
                             'label' => 'Value',
                             'type' => 'text',
                         ],
-                        '1' => [
+                        1 => [
                             'label' => 'Label',
                             'type' => 'text',
                         ],
@@ -375,7 +383,8 @@ return [
     'footer' => [
         'title' => 'Footer copy & contact details',
         'group' => 'Shared content',
-        'table' => 'cms_footer',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/footer.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -472,7 +481,8 @@ return [
     'home_assessment' => [
         'title' => 'Home Assessment',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_assessment',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/assessment.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -575,7 +585,8 @@ return [
     'home_cta_banner' => [
         'title' => 'Home Cta Banner',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_cta_banner',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/cta-banner.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -602,7 +613,8 @@ return [
     'home_defend' => [
         'title' => 'Home Defend',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_defend',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/defend.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -713,7 +725,8 @@ return [
     'home_hero' => [
         'title' => 'Hero headline & introduction',
         'group' => 'Home',
-        'table' => 'cms_home_hero',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/hero.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -752,7 +765,8 @@ return [
     'home_network' => [
         'title' => 'Home Network',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_network',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/network.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -779,7 +793,8 @@ return [
     'home_our_story' => [
         'title' => 'Company story headings',
         'group' => 'Home',
-        'table' => 'cms_home_our_story',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/our-story.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -802,7 +817,8 @@ return [
     'home_our_story_milestones' => [
         'title' => 'Company milestones',
         'group' => 'Home',
-        'table' => 'cms_home_our_story_milestones',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/our-story.blade.php',
         'parent' => 'home_our_story',
         'repeatable' => true,
@@ -841,7 +857,8 @@ return [
     'home_solutions' => [
         'title' => 'Home Solutions',
         'group' => 'Home',
-        'table' => 'cms_home_solutions',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/solutions.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -886,7 +903,8 @@ return [
     'home_tech_diagram' => [
         'title' => 'Engagement process headings',
         'group' => 'Home',
-        'table' => 'cms_home_tech_diagram',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/tech-diagram.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -925,7 +943,8 @@ return [
     'home_threats' => [
         'title' => 'Home Threats',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_threats',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/threats.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1000,7 +1019,8 @@ return [
     'nav' => [
         'title' => 'Navigation & branding',
         'group' => 'Shared content',
-        'table' => 'cms_nav',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/nav.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1071,7 +1091,8 @@ return [
     'nav_primary_routes' => [
         'title' => 'Primary Routes',
         'group' => 'Shared content',
-        'table' => 'cms_nav_primary_routes',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/nav.blade.php',
         'parent' => 'nav',
         'repeatable' => true,
@@ -1086,7 +1107,8 @@ return [
     'soc_benefits' => [
         'title' => 'SOC Benefits',
         'group' => 'SOC',
-        'table' => 'cms_soc_benefits',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/benefits.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1105,7 +1127,8 @@ return [
     'soc_benefits_benefits' => [
         'title' => 'SOC Benefits Benefits',
         'group' => 'SOC',
-        'table' => 'cms_soc_benefits_benefits',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/benefits.blade.php',
         'parent' => 'soc_benefits',
         'repeatable' => true,
@@ -1128,7 +1151,8 @@ return [
     'soc_calculator' => [
         'title' => 'SOC Calculator',
         'group' => 'SOC',
-        'table' => 'cms_soc_calculator',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/calculator.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1263,7 +1287,8 @@ return [
     'soc_comparison' => [
         'title' => 'SOC Comparison',
         'group' => 'SOC',
-        'table' => 'cms_soc_comparison',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/comparison.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1302,7 +1327,8 @@ return [
     'soc_comparison_rows' => [
         'title' => 'SOC comparison rows',
         'group' => 'SOC',
-        'table' => 'cms_soc_comparison_rows',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/comparison.blade.php',
         'parent' => 'soc_comparison',
         'repeatable' => true,
@@ -1341,7 +1367,8 @@ return [
     'soc_expert' => [
         'title' => 'SOC Expert',
         'group' => 'Archived layouts',
-        'table' => 'cms_soc_expert',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/expert.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1452,7 +1479,8 @@ return [
     'soc_hero' => [
         'title' => 'SOC Hero',
         'group' => 'SOC',
-        'table' => 'cms_soc_hero',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/hero.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1531,7 +1559,8 @@ return [
     'soc_hero_height_items' => [
         'title' => 'SOC Hero Height Items',
         'group' => 'SOC',
-        'table' => 'cms_soc_hero_height_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/hero.blade.php',
         'parent' => 'soc_hero',
         'repeatable' => true,
@@ -1546,7 +1575,8 @@ return [
     'soc_matrix' => [
         'title' => 'SOC Matrix',
         'group' => 'SOC',
-        'table' => 'cms_soc_matrix',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/matrix.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1585,7 +1615,8 @@ return [
     'soc_matrix_caps' => [
         'title' => 'SOC capability rows',
         'group' => 'SOC',
-        'table' => 'cms_soc_matrix_caps',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/matrix.blade.php',
         'parent' => 'soc_matrix',
         'repeatable' => true,
@@ -1612,7 +1643,8 @@ return [
     'soc_matrix_tiers' => [
         'title' => 'SOC comparison columns',
         'group' => 'SOC',
-        'table' => 'cms_soc_matrix_tiers',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/matrix.blade.php',
         'parent' => 'soc_matrix',
         'repeatable' => true,
@@ -1627,7 +1659,8 @@ return [
     'soc_numbers' => [
         'title' => 'SOC Numbers',
         'group' => 'SOC',
-        'table' => 'cms_soc_numbers',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/numbers.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1650,7 +1683,8 @@ return [
     'soc_pricing' => [
         'title' => 'SOC Pricing',
         'group' => 'SOC',
-        'table' => 'cms_soc_pricing',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/pricing.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1689,7 +1723,8 @@ return [
     'soc_pricing_plans' => [
         'title' => 'SOC pricing plans',
         'group' => 'SOC',
-        'table' => 'cms_soc_pricing_plans',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/pricing.blade.php',
         'parent' => 'soc_pricing',
         'repeatable' => true,
@@ -1720,7 +1755,8 @@ return [
     'soc_reviews' => [
         'title' => 'SOC Reviews',
         'group' => 'SOC',
-        'table' => 'cms_soc_reviews',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/reviews.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1775,7 +1811,8 @@ return [
     'soc_reviews_reviews' => [
         'title' => 'SOC Reviews Reviews',
         'group' => 'SOC',
-        'table' => 'cms_soc_reviews_reviews',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/reviews.blade.php',
         'parent' => 'soc_reviews',
         'repeatable' => true,
@@ -1806,7 +1843,8 @@ return [
     'soc_sensor' => [
         'title' => 'SOC Sensor',
         'group' => 'Archived layouts',
-        'table' => 'cms_soc_sensor',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/sensor.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1829,7 +1867,8 @@ return [
     'soc_sensor_sensors' => [
         'title' => 'SOC Sensor Sensors',
         'group' => 'Archived layouts',
-        'table' => 'cms_soc_sensor_sensors',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/sensor.blade.php',
         'parent' => 'soc_sensor',
         'repeatable' => true,
@@ -1852,7 +1891,8 @@ return [
     'vapt_benefits' => [
         'title' => 'VAPT Benefits',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_benefits',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/benefits.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1871,7 +1911,8 @@ return [
     'vapt_benefits_benefits' => [
         'title' => 'VAPT Benefits Benefits',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_benefits_benefits',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/benefits.blade.php',
         'parent' => 'vapt_benefits',
         'repeatable' => true,
@@ -1894,7 +1935,8 @@ return [
     'vapt_boxes' => [
         'title' => 'VAPT Boxes',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_boxes',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/boxes.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -1925,7 +1967,8 @@ return [
     'vapt_boxes_boxes' => [
         'title' => 'VAPT Boxes Boxes',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_boxes_boxes',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/boxes.blade.php',
         'parent' => 'vapt_boxes',
         'repeatable' => true,
@@ -1952,7 +1995,8 @@ return [
     'vapt_calculator' => [
         'title' => 'VAPT Calculator',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_calculator',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/calculator.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2139,7 +2183,8 @@ return [
     'vapt_hero' => [
         'title' => 'VAPT Hero',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_hero',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/hero.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2210,7 +2255,8 @@ return [
     'vapt_hero_height_items' => [
         'title' => 'VAPT Hero Height Items',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_hero_height_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/hero.blade.php',
         'parent' => 'vapt_hero',
         'repeatable' => true,
@@ -2225,7 +2271,8 @@ return [
     'vapt_hero_step_items' => [
         'title' => 'VAPT Hero Step Items',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_hero_step_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/hero.blade.php',
         'parent' => 'vapt_hero',
         'repeatable' => true,
@@ -2240,7 +2287,8 @@ return [
     'vapt_matrix' => [
         'title' => 'VAPT Matrix',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_matrix',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/matrix.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2275,7 +2323,8 @@ return [
     'vapt_matrix_rows' => [
         'title' => 'VAPT comparison rows',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_matrix_rows',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/matrix.blade.php',
         'parent' => 'vapt_matrix',
         'repeatable' => true,
@@ -2298,7 +2347,8 @@ return [
     'vapt_numbers' => [
         'title' => 'VAPT Numbers',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_numbers',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/numbers.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2313,7 +2363,8 @@ return [
     'vapt_posture' => [
         'title' => 'VAPT Posture',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_posture',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/posture.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2328,7 +2379,8 @@ return [
     'vapt_posture_nodes' => [
         'title' => 'VAPT Posture Nodes',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_posture_nodes',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/posture.blade.php',
         'parent' => 'vapt_posture',
         'repeatable' => true,
@@ -2363,7 +2415,8 @@ return [
     'vapt_reviews' => [
         'title' => 'VAPT Reviews',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_reviews',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/reviews.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2418,7 +2471,8 @@ return [
     'vapt_reviews_reviews' => [
         'title' => 'VAPT Reviews Reviews',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_reviews_reviews',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/reviews.blade.php',
         'parent' => 'vapt_reviews',
         'repeatable' => true,
@@ -2445,7 +2499,8 @@ return [
     'vapt_success' => [
         'title' => 'VAPT Success',
         'group' => 'Archived layouts',
-        'table' => 'cms_vapt_success',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/success.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2500,7 +2555,8 @@ return [
     'vciso_hero' => [
         'title' => 'vCISO Hero',
         'group' => 'Prohoree 365',
-        'table' => 'cms_vciso_hero',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vciso/hero.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2543,7 +2599,8 @@ return [
     'vciso_hero_left_nodes' => [
         'title' => 'vCISO Hero Left Nodes',
         'group' => 'Prohoree 365',
-        'table' => 'cms_vciso_hero_left_nodes',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vciso/hero.blade.php',
         'parent' => 'vciso_hero',
         'repeatable' => true,
@@ -2570,7 +2627,8 @@ return [
     'vciso_hero_right_nodes' => [
         'title' => 'vCISO Hero Right Nodes',
         'group' => 'Prohoree 365',
-        'table' => 'cms_vciso_hero_right_nodes',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vciso/hero.blade.php',
         'parent' => 'vciso_hero',
         'repeatable' => true,
@@ -2597,7 +2655,8 @@ return [
     'vciso_product' => [
         'title' => 'vCISO Product',
         'group' => 'Prohoree 365',
-        'table' => 'cms_vciso_product',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vciso/product.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2624,7 +2683,8 @@ return [
     'vciso_product_modules' => [
         'title' => 'Prohoree product modules',
         'group' => 'Prohoree 365',
-        'table' => 'cms_vciso_product_modules',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vciso/product.blade.php',
         'parent' => 'vciso_product',
         'repeatable' => true,
@@ -2668,19 +2728,19 @@ return [
                     'type' => 'object',
                     'label' => 'Statistic',
                     'fields' => [
-                        '0' => [
+                        0 => [
                             'label' => 'Value',
                             'type' => 'text',
                         ],
-                        '1' => [
+                        1 => [
                             'label' => 'Label',
                             'type' => 'text',
                         ],
-                        '2' => [
+                        2 => [
                             'label' => 'Status chip',
                             'type' => 'text',
                         ],
-                        '3' => [
+                        3 => [
                             'label' => 'Tone (blue, warm, red)',
                             'type' => 'text',
                         ],
@@ -2693,7 +2753,8 @@ return [
     'page_service_detail' => [
         'title' => 'Page Service Detail',
         'group' => 'Service Detail',
-        'table' => 'cms_page_service_detail',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/service-detail.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2740,7 +2801,8 @@ return [
     'page_soc' => [
         'title' => 'Page SOC',
         'group' => 'SOC',
-        'table' => 'cms_page_soc',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/soc.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2763,7 +2825,8 @@ return [
     'page_vapt' => [
         'title' => 'Page VAPT',
         'group' => 'VAPT',
-        'table' => 'cms_page_vapt',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/vapt.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2790,7 +2853,8 @@ return [
     'page_vciso' => [
         'title' => 'Page vCISO',
         'group' => 'vCISO',
-        'table' => 'cms_page_vciso',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/vciso.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2817,7 +2881,8 @@ return [
     'layout_portfolio' => [
         'title' => 'Layout Portfolio',
         'group' => 'Shared content',
-        'table' => 'cms_layout_portfolio',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/layouts/portfolio.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2836,7 +2901,8 @@ return [
     'page_about' => [
         'title' => 'Page About',
         'group' => 'About',
-        'table' => 'cms_page_about',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/about.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2851,7 +2917,8 @@ return [
     'page_capacity_building' => [
         'title' => 'Page Capacity Building',
         'group' => 'Capacity Building',
-        'table' => 'cms_page_capacity_building',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/capacity-building.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -2930,7 +2997,8 @@ return [
     'page_capacity_building_item_items' => [
         'title' => 'Item Items',
         'group' => 'Capacity Building',
-        'table' => 'cms_page_capacity_building_item_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/capacity-building.blade.php',
         'parent' => 'page_capacity_building',
         'repeatable' => true,
@@ -2953,7 +3021,8 @@ return [
     'page_capacity_building_w_items' => [
         'title' => 'W Items',
         'group' => 'Capacity Building',
-        'table' => 'cms_page_capacity_building_w_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/capacity-building.blade.php',
         'parent' => 'page_capacity_building',
         'repeatable' => true,
@@ -2976,7 +3045,8 @@ return [
     'page_career' => [
         'title' => 'Page Career',
         'group' => 'Career',
-        'table' => 'cms_page_career',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/career.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -3067,7 +3137,8 @@ return [
     'page_career_w_items' => [
         'title' => 'Company values',
         'group' => 'Career',
-        'table' => 'cms_page_career_w_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/career.blade.php',
         'parent' => 'page_career',
         'repeatable' => true,
@@ -3090,7 +3161,8 @@ return [
     'page_career_w_items_2' => [
         'title' => 'Career benefits',
         'group' => 'Career',
-        'table' => 'cms_page_career_w_items_2',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/career.blade.php',
         'parent' => 'page_career',
         'repeatable' => true,
@@ -3113,7 +3185,8 @@ return [
     'page_career_job_items' => [
         'title' => 'Job openings',
         'group' => 'Career',
-        'table' => 'cms_page_career_job_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/career.blade.php',
         'parent' => 'page_career',
         'repeatable' => true,
@@ -3136,7 +3209,8 @@ return [
     'page_contact' => [
         'title' => 'Page Contact',
         'group' => 'Contact',
-        'table' => 'cms_page_contact',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/contact.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -3247,7 +3321,8 @@ return [
     'legacy_pages_defense_services' => [
         'title' => 'Legacy Pages Defense Services',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_defense_services',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/defense-services.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -3318,7 +3393,8 @@ return [
     'legacy_pages_defense_services_offensive' => [
         'title' => 'Offensive',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_defense_services_offensive',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/defense-services.blade.php',
         'parent' => 'legacy_pages_defense_services',
         'repeatable' => true,
@@ -3353,7 +3429,8 @@ return [
     'legacy_pages_defense_services_defensive' => [
         'title' => 'Defensive',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_defense_services_defensive',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/defense-services.blade.php',
         'parent' => 'legacy_pages_defense_services',
         'repeatable' => true,
@@ -3388,7 +3465,8 @@ return [
     'page_defensive_security_services' => [
         'title' => 'Page Defensive Security Services',
         'group' => 'Defensive Security Services',
-        'table' => 'cms_page_defensive_security_services',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/defensive-security-services.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -3435,7 +3513,8 @@ return [
     'page_defensive_security_services_items' => [
         'title' => 'Items',
         'group' => 'Defensive Security Services',
-        'table' => 'cms_page_defensive_security_services_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/defensive-security-services.blade.php',
         'parent' => 'page_defensive_security_services',
         'repeatable' => true,
@@ -3470,7 +3549,8 @@ return [
     'legacy_pages_home' => [
         'title' => 'Legacy Pages Home',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_home',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/home.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -3649,7 +3729,8 @@ return [
     'legacy_pages_home_step_items' => [
         'title' => 'Step Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_home_step_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/home.blade.php',
         'parent' => 'legacy_pages_home',
         'repeatable' => true,
@@ -3676,7 +3757,8 @@ return [
     'legacy_pages_home_sol_items' => [
         'title' => 'Sol Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_home_sol_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/home.blade.php',
         'parent' => 'legacy_pages_home',
         'repeatable' => true,
@@ -3703,7 +3785,8 @@ return [
     'legacy_pages_home_case_items' => [
         'title' => 'Case Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_home_case_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/home.blade.php',
         'parent' => 'legacy_pages_home',
         'repeatable' => true,
@@ -3727,11 +3810,11 @@ return [
                     'type' => 'object',
                     'label' => 'Statistic',
                     'fields' => [
-                        '0' => [
+                        0 => [
                             'label' => 'Value',
                             'type' => 'text',
                         ],
-                        '1' => [
+                        1 => [
                             'label' => 'Label',
                             'type' => 'text',
                         ],
@@ -3744,7 +3827,8 @@ return [
     'legacy_pages_home_m_items' => [
         'title' => 'M Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_home_m_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/home.blade.php',
         'parent' => 'legacy_pages_home',
         'repeatable' => true,
@@ -3763,7 +3847,8 @@ return [
     'page_it_audit' => [
         'title' => 'Page It Audit',
         'group' => 'It Audit',
-        'table' => 'cms_page_it_audit',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/it-audit.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -3834,7 +3919,8 @@ return [
     'page_it_audit_v_items' => [
         'title' => 'V Items',
         'group' => 'It Audit',
-        'table' => 'cms_page_it_audit_v_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/it-audit.blade.php',
         'parent' => 'page_it_audit',
         'repeatable' => true,
@@ -3857,7 +3943,8 @@ return [
     'page_it_audit_step_items' => [
         'title' => 'Step Items',
         'group' => 'It Audit',
-        'table' => 'cms_page_it_audit_step_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/it-audit.blade.php',
         'parent' => 'page_it_audit',
         'repeatable' => true,
@@ -3876,7 +3963,8 @@ return [
     'page_offensive_security_services' => [
         'title' => 'Page Offensive Security Services',
         'group' => 'Offensive Security Services',
-        'table' => 'cms_page_offensive_security_services',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/offensive-security-services.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -3923,7 +4011,8 @@ return [
     'page_offensive_security_services_items' => [
         'title' => 'Items',
         'group' => 'Offensive Security Services',
-        'table' => 'cms_page_offensive_security_services_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/offensive-security-services.blade.php',
         'parent' => 'page_offensive_security_services',
         'repeatable' => true,
@@ -3958,7 +4047,8 @@ return [
     'page_our_team' => [
         'title' => 'Team page headings',
         'group' => 'Our Team',
-        'table' => 'cms_page_our_team',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/our-team.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -4005,7 +4095,8 @@ return [
     'page_our_team_team' => [
         'title' => 'Leadership profiles',
         'group' => 'Our Team',
-        'table' => 'cms_page_our_team_team',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/our-team.blade.php',
         'parent' => 'page_our_team',
         'repeatable' => true,
@@ -4054,7 +4145,8 @@ return [
     'shared_security_service_group' => [
         'title' => 'Shared Security Service Group',
         'group' => 'Shared content',
-        'table' => 'cms_shared_security_service_group',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/partials/security-service-group.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -4069,7 +4161,8 @@ return [
     'page_services' => [
         'title' => 'Page Services',
         'group' => 'Services',
-        'table' => 'cms_page_services',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/services.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -4118,7 +4211,8 @@ return [
     'legacy_pages_soc' => [
         'title' => 'Legacy Pages SOC',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_soc',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/soc.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -4345,7 +4439,8 @@ return [
     'legacy_pages_soc_row_items' => [
         'title' => 'Legacy Pages SOC Row Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_soc_row_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/soc.blade.php',
         'parent' => 'legacy_pages_soc',
         'repeatable' => true,
@@ -4372,7 +4467,8 @@ return [
     'legacy_pages_soc_b_items' => [
         'title' => 'Legacy Pages SOC B Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_soc_b_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/soc.blade.php',
         'parent' => 'legacy_pages_soc',
         'repeatable' => true,
@@ -4395,7 +4491,8 @@ return [
     'legacy_pages_soc_s_items' => [
         'title' => 'Legacy Pages SOC S Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_soc_s_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/soc.blade.php',
         'parent' => 'legacy_pages_soc',
         'repeatable' => true,
@@ -4418,7 +4515,8 @@ return [
     'legacy_pages_soc_plan_items' => [
         'title' => 'Legacy Pages SOC Plan Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_soc_plan_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/soc.blade.php',
         'parent' => 'legacy_pages_soc',
         'repeatable' => true,
@@ -4449,7 +4547,8 @@ return [
     'legacy_pages_vapt' => [
         'title' => 'Legacy Pages VAPT',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_vapt',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/vapt.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -4720,7 +4819,8 @@ return [
     'legacy_pages_vapt_p_items' => [
         'title' => 'Legacy Pages VAPT P Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_vapt_p_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/vapt.blade.php',
         'parent' => 'legacy_pages_vapt',
         'repeatable' => true,
@@ -4743,7 +4843,8 @@ return [
     'legacy_pages_vapt_row_items' => [
         'title' => 'Legacy Pages VAPT Row Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_vapt_row_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/vapt.blade.php',
         'parent' => 'legacy_pages_vapt',
         'repeatable' => true,
@@ -4770,7 +4871,8 @@ return [
     'legacy_pages_vapt_b_items' => [
         'title' => 'Legacy Pages VAPT B Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_vapt_b_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/vapt.blade.php',
         'parent' => 'legacy_pages_vapt',
         'repeatable' => true,
@@ -4793,7 +4895,8 @@ return [
     'legacy_pages_vciso' => [
         'title' => 'Legacy Pages vCISO',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_vciso',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/vciso.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -4864,7 +4967,8 @@ return [
     'legacy_pages_vciso_cap_items' => [
         'title' => 'Legacy Pages vCISO Cap Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_vciso_cap_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/vciso.blade.php',
         'parent' => 'legacy_pages_vciso',
         'repeatable' => true,
@@ -4883,7 +4987,8 @@ return [
     'legacy_pages_vciso_cap_items_2' => [
         'title' => 'Legacy Pages vCISO Cap Items 2',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_vciso_cap_items_2',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/vciso.blade.php',
         'parent' => 'legacy_pages_vciso',
         'repeatable' => true,
@@ -4902,7 +5007,8 @@ return [
     'legacy_pages_vciso_c_items' => [
         'title' => 'Legacy Pages vCISO C Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_vciso_c_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/vciso.blade.php',
         'parent' => 'legacy_pages_vciso',
         'repeatable' => true,
@@ -4925,7 +5031,8 @@ return [
     'shared_about_industries_clients' => [
         'title' => 'Shared About Industries Clients',
         'group' => 'Shared content',
-        'table' => 'cms_shared_about_industries_clients',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/about-industries-clients.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -4956,7 +5063,8 @@ return [
     'shared_about_industries_clients_about_industries' => [
         'title' => 'Industry statistics',
         'group' => 'Shared content',
-        'table' => 'cms_shared_about_industries_clients_about_industries',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/about-industries-clients.blade.php',
         'parent' => 'shared_about_industries_clients',
         'repeatable' => true,
@@ -4979,7 +5087,8 @@ return [
     'shared_about_industries_clients_about_clients' => [
         'title' => 'Trusted organizations',
         'group' => 'Shared content',
-        'table' => 'cms_shared_about_industries_clients_about_clients',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/about-industries-clients.blade.php',
         'parent' => 'shared_about_industries_clients',
         'repeatable' => true,
@@ -5006,7 +5115,8 @@ return [
     'shared_clients' => [
         'title' => 'Client section headings',
         'group' => 'Shared content',
-        'table' => 'cms_shared_clients',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/clients.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -5049,7 +5159,8 @@ return [
     'shared_clients_clients' => [
         'title' => 'Client logos',
         'group' => 'Shared content',
-        'table' => 'cms_shared_clients_clients',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/clients.blade.php',
         'parent' => 'shared_clients',
         'repeatable' => true,
@@ -5080,7 +5191,8 @@ return [
     'shared_navbar' => [
         'title' => 'Shared Navbar',
         'group' => 'Archived layouts',
-        'table' => 'cms_shared_navbar',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/navbar.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -5163,7 +5275,8 @@ return [
     'shared_navbar_service_links' => [
         'title' => 'Service Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_shared_navbar_service_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/navbar.blade.php',
         'parent' => 'shared_navbar',
         'repeatable' => true,
@@ -5186,7 +5299,8 @@ return [
     'shared_navbar_service_route_names' => [
         'title' => 'Service Route Names',
         'group' => 'Archived layouts',
-        'table' => 'cms_shared_navbar_service_route_names',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/navbar.blade.php',
         'parent' => 'shared_navbar',
         'repeatable' => true,
@@ -5201,7 +5315,8 @@ return [
     'shared_page_hero' => [
         'title' => 'Shared Page Hero',
         'group' => 'Shared content',
-        'table' => 'cms_shared_page_hero',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/page-hero.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -5228,7 +5343,8 @@ return [
     'shared_reviews' => [
         'title' => 'Shared Reviews',
         'group' => 'Archived layouts',
-        'table' => 'cms_shared_reviews',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/reviews.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -5283,7 +5399,8 @@ return [
     'shared_reviews_reviews' => [
         'title' => 'Reviews',
         'group' => 'Archived layouts',
-        'table' => 'cms_shared_reviews_reviews',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/reviews.blade.php',
         'parent' => 'shared_reviews',
         'repeatable' => true,
@@ -5318,7 +5435,8 @@ return [
     'shared_talk_to_expert' => [
         'title' => 'Shared Talk To Expert',
         'group' => 'Shared content',
-        'table' => 'cms_shared_talk_to_expert',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/partials/talk-to-expert.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -5345,7 +5463,8 @@ return [
     'legacy_portfolio_index' => [
         'title' => 'Legacy Portfolio Index',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_portfolio_index',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/portfolio/index.blade.php',
         'parent' => null,
         'repeatable' => false,
@@ -5456,8 +5575,9 @@ return [
     'services' => [
         'title' => 'Service Catalogue',
         'group' => 'Shared content',
-        'table' => 'cms_services',
-        'source' => 'config/cyberlog_services.php',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
+        'source' => 'database/seeders/Pages/ServicesPageSeeder.php',
         'parent' => null,
         'repeatable' => true,
         'fields' => [
@@ -5521,7 +5641,8 @@ return [
     'page_ai_automation_cards' => [
         'title' => 'AI capability cards',
         'group' => 'AI Automation',
-        'table' => 'cms_page_ai_automation_cards',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/ai-automation.blade.php',
         'parent' => 'page_ai_automation',
         'repeatable' => true,
@@ -5572,7 +5693,8 @@ return [
     'page_ai_automation_cards_2' => [
         'title' => 'AI case studies',
         'group' => 'AI Automation',
-        'table' => 'cms_page_ai_automation_cards_2',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/ai-automation.blade.php',
         'parent' => 'page_ai_automation',
         'repeatable' => true,
@@ -5595,7 +5717,8 @@ return [
     'page_ai_automation_timeline' => [
         'title' => 'AI evolution timeline',
         'group' => 'AI Automation',
-        'table' => 'cms_page_ai_automation_timeline',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/ai-automation.blade.php',
         'parent' => 'page_ai_automation',
         'repeatable' => true,
@@ -5614,7 +5737,8 @@ return [
     'footer_wordmark' => [
         'title' => 'Wordmark',
         'group' => 'Shared content',
-        'table' => 'cms_footer_wordmark',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/footer.blade.php',
         'parent' => 'footer',
         'repeatable' => true,
@@ -5629,7 +5753,8 @@ return [
     'footer_cards' => [
         'title' => 'Social links',
         'group' => 'Shared content',
-        'table' => 'cms_footer_cards',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/footer.blade.php',
         'parent' => 'footer',
         'repeatable' => true,
@@ -5652,7 +5777,8 @@ return [
     'footer_col_12' => [
         'title' => 'Col 12',
         'group' => 'Shared content',
-        'table' => 'cms_footer_col_12',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/footer.blade.php',
         'parent' => 'footer',
         'repeatable' => true,
@@ -5671,7 +5797,8 @@ return [
     'home_cta_banner_cta2_line' => [
         'title' => 'Cta2 Line',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_cta_banner_cta2_line',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/cta-banner.blade.php',
         'parent' => 'home_cta_banner',
         'repeatable' => true,
@@ -5690,7 +5817,8 @@ return [
     'home_defend_dao_stats' => [
         'title' => 'Dao Stats',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_defend_dao_stats',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/defend.blade.php',
         'parent' => 'home_defend',
         'repeatable' => true,
@@ -5713,7 +5841,8 @@ return [
     'home_hero_drift' => [
         'title' => 'Floating service chips',
         'group' => 'Home',
-        'table' => 'cms_home_hero_drift',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/hero.blade.php',
         'parent' => 'home_hero',
         'repeatable' => true,
@@ -5732,7 +5861,8 @@ return [
     'home_network_clnetcard' => [
         'title' => 'Clnetcard',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_network_clnetcard',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/network.blade.php',
         'parent' => 'home_network',
         'repeatable' => true,
@@ -5755,7 +5885,8 @@ return [
     'home_network_net_stats' => [
         'title' => 'Net Stats',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_network_net_stats',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/network.blade.php',
         'parent' => 'home_network',
         'repeatable' => true,
@@ -5778,7 +5909,8 @@ return [
     'home_network_net_floats' => [
         'title' => 'Net Floats',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_network_net_floats',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/network.blade.php',
         'parent' => 'home_network',
         'repeatable' => true,
@@ -5797,7 +5929,8 @@ return [
     'home_our_story_story_stats' => [
         'title' => 'Story Stats',
         'group' => 'Home',
-        'table' => 'cms_home_our_story_story_stats',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/our-story.blade.php',
         'parent' => 'home_our_story',
         'repeatable' => true,
@@ -5816,7 +5949,8 @@ return [
     'home_tech_diagram_process_stage_grid' => [
         'title' => 'Engagement process steps',
         'group' => 'Home',
-        'table' => 'cms_home_tech_diagram_process_stage_grid',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/tech-diagram.blade.php',
         'parent' => 'home_tech_diagram',
         'repeatable' => true,
@@ -5843,7 +5977,8 @@ return [
     'home_threats_th_floats' => [
         'title' => 'Th Floats',
         'group' => 'Archived layouts',
-        'table' => 'cms_home_threats_th_floats',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/home/threats.blade.php',
         'parent' => 'home_threats',
         'repeatable' => true,
@@ -5862,7 +5997,8 @@ return [
     'soc_expert_links' => [
         'title' => 'Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_soc_expert_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/expert.blade.php',
         'parent' => 'soc_expert',
         'repeatable' => true,
@@ -5877,7 +6013,8 @@ return [
     'soc_hero_soc_log' => [
         'title' => 'Soc Log',
         'group' => 'SOC',
-        'table' => 'cms_soc_hero_soc_log',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/hero.blade.php',
         'parent' => 'soc_hero',
         'repeatable' => true,
@@ -5900,7 +6037,8 @@ return [
     'soc_numbers_cards' => [
         'title' => 'Cards',
         'group' => 'SOC',
-        'table' => 'cms_soc_numbers_cards',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/soc/numbers.blade.php',
         'parent' => 'soc_numbers',
         'repeatable' => true,
@@ -5923,7 +6061,8 @@ return [
     'vapt_hero_vapt_logs' => [
         'title' => 'Vapt Logs',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_hero_vapt_logs',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/hero.blade.php',
         'parent' => 'vapt_hero',
         'repeatable' => true,
@@ -5942,7 +6081,8 @@ return [
     'vapt_numbers_vapt_number_grid' => [
         'title' => 'Vapt Number Grid',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_numbers_vapt_number_grid',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/numbers.blade.php',
         'parent' => 'vapt_numbers',
         'repeatable' => true,
@@ -5961,7 +6101,8 @@ return [
     'vapt_success_vapt_success_stats' => [
         'title' => 'Stats',
         'group' => 'Archived layouts',
-        'table' => 'cms_vapt_success_vapt_success_stats',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/frontend/public/partials/vapt/success.blade.php',
         'parent' => 'vapt_success',
         'repeatable' => true,
@@ -5980,7 +6121,8 @@ return [
     'page_capacity_building_links' => [
         'title' => 'Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_page_capacity_building_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/capacity-building.blade.php',
         'parent' => 'page_capacity_building',
         'repeatable' => true,
@@ -5999,7 +6141,8 @@ return [
     'page_capacity_building_links_2' => [
         'title' => 'Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_page_capacity_building_links_2',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/capacity-building.blade.php',
         'parent' => 'page_capacity_building',
         'repeatable' => true,
@@ -6018,7 +6161,8 @@ return [
     'page_contact_links' => [
         'title' => 'Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_page_contact_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/contact.blade.php',
         'parent' => 'page_contact',
         'repeatable' => true,
@@ -6033,7 +6177,8 @@ return [
     'page_contact_cards' => [
         'title' => 'Contact social links',
         'group' => 'Contact',
-        'table' => 'cms_page_contact_cards',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/contact.blade.php',
         'parent' => 'page_contact',
         'repeatable' => true,
@@ -6056,7 +6201,8 @@ return [
     'legacy_pages_home_console_stats' => [
         'title' => 'Console Stats',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_home_console_stats',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/home.blade.php',
         'parent' => 'legacy_pages_home',
         'repeatable' => true,
@@ -6083,7 +6229,8 @@ return [
     'legacy_pages_home_links' => [
         'title' => 'Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_home_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/home.blade.php',
         'parent' => 'legacy_pages_home',
         'repeatable' => true,
@@ -6102,7 +6249,8 @@ return [
     'page_it_audit_links' => [
         'title' => 'Links',
         'group' => 'It Audit',
-        'table' => 'cms_page_it_audit_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/it-audit.blade.php',
         'parent' => 'page_it_audit',
         'repeatable' => true,
@@ -6121,7 +6269,8 @@ return [
     'legacy_pages_soc_cards' => [
         'title' => 'Cards',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_soc_cards',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/soc.blade.php',
         'parent' => 'legacy_pages_soc',
         'repeatable' => true,
@@ -6152,7 +6301,8 @@ return [
     'legacy_pages_soc_tr_items' => [
         'title' => 'Tr Items',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_soc_tr_items',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/soc.blade.php',
         'parent' => 'legacy_pages_soc',
         'repeatable' => true,
@@ -6187,7 +6337,8 @@ return [
     'legacy_pages_vapt_links' => [
         'title' => 'Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_pages_vapt_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/pages/vapt.blade.php',
         'parent' => 'legacy_pages_vapt',
         'repeatable' => true,
@@ -6206,7 +6357,8 @@ return [
     'legacy_portfolio_index_cards' => [
         'title' => 'Cards',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_portfolio_index_cards',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/portfolio/index.blade.php',
         'parent' => 'legacy_portfolio_index',
         'repeatable' => true,
@@ -6233,7 +6385,8 @@ return [
     'legacy_portfolio_index_links' => [
         'title' => 'Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_portfolio_index_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/portfolio/index.blade.php',
         'parent' => 'legacy_portfolio_index',
         'repeatable' => true,
@@ -6248,7 +6401,8 @@ return [
     'legacy_portfolio_index_links_2' => [
         'title' => 'Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_portfolio_index_links_2',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/portfolio/index.blade.php',
         'parent' => 'legacy_portfolio_index',
         'repeatable' => true,
@@ -6267,7 +6421,8 @@ return [
     'legacy_portfolio_index_links_3' => [
         'title' => 'Links',
         'group' => 'Archived layouts',
-        'table' => 'cms_legacy_portfolio_index_links_3',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'source' => 'resources/views/portfolio/index.blade.php',
         'parent' => 'legacy_portfolio_index',
         'repeatable' => true,
@@ -6282,7 +6437,8 @@ return [
     'threat_feed_events' => [
         'title' => 'Threat feed events',
         'group' => 'Shared content',
-        'table' => 'cms_threat_feed_events',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'fields' => [
             'item_0' => [
                 'label' => 'Tone',
@@ -6305,7 +6461,8 @@ return [
     'soc_live_events' => [
         'title' => 'SOC live console events',
         'group' => 'SOC',
-        'table' => 'cms_soc_live_events',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'fields' => [
             'item_0' => [
                 'label' => 'Status',
@@ -6324,7 +6481,8 @@ return [
     'vapt_live_events' => [
         'title' => 'VAPT live console events',
         'group' => 'VAPT',
-        'table' => 'cms_vapt_live_events',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'fields' => [
             'item_0' => [
                 'label' => 'Status',
@@ -6343,7 +6501,8 @@ return [
     'team_units' => [
         'title' => 'Specialist teams',
         'group' => 'Our Team',
-        'table' => 'cms_team_units',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'fields' => [
             'title' => [
                 'label' => 'Team name',
@@ -6378,7 +6537,8 @@ return [
     'navigation_company_links' => [
         'title' => 'Company menu',
         'group' => 'Shared content',
-        'table' => 'cms_navigation_company_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'fields' => [
             'label' => [
                 'label' => 'Label',
@@ -6397,7 +6557,8 @@ return [
     'navigation_specialized_links' => [
         'title' => 'Specialized service menu',
         'group' => 'Shared content',
-        'table' => 'cms_navigation_specialized_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'fields' => [
             'label' => [
                 'label' => 'Label',
@@ -6416,7 +6577,8 @@ return [
     'footer_company_links' => [
         'title' => 'Footer company links',
         'group' => 'Shared content',
-        'table' => 'cms_footer_company_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'fields' => [
             'label' => [
                 'label' => 'Label',
@@ -6435,7 +6597,8 @@ return [
     'footer_specialized_links' => [
         'title' => 'Footer specialized links',
         'group' => 'Shared content',
-        'table' => 'cms_footer_specialized_links',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'fields' => [
             'label' => [
                 'label' => 'Label',
@@ -6454,7 +6617,8 @@ return [
     'training_packages' => [
         'title' => 'Training packages',
         'group' => 'Capacity Building',
-        'table' => 'cms_training_packages',
+        'table' => 'page_contents',
+        'model' => 'App\\Models\\PageContent',
         'fields' => [
             'title' => [
                 'label' => 'Package name',

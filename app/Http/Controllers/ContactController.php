@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inquiry;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -19,7 +19,7 @@ class ContactController extends Controller
             'website' => ['nullable', 'size:0'],
         ]);
         unset($data['website']);
-        DB::table('inquiries')->insert($data + ['created_at' => now(), 'updated_at' => now()]);
+        Inquiry::query()->create($data);
 
         return back()->with('contact_status', content('page_contact', 'success_message'));
     }

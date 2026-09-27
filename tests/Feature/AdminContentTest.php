@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Content\ContentRegistry;
 use App\Models\ContentEntry;
+use App\Models\Page;
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -78,6 +79,29 @@ class AdminContentTest extends TestCase
         $this->get('/admin/inquiries')->assertOk();
     }
 
+    public function test_rendered_sidebar_and_dashboard_links_open_the_correct_modules(): void
+    {
+        $this->actingAs($this->admin());
+        $response = $this->get('/admin')->assertOk();
+        $document = new \DOMDocument;
+        @$document->loadHTML($response->getContent());
+        $xpath = new \DOMXPath($document);
+        $links = $xpath->query('//a[@data-page-link or @data-page-card]');
+        $expected = Page::where('kind', 'page')->pluck('slug')->all();
+        $visited = [];
+        $this->assertCount(count($expected) * 2, $links);
+        foreach ($links as $link) {
+            $path = parse_url($link->getAttribute('href'), PHP_URL_PATH);
+            $key = basename($path);
+            $this->assertContains($key, $expected, 'Invalid rendered link: '.$path);
+            if (! isset($visited[$path])) {
+                $this->get($path)->assertOk();
+                $visited[$path] = true;
+            }
+        }
+        $this->assertCount(count($expected), $visited);
+    }
+
     public function test_editing_copy_updates_public_page_and_records_history_without_reseeding_overwrites(): void
     {
         $this->actingAs($this->admin());
@@ -100,7 +124,7 @@ class AdminContentTest extends TestCase
         $key = 'shared_clients_clients';
         $payload = ['data' => ['name' => 'New Portfolio Client', 'sector' => 'Technology', 'url' => 'https://example.com', 'logo' => ''], 'sort_order' => 5, 'is_visible' => 1, 'uploads' => ['logo' => UploadedFile::fake()->image('client.png')]];
         $this->post(route('admin.content.store', $key), $payload)->assertSessionHasNoErrors()->assertRedirect();
-        $record = ContentEntry::forModule($key)->newQuery()->where('content_name', 'New Portfolio Client')->firstOrFail();
+        $record = ContentEntry::forModule($key)->newQuery()->where('data->name', 'New Portfolio Client')->firstOrFail();
         Storage::disk('public')->assertExists(substr($record->content_logo, 8));
         $this->get('/')->assertSee('New Portfolio Client');
         $this->delete(route('admin.content.destroy', [$key, $record->id]))->assertRedirect();

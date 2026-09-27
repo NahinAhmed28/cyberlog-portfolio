@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        \Illuminate\Pagination\Paginator::useBootstrapFive();
+        Relation::enforceMorphMap(
+            collect(config('content_modules'))->mapWithKeys(fn ($module, $key) => [$key => $module['model']])->all()
+        );
+        Paginator::useBootstrapFive();
     }
 }

@@ -17,7 +17,7 @@ abstract class ContentSeeder extends Seeder
             if ($existing) {
                 // Fill fields added after this row was first seeded; never overwrite admin edits.
                 foreach ($definition['fields'] as $name => $field) {
-                    if (array_key_exists($name, $data) && $existing->getRawOriginal('content_'.$name) === null) {
+                    if (array_key_exists($name, $data) && ! array_key_exists($name, $existing->data ?? [])) {
                         $existing->setAttribute('content_'.$name, $data[$name]);
                     }
                 }

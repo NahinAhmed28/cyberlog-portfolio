@@ -4,12 +4,19 @@ use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\NavigationController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Middleware\EnsureAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', EnsureAdmin::class])->group(function () {
     Route::get('/', DashboardController::class)->name('dashboard');
+    Route::view('/help', 'admin.help')->name('help');
+    Route::resource('navigation', NavigationController::class)->except('show');
+    Route::post('/navigation/{navigation}/move', [NavigationController::class, 'move'])->name('navigation.move');
+    Route::get('/pages/{page}', [PageController::class, 'show'])->name('pages.show');
+    Route::put('/pages/{page}/media/{entry}', [ContentController::class, 'media'])->name('pages.media');
     Route::get('/content/{module}', [ContentController::class, 'index'])->name('content.index');
     Route::get('/content/{module}/create', [ContentController::class, 'create'])->name('content.create');
     Route::post('/content/{module}', [ContentController::class, 'store'])->name('content.store');

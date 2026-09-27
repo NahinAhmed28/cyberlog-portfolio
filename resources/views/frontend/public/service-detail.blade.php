@@ -1,6 +1,6 @@
 @php
     $slug = $slug ?? request()->route('service');
-    // Standalone catalogue detail pages (config/cyberlog_services.php).
+    // Catalogue detail pages read the editable services collection.
     $cfg = collect(content_items('services'))->firstWhere('route', $slug);
     if ($cfg) {
         $service = [

@@ -20,7 +20,7 @@ class ProfileController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($request->user()->id)],
             'current_password' => ['required', 'current_password'],
-            'password' => ['nullable', 'confirmed', Password::min(12)->letters()->numbers()],
+            'password' => ['nullable', 'confirmed', Password::min(8)->letters()->numbers()],
         ]);
         $request->user()->fill(collect($data)->only(['name', 'email'])->all());
         if (! empty($data['password'])) {

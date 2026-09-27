@@ -15,7 +15,7 @@ class AdminUserSeeder extends Seeder
         if (! $email || ! $password || User::where('email', $email)->exists()) {
             return;
         }
-        validator(['email' => $email, 'password' => $password], ['email' => ['required', 'email'], 'password' => ['required', Password::min(12)->letters()->numbers()]])->validate();
+        validator(['email' => $email, 'password' => $password], ['email' => ['required', 'email'], 'password' => ['required', Password::min(8)->letters()->numbers()]])->validate();
         $user = new User(['name' => config('admin.name'), 'email' => $email, 'password' => $password]);
         $user->is_admin = true;
         $user->save();

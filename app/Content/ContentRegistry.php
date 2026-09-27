@@ -2,8 +2,6 @@
 
 namespace App\Content;
 
-use Illuminate\Support\Arr;
-
 class ContentRegistry
 {
     public function all(): array

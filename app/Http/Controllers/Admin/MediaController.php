@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Content\ContentRegistry;
 use App\Content\MediaUploader;
 use App\Http\Controllers\Controller;
+use App\Models\ContentEntry;
 use App\Models\MediaAsset;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class MediaController extends Controller
@@ -30,14 +30,14 @@ class MediaController extends Controller
     public function destroy(MediaAsset $media, ContentRegistry $registry)
     {
         abort_unless($media->is_uploaded, 403, 'Default assets are kept for fresh installations.');
-        foreach ($registry->all() as $module) {
+        foreach ($registry->all() as $moduleKey => $module) {
             if (! empty($module['group_only'])) {
                 continue;
             }
-            $inUse = DB::table($module['table'])->where(function ($query) use ($module, $media) {
+            $inUse = ContentEntry::forModule($moduleKey)->newQuery()->withTrashed()->where(function ($query) use ($module, $media) {
                 foreach ($module['fields'] as $name => $field) {
                     if (! in_array($field['type'], ['boolean', 'number'])) {
-                        $query->orWhere('content_'.$name, 'like', '%'.$media->path.'%');
+                        $query->orWhere('data->'.$name, 'like', '%'.$media->path.'%');
                     }
                 }
             })->exists();

@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PortfolioContentSeeder::class,
+            NavigationSeeder::class,
             MediaAssetSeeder::class,
             AdminUserSeeder::class,
         ]);
