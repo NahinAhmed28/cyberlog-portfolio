@@ -11,6 +11,7 @@
     'primaryCta' => ['label' => content('page_career', 'label'), 'url' => content('page_career', 'url')],
     'heroIcon' => content('page_career', 'hero_icon'),
     'heroCaption' => content('page_career', 'hero_caption'),
+    'heroVideo' => content('page_career', 'hero_video'),
     'noCenteredHeading' => true
 ])
 

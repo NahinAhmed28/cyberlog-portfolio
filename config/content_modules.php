@@ -3051,6 +3051,10 @@ return [
         'parent' => null,
         'repeatable' => false,
         'fields' => [
+            'hero_video' => [
+                'label' => 'Career video (Google Drive sharing link or video file)',
+                'type' => 'video',
+            ],
             'title' => [
                 'label' => 'Title',
                 'type' => 'text',

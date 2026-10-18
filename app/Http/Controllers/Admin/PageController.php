@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Content\FrontendContentOrder;
 use App\Content\PageEditor;
 use App\Http\Controllers\Controller;
 use App\Models\MediaAsset;
@@ -13,6 +14,7 @@ class PageController extends Controller
     {
         $page->load(['sections.contents' => fn ($query) => $query->withTrashed(), 'sections.pages']);
         $sections = $page->sections->filter(fn ($section) => ! empty(config('content_modules.'.$section->key.'.fields')));
+        $sections = app(FrontendContentOrder::class)->sections($page, $sections);
 
         if ($page->slug === 'navigation') {
             $sections = $sections->where('key', 'nav');

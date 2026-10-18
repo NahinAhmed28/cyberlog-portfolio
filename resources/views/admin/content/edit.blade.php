@@ -10,16 +10,13 @@
     <div class="row g-4">
         <div class="col-xl-9"><div class="card card-body admin-fields">
             @php($formData = old('data', $data))
-            @foreach(collect($definition['fields'])->groupBy(fn($field, $key) => app(\App\Content\PageEditor::class)->advanced($key, $field), preserveKeys: true)->sortKeys() as $advanced => $fields)
-                @if($advanced)<details class="border rounded p-3 mt-3"><summary class="fw-semibold mb-3">Design settings (optional)</summary><p class="small text-muted">These settings affect appearance. You can leave them as they are when changing text, links or images.</p>@endif
-            @foreach($fields as $key => $field)
+            <p class="small text-muted">Fields follow the content order on the website, from top to bottom.</p>
+            @foreach($definition['fields'] as $key => $field)
                 @if($module === 'nav' && ! in_array($key, ['img_media', 'img_alt', 'button_label', 'icon', 'destination']))
                     <input type="hidden" name="data[{{ $key }}]" value="{{ $formData[$key] ?? '' }}">
                 @else
                 @include('admin.content.field', ['field' => $field, 'name' => 'data['.$key.']', 'path' => $key, 'value' => $formData[$key] ?? app(\App\Content\ContentRegistry::class)->emptyValue($field)])
                 @endif
-            @endforeach
-                @if($advanced)</details>@endif
             @endforeach
         </div></div>
         <div class="col-xl-3"><div class="card card-body admin-save-panel">

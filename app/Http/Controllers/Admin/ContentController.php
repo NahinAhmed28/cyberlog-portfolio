@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Content\ContentRegistry;
 use App\Content\ContentRepository;
 use App\Content\ContentValidator;
+use App\Content\FrontendContentOrder;
 use App\Content\MediaUploader;
 use App\Content\PageEditor;
 use App\Http\Controllers\Controller;
@@ -56,6 +57,7 @@ class ContentController extends Controller
 
     private function form($module, $definition, $entry, $data)
     {
+        $definition['fields'] = app(FrontendContentOrder::class)->fields($module, $definition);
         $definition['title'] = app(PageEditor::class)->sectionTitle($module, $definition['title']);
         $media = MediaAsset::orderByDesc('id')->get(['path', 'name', 'mime_type']);
 

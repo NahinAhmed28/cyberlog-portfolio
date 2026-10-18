@@ -39,11 +39,29 @@
             </div>
 
             @unless($isCentered)
-                <div class="col-lg-5 d-none d-lg-block">
+                <div class="col-lg-5 {{ empty($heroVideo) ? 'd-none d-lg-block' : '' }}">
+                    @if (! empty($heroVideo))
+                        @php
+                            $driveVideo = preg_match('~^https://drive\.google\.com/file/d/([a-zA-Z0-9_-]+)(?:/|$)~', $heroVideo, $driveMatch);
+                        @endphp
+                        <div class="ratio ratio-16x9 rounded overflow-hidden bg-dark">
+                            @if ($driveVideo)
+                                <iframe src="https://drive.google.com/file/d/{{ $driveMatch[1] }}/preview"
+                                        title="{{ $heroCaption ?? 'Career video' }}"
+                                        allow="autoplay; fullscreen" allowfullscreen></iframe>
+                            @else
+                                <video controls playsinline preload="metadata" aria-label="{{ $heroCaption ?? 'Career video' }}">
+                                    <source src="{{ asset($heroVideo) }}">
+                                    Your browser does not support video playback.
+                                </video>
+                            @endif
+                        </div>
+                    @else
                     <div class="cl-step text-center py-5">
                         <i class="{{ $heroIcon ?? content('shared_page_hero', 'default_hero_icon') }} text-teal" style="font-size:6rem;"></i>
                         <p class="mt-3 mb-0 text-white-50">{{ $heroCaption ?? content('shared_page_hero', 'default_text_2') }}</p>
                     </div>
+                    @endif
                 </div>
             @endunless
         </div>

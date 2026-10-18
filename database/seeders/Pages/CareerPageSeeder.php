@@ -18,6 +18,7 @@ class CareerPageSeeder extends ContentSeeder
                 'url' => '#openings',
                 'hero_icon' => 'fa-solid fa-circle-play',
                 'hero_caption' => 'Play Video',
+                'hero_video' => 'https://drive.google.com/file/d/1O482j1mSCDpoTKVkEdNu1A61ZFO-U9Eh/view',
                 'paragraph' => 'Our Values',
                 'heading_2' => 'Our Values',
                 'paragraph_2' => 'Why Cyberlog',

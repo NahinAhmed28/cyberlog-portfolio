@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Content\FrontendContentOrder;
 use App\Models\ContentEntry;
 use App\Models\NavigationItem;
 use App\Models\Page;
@@ -39,6 +40,54 @@ class PageAdministrationTest extends TestCase
         $this->assertTrue($shared->pages->contains('slug', 'clients'));
         $this->assertSame(1, PageSection::where('key', 'shared_clients_clients')->count());
         $this->withExceptionHandling()->get('/admin/pages/unknown')->assertNotFound();
+    }
+
+    public function test_career_video_is_playable_and_can_be_replaced_from_page_media(): void
+    {
+        $this->get('/career')->assertOk()
+            ->assertSee('https://drive.google.com/file/d/1O482j1mSCDpoTKVkEdNu1A61ZFO-U9Eh/preview', false);
+        $this->get('/admin/pages/career')->assertOk()->assertSee('hero_video');
+        $entry = ContentEntry::forModule('page_career')->newQuery()->firstOrFail();
+        $page = Page::where('slug', 'career')->firstOrFail();
+        $this->put(route('admin.pages.media', [$page, $entry]), [
+            'field_path' => 'hero_video',
+            'media_value' => 'storage/media/career.webm',
+            'version' => $entry->editVersion(),
+        ])->assertSessionHasNoErrors()->assertRedirect();
+        $this->get('/career')->assertOk()->assertSee('<video controls', false)
+            ->assertSee('storage/media/career.webm')
+            ->assertDontSee('1O482j1mSCDpoTKVkEdNu1A61ZFO-U9Eh/preview', false);
+    }
+
+    public function test_page_sections_and_edit_fields_follow_frontend_order(): void
+    {
+        $this->get('/admin/pages/home')->assertOk()->assertSeeInOrder([
+            'id="section-home_hero"',
+            'id="section-shared_clients"',
+            'id="section-clients_deck"',
+            'id="section-home_tech_diagram"',
+            'id="section-home_solutions"',
+            'id="section-home_our_story"',
+        ], false);
+        $entry = ContentEntry::forModule('page_career')->newQuery()->firstOrFail();
+        $this->get(route('admin.content.edit', ['page_career', $entry->id, 'page' => 'career']))
+            ->assertOk()->assertSeeInOrder([
+                'name="data[eyebrow]"',
+                'name="data[heading]"',
+                'name="data[subheading]"',
+                'name="data[hero_icon]"',
+                'name="data[hero_video]"',
+                'name="data[paragraph]"',
+                'name="data[heading_2]"',
+            ], false);
+        $order = app(FrontendContentOrder::class);
+        foreach (config('content_modules') as $module => $definition) {
+            $expected = array_keys($definition['fields']);
+            $actual = array_keys($order->fields($module, $definition));
+            sort($expected);
+            sort($actual);
+            $this->assertSame($expected, $actual, 'All editable fields remain available for '.$module);
+        }
     }
 
     public function test_admin_can_add_edit_hide_reorder_and_delete_a_dropdown_and_submenu(): void

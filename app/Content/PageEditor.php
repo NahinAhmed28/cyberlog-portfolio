@@ -80,7 +80,7 @@ class PageEditor
             foreach ($section->contents->whereNull('deleted_at') as $entry) {
                 $data = $entry->contentData($definition);
                 $title = collect($data)->filter(fn ($value, $key) => is_string($value) && $value !== '' && in_array($definition['fields'][$key]['type'], ['text', 'textarea']))->first() ?: $section->editor_title;
-                foreach ($this->mediaFields($definition['fields'], $data) as $field) {
+                foreach ($this->mediaFields(app(FrontendContentOrder::class)->fields($section->key, $definition), $data) as $field) {
                     $isLogo = str_contains($field['path'], 'logo') || in_array($section->key, ['shared_clients_clients', 'clients_client_strip_clients', 'shared_about_industries_clients_about_clients']) || ($section->key === 'nav' && $field['path'] === 'img_media');
                     $media[] = $field + ['entry' => $entry, 'section' => $section, 'role' => $isLogo ? 'Logo' : ucfirst($field['field']['type']), 'title' => $section->key === 'nav' && $field['path'] === 'img_media' ? 'Website logo' : Str::limit(strip_tags($title), 75)];
                 }
