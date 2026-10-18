@@ -44,8 +44,16 @@ class PageAdministrationTest extends TestCase
 
     public function test_career_video_is_playable_and_can_be_replaced_from_page_media(): void
     {
+        $this->assertFileExists(public_path('assets/video/career.mp4'));
+        $this->assertDatabaseHas('media_assets', [
+            'path' => 'assets/video/career.mp4',
+            'mime_type' => 'video/mp4',
+            'size' => filesize(public_path('assets/video/career.mp4')),
+            'is_uploaded' => false,
+        ]);
         $this->get('/career')->assertOk()
-            ->assertSee('https://drive.google.com/file/d/1O482j1mSCDpoTKVkEdNu1A61ZFO-U9Eh/preview', false);
+            ->assertSee('<video controls', false)
+            ->assertSee('assets/video/career.mp4');
         $this->get('/admin/pages/career')->assertOk()->assertSee('hero_video');
         $entry = ContentEntry::forModule('page_career')->newQuery()->firstOrFail();
         $page = Page::where('slug', 'career')->firstOrFail();
@@ -56,7 +64,7 @@ class PageAdministrationTest extends TestCase
         ])->assertSessionHasNoErrors()->assertRedirect();
         $this->get('/career')->assertOk()->assertSee('<video controls', false)
             ->assertSee('storage/media/career.webm')
-            ->assertDontSee('1O482j1mSCDpoTKVkEdNu1A61ZFO-U9Eh/preview', false);
+            ->assertDontSee('assets/video/career.mp4');
     }
 
     public function test_page_sections_and_edit_fields_follow_frontend_order(): void
