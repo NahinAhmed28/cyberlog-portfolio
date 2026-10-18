@@ -42,6 +42,15 @@ class PageAdministrationTest extends TestCase
         $this->withExceptionHandling()->get('/admin/pages/unknown')->assertNotFound();
     }
 
+    public function test_career_page_handles_a_missing_video_field_in_cached_configuration(): void
+    {
+        $definition = config('content_modules.page_career');
+        unset($definition['fields']['hero_video']);
+        config(['content_modules.page_career' => $definition]);
+
+        $this->get('/career')->assertOk()->assertDontSee('<video controls', false);
+    }
+
     public function test_career_video_is_playable_and_can_be_replaced_from_page_media(): void
     {
         $this->assertFileExists(public_path('assets/video/career.mp4'));

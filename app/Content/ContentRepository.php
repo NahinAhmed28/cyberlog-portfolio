@@ -45,6 +45,10 @@ class ContentRepository
     {
         $definition = $this->registry->get($key);
 
+        if (! isset($definition['fields'][$field])) {
+            return '';
+        }
+
         return $this->records($key)[0][$field] ?? $this->registry->emptyValue($definition['fields'][$field]);
     }
 
