@@ -54,6 +54,21 @@ See [the complete module inventory](docs/admin-content-inventory.md) for page ow
 
 ## Editing without CMS experience
 
+### Career video on cPanel
+
+The career video is tracked in Git at `public/assets/video/career.mp4`. Fresh seeds set the career page's `hero_video` and register the file in the media library. The upgrade migration replaces the original Google Drive default or an empty/missing video with the bundled file, while preserving custom video selections.
+
+After pulling updates on an existing cPanel installation, run from the project directory:
+
+```bash
+git pull
+/opt/cpanel/ea-php84/root/usr/bin/php artisan optimize:clear
+/opt/cpanel/ea-php84/root/usr/bin/php artisan migrate --force
+/opt/cpanel/ea-php84/root/usr/bin/php artisan config:cache
+```
+
+A Git pull alone does not update database records or clear Laravel's cached configuration. No reseeding is required for this career video upgrade. The web server must serve the project's `public` directory; the bundled video does not require `storage:link`.
+
 The built-in guide at `/admin/help` explains page content, menus, submenus, links and media. Every public page editor includes its own content plus the shared sections it uses. The Images, videos & logos panel provides previews, file uploads and a searchable thumbnail picker. Shared assets are marked. Each file is saved separately, without replacing the page's other content.
 
 Link fields let administrators choose an existing public page instead of typing a path. Navigation offers Add submenu buttons and move-up/move-down controls. Technical appearance fields are kept under optional Design settings.

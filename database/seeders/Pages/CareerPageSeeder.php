@@ -2,12 +2,24 @@
 
 namespace Database\Seeders\Pages;
 
+use App\Models\MediaAsset;
 use Database\Seeders\ContentSeeder;
 
 class CareerPageSeeder extends ContentSeeder
 {
     public function run(): void
     {
+        $video = 'assets/video/career.mp4';
+        if (! is_file(public_path($video))) {
+            throw new \RuntimeException('The bundled career video is missing: '.$video);
+        }
+        MediaAsset::firstOrCreate(['path' => $video], [
+            'name' => 'career.mp4',
+            'mime_type' => 'video/mp4',
+            'size' => filesize(public_path($video)),
+            'is_uploaded' => false,
+        ]);
+
         $this->seedFeature('page_career', [
             [
                 'title' => 'Career — Cyberlog',

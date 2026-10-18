@@ -51,6 +51,29 @@ class PageAdministrationTest extends TestCase
         $this->get('/career')->assertOk()->assertDontSee('<video controls', false);
     }
 
+    public function test_career_video_upgrade_backfills_old_defaults_and_preserves_custom_videos(): void
+    {
+        $entry = ContentEntry::forModule('page_career')->newQuery()->firstOrFail();
+        $migration = require database_path('migrations/2026_10_19_000001_use_bundled_career_video.php');
+
+        foreach ([null, '', 'https://drive.google.com/file/d/1O482j1mSCDpoTKVkEdNu1A61ZFO-U9Eh/view', 'storage/media/custom.mp4'] as $oldVideo) {
+            $data = $entry->fresh()->data;
+            unset($data['hero_video']);
+            if ($oldVideo !== null) {
+                $data['hero_video'] = $oldVideo;
+            }
+            $entry->data = $data;
+            $entry->save();
+            $migration->up();
+            $this->assertSame($oldVideo === 'storage/media/custom.mp4' ? $oldVideo : 'assets/video/career.mp4', $entry->fresh()->data['hero_video']);
+        }
+
+        \App\Models\MediaAsset::where('path', 'assets/video/career.mp4')->delete();
+        $this->seed(\Database\Seeders\Pages\CareerPageSeeder::class);
+        $this->assertDatabaseHas('media_assets', ['path' => 'assets/video/career.mp4']);
+        $this->assertSame('storage/media/custom.mp4', $entry->fresh()->data['hero_video']);
+    }
+
     public function test_career_video_is_playable_and_can_be_replaced_from_page_media(): void
     {
         $this->assertFileExists(public_path('assets/video/career.mp4'));
