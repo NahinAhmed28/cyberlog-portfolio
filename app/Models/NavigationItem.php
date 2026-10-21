@@ -13,6 +13,20 @@ class NavigationItem extends Model
 
     protected $fillable = ['parent_id', 'seed_key', 'label', 'url', 'type', 'sort_order', 'is_visible', 'new_tab'];
 
+    public function getUrlAttribute(?string $value): ?string
+    {
+        // Older seeds saved absolute URLs using the local CLI application URL.
+        if (in_array(strtolower(parse_url($value ?? '', PHP_URL_HOST) ?? ''), ['localhost', '127.0.0.1', '[::1]'], true)) {
+            $path = '/'.ltrim(parse_url($value, PHP_URL_PATH) ?? '', '/');
+            $query = parse_url($value, PHP_URL_QUERY);
+            $fragment = parse_url($value, PHP_URL_FRAGMENT);
+
+            return $path.($query !== null ? '?'.$query : '').($fragment !== null ? '#'.$fragment : '');
+        }
+
+        return $value;
+    }
+
     protected function casts(): array
     {
         return ['is_visible' => 'boolean', 'new_tab' => 'boolean', 'sort_order' => 'integer'];

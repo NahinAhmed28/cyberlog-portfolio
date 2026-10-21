@@ -16,6 +16,22 @@ class AdminNavigationTest extends TestCase
 
     protected $seed = true;
 
+    public function test_service_links_use_root_relative_urls_instead_of_the_seed_host(): void
+    {
+        $this->assertSame('/services/soc', content_service_url(['route' => 'soc']));
+        $this->assertSame('/services/catalogue/custom-service', content_service_url(['route' => 'custom-service']));
+
+        $service = NavigationItem::where('parent_id', NavigationItem::where('seed_key', 'services')->value('id'))
+            ->where('type', 'link')->firstOrFail();
+        $service->update(['url' => 'http://localhost:8000/services/soc?source=nav#overview']);
+
+        $this->get('/')->assertOk()
+            ->assertSee('href="/services/soc?source=nav#overview"', false)
+            ->assertDontSee('href="http://localhost:8000/services/soc', false);
+        $this->get('/services/soc')->assertOk();
+        $this->assertSame('https://example.com/services', (new NavigationItem(['url' => 'https://example.com/services']))->url);
+    }
+
     public function test_sidebar_follows_menu_changes_and_keeps_unlisted_pages_accessible(): void
     {
         $group = NavigationItem::where('seed_key', 'services')->firstOrFail();

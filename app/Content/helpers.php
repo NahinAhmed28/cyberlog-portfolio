@@ -18,8 +18,8 @@ function content_service_url(array $service): string
         return $service['url'];
     }
     if (\Illuminate\Support\Facades\Route::has($service['route'])) {
-        return route($service['route']);
+        return route($service['route'], [], false);
     }
 
-    return route('service.show', ['service' => $service['route']]);
+    return route('service.show', ['service' => $service['route']], false);
 }
