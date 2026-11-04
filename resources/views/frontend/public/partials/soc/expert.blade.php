@@ -19,7 +19,8 @@
             <div class="col-lg-7" data-reveal>
                 <div class="cl-expert-card">
                     
-                    @if(session('contact_status'))<div class="alert alert-success" role="status">{{ session('contact_status') }}</div>@endif
+                    @if(session('contact_error'))<div class="alert alert-danger" role="alert">{{ session('contact_error') }}</div>@endif
+@if(session('contact_status'))<div class="alert alert-success" role="status">{{ session('contact_status') }}</div>@endif
 @if($errors->any())<div class="alert alert-danger" role="alert">@foreach($errors->all() as $error)<div>{{ $error }}</div>@endforeach</div>@endif
 <form method="post" action="{{ route('contact.store') }}">@csrf
 <input type="text" name="website" class="d-none" tabindex="-1" autocomplete="off" aria-hidden="true">

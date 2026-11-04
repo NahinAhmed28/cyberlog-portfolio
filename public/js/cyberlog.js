@@ -186,3 +186,20 @@
         });
     });
 })();
+
+// Measure the closed header only: opening the mobile menu must not move the page.
+(() => {
+    const nav = document.getElementById('mainNav');
+    if (!nav) return;
+    const measure = () => {
+        const bar = nav.querySelector('.navbar-brand');
+        const toggle = nav.querySelector('.navbar-toggler');
+        const styles = getComputedStyle(nav);
+        const height = Math.max(bar?.offsetHeight || 44, toggle?.offsetHeight || 0)
+            + parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom) + 1;
+        document.documentElement.style.setProperty('--cl-header-height', `${height}px`);
+    };
+    new ResizeObserver(measure).observe(nav.querySelector('.navbar-brand') || nav);
+    window.addEventListener('resize', measure);
+    measure();
+})();

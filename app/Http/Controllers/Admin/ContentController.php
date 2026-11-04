@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Content\ContentRegistry;
 use App\Content\ContentRepository;
 use App\Content\ContentValidator;
+use App\Content\EditorSchema;
 use App\Content\FrontendContentOrder;
 use App\Content\MediaUploader;
+use App\Content\PageComposition;
 use App\Content\PageEditor;
 use App\Http\Controllers\Controller;
 use App\Models\ContentAudit;
@@ -58,11 +60,20 @@ class ContentController extends Controller
     private function form($module, $definition, $entry, $data)
     {
         $definition['fields'] = app(FrontendContentOrder::class)->fields($module, $definition);
+        $definition['fields'] = app(EditorSchema::class)->fields($module, $definition['fields']);
         $definition['title'] = app(PageEditor::class)->sectionTitle($module, $definition['title']);
         $media = MediaAsset::orderByDesc('id')->get(['path', 'name', 'mime_type']);
 
         $section = PageSection::where('key', $module)->firstOrFail();
         $page = $section->pages()->where('slug', request('page'))->first() ?? $section->pages()->orderBy('sort_order')->firstOrFail();
+
+        $definition['fields'] = app(EditorSchema::class)->fields($module, $definition['fields'], app(PageComposition::class)->source($page));
+        if (request()->filled('section_anchor')) {
+            $selected = collect($definition['fields'])->where('anchor', request('section_anchor'))->all();
+            if ($selected) {
+                $definition['fields'] = $selected;
+            }
+        }
 
         return view('admin.content.edit', compact('module', 'definition', 'entry', 'data', 'media', 'page'));
     }
@@ -103,7 +114,17 @@ class ContentController extends Controller
     {
         $definition = $this->registry->get($module);
         $request->validate(['sort_order' => ['required', 'integer', 'between:0,1000000'], 'is_visible' => ['required', 'boolean'], 'data' => ['required', 'array']]);
-        $data = app(ContentValidator::class)->validate($request->input('data'), $definition);
+        $input = $request->input('data');
+        if ($entry->exists && $request->filled('section_anchor') && $request->filled('page')) {
+            $page = Page::where('slug', $request->input('page'))->firstOrFail();
+            abort_unless($page->sections()->where('key', $module)->exists(), 422);
+            $fields = app(EditorSchema::class)->fields($module, $definition['fields'], app(PageComposition::class)->source($page));
+            $selected = collect($fields)->where('anchor', $request->input('section_anchor'))->keys()->all();
+            if ($selected) {
+                $input = array_replace(Arr::except($entry->contentData($definition), $selected), Arr::only($input, $selected));
+            }
+        }
+        $data = app(ContentValidator::class)->validate($input, $definition);
         if ($module === 'services' && empty($data['route'])) {
             $data['route'] = Str::slug($data['title'] ?? '').'-'.Str::lower(Str::random(6));
         }
@@ -139,7 +160,7 @@ class ContentController extends Controller
             return redirect(route('admin.pages.show', $returnPage).'#page-media')->with('status', 'Media saved. Your website now uses this file.');
         }
 
-        return redirect()->route('admin.content.edit', [$module, $entry->id, 'page' => $request->input('page')])->with('status', 'Content saved. Your changes are live on the public site.');
+        return redirect()->route('admin.content.edit', [$module, $entry->id, 'page' => $request->input('page'), 'section_anchor' => $request->input('section_anchor')])->with('status', 'Content saved. Your changes are live on the public site.');
     }
 
     public function destroy(string $module, int $id)
@@ -153,6 +174,48 @@ class ContentController extends Controller
         app(ContentRepository::class)->forget($module);
 
         return back()->with('status', 'Moved to trash. You can restore it from this section’s trash view.');
+    }
+
+    public function itemAction(Request $request, string $module, int $id)
+    {
+        $definition = $this->registry->get($module);
+        abort_unless($definition['repeatable'], 422);
+        $entry = ContentEntry::forModule($module)->newQuery()->findOrFail($id);
+        $request->validate(['action' => ['required', 'in:duplicate,hide,show']]);
+        $before = $entry->contentData($definition);
+        if ($request->input('action') === 'duplicate') {
+            $entry = $entry->replicate();
+            $entry->seed_key = (string) Str::uuid();
+            $entry->sort_order++;
+        } else {
+            $entry->is_visible = $request->input('action') === 'show';
+        }
+        $entry->save();
+        ContentAudit::create(['user_id' => auth()->id(), 'module' => $module, 'entry_id' => $entry->id, 'action' => $request->input('action'), 'before' => $before, 'after' => $entry->contentData($definition)]);
+        app(ContentRepository::class)->forget($module);
+
+        return back()->with('status', 'Item updated.');
+    }
+
+    public function reorderItems(Request $request, string $module)
+    {
+        $definition = $this->registry->get($module);
+        abort_unless($definition['repeatable'], 422);
+        $data = $request->validate(['ids' => ['required', 'array'], 'ids.*' => ['integer', 'distinct']]);
+        DB::transaction(function () use ($module, $data) {
+            $query = ContentEntry::forModule($module)->newQuery();
+            $expected = (clone $query)->lockForUpdate()->pluck('id')->map(fn ($id) => (int) $id)->sort()->values()->all();
+            $ids = array_map('intval', $data['ids']);
+            $actual = $ids;
+            sort($actual);
+            abort_unless($actual === $expected, 422, 'Content changed. Reload before reordering.');
+            foreach ($ids as $order => $id) {
+                (clone $query)->whereKey($id)->update(['sort_order' => ($order + 1) * 10]);
+            }
+        });
+        app(ContentRepository::class)->forget($module);
+
+        return response()->json(['saved' => true]);
     }
 
     public function restore(string $module, int $id)

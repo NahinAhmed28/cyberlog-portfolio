@@ -24,6 +24,7 @@
 @else
     <div class="mb-4">
         <label class="form-label" for="{{ $inputId }}">{{ app(\App\Content\PageEditor::class)->label($field, $path) }}</label>
+        <div class="form-text mb-2">{{ $field['help'] ?? ('Controls '.strtolower($field['label']).' in this section.') }} @if(isset($page) && $page->path)<a href="{{ url($page->path).'#'.($field['anchor'] ?? '') }}" target="_blank" rel="noopener">Where is this? View on website</a>@endif</div>
         @if(in_array($field['type'], ['image', 'video']))
             @include('admin.content.media-input', ['type' => $field['type'], 'uploadName' => preg_replace('/^data/', 'uploads', $name)])
         @elseif($field['type'] === 'url')

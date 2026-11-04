@@ -18,7 +18,8 @@
         <nav id="admin-navigation" class="collapse d-md-block" aria-label="Administration">
             <a class="admin-nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Overview</a>
             <a class="admin-nav-link {{ request()->routeIs('admin.media.*') ? 'active' : '' }}" href="{{ route('admin.media.index') }}">Media library</a>
-            <a class="admin-nav-link {{ request()->routeIs('admin.inquiries.*') ? 'active' : '' }}" href="{{ route('admin.inquiries.index') }}">Inquiries</a>
+            <a class="admin-nav-link {{ request()->routeIs('admin.inquiries.*') ? 'active' : '' }}" href="{{ route('admin.inquiries.index') }}">Inquiries <span class="badge text-bg-primary">{{ \App\Models\Inquiry::where('status', 'new')->count() }}</span></a>
+            <a class="admin-nav-link" href="{{ route('admin.settings.edit') }}">Site settings</a>
             @include('admin.sidebar-pages')
             <div class="admin-nav-heading">Website</div>
             <a class="admin-nav-link {{ request()->routeIs('admin.navigation.*') ? 'active' : '' }}" href="{{ route('admin.navigation.index') }}">Navigation</a>
@@ -46,5 +47,6 @@
     </div>
 </div>
 @if(isset($media)) @include('admin.content.media-picker') @endif
+@stack('scripts')
 </body>
 </html>

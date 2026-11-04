@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Models\Page;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,6 +12,15 @@ use Illuminate\Support\Facades\Route;
 | The home route remains public. Laravel UI authenticates administrators
 | at /login and the protected portfolio CMS is served at /admin.
 */
+Route::get('/storage/uploads/{path}', function (string $path) {
+    abort_if(str_contains($path, '..') || str_contains($path, '\\'), 404);
+    $disk = Storage::disk('public');
+    $key = 'uploads/'.$path;
+    abort_unless($disk->exists($key), 404);
+
+    return response()->file($disk->path($key), ['X-Content-Type-Options' => 'nosniff', 'Cache-Control' => 'public, max-age=86400']);
+})->where('path', '[a-zA-Z0-9/_.-]+')->name('media.upload');
+
 Route::view('/', 'frontend.public.home')->name('home');
 
 Route::name('public.')->group(function () {
@@ -47,6 +58,12 @@ Route::view('/career', 'pages.career')->name('career');
 Route::view('/our-team', 'pages.our-team')->name('our-team');
 
 Route::view('/services/catalogue/{service}', 'frontend.public.service-detail')->name('service.show');
+
+Route::get('/services/{slug}', function (string $slug) {
+    $page = Page::where('slug', $slug)->where('is_custom', true)->firstOrFail();
+
+    return view('frontend.public.custom-page', compact('page'));
+})->name('custom.service');
 
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 

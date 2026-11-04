@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', content('layout_portfolio', 'default_title'))</title>
+    @php($managedPage = \App\Models\Page::where('path', request()->getPathInfo())->first())
+    <title>@if($managedPage?->seo_title){{ $managedPage->seo_title }}@else @yield('title', content('layout_portfolio', 'default_title'))@endif</title>
 
+<meta name="description" content="{{ $managedPage?->seo_description }}">
     <link rel="icon" type="image/png" href="{{ asset(content('layout_portfolio', 'link_media')) }}">
     <script src="https://use.fontawesome.com/releases/v6.5.2/js/all.js" crossorigin="anonymous"></script>
 
@@ -22,7 +24,7 @@
 
     @include('frontend.public.partials.nav')
 
-    @yield('content')
+    {!! app(\App\Content\PageComposition::class)->render($__env->yieldContent('content')) !!}
 
     @include('frontend.public.partials.footer')
 

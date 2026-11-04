@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Page extends Model
 {
-    protected $fillable = ['slug', 'title', 'path', 'kind', 'sort_order'];
+    protected $fillable = ['slug', 'title', 'path', 'kind', 'sort_order', 'is_custom', 'seo_title', 'seo_description'];
 
     public function getRouteKeyName(): string
     {

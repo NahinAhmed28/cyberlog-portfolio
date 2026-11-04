@@ -3,9 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@yield('meta_description', content('site_public', 'default_meta_description'))">
-    <title>@yield('title', content('site_public', 'default_title'))</title>
 
+    @php($managedPage = \App\Models\Page::where('path', request()->getPathInfo())->first())
+    <title>@if($managedPage?->seo_title){{ $managedPage->seo_title }}@else @yield('title', content('site_public', 'default_title'))@endif</title>
+
+<meta name="description" content="{{ $managedPage?->seo_description ?: $__env->yieldContent('meta_description', content('site_public', 'default_meta_description')) }}">
     <link rel="icon" type="image/png" href="{{ asset(content('site_public', 'link_media')) }}">
     <script src="https://use.fontawesome.com/releases/v6.5.2/js/all.js" crossorigin="anonymous"></script>
 
@@ -19,35 +21,7 @@
 
     @stack('styles')
     
-    <style>
-        @media (max-width: 991.98px) {
-    #mainNav {
-        position: relative;
-        z-index: 2;
-        overflow: visible !important;
-    }
 
-    #mainNav .navbar-collapse {
-        overflow: visible !important;
-    }
-
-    #mainNav .navbar-nav .dropdown-menu.show {
-        display: block !important;
-        position: static !important;
-        z-index: 9999 !important;
-        float: none !important;
-        width: 100% !important;
-        margin-top: 0 !important;
-        padding-left: 1rem;
-        box-shadow: none;
-        border: none;
-    }
-    #mainNav .dropdown-item {
-        font-size: 10px;
-        padding: 6px;
-    }
-}
-    </style>
 </head>
 
 <body id="page-top">
@@ -55,7 +29,7 @@
     @include('frontend.public.partials.nav')
 
     <main>
-        @yield('content')
+        {!! app(\App\Content\PageComposition::class)->render($__env->yieldContent('content')) !!}
     </main>
 
     @include('frontend.public.partials.footer')
@@ -64,77 +38,7 @@
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script>window.cyberlogContent = {{ Illuminate\Support\Js::from(['events' => content_items('threat_feed_events'), 'socEvents' => content_items('soc_live_events')]) }};</script>
     <script src="{{ asset('js/cyberlog.js') }}"></script>
-    <script>
-window.addEventListener('load', function () {
-    setTimeout(function () {
 
-        // ── Patch Bootstrap Dropdown prototype to disable hide on mobile ──
-        const DropdownProto = bootstrap.Dropdown.prototype;
-        const originalHide = DropdownProto.hide;
-        const originalToggle = DropdownProto.toggle;
-
-        DropdownProto.hide = function () {
-            if (window.innerWidth < 992) return; // block on mobile
-            return originalHide.apply(this, arguments);
-        };
-
-        DropdownProto.toggle = function () {
-            if (window.innerWidth < 992) return; // block on mobile
-            return originalToggle.apply(this, arguments);
-        };
-
-        // ── Now attach your own fresh listeners ──
-        document.querySelectorAll('.navbar-nav .dropdown-toggle').forEach(function (toggle) {
-            toggle.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-
-                const parent = this.closest('.dropdown');
-                const menu   = parent.querySelector('.dropdown-menu');
-                const isOpen = menu.classList.contains('show');
-
-                document.querySelectorAll('.navbar-nav .dropdown-menu.show').forEach(function (m) {
-                    if (m !== menu) {
-                        m.classList.remove('show');
-                        m.closest('.dropdown').querySelector('.dropdown-toggle')
-                         .setAttribute('aria-expanded', 'false');
-                    }
-                });
-
-                menu.classList.toggle('show', !isOpen);
-                this.setAttribute('aria-expanded', String(!isOpen));
-            });
-        });
-
-        // Let menu item links fire normally
-        document.querySelectorAll('.navbar-nav .dropdown-menu a').forEach(function (link) {
-            link.addEventListener('click', function (e) {
-                e.stopImmediatePropagation();
-            });
-        });
-
-        // Outside click closes dropdowns
-        document.addEventListener('click', function (e) {
-            if (!e.target.closest('.navbar-nav')) {
-                document.querySelectorAll('.navbar-nav .dropdown-menu.show').forEach(function (m) {
-                    m.classList.remove('show');
-                    m.closest('.dropdown').querySelector('.dropdown-toggle')
-                     .setAttribute('aria-expanded', 'false');
-                });
-            }
-        });
-
-    }, 300);
-});
-// Block only synthetic (non-trusted) clicks on the toggler
-document.querySelector('.navbar-toggler').addEventListener('click', function (e) {
-    if (!e.isTrusted) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        console.log('Blocked synthetic toggler click');
-    }
-}, true);
-    </script>
 
     @stack('scripts')
 </body>

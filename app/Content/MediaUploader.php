@@ -15,6 +15,10 @@ class MediaUploader
         ])->validate();
         $path = $file->store('uploads/'.now()->format('Y/m'), 'public');
 
+        if (! $path) {
+            throw new \RuntimeException('The uploaded file could not be saved. Please try again.');
+        }
+
         return MediaAsset::create([
             'path' => 'storage/'.$path,
             'name' => mb_substr($file->getClientOriginalName(), 0, 255),

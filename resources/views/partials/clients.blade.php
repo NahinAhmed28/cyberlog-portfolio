@@ -24,7 +24,7 @@ $clients = content_items('shared_clients_clients');
                                @if ($href !== '#') target="_blank" rel="noopener" @endif
                                aria-label="{{ $c['name'] }} website">
                                 <span class="cl-client-shuffle-sector">{{ $c['sector'] }}</span>
-                                <span class="cl-client-shuffle-logo">
+                                <span class="cl-client-shuffle-logo {{ ! empty($c['light_background']) ? 'cl-client-logo--light' : '' }}">
                                     <img src="{{ asset($c['logo']) }}" alt="{{ $c['name'] }}" loading="eager" decoding="async">
                                 </span>
                                 <span class="cl-client-shuffle-name">{{ $c['name'] }}</span>
@@ -123,8 +123,8 @@ $clients = content_items('shared_clients_clients');
             max-width: 78%;
             max-height: 86px;
             object-fit: contain;
-            filter: grayscale(1) brightness(1.35);
-            opacity: .82;
+            filter: none;
+            opacity: 1;
             transition: filter .3s var(--ease), opacity .3s var(--ease), transform .3s var(--ease);
         }
         .cl-client-shuffle-card.is-front .cl-client-shuffle-logo img,

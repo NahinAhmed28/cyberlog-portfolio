@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'inquiry_recipient' => env('INQUIRY_NOTIFICATION_EMAIL', 'info@cyberlog.bd'),
 
     /*
     |--------------------------------------------------------------------------

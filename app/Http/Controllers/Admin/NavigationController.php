@@ -22,6 +22,9 @@ class NavigationController extends Controller
     {
         $parent = $request->filled('parent_id') ? NavigationItem::whereNull('parent_id')->where('type', 'dropdown')->findOrFail($request->integer('parent_id')) : null;
 
+        $after = $request->filled('after_id') ? NavigationItem::where('parent_id', $parent?->id)->findOrFail($request->integer('after_id')) : null;
+        $request->attributes->set('insert_after', $after?->id);
+
         return $this->form(new NavigationItem(['is_visible' => true, 'type' => 'link', 'sort_order' => 100, 'url' => '/', 'parent_id' => $parent?->id]));
     }
 
@@ -41,6 +44,25 @@ class NavigationController extends Controller
         });
 
         return back()->with('status', 'Menu order updated.');
+    }
+
+    public function reorder(Request $request)
+    {
+        $data = $request->validate(['ids' => ['required', 'array', 'min:1'], 'ids.*' => ['required', 'integer', 'distinct'], 'parent_id' => ['nullable', 'integer']]);
+        DB::transaction(function () use ($data) {
+            $siblings = NavigationItem::where('parent_id', $data['parent_id'] ?? null)->lockForUpdate()->pluck('id')->all();
+            $ids = array_map('intval', $data['ids']);
+            $expected = $siblings;
+            sort($expected);
+            $actual = $ids;
+            sort($actual);
+            abort_unless($actual === $expected, 422, 'Reload the menu before reordering.');
+            foreach ($ids as $order => $id) {
+                NavigationItem::whereKey($id)->update(['sort_order' => ($order + 1) * 10]);
+            }
+        });
+
+        return response()->json(['saved' => true]);
     }
 
     public function edit(NavigationItem $navigation)
@@ -89,7 +111,21 @@ class NavigationController extends Controller
         ])->validate();
         $data['label'] = strip_tags($data['label']);
         $data['url'] = $data['url'] ?: '#';
-        $item->fill($data)->save();
+        DB::transaction(function () use ($item, $data, $request) {
+            $isNew = ! $item->exists;
+            $siblings = NavigationItem::where('parent_id', $data['parent_id'] ?? null)->orderBy('sort_order')->orderBy('id')->lockForUpdate()->get();
+            $item->fill($data)->save();
+            if ($isNew && $request->has('after_id')) {
+                $after = $request->integer('after_id');
+                abort_if($after && ! $siblings->contains('id', $after), 422, 'The insertion point must be in the same menu.');
+                $ids = $siblings->pluck('id')->all();
+                $position = $after ? array_search($after, $ids) + 1 : 0;
+                array_splice($ids, $position, 0, [$item->id]);
+                foreach ($ids as $order => $id) {
+                    NavigationItem::whereKey($id)->update(['sort_order' => ($order + 1) * 10]);
+                }
+            }
+        });
 
         return redirect()->route('admin.navigation.index')->with('status', 'Navigation saved.');
     }

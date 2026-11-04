@@ -46,7 +46,7 @@
             <div class="col-6 col-xl-3">
                 <div class="cl-foot-head">{{ content('footer', 'div_text_4') }}</div>
                 <p class="text-muted mb-2"><i class="{{ content('footer', 'icon') }}"></i>{{ content('footer', 'paragraph') }}</p>
-                <p class="text-muted mb-2"><i class="{{ content('footer', 'icon_2') }}"></i><a class="link-light text-decoration-none" href="{{ content('footer', 'a_href') }}">{{ content('footer', 'link_label_12') }}</a></p>
+                <p class="text-muted mb-2"><i class="{{ content('footer', 'icon_2') }}"></i><a class="link-light text-decoration-none" href="{{ gmail_compose_url(content('footer', 'link_label_12')) }}" target="_blank" rel="noopener">{{ content('footer', 'link_label_12') }}</a></p>
                 <p class="text-muted mb-2"><i class="{{ content('footer', 'icon_3') }}"></i>{{ content('footer', 'paragraph_2') }}</p>
                 <p class="text-muted mb-3"><i class="{{ content('footer', 'icon_4') }}"></i><a href="{{ content('footer', 'a_href_2') }}" target="_blank">{{ content('footer', 'link_label_13') }}</a></p>
                 <p class="text-muted mb-3">{{ content('footer', 'paragraph_3') }}</p>
@@ -71,9 +71,7 @@
                     </div>
                     <div class="mono cl-footer-tagline text-muted small position-relative m-0">{{ content('footer', 'div_text_7') }}</div>
                 </div>
-                <div class="cl-wordmark" aria-hidden="true">@foreach (content_items('footer_wordmark') as $contentRow)
-<span>{{ $contentRow['label'] }}</span>
-@endforeach</div>
+                <div class="cl-wordmark" aria-hidden="true">{{ preg_replace('/\s+/u', '', implode('', array_column(content_items('footer_wordmark'), 'label'))) }}</div>
             </div>
         </div>
 

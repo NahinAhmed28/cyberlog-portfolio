@@ -44,7 +44,7 @@
             items.append(holder.content.cloneNode(true));
         } else {
             const item = button.closest('[data-list-item]');
-            if (button.hasAttribute('data-remove')) item.remove();
+            if (button.hasAttribute('data-remove') && window.confirm('Remove this item? Save changes to apply.')) item.remove();
             else if (button.dataset.move === 'up' && item.previousElementSibling) items.insertBefore(item, item.previousElementSibling);
             else if (button.dataset.move === 'down' && item.nextElementSibling) items.insertBefore(item.nextElementSibling, item);
         }
@@ -172,4 +172,43 @@ document.querySelector('[data-page-search]')?.addEventListener('input', function
         document.querySelectorAll('[data-page-media-item]').forEach(item => item.hidden = !item.dataset.mediaDescription.toLowerCase().includes(query));
     });
     if (location.hash === '#page-media') document.getElementById('page-media')?.setAttribute('open', '');
+})();
+
+(() => {
+    let dragged;
+    document.addEventListener('pointerdown', event => {
+        const item = event.target.closest('[data-list-item]');
+        if (item && event.target.closest('.admin-list-tools')) item.draggable = true;
+    });
+    document.addEventListener('dragstart', event => { dragged = event.target.closest('[data-list-item]'); });
+    document.addEventListener('dragover', event => {
+        const target = event.target.closest('[data-list-item]');
+        if (dragged && target && target.parentElement === dragged.parentElement) event.preventDefault();
+    });
+    document.addEventListener('drop', event => {
+        const target = event.target.closest('[data-list-item]');
+        if (!dragged || !target || dragged === target || target.parentElement !== dragged.parentElement) return;
+        event.preventDefault(); target.parentElement.insertBefore(dragged, target);
+        dragged.closest('form')?.dispatchEvent(new Event('change', {bubbles:true})); dragged = null;
+    });
+})();
+
+(() => {
+    let dragged;
+    document.querySelectorAll('[data-content-id]').forEach(row => {
+        row.addEventListener('dragstart', event => {event.stopPropagation(); dragged = row;});
+        row.addEventListener('dragover', event => {if (dragged?.parentElement === row.parentElement) event.preventDefault();});
+        row.addEventListener('drop', async event => {
+            event.stopPropagation(); event.preventDefault();
+            if (!dragged || dragged.parentElement !== row.parentElement || dragged === row) return;
+            const parent = row.parentElement;
+            const ids = [...parent.querySelectorAll(':scope > [data-content-id]')].map(el => el.dataset.contentId);
+            ids.splice(ids.indexOf(dragged.dataset.contentId),1); ids.splice(ids.indexOf(row.dataset.contentId),0,dragged.dataset.contentId);
+            try {
+                const response = await fetch(parent.dataset.contentItems, {method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json','X-CSRF-TOKEN':document.querySelector('meta[name="csrf-token"]').content},body:JSON.stringify({ids})});
+                if (!response.ok) throw new Error();
+                location.reload();
+            } catch { window.alert('Could not save item order. Reload and try again.'); }
+        });
+    });
 })();

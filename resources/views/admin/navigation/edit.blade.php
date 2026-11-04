@@ -5,6 +5,7 @@
 <h1 class="my-4">{{ $item->exists ? 'Edit' : 'Add' }} menu item</h1>
 <p class="text-muted">A main menu appears at the top of the website. A submenu appears beneath a dropdown such as Services or Company.</p>
 <form method="post" action="{{ $item->exists ? route('admin.navigation.update', $item) : route('admin.navigation.store') }}" class="card card-body admin-account-form" data-content-form>
+@if(! $item->exists && (request()->has('after_id') || request()->has('insert_first')))<input type="hidden" name="after_id" value="{{ old('after_id', request('after_id', 0)) }}">@endif
 @csrf @if($item->exists) @method('PUT') @endif
 <label class="form-label" for="nav-label">Label</label><input id="nav-label" name="label" class="form-control mb-3" value="{{ old('label', $item->label) }}" required maxlength="255">
 <label class="form-label" for="nav-parent">Location</label><select id="nav-parent" name="parent_id" class="form-select mb-3"><option value="">Main navbar</option>@foreach($parents as $parent)<option value="{{ $parent->id }}" @selected(old('parent_id', $item->parent_id) == $parent->id)>Under {{ $parent->label }}</option>@endforeach</select>

@@ -23,6 +23,10 @@ class ContentRegistry
 
     public function emptyValue(array $field): mixed
     {
+        if (array_key_exists('default', $field)) {
+            return $field['default'];
+        }
+
         return match ($field['type']) {
             'boolean' => false,
             'number' => 0,

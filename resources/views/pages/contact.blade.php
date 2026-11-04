@@ -14,7 +14,7 @@
                 <p class="text-muted mb-4">{{ content('page_contact', 'paragraph_2') }}</p>
                 <ul class="list-unstyled">
                     <li class="mb-3"><i class="{{ content('page_contact', 'icon') }}"></i>{{ content('page_contact', 'list_text') }}</li>
-                    <li class="mb-3"><i class="{{ content('page_contact', 'icon_2') }}"></i><a class="text-decoration-none" href="{{ content('page_contact', 'a_href') }}">{{ content('page_contact', 'link_label') }}</a></li>
+                    <li class="mb-3"><i class="{{ content('page_contact', 'icon_2') }}"></i><a class="text-decoration-none" href="{{ gmail_compose_url(content('page_contact', 'link_label')) }}" target="_blank" rel="noopener">{{ content('page_contact', 'link_label') }}</a></li>
                     <li class="mb-3"><i class="{{ content('page_contact', 'icon_3') }}"></i>{{ content('page_contact', 'list_text_2') }}</li>
                 </ul>
                 <div class="d-flex gap-2">
@@ -26,6 +26,7 @@
             <div class="col-lg-7">
                 <div class="cl-calc">
                     @if(session('contact_status'))<div class="alert alert-success" role="status">{{ session('contact_status') }}</div>@endif
+@if(session('contact_error'))<div class="alert alert-danger" role="alert">{{ session('contact_error') }}</div>@endif
 @if($errors->any())<div class="alert alert-danger" role="alert">@foreach($errors->all() as $error)<div>{{ $error }}</div>@endforeach</div>@endif
 <form method="post" action="{{ route('contact.store') }}">@csrf
 <input type="text" name="website" class="d-none" tabindex="-1" autocomplete="off" aria-hidden="true">

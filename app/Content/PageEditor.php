@@ -32,6 +32,9 @@ class PageEditor
 
     public function label(array $field, string $path): string
     {
+        if (isset($field['editor_label'])) {
+            return $field['editor_label'];
+        }
         $key = Str::afterLast($path, '.');
         $friendly = ['kicker' => 'Short heading above the title', 'eyebrow' => 'Short heading above the title', 'desc' => 'Description', 'group' => 'Category', 'route' => 'Page identifier (created automatically)', 'img_alt' => 'Image description', 'imageAlt' => 'Image description'];
         if (isset($friendly[$key])) {

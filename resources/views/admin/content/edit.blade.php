@@ -2,8 +2,9 @@
 @section('title', $definition['title'])
 @section('content')
 <a href="{{ route('admin.pages.show', $page) }}" class="small">← Back to {{ $page->title }}</a>
-<div class="admin-page-heading mt-3"><div><p class="admin-eyebrow">{{ $definition['group'] }}</p><h1>{{ $entry->exists ? 'Edit' : 'Add to' }} {{ $definition['title'] }}</h1><p class="text-muted">{{ $definition['title'] }}</p></div></div>
+<div class="admin-page-heading mt-3"><div><p class="admin-eyebrow">{{ $page->title }} &rsaquo; {{ $definition['title'] }}</p><h1>{{ $entry->exists ? 'Edit' : 'Add to' }} {{ $definition['title'] }}</h1><p class="text-muted">{{ $definition['title'] }}</p></div></div>
 <form method="post" enctype="multipart/form-data" action="{{ $entry->exists ? route('admin.content.update', [$module, $entry->id]) : route('admin.content.store', $module) }}" data-content-form>
+    <input type="hidden" name="section_anchor" value="{{ request('section_anchor') }}">
     <input type="hidden" name="page" value="{{ $page->slug }}">
     @csrf @if($entry->exists) @method('PUT') @endif
     <input type="hidden" name="version" value="{{ $entry->exists ? $entry->editVersion() : '' }}">
@@ -11,12 +12,16 @@
         <div class="col-xl-9"><div class="card card-body admin-fields">
             @php($formData = old('data', $data))
             <p class="small text-muted">Fields follow the content order on the website, from top to bottom.</p>
-            @foreach($definition['fields'] as $key => $field)
+            @foreach(collect($definition['fields'])->groupBy('editor_group', true) as $sectionName => $sectionFields)
+            <details class="card mb-4" open><summary class="card-header"><strong>{{ $sectionName }}</strong> <span class="small text-muted">{{ Str::limit(strip_tags(collect($sectionFields)->map(fn($f, $k) => is_string($formData[$k] ?? null) ? $formData[$k] : '')->filter()->first() ?? ''), 60) }}</span></summary><div class="card-body">
+            @foreach($sectionFields as $key => $field)
                 @if($module === 'nav' && ! in_array($key, ['img_media', 'img_alt', 'button_label', 'icon', 'destination']))
                     <input type="hidden" name="data[{{ $key }}]" value="{{ $formData[$key] ?? '' }}">
                 @else
                 @include('admin.content.field', ['field' => $field, 'name' => 'data['.$key.']', 'path' => $key, 'value' => $formData[$key] ?? app(\App\Content\ContentRegistry::class)->emptyValue($field)])
                 @endif
+            @endforeach
+            </div></details>
             @endforeach
         </div></div>
         <div class="col-xl-3"><div class="card card-body admin-save-panel">

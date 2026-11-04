@@ -43,11 +43,11 @@
     }
     .cl-logo-link:hover { background: rgba(91, 140, 255, 0.08); }
 
-    /* WHITE by default, original color + slight zoom on hover */
+    /* Preserve logo colors and proportions on the dark theme. */
     .cl-logo {
-        max-width: 100%; height: auto;
-        filter: brightness(0) invert(1);
-        opacity: .6;
+        max-width: 100%; width: 100%; height: 72px; object-fit: contain;
+        filter: none;
+        opacity: 1;
         transition: filter .3s var(--ease), opacity .3s var(--ease), transform .3s var(--ease);
     }
     .cl-logo-link:hover .cl-logo { filter: none; opacity: 1; transform: scale(1.04); }

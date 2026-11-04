@@ -10,6 +10,9 @@
 <div class="d-flex flex-wrap gap-2 mb-4"><a class="btn btn-outline-primary" href="#page-media" data-open-panel="page-media">Images, videos & logos</a><a class="btn btn-outline-secondary" href="{{ route('admin.navigation.index') }}">Edit menus & submenus</a><a class="btn btn-outline-secondary" href="{{ route('admin.pages.show', 'footer') }}">Edit footer</a></div>
 @include('admin.pages.media')
 <div class="mb-4"><label class="form-label" for="page-section-search">Find content on this page</label><input id="page-section-search" class="form-control" placeholder="Search sections…" data-page-search></div>
+@if($blocks->isNotEmpty() || $page->is_custom)
+@include('admin.pages.blocks')
+@else
 @foreach($sections->groupBy(fn($section) => app(\App\Content\PageEditor::class)->group($section, $page)) as $groupName => $group)
     @if($groupName !== 'Page content')<details class="mt-4"><summary class="text-muted mb-3">{{ $groupName }}</summary>@endif
     @foreach($group as $section)
@@ -45,4 +48,5 @@
     @endforeach
     @if($groupName !== 'Page content')</details>@endif
 @endforeach
+@endif
 @endsection

@@ -294,6 +294,8 @@ section[id], header[id] { scroll-margin-top: 68px; }
    NAVBAR
    =================================================================== */
 #mainNav {
+    position: fixed;
+    inset: 0 0 auto;
     padding-top: .35rem;
     padding-bottom: .35rem;
     background: rgba(5, 12, 23, 0.94) !important;
@@ -1349,3 +1351,14 @@ html.js [data-reveal].is-in {
         right:0;
     }
 }
+
+/* Keep the fixed menu accessible without obscuring content or anchor targets. */
+:root { --cl-header-height: 60px; }
+body { padding-top: var(--cl-header-height); }
+html { scroll-padding-top: calc(var(--cl-header-height) + 16px); }
+[id] { scroll-margin-top: calc(var(--cl-header-height) + 16px); }
+@media (max-width: 991.98px) {
+    #mainNav .navbar-collapse { max-height: calc(100dvh - var(--cl-header-height)); overflow-y: auto; }
+}
+.cl-wordmark { white-space: nowrap; letter-spacing: .025em; }
+.cl-client-logo:hover img { transform: translateY(-3px); }
