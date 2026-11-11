@@ -8,7 +8,7 @@
     'eyebrow' => content('page_career', 'eyebrow'),
     'heading' => content('page_career', 'heading'),
     'subheading' => content('page_career', 'subheading'),
-    'primaryCta' => ['label' => content('page_career', 'label'), 'url' => content('page_career', 'url')],
+    'primaryCta' => ['label' => 'Contact Us', 'url' => route('contact')],
     'heroIcon' => content('page_career', 'hero_icon'),
     'heroCaption' => content('page_career', 'hero_caption'),
     'heroVideo' => content('page_career', 'hero_video'),
@@ -54,6 +54,8 @@
 </section>
 
 
+{{-- Temporarily hidden on the public page; retain the openings and CMS content for later. --}}
+@if (false)
 <section class="page-section bg-light" id="openings">
     <div class="container">
         <p class="section-eyebrow text-center mb-2">{{ content('page_career', 'paragraph_3') }}</p>
@@ -77,5 +79,6 @@
         </p>
     </div>
 </section>
+@endif
 
 @endsection
