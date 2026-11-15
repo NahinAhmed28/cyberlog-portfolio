@@ -1,0 +1,4 @@
+/* Keep the established public theme in one minified, versioned stylesheet. */
+@import '../../public/vendor/fontawesome/css/all.min.css';
+@import '../../public/css/styles.css';
+@import '../../public/css/cyberlog.css';

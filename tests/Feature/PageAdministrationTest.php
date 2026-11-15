@@ -4,11 +4,13 @@ namespace Tests\Feature;
 
 use App\Content\FrontendContentOrder;
 use App\Models\ContentEntry;
+use App\Models\MediaAsset;
 use App\Models\NavigationItem;
 use App\Models\Page;
 use App\Models\PageSection;
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
+use Database\Seeders\Pages\CareerPageSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -68,8 +70,8 @@ class PageAdministrationTest extends TestCase
             $this->assertSame($oldVideo === 'storage/media/custom.mp4' ? $oldVideo : 'assets/video/career.mp4', $entry->fresh()->data['hero_video']);
         }
 
-        \App\Models\MediaAsset::where('path', 'assets/video/career.mp4')->delete();
-        $this->seed(\Database\Seeders\Pages\CareerPageSeeder::class);
+        MediaAsset::where('path', 'assets/video/career.mp4')->delete();
+        $this->seed(CareerPageSeeder::class);
         $this->assertDatabaseHas('media_assets', ['path' => 'assets/video/career.mp4']);
         $this->assertSame('storage/media/custom.mp4', $entry->fresh()->data['hero_video']);
     }
@@ -85,7 +87,10 @@ class PageAdministrationTest extends TestCase
         ]);
         $this->get('/career')->assertOk()
             ->assertSee('<video controls', false)
-            ->assertSee('assets/video/career.mp4');
+            ->assertSee('assets/video/career.mp4')
+            ->assertSeeInOrder(['cl-hero--video-top', 'cl-hero-film', '<video controls', 'cl-hero-copy-below', '<h1'], false)
+            ->assertSee('autoplay muted', false)
+            ->assertSee('preload="auto"', false);
         $this->get('/admin/pages/career')->assertOk()->assertSee('hero_video');
         $entry = ContentEntry::forModule('page_career')->newQuery()->firstOrFail();
         $page = Page::where('slug', 'career')->firstOrFail();

@@ -35,9 +35,9 @@
                                     <a class="cl-browser-body" href="{{ $screen['url'] }}" target="_blank" rel="noopener" aria-label="{{ $screen['name'] }} website">
                                         <img src="{{ asset($screen['shot']) }}"
                                              alt="{{ $screen['name'] }} homepage screenshot"
-                                             loading="eager"
+                                             loading="lazy"
                                              decoding="async"
-                                             fetchpriority="{{ $loop->first ? 'high' : 'auto' }}">
+                                             fetchpriority="low">
                                     </a>
                                 </div>
                             </div>

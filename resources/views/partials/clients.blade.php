@@ -25,7 +25,7 @@ $clients = content_items('shared_clients_clients');
                                aria-label="{{ $c['name'] }} website">
                                 <span class="cl-client-shuffle-sector">{{ $c['sector'] }}</span>
                                 <span class="cl-client-shuffle-logo {{ ! empty($c['light_background']) ? 'cl-client-logo--light' : '' }}">
-                                    <img src="{{ asset($c['logo']) }}" alt="{{ $c['name'] }}" loading="eager" decoding="async">
+                                    <img src="{{ asset($c['logo']) }}" alt="{{ $c['name'] }}" loading="lazy" decoding="async">
                                 </span>
                                 <span class="cl-client-shuffle-name">{{ $c['name'] }}</span>
                             </a>
@@ -52,7 +52,7 @@ $clients = content_items('shared_clients_clients');
                                 <span class="cl-client-logo {{ ! empty($c['light_background']) ? 'cl-client-logo--light' : '' }}">
                                     <img src="{{ asset($c['logo']) }}"
                                          alt="{{ $set === 0 ? $c['name'] : '' }}"
-                                         loading="eager"
+                                         loading="lazy"
                                          decoding="async">
                                 </span>
                             @endforeach

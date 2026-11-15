@@ -12,6 +12,8 @@
     'heroIcon' => content('page_career', 'hero_icon'),
     'heroCaption' => content('page_career', 'hero_caption'),
     'heroVideo' => content('page_career', 'hero_video'),
+    'heroVideoAutoplay' => true,
+    'videoAbove' => true,
     'noCenteredHeading' => true
 ])
 

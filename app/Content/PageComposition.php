@@ -108,7 +108,7 @@ class PageComposition
 
     public function render(string $html): string
     {
-        $page = Page::where('path', request()->getPathInfo())->first();
+        $page = Page::forCurrentRequest();
         if (! $page) {
             return $html;
         }

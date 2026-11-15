@@ -1,16 +1,24 @@
 
 @php $isCentered = ! empty($centered); @endphp
 @php $noCenteredHeading = ! empty($noCenteredHeading); @endphp
+@php $hasVideoAbove = ! empty($videoAbove) && ! empty($heroVideo); @endphp
 <style>
     .cl-nav-cta.btn-xl {
     padding: 1rem 1.75rem;
     font-size: 1.25rem;
 }
 </style>
-<header class="cl-hero text-white py-5" id="hero">
-    <div class="container py-5">
+<header class="cl-hero text-white {{ $hasVideoAbove ? 'cl-hero--video-top' : 'py-5' }}" id="hero">
+    @if ($hasVideoAbove)
+        <div class="container d-flex">
+            <div class="cl-hero-film">
+                @include('partials.hero-video')
+            </div>
+        </div>
+    @endif
+    <div class="container {{ $hasVideoAbove ? 'cl-hero-copy-below' : 'py-5' }}">
         <div class="row align-items-center g-5 {{ $isCentered ? 'justify-content-center text-center' : '' }}">
-            <div class="{{ $isCentered ? 'col-lg-9' : 'col-lg-7' }}">
+            <div class="{{ $hasVideoAbove ? 'col-12' : ($isCentered ? 'col-lg-9' : 'col-lg-7') }}">
                 @isset($eyebrow)
                     <p class="section-eyebrow mb-3 {{ $isCentered ? 'text-center' : '' }}">{{ $eyebrow }}</p>
                 @endisset
@@ -38,23 +46,11 @@
                 </div>
             </div>
 
-            @unless($isCentered)
+            @unless($isCentered || $hasVideoAbove)
                 <div class="col-lg-5 {{ empty($heroVideo) ? 'd-none d-lg-block' : '' }}">
                     @if (! empty($heroVideo))
-                        @php
-                            $driveVideo = preg_match('~^https://drive\.google\.com/file/d/([a-zA-Z0-9_-]+)(?:/|$)~', $heroVideo, $driveMatch);
-                        @endphp
                         <div class="ratio ratio-16x9 rounded overflow-hidden bg-dark">
-                            @if ($driveVideo)
-                                <iframe src="https://drive.google.com/file/d/{{ $driveMatch[1] }}/preview"
-                                        title="{{ $heroCaption ?? 'Career video' }}"
-                                        allow="autoplay; fullscreen" allowfullscreen></iframe>
-                            @else
-                                <video controls playsinline preload="metadata" aria-label="{{ $heroCaption ?? 'Career video' }}">
-                                    <source src="{{ asset($heroVideo) }}">
-                                    Your browser does not support video playback.
-                                </video>
-                            @endif
+                            @include('partials.hero-video')
                         </div>
                     @else
                     <div class="cl-step text-center py-5">

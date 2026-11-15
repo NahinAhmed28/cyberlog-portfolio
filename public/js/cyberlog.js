@@ -144,10 +144,12 @@
         }
 
         /* ---------- Reusable particle network (any <canvas data-net>) ---------- */
+        function initializeNetworks() {
         document.querySelectorAll('canvas[data-net]').forEach(function (cv) {
             var nctx = cv.getContext && cv.getContext('2d');
             if (!nctx) return;
             var nw, nh, pts = [], mp = { x: -9999, y: -9999 };
+            var networkFrame = null, networkVisible = true;
             function nsize() { nw = cv.width = cv.offsetWidth; nh = cv.height = cv.offsetHeight; }
             function nseed() {
                 nsize();
@@ -158,6 +160,7 @@
                 }
             }
             function nrender() {
+                networkFrame = null;
                 nctx.clearRect(0, 0, nw, nh);
                 for (var i = 0; i < pts.length; i++) {
                     var n = pts[i];
@@ -176,14 +179,33 @@
                         nctx.strokeStyle = 'rgba(255,47,85,' + (0.5 * (1 - ud / 22000)) + ')'; nctx.lineWidth = 1; nctx.stroke();
                     }
                 }
-                if (!reduce) requestAnimationFrame(nrender);
+                if (!reduce && networkVisible && !document.hidden) networkFrame = requestAnimationFrame(nrender);
             }
-            nseed(); nrender();
-            window.addEventListener('resize', nseed);
+            function updateNetwork() {
+                if (networkFrame !== null) cancelAnimationFrame(networkFrame);
+                networkFrame = null;
+                if (networkVisible && !document.hidden) nrender();
+            }
+            nseed(); updateNetwork();
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(function (entries) {
+                    networkVisible = entries[0].isIntersecting;
+                    updateNetwork();
+                }).observe(cv);
+            }
+            document.addEventListener('visibilitychange', updateNetwork);
+            window.addEventListener('resize', function () { nseed(); updateNetwork(); });
             var host = cv.closest('section, header') || cv.parentElement;
             host.addEventListener('mousemove', function (e) { var r = cv.getBoundingClientRect(); mp.x = e.clientX - r.left; mp.y = e.clientY - r.top; if (reduce) nrender(); });
             host.addEventListener('mouseleave', function () { mp.x = mp.y = -9999; if (reduce) nrender(); });
         });
+        }
+        // Decorative canvas work starts after the browser can paint page content.
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(initializeNetworks, { timeout: 1200 });
+        } else {
+            requestAnimationFrame(function () { requestAnimationFrame(initializeNetworks); });
+        }
     });
 })();
 
