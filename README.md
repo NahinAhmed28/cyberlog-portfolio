@@ -56,7 +56,7 @@ See [the complete module inventory](docs/admin-content-inventory.md) for page ow
 
 ### Career video on cPanel
 
-The career video is tracked in Git at `public/assets/video/career.mp4`. It spans the hero width above the existing hero copy, with responsive spacing. The bundled 1080p H.264/AAC clip is approximately 5.74 MB (previously 62.26 MB), with its MP4 metadata at the front for streaming. It preloads for muted inline autoplay when the career page opens; playback controls let visitors pause or enable sound. Fresh seeds set the career page's `hero_video` and register the file in the media library. The upgrade migration replaces the original Google Drive default or an empty/missing video with the bundled file, while preserving custom video selections.
+The career video is tracked in Git at `public/assets/video/career.mp4`. It spans the hero width above the existing hero copy, with responsive spacing. The bundled 1080p H.264/AAC clip is approximately 5.74 MB (previously 62.26 MB), with its MP4 metadata at the front for streaming. It preloads for inline autoplay with sound when the career page opens. If the browser requires user interaction before allowing audio, a Play with sound button appears; native playback and volume controls remain available. Fresh seeds set the career page's `hero_video` and register the file in the media library. The upgrade migration replaces the original Google Drive default or an empty/missing video with the bundled file, while preserving custom video selections.
 
 After pulling updates on an existing cPanel installation, run from the project directory:
 

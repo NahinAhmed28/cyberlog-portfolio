@@ -605,6 +605,16 @@ section[id], header[id] { scroll-margin-top: 68px; }
     outline: 3px solid var(--blue-bright);
     outline-offset: -3px;
 }
+.cl-hero-video-sound {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: max-content;
+    max-width: calc(100% - 2rem);
+    height: max-content;
+    margin: auto;
+    padding: .85rem 1.25rem;
+}
 .cl-hero-copy-below {
     padding-top: clamp(2rem, 5vw, 5rem);
     padding-bottom: clamp(3rem, 6vw, 6rem);

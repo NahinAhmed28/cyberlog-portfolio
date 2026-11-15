@@ -7,7 +7,7 @@
             title="{{ $heroCaption ?? 'Career video' }}"
             allow="autoplay; fullscreen" allowfullscreen></iframe>
 @else
-    <video controls playsinline @if ($autoplayVideo) autoplay muted @endif preload="{{ $autoplayVideo ? 'auto' : 'metadata' }}" aria-label="{{ $heroCaption ?? 'Career video' }}">
+    <video controls playsinline @if ($autoplayVideo) autoplay data-autoplay-with-sound @endif preload="{{ $autoplayVideo ? 'auto' : 'metadata' }}" aria-label="{{ $heroCaption ?? 'Career video' }}">
         <source src="{{ asset($heroVideo) }}">
         Your browser does not support video playback.
     </video>

@@ -1,3 +1,48 @@
+/* Start the career video with audio, with an explicit play action if autoplay is blocked. */
+(() => {
+    const initialize = () => {
+        document.querySelectorAll('video[data-autoplay-with-sound]').forEach(video => {
+            let prompt = null;
+
+            const handleBlockedPlayback = error => {
+                // Codec/network errors belong to the native player, not the sound prompt.
+                if (error.name !== 'NotAllowedError' || !video.paused || prompt) return;
+
+                prompt = document.createElement('button');
+                prompt.type = 'button';
+                prompt.className = 'btn btn-primary cl-hero-video-sound';
+                prompt.textContent = 'Play with sound';
+                prompt.addEventListener('click', playWithSound);
+                video.insertAdjacentElement('afterend', prompt);
+            };
+
+            const playWithSound = () => {
+                video.muted = false;
+                try {
+                    const playback = video.play();
+                    if (playback && typeof playback.catch === 'function') {
+                        playback.catch(handleBlockedPlayback);
+                    }
+                } catch (error) {
+                    handleBlockedPlayback(error);
+                }
+            };
+
+            video.addEventListener('playing', () => {
+                if (prompt) prompt.remove();
+                prompt = null;
+            });
+            playWithSound();
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize, { once: true });
+    } else {
+        initialize();
+    }
+})();
+
 /* Cyberlog — Threat Console interactions
  * Scroll-reveal, count-up stats, and a live threat-feed ticker.
  * Degrades gracefully: without JS, all content is visible and static.

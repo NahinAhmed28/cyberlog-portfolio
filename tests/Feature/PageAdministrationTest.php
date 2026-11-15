@@ -89,7 +89,8 @@ class PageAdministrationTest extends TestCase
             ->assertSee('<video controls', false)
             ->assertSee('assets/video/career.mp4')
             ->assertSeeInOrder(['cl-hero--video-top', 'cl-hero-film', '<video controls', 'cl-hero-copy-below', '<h1'], false)
-            ->assertSee('autoplay muted', false)
+            ->assertSee('autoplay data-autoplay-with-sound', false)
+            ->assertDontSee('autoplay muted', false)
             ->assertSee('preload="auto"', false);
         $this->get('/admin/pages/career')->assertOk()->assertSee('hero_video');
         $entry = ContentEntry::forModule('page_career')->newQuery()->firstOrFail();

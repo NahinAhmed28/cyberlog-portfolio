@@ -16,7 +16,7 @@
     "src": "public/vendor/fontawesome/webfonts/fa-v4compatibility.woff2"
   },
   "resources/css/portfolio.css": {
-    "file": "assets/portfolio-BPYYH9bR.css",
+    "file": "assets/portfolio-WrDUPnzN.css",
     "name": "portfolio",
     "names": [
       "portfolio.css"
@@ -37,7 +37,7 @@
     "isEntry": true
   },
   "resources/js/portfolio.js": {
-    "file": "assets/portfolio-DHrbM2d2.js",
+    "file": "assets/portfolio-CojMQ8n_.js",
     "name": "portfolio",
     "src": "resources/js/portfolio.js",
     "isEntry": true
