@@ -52,6 +52,8 @@
             </div>
         </div>
     </div>
+    {{-- The scanning console reads these messages here, so they are edited from the hero section. --}}
+    <script>window.cyberlogContent = Object.assign(window.cyberlogContent || {}, {{ Illuminate\Support\Js::from(['vaptEvents' => content_items('vapt_live_events')]) }});</script>
 </header>
 
 @push('styles')
@@ -208,7 +210,7 @@
 (function () {
     var log = document.querySelector('[data-vapt-live-log]');
     if (!log || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var events = {{ Illuminate\Support\Js::from(content_items('vapt_live_events')) }};
+    var events = (window.cyberlogContent && window.cyberlogContent.vaptEvents) || [];
     if (!events.length) return;
     var bars = document.querySelectorAll('[data-vapt-live-chart] span');
     var findingsEl = document.querySelector('[data-vapt-findings]');

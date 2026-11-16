@@ -26,10 +26,11 @@ class PageController extends Controller
             $sections = $sections->where('key', 'nav');
         }
 
-        $pageMedia = app(PageEditor::class)->media($sections);
+        $pageMedia = app(PageEditor::class)->media($sections, $page);
         $media = MediaAsset::latest()->get(['path', 'name', 'mime_type']);
+        $layout = app(PageEditor::class)->layout($page, $sections, $blocks);
 
-        return view('admin.pages.show', compact('page', 'sections', 'pageMedia', 'media', 'blocks'));
+        return view('admin.pages.show', compact('page', 'sections', 'pageMedia', 'media', 'blocks') + $layout);
     }
 
     public function create()

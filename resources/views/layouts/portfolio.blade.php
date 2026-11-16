@@ -24,7 +24,6 @@
 
     @include('frontend.public.partials.footer')
 
-    @include('partials.portfolio-events')
 
     @stack('scripts')
 </body>

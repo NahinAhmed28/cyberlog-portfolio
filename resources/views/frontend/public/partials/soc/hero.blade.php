@@ -47,6 +47,8 @@
             </div>
         </div>
     </div>
+    {{-- The live operations console reads these messages here, so they are edited from the hero section. --}}
+    <script>window.cyberlogContent = Object.assign(window.cyberlogContent || {}, {{ Illuminate\Support\Js::from(['socEvents' => content_items('soc_live_events')]) }});</script>
 </header>
 
 @push('styles')

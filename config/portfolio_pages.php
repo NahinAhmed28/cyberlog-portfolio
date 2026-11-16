@@ -1,6 +1,8 @@
 <?php
 
-// Every public content dependency is linked to its page editor.
+// Every public content dependency is linked to its page editor. A page lists only the sections its
+// template renders (shared navigation, footer and site settings included) plus its own archived layouts.
+// Sections read by the layout for a single route (live feeds) are linked to that route's page alone.
 return [
     'home' => [
         'title' => 'Home',
@@ -48,7 +50,6 @@ return [
             38 => 'footer_cards',
             39 => 'footer_wordmark',
             40 => 'threat_feed_events',
-            41 => 'soc_live_events',
         ],
     ],
     'clients' => [
@@ -71,8 +72,6 @@ return [
             12 => 'footer_company_links',
             13 => 'footer_cards',
             14 => 'footer_wordmark',
-            15 => 'threat_feed_events',
-            16 => 'soc_live_events',
         ],
     ],
     'services' => [
@@ -80,20 +79,17 @@ return [
         'path' => '/services',
         'kind' => 'page',
         'sections' => [
-            0 => 'shared_security_service_group',
-            1 => 'page_services',
-            2 => 'services',
-            3 => 'shared_talk_to_expert',
-            4 => 'layout_portfolio',
-            5 => 'nav',
-            6 => 'footer',
-            7 => 'footer_col_12',
-            8 => 'footer_specialized_links',
-            9 => 'footer_company_links',
-            10 => 'footer_cards',
-            11 => 'footer_wordmark',
-            12 => 'threat_feed_events',
-            13 => 'soc_live_events',
+            0 => 'page_services',
+            1 => 'services',
+            2 => 'shared_talk_to_expert',
+            3 => 'layout_portfolio',
+            4 => 'nav',
+            5 => 'footer',
+            6 => 'footer_col_12',
+            7 => 'footer_specialized_links',
+            8 => 'footer_company_links',
+            9 => 'footer_cards',
+            10 => 'footer_wordmark',
         ],
     ],
     'soc' => [
@@ -142,7 +138,8 @@ return [
             38 => 'footer_company_links',
             39 => 'footer_cards',
             40 => 'footer_wordmark',
-            41 => 'threat_feed_events',
+            41 => 'shared_reviews',
+            42 => 'shared_reviews_reviews',
         ],
     ],
     'vapt' => [
@@ -187,8 +184,8 @@ return [
             34 => 'footer_company_links',
             35 => 'footer_cards',
             36 => 'footer_wordmark',
-            37 => 'threat_feed_events',
-            38 => 'soc_live_events',
+            37 => 'shared_reviews',
+            38 => 'shared_reviews_reviews',
         ],
     ],
     'it-audit' => [
@@ -211,8 +208,6 @@ return [
             12 => 'footer_company_links',
             13 => 'footer_cards',
             14 => 'footer_wordmark',
-            15 => 'threat_feed_events',
-            16 => 'soc_live_events',
         ],
     ],
     'capacity-building' => [
@@ -237,8 +232,6 @@ return [
             14 => 'footer_company_links',
             15 => 'footer_cards',
             16 => 'footer_wordmark',
-            17 => 'threat_feed_events',
-            18 => 'soc_live_events',
         ],
     ],
     'secure-code-review' => [
@@ -257,8 +250,6 @@ return [
             8 => 'footer_company_links',
             9 => 'footer_cards',
             10 => 'footer_wordmark',
-            11 => 'threat_feed_events',
-            12 => 'soc_live_events',
         ],
     ],
     'ai-automation' => [
@@ -279,8 +270,6 @@ return [
             10 => 'footer_company_links',
             11 => 'footer_cards',
             12 => 'footer_wordmark',
-            13 => 'threat_feed_events',
-            14 => 'soc_live_events',
         ],
     ],
     'offensive-security' => [
@@ -301,8 +290,6 @@ return [
             10 => 'footer_company_links',
             11 => 'footer_cards',
             12 => 'footer_wordmark',
-            13 => 'threat_feed_events',
-            14 => 'soc_live_events',
         ],
     ],
     'defensive-security' => [
@@ -326,8 +313,6 @@ return [
             13 => 'footer_company_links',
             14 => 'footer_cards',
             15 => 'footer_wordmark',
-            16 => 'threat_feed_events',
-            17 => 'soc_live_events',
         ],
     ],
     'vciso' => [
@@ -354,8 +339,6 @@ return [
             16 => 'footer_company_links',
             17 => 'footer_cards',
             18 => 'footer_wordmark',
-            19 => 'threat_feed_events',
-            20 => 'soc_live_events',
         ],
     ],
     'about' => [
@@ -376,8 +359,6 @@ return [
             10 => 'footer_company_links',
             11 => 'footer_cards',
             12 => 'footer_wordmark',
-            13 => 'threat_feed_events',
-            14 => 'soc_live_events',
         ],
     ],
     'our-team' => [
@@ -396,8 +377,6 @@ return [
             8 => 'footer_company_links',
             9 => 'footer_cards',
             10 => 'footer_wordmark',
-            11 => 'threat_feed_events',
-            12 => 'soc_live_events',
         ],
     ],
     'career' => [
@@ -417,8 +396,6 @@ return [
             9 => 'footer_company_links',
             10 => 'footer_cards',
             11 => 'footer_wordmark',
-            12 => 'threat_feed_events',
-            13 => 'soc_live_events',
         ],
     ],
     'contact' => [
@@ -438,8 +415,6 @@ return [
             9 => 'footer_company_links',
             10 => 'footer_cards',
             11 => 'footer_wordmark',
-            12 => 'threat_feed_events',
-            13 => 'soc_live_events',
         ],
     ],
     'navigation' => [
@@ -467,7 +442,6 @@ return [
             3 => 'footer_col_12',
             4 => 'footer_company_links',
             5 => 'footer_specialized_links',
-            6 => 'services',
         ],
     ],
     'site-settings' => [
@@ -478,15 +452,12 @@ return [
             0 => 'site_public',
             1 => 'layout_portfolio',
             2 => 'shared_page_hero',
-            3 => 'shared_reviews',
-            4 => 'shared_reviews_reviews',
-            5 => 'shared_talk_to_expert',
-            6 => 'legacy_portfolio_index',
-            7 => 'legacy_portfolio_index_cards',
-            8 => 'legacy_portfolio_index_links',
-            9 => 'legacy_portfolio_index_links_2',
-            10 => 'legacy_portfolio_index_links_3',
-            11 => 'threat_feed_events',
+            3 => 'shared_talk_to_expert',
+            4 => 'legacy_portfolio_index',
+            5 => 'legacy_portfolio_index_cards',
+            6 => 'legacy_portfolio_index_links',
+            7 => 'legacy_portfolio_index_links_2',
+            8 => 'legacy_portfolio_index_links_3',
         ],
     ],
 ];

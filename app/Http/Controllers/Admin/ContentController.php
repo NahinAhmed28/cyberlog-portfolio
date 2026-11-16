@@ -60,19 +60,20 @@ class ContentController extends Controller
     private function form($module, $definition, $entry, $data)
     {
         $definition['fields'] = app(FrontendContentOrder::class)->fields($module, $definition);
-        $definition['fields'] = app(EditorSchema::class)->fields($module, $definition['fields']);
         $definition['title'] = app(PageEditor::class)->sectionTitle($module, $definition['title']);
         $media = MediaAsset::orderByDesc('id')->get(['path', 'name', 'mime_type']);
 
         $section = PageSection::where('key', $module)->firstOrFail();
-        $page = $section->pages()->where('slug', request('page'))->first() ?? $section->pages()->orderBy('sort_order')->firstOrFail();
+        $page = request()->filled('page')
+            ? $section->pages()->where('slug', request('page'))->firstOrFail()
+            : $section->pages()->orderBy('sort_order')->firstOrFail();
 
         $definition['fields'] = app(EditorSchema::class)->fields($module, $definition['fields'], app(PageComposition::class)->source($page));
         if (request()->filled('section_anchor')) {
             $selected = collect($definition['fields'])->where('anchor', request('section_anchor'))->all();
-            if ($selected) {
-                $definition['fields'] = $selected;
-            }
+            abort_unless($selected, 404, 'This content does not belong to the selected section.');
+            $definition['fields'] = $selected;
+            $definition['title'] = app(PageEditor::class)->scopeTitle($module, $selected);
         }
 
         return view('admin.content.edit', compact('module', 'definition', 'entry', 'data', 'media', 'page'));
@@ -115,14 +116,16 @@ class ContentController extends Controller
         $definition = $this->registry->get($module);
         $request->validate(['sort_order' => ['required', 'integer', 'between:0,1000000'], 'is_visible' => ['required', 'boolean'], 'data' => ['required', 'array']]);
         $input = $request->input('data');
-        if ($entry->exists && $request->filled('section_anchor') && $request->filled('page')) {
+        $selected = null;
+        if ($request->filled('section_anchor')) {
+            abort_unless($request->filled('page'), 422);
             $page = Page::where('slug', $request->input('page'))->firstOrFail();
             abort_unless($page->sections()->where('key', $module)->exists(), 422);
             $fields = app(EditorSchema::class)->fields($module, $definition['fields'], app(PageComposition::class)->source($page));
             $selected = collect($fields)->where('anchor', $request->input('section_anchor'))->keys()->all();
-            if ($selected) {
-                $input = array_replace(Arr::except($entry->contentData($definition), $selected), Arr::only($input, $selected));
-            }
+            abort_unless($selected, 422, 'This content does not belong to the selected section.');
+            $existing = $entry->exists ? $entry->contentData($definition) : $this->registry->emptyRecord($definition);
+            $input = array_replace(Arr::except($existing, $selected), Arr::only($input, $selected));
         }
         $data = app(ContentValidator::class)->validate($input, $definition);
         if ($module === 'services' && empty($data['route'])) {
@@ -131,6 +134,7 @@ class ContentController extends Controller
         // Validate every upload before storing any of them.
         $files = $mediaUploads ?? Arr::dot($request->allFiles()['uploads'] ?? []);
         foreach ($files as $path => $file) {
+            abort_if($selected !== null && ! in_array(explode('.', $path)[0], $selected), 422);
             $field = $this->registry->fieldAt($definition, $path);
             abort_unless($field && in_array($field['type'], ['image', 'video']), 422);
             $allowed = $field['type'] === 'image' ? 'jpg,jpeg,png,gif,webp' : 'mp4,webm';

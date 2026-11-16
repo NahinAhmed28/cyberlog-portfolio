@@ -3,7 +3,7 @@
 <div data-section-list>
 @foreach($blocks->whereNull('deleted_at') as $block)
 <details class="card mb-3" data-block-id="{{ $block->id }}" draggable="true">
-<summary class="card-header"><span title="Drag to reorder">&#x2630;</span> <strong>{{ $block->title }}</strong> <span class="badge text-bg-light">{{ $block->is_visible ? 'Published' : 'Hidden' }}</span><span class="small text-muted ms-3">{{ Str::limit($block->data['heading'] ?? ($sections->whereIn('key', $block->data['modules'] ?? [])->flatMap(fn($s) => $s->contents)->flatMap(fn($e) => $e->data)->filter(fn($v, $k) => is_string($v) && in_array($k, ['heading','title','paragraph']))->first() ?? ''), 80) }}</span></summary>
+<summary class="card-header"><span title="Drag to reorder">&#x2630;</span> <strong>{{ $block->title }}</strong> <span class="badge text-bg-light">{{ $block->is_visible ? 'Published' : 'Hidden' }}</span><span class="small text-muted ms-3">{{ Str::limit($block->data['heading'] ?? (($blockSections[$block->id] ?? collect())->flatMap(fn($s) => $s->contents->whereNull('deleted_at')->map(fn($e) => app(\App\Content\PageEditor::class)->preview($s, $e->data)))->first() ?? ''), 80) }}</span></summary>
 <div class="card-body">
 <div class="d-flex flex-wrap gap-2 mb-3">
 @if($block->type !== 'legacy')<a class="btn btn-sm btn-primary" href="{{ route('admin.blocks.edit', [$page, $block]) }}">Edit section</a>@endif
@@ -14,13 +14,18 @@
 </div>
 @if($block->type === 'legacy')
 <p class="small text-muted">This section uses the existing website content. Duplicated legacy sections share their text and items.</p>
-@include('admin.pages.module-sections', ['moduleSections' => $sections->whereIn('key', $block->data['modules'] ?? [])])
+@include('admin.pages.module-sections', ['moduleSections' => $blockSections[$block->id] ?? collect()])
 @endif
 </div></details>
 @endforeach
 </div>
 @if($blocks->whereNotNull('deleted_at')->isNotEmpty())<details class="card mb-3"><summary class="card-header">Deleted sections (restore)</summary><div class="card-body">@foreach($blocks->whereNotNull('deleted_at') as $block)<form method="post" action="{{ route('admin.blocks.action', [$page, $block->id]) }}" class="mb-2">@csrf<input type="hidden" name="action" value="restore">{{ $block->title }} <button class="btn btn-sm btn-outline-primary">Restore</button></form>@endforeach</div></details>@endif
 <details class="card mb-3"><summary class="card-header">SEO settings</summary><form class="card-body" action="{{ route('admin.pages.seo', $page) }}" method="post">@csrf @method('PUT')<label class="form-label" for="seo-title">SEO page title</label><input id="seo-title" name="seo_title" value="{{ old('seo_title', $page->seo_title) }}" class="form-control mb-3"><label class="form-label" for="seo-description">SEO meta description</label><textarea id="seo-description" name="seo_description" class="form-control mb-3">{{ old('seo_description', $page->seo_description) }}</textarea><button class="btn btn-primary">Save SEO settings</button></form></details>
+@foreach($otherSections->groupBy('editor_category') as $category => $categorySections)
+<details class="card mb-3"><summary class="card-header fw-semibold">{{ $category }}</summary><div class="card-body">
+    @include('admin.pages.module-sections', ['moduleSections' => $categorySections])
+</div></details>
+@endforeach
 @push('scripts')
 <script>
 (() => {

@@ -27,6 +27,8 @@
         </div>
 
     </div>
+    {{-- The live threat feed reads these messages here, so they are edited from the hero section. --}}
+    <script>window.cyberlogContent = Object.assign(window.cyberlogContent || {}, {{ Illuminate\Support\Js::from(['events' => content_items('threat_feed_events')]) }});</script>
 </section>
 
 @push('styles')

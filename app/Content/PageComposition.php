@@ -18,23 +18,8 @@ class PageComposition
         $route = Route::getRoutes()->match(Request::create($page->path));
         $view = $route->defaults['view'] ?? null;
 
-        return $view ? $this->expand($view) : '';
-    }
-
-    private function expand(string $view, array $seen = []): string
-    {
-        if (in_array($view, $seen)) {
-            return '';
-        }
-        $path = resource_path('views/'.str_replace('.', '/', $view).'.blade.php');
-        if (! is_file($path)) {
-            return '';
-        }
-        $seen[] = $view;
-        $source = file_get_contents($path);
-        $source = preg_replace('~\{\{--.*?--\}\}|<!--.*?-->~s', '', $source);
-
-        return preg_replace_callback('~@include(?:If)?\(\s*[\'"]([^\'"]+)[\'"]~', fn ($m) => $this->expand($m[1], $seen), $source);
+        // Includes are expanded with their parameters substituted, so a value passed to a partial is placed in the section that shows it.
+        return $view ? app(ContentPlacement::class)->source(resource_path('views/'.str_replace('.', '/', $view).'.blade.php')) : '';
     }
 
     /** Offsets allow existing markup to pass through unchanged; no DOM reserialization. */

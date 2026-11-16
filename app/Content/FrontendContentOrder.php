@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 class FrontendContentOrder
 {
-    private array $sources = [];
-
     public function sections(Page $page, Collection $sections): Collection
     {
         if (! $page->path) {
@@ -48,20 +46,8 @@ class FrontendContentOrder
         return collect($definition['fields'])->sortBy(fn ($field, $key) => $positions[$key] ?? PHP_INT_MAX)->all();
     }
 
-    private function source(string $path, array $parents = []): string
+    private function source(string $path): string
     {
-        if (in_array($path, $parents) || ! is_file($path)) {
-            return '';
-        }
-        if (isset($this->sources[$path])) {
-            return $this->sources[$path];
-        }
-        $parents[] = $path;
-        $source = file_get_contents($path);
-        $source = preg_replace('~\{\{--.*?--\}\}|<!--.*?-->~s', '', $source);
-
-        return $this->sources[$path] = preg_replace_callback('~@include(?:If|When|Unless)?\(\s*[\'"]([^\'"]+)[\'"]~', function ($match) use ($parents) {
-            return $this->source(resource_path('views/'.str_replace('.', '/', $match[1]).'.blade.php'), $parents).$match[0];
-        }, $source);
+        return app(ContentPlacement::class)->source($path);
     }
 }

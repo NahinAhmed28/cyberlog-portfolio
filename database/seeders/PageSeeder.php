@@ -17,10 +17,12 @@ class PageSeeder extends Seeder
         }
         foreach (config('portfolio_pages') as $slug => $definition) {
             $page = Page::firstOrCreate(['slug' => $slug], collect($definition)->only(['title', 'path', 'kind'])->all() + ['sort_order' => array_search($slug, array_keys(config('portfolio_pages'))) * 10]);
+            // The configuration is the single source of truth: a page lists exactly the sections its template renders.
+            $links = [];
             foreach ($definition['sections'] as $order => $key) {
-                $section = PageSection::where('key', $key)->firstOrFail();
-                $page->sections()->syncWithoutDetaching([$section->id => ['sort_order' => $order]]);
+                $links[PageSection::where('key', $key)->firstOrFail()->id] = ['sort_order' => $order];
             }
+            $page->sections()->sync($links);
         }
     }
 }

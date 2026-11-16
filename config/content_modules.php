@@ -6440,7 +6440,7 @@ return [
     ],
     'threat_feed_events' => [
         'title' => 'Threat feed events',
-        'group' => 'Shared content',
+        'group' => 'Home',
         'table' => 'page_contents',
         'model' => 'App\\Models\\PageContent',
         'fields' => [

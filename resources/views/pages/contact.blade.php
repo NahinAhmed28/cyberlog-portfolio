@@ -25,7 +25,7 @@
             </div>
             <div class="col-lg-7">
                 <div class="cl-calc">
-                    @if(session('contact_status'))<div class="alert alert-success" role="status">{{ session('contact_status') }}</div>@endif
+                    @if(session('contact_status'))<div class="alert alert-success" role="status">{{ content('page_contact', 'success_message') ?: session('contact_status') }}</div>@endif
 @if(session('contact_error'))<div class="alert alert-danger" role="alert">{{ session('contact_error') }}</div>@endif
 @if($errors->any())<div class="alert alert-danger" role="alert">@foreach($errors->all() as $error)<div>{{ $error }}</div>@endforeach</div>@endif
 <form method="post" action="{{ route('contact.store') }}">@csrf

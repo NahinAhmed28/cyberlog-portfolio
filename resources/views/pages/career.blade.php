@@ -37,7 +37,7 @@
 </section>
 
 
-<section class="page-section" id="why-join">
+<section class="page-section" id="why-cyberlog">
     <div class="container">
         <p class="section-eyebrow text-center mb-2">{{ content('page_career', 'paragraph_2') }}</p>
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-5">{{ content('page_career', 'heading_3') }}</h2>

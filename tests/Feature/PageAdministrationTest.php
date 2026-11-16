@@ -118,11 +118,11 @@ class PageAdministrationTest extends TestCase
         $entry = ContentEntry::forModule('page_career')->newQuery()->firstOrFail();
         $this->get(route('admin.content.edit', ['page_career', $entry->id, 'page' => 'career']))
             ->assertOk()->assertSeeInOrder([
+                'name="data[hero_video]"',
                 'name="data[eyebrow]"',
                 'name="data[heading]"',
                 'name="data[subheading]"',
                 'name="data[hero_icon]"',
-                'name="data[hero_video]"',
                 'name="data[paragraph]"',
                 'name="data[heading_2]"',
             ], false);

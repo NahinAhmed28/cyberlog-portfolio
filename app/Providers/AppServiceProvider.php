@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Content\ContentPlacement;
 use App\Content\ContentRepository;
 use App\Content\PortfolioConfiguration;
 use App\Models\PageContent;
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->scoped(ContentPlacement::class);
         PortfolioConfiguration::loadMissing();
         require_once app_path('Content/helpers.php');
     }
